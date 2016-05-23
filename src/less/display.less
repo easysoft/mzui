@@ -1,0 +1,67 @@
+.display-backdrop,
+.display-layer,
+{
+  z-index: @zindex-display-backdrop;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #000;
+}
+
+.display-backdrop.in {opacity: .5}
+
+.display-layer {
+  z-index: @zindex-display-layer;
+  background: none;
+  pointer-events: none;
+  display: flex;
+}
+
+.display {
+  pointer-events: auto;
+
+  &.invisible {.transition-none()!important;}
+}
+
+.display-arrow:before {
+  content: ' ';
+  display: block;
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.arrow-top:before {
+  top: -@arrow-size;
+  left: 50%;
+  margin-left: -@arrow-size;
+  border-width: 0 @arrow-size @arrow-size @arrow-size;
+  border-color: transparent transparent #fff transparent;  
+}
+
+.arrow-bottom:before {
+  top: 100%;
+  left: 50%;
+  margin-left: -@arrow-size;
+  border-width: @arrow-size @arrow-size 0 @arrow-size;
+  border-color: #fff transparent transparent transparent;  
+}
+
+.arrow-right:before {
+  top: 50%;
+  left: 100%;
+  margin-top: -@arrow-size;
+  border-width: @arrow-size 0 @arrow-size @arrow-size;
+  border-color: transparent transparent transparent #fff;  
+}
+
+.arrow-left:before {
+  top: 50%;
+  left: -@arrow-size;
+  margin-top: -@arrow-size;
+  border-width: @arrow-size @arrow-size @arrow-size 0;
+  border-color: transparent #fff transparent transparent;
+}

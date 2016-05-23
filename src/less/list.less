@@ -1,0 +1,98 @@
+.list-item,
+.list > .item {
+  position: relative;
+  display: flex;
+  padding: @padding-base-vertical @padding-base-horizontal;
+
+  > .icon {
+    display: block;
+    height: 3rem;
+    line-height: 3rem;
+  }
+
+  > * {
+    margin-left: @space-sm;
+
+    &:first-child {
+      margin-left: 0;
+      min-width: 1.4rem;
+    }
+  }
+
+  > .title,
+  > .content {
+    flex: 1;
+    line-height: 3rem;
+  }
+
+  > .label {
+    position: relative;
+    top: .5rem;
+
+    + .label {margin-left: @space-xs;}
+  }
+
+  > .content {
+    line-height: 2rem;
+
+    > .title {
+      font-weight: bold;
+    }
+
+    > .subtitle {
+      .small();
+      .muted();
+    }
+  }
+
+  &.multi-lines {
+    > * {
+      margin-top: .5rem;
+    }
+
+    > .content {
+      margin-top: 0;
+    }
+  }
+}
+
+.list-item.compact
+.list.compact > .item {
+  padding: @space-xs @padding-base-horizontal;
+}
+
+.list.with-divider {
+  border: .1rem solid @divider-color;
+  border-width: .1rem 0;
+
+  > .item {
+    &:before {
+      content: ' ';
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: @padding-base-horizontal;
+      right: 0;
+      height: .1rem;
+      background-color: @divider-color;
+    }
+
+    &:last-of-type:before {display: none}
+  }
+
+  &.with-avatar > .item,
+  .item.with-avatar {
+    &:before {left: @padding-base-horizontal + @avatar-size + @space-sm}
+  }
+}
+
+.list-item,
+.list > .item {
+   + .divider {margin-left: @padding-base-horizontal;}
+
+   &.with-avatar + .divider {margin-left: @padding-base-horizontal + @avatar-size + @space-sm}
+}
+
+.list > .list {
+  margin-left: @list-nested-group-margin;
+}

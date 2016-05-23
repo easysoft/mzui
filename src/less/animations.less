@@ -1,0 +1,68 @@
+//
+// Component animations
+// --------------------------------------------------
+
+// Heads up!
+//
+// We don't use the `.opacity()` mixin here since it causes a bug with text
+// fields in IE7-8. Source: https://github.com/twbs/bootstrap/pull/3552.
+
+.fade {
+  .transition-fast();
+  opacity: 0;
+  &.in {
+    opacity: 1;
+  }
+}
+
+.scale {
+  .transition-fast();
+  .scale(.8);
+  &.in {
+    .scale(1);
+  }
+}
+
+.collapse {
+  display: none;
+
+  &.in {
+    display: block;
+  }
+}
+
+.collapsing {
+  position: relative;
+  overflow: hidden;
+  transition: ease height @animation-speed-fast;
+}
+
+[class^="scale-from-"],
+[class*=" scale-from-"]
+[class^="enter-from-"],
+[class*=" enter-from-"] {
+  .transition-fast();
+  &.in {
+    opacity: 1;
+    transform: scale(1) translate(0, 0);
+  }
+}
+
+.scale-from-top    {transform: scale(.8) translate(0, -30%);}
+.scale-from-bottom {transform: scale(.8) translate(0, 30%);}
+.scale-from-left   {transform: scale(.8) translate(-30%, 0);}
+.scale-from-right  {transform: scale(.8) translate(30%, 0);}
+.enter-from-top    {transform: translate(0, -105%);}
+.enter-from-bottom {transform: translate(0, 105%);}
+.enter-from-left   {transform: translate(-105%, 0);}
+.enter-from-right  {transform: translate(105%, 0);}
+.enter-from-center {opacity: 0; transform: scale(.8) translate(0, 50%);}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(359deg); }
+}
+
+.spin {
+  animation: spin 2s infinite linear;
+}

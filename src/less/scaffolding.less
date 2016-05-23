@@ -1,0 +1,80 @@
+//
+// Scaffolding
+// --------------------------------------------------
+
+
+// Body reset
+
+html {
+  box-sizing: border-box;
+  font-size: @root-size;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: @font-family-base;
+  font-size: @font-size-base;
+  line-height: @line-height-base;
+  color: @text-color;
+  background-color: @page-background-color;
+}
+
+
+// Links
+
+a {
+  color: @link-color;
+  text-decoration: none;
+}
+
+
+// Avoid 300ms click delay on touch devices that support the `touch-action` CSS property.
+
+a,
+area,
+button,
+[role="button"],
+input,
+label,
+select,
+summary,
+textarea {
+  touch-action: manipulation;
+}
+
+
+// Images
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+
+// Horizontal rules
+
+hr {
+  border: 0;
+  border-top: @divider-width solid @divider-color;
+}
+
+
+// Tables
+
+table {
+  border-collapse: collapse;
+}
+
+
+// Code
+pre {
+  margin: 0;
+  overflow: auto;
+}

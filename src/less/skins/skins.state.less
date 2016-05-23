@@ -1,0 +1,65 @@
+.state,
+a {
+  .relative();
+
+  &:after {
+    content: ' ';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: transparent;
+    opacity: 0;
+    box-shadow: 0 0 0 .1rem @state-cover-active-color;
+    transform: scale(.6);
+    .transition-fast();
+  }
+
+  &.circle:after {.circle()}
+  &.rounded:after {.rounded()}
+
+  &:hover,
+  &.hover {
+    &:after {
+      background-color: @state-cover-hover-color;
+      opacity: @state-cover-hover-opacity;
+      transform: scale(1);
+    }
+  }
+
+  &:focus {
+    outline: none;
+    &:after {
+      box-shadow: inset 0 0 0 .1rem @color-focus;
+      background-color: fade(@state-cover-active-color, 3%);
+      transform: scale(1);
+      .opacity(@state-cover-focus-opacity);
+    }
+  }
+
+  .open > &,
+  &.open,
+  &:active {
+    &:after {
+      transform: scale(1);
+      background-color: @state-cover-active-color;
+      .opacity(@state-cover-active-opacity);
+    }
+  }
+}
+
+.disabled,
+.disabled > a,
+[disabled] {
+  cursor: @cursor-disabled!important;
+  pointer-events: none!important;
+  filter: grayscale(100%);
+  opacity: @state-disabled-opacity!important;
+  box-shadow: none!important;
+
+  &:after {display: none!important}
+}
+
+.loading {}

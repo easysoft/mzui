@@ -1,0 +1,67 @@
+//
+// Grid system
+// --------------------------------------------------
+
+
+// Set the container width, and override it for fixed navbars in media queries
+// .container { .container-fixed(); }
+
+// mobile first defaults
+.row { .make-row(); }
+
+// Common styles for small and large grid columns
+.col, .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12,
+.col-ls-1, .col-ls-2, .col-ls-3, .col-ls-4, .col-ls-5, .col-ls-6, .col-ls-7, .col-ls-8, .col-ls-9, .col-ls-10, .col-ls-11, .col-ls-12
+{
+  position: relative;
+  // Prevent columns from collapsing when empty
+  min-height: 1px;
+  // Inner gutter via padding
+  padding-left:  (@grid-gutter-width / 2);
+  padding-right: (@grid-gutter-width / 2);
+  float: left;
+}
+
+
+// Extra small grid
+//
+// Grid classes for extra small devices like smartphones. No offset, push, or
+// pull classes are present here due to the size of the target.
+//
+// Note that `.col-12` doesn't get floated on purpose?there's no need since
+// it's full-width.
+
+// .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col { float: left; }
+.col-1  { width: percentage((1 / @grid-columns)); }
+.col-2  { width: percentage((2 / @grid-columns)); }
+.col-3  { width: percentage((3 / @grid-columns)); }
+.col-4  { width: percentage((4 / @grid-columns)); }
+.col-5  { width: percentage((5 / @grid-columns)); }
+.col-6  { width: percentage((6 / @grid-columns)); }
+.col-7  { width: percentage((7 / @grid-columns)); }
+.col-8  { width: percentage((8 / @grid-columns)); }
+.col-9  { width: percentage((9 / @grid-columns)); }
+.col-10 { width: percentage((10/ @grid-columns)); }
+.col-11 { width: percentage((11/ @grid-columns)); }
+.col-12 { width: 100%; }
+
+
+// Grid for orientation landscape
+
+@media (orientation : landscape) {
+  .col-ls-1, .col-ls-2, .col-ls-3, .col-ls-4, .col-ls-5, .col-ls-6, .col-ls-7, .col-ls-8, .col-ls-9, .col-ls-10, .col-ls-11, .col-ls-12 {
+    float: left;
+  }
+  .col-ls-1  { width: percentage((1 / @grid-columns)); }
+  .col-ls-2  { width: percentage((2 / @grid-columns)); }
+  .col-ls-3  { width: percentage((3 / @grid-columns)); }
+  .col-ls-4  { width: percentage((4 / @grid-columns)); }
+  .col-ls-5  { width: percentage((5 / @grid-columns)); }
+  .col-ls-6  { width: percentage((6 / @grid-columns)); }
+  .col-ls-7  { width: percentage((7 / @grid-columns)); }
+  .col-ls-8  { width: percentage((8 / @grid-columns)); }
+  .col-ls-9  { width: percentage((9 / @grid-columns)); }
+  .col-ls-10 { width: percentage((10/ @grid-columns)); }
+  .col-ls-11 { width: percentage((11/ @grid-columns)); }
+  .col-ls-12 { width: 100%; }
+}

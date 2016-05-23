@@ -1,0 +1,36 @@
+.heading {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+
+  > .title {
+    display: block;
+    padding: 0 @padding-base-horizontal;
+    line-height: 4rem;
+    flex: 1;
+  }
+
+  > .expand {display: none}
+}
+
+.heading-lg {
+  > .nav {margin: .4rem;}
+
+  > .title {
+    font-size: @font-size-title;
+    padding: .4rem @padding-base-horizontal;
+  }
+}
+
+.heading.expanded {
+  align-items: space-between;
+  flex-direction: row-reverse;
+  
+  > .expand {
+    flex: none;
+    width: 100%;
+
+    &.title {font-size: @font-size-large;}
+  }
+}

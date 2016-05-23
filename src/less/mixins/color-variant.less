@@ -1,0 +1,38 @@
+// Color variant
+
+.color-variant(@color) {
+  background-color: @color!important;
+  border-color: @color!important;
+  color: #fff!important;
+
+  &.outline {
+    background-color: transparent!important;
+    color: @color!important;
+
+    .active {
+      color: #fff!important;
+      background-color: @color!important;
+    }
+  }
+}
+
+.color-pale-variant(@color, @darkColor: @color-fore) {
+  background-color: @color!important;
+  border-color: @color!important;
+
+  &.outline {
+    background-color: transparent!important;
+    color: @color!important;
+  }
+
+  &.text-tint {
+    color: @darkColor!important;
+  }
+
+  .active {color: @darkColor}
+}
+
+.better-color(@backgroundColor) {
+  color: contrast(@backgroundColor, @color-dark, @color-light);
+  background-color: @backgroundColor;
+}

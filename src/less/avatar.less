@@ -1,0 +1,34 @@
+.avatar {
+  display: inline-flex;
+  overflow: hidden;
+  width: @avatar-size;
+  height: @avatar-size;
+  text-transform: uppercase;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+
+  img {display: block;}
+}
+.avatar-sm {
+  width: @avatar-size-sm;
+  height: @avatar-size-sm;
+  font-size: @font-size-small;
+}
+
+.avatar-lg {
+  width: @avatar-size-lg;
+  height: @avatar-size-lg;
+  font-size: @avatar-size-lg/2;
+
+  > .icon {font-size: @avatar-size-lg/2}
+}
+
+.avatar-xl {
+  width: @avatar-size-xl;
+  height: @avatar-size-xl;
+  font-size: @avatar-size-xl/2;
+
+  > .icon {font-size: @avatar-size-xl/2}
+}

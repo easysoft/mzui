@@ -1,0 +1,64 @@
+//
+// Navs
+// --------------------------------------------------
+
+.nav {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+
+  > .btn,
+  > a {
+    flex: 0 0 auto;
+    display: block;
+    min-width: 4rem;
+    text-align: center;
+    .opacity(.8);
+
+    &.active {.opacity(1)}
+  }
+
+  > a {
+    padding: @padding-base-vertical @padding-base-horizontal;
+  }
+}
+
+.nav-secondary {
+  box-shadow: inset 0 -.1rem 0 rgba(0,0,0,.1);
+
+  > .active {box-shadow: inset 0 -.2rem 0 @color-white;}
+
+  &.primary-pale > .active   {box-shadow: inset 0 -.2rem 0 @color-primary;}
+  &.success-pale > .active   {box-shadow: inset 0 -.2rem 0 @color-success;}
+  &.danger-pale > .active    {box-shadow: inset 0 -.2rem 0 @color-danger;}
+  &.warning-pale > .active   {box-shadow: inset 0 -.2rem 0 @color-warning;}
+  &.important-pale > .active {box-shadow: inset 0 -.2rem 0 @color-important;}
+  &.special-pale > .active   {box-shadow: inset 0 -.2rem 0 @color-special;}
+}
+
+.nav.circle {border-radius: 2rem}
+
+.nav.outline {
+  > .btn,
+  > a {
+    border-right: 1px solid transparent;
+    border-right-color: inherit;
+
+    &:last-child {border-right: none}
+
+    &.active {
+      color: @color-fore;
+      background-color: @color-back;
+    }
+  }
+}
+
+.nav-lg {
+  > .btn,
+  > a {
+    padding-top: 1.4rem;
+    padding-bottom: 1.4rem;
+  }
+}

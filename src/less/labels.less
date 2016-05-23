@@ -1,0 +1,19 @@
+.label {
+  display: inline-block;
+  font-size: @font-size-small;
+  line-height: 1.8rem;
+  height: 2rem;
+  min-width: 2rem;
+  text-align: center;
+  padding: .1rem @padding-small-horizontal;
+  vertical-align: middle;
+  background-color: @color-gray-lighter;
+  border: .1rem solid transparent;
+
+  > .icon {line-height: 1}
+
+  &.circle {
+    border-radius: 1rem;
+    padding: .1rem .7rem;
+  }
+}

@@ -1,0 +1,24 @@
+//
+// Display plugs
+// --------------------------------------------------
+
+.popover,
+.dropdown-menu {
+  display: none;
+
+  .display > & {
+    display: block;
+  }
+}
+
+.modal,
+.popover,
+.dropdown-menu {
+  &:extend(.layer all);
+}
+
+.dropdown-menu {min-width: 12rem;}
+
+.messager {
+  margin: @space;
+}
