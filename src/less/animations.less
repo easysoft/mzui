@@ -17,9 +17,9 @@
 
 .scale {
   .transition-fast();
-  .scale(.8);
+  transform: scale(.8);
   &.in {
-    .scale(1);
+    transform: scale(1);
   }
 }
 
@@ -59,10 +59,8 @@
 .enter-from-center {opacity: 0; transform: scale(.8) translate(0, 50%);}
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(359deg); }
+  0%   {transform: rotate(0deg);}
+  100% {transform: rotate(359deg);}
 }
 
-.spin {
-  animation: spin 2s infinite linear;
-}
+.spin {animation: spin 2s infinite linear;}

@@ -1,0 +1,88 @@
+//
+// Typography
+// --------------------------------------------------
+
+
+// Headings
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: @headings-font-family;
+  font-weight: @headings-font-weight;
+  line-height: @headings-line-height;
+  color: @headings-color;
+}
+
+
+h1 { font-size: @font-size-h1; }
+h2 { font-size: @font-size-h2; }
+h3 { font-size: @font-size-h3; }
+h4 { font-size: @font-size-h4; }
+h5 { font-size: @font-size-h5; }
+h6 { font-size: @font-size-h6; }
+
+.lead {
+  font-size: @lead-font-size;
+  font-weight: 300;
+}
+
+
+// Emphasis
+
+small, .small {font-size: @small-font-size;}
+
+strong, .strong {font-weight: bolder;}
+
+mark, .mark {
+  background-color: @color-warning-pale;
+  padding: .2em;
+}
+
+
+// Alignment
+
+.text-left     {text-align: left;}
+.text-right    {text-align: right;}
+.text-center   {text-align: center;}
+.text-justify  {text-align: justify;}
+.text-nowrap   {white-space: nowrap;}
+.text-ellipsis {
+  .text-nowrap();
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+// Transformation
+
+.text-lowercase      { text-transform: lowercase; }
+.text-uppercase      { text-transform: uppercase; }
+.text-capitalize     { text-transform: capitalize; }
+
+
+// Decoration
+
+.text-line-through {text-decoration: line-through;}
+
+
+// Misc
+
+.text-hide {.text-hide();}
+
+
+// Horizontal rules
+
+hr {
+  border: 0;
+  border-top: @divider-width solid @divider-color;
+  margin-top: @space-sm;
+  margin-bottom: @space-sm;
+}
+
+
+// Blockquotes
+
+blockquote {
+  padding: @padding-base-vertical @padding-base-horizontal;
+  font-size: 1.25;
+  border-left: .5rem solid @border-color;
+}

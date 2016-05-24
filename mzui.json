@@ -213,9 +213,13 @@
       "name": "栅格系统",
       "src": {"less": ["grid"]}
     },
+    "responsive.embed": {
+      "name": "栅格系统",
+      "src": {"less": ["responsive.embed"]}
+    },
     "typography": {
       "name": "文字排版",
-      "src": {"less": ["type"]}
+      "src": {"less": ["typography"]}
     },
     "icons.variables": {
       "name": "图标名称配置",
@@ -322,7 +326,7 @@
       "dest": "dist/",
       "filename": "mzui",
       "subdirectories": true,
-      "includes": ["colorset", "variables", "mixins", "zepto", "normalize", "scaffolding", "utilities", "animations"]
+      "includes": ["colorset", "variables", "mixins", "zepto", "normalize", "scaffolding", "utilities", "typography", "animations"]
     },
     "doc": {
       "dest": "doc/",
