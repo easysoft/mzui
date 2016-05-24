@@ -12,7 +12,7 @@
         TAP_EVENT_NAME      = $.TapName,
         STR_DISPLAY         = 'display',
         STR_ORIGINAL_CLASS  = 'orginalClass',
-        STR_HIDE            = 'hide',
+        STR_HIDDEN            = 'hidden',
         STR_BODY            = 'body',
         NAME                = 'mzui.' + STR_DISPLAY,
         inverseSide         = {left: 'right', bottom: 'top', top: 'bottom', right: 'left'};
@@ -75,7 +75,7 @@
         var target = $.calValue(options.target, that, options);
         if(target === '#displayTarget') {
             $('#displayTarget').remove();
-            target = $('<div id="displayTarget" class="display hide"/>');
+            target = $('<div id="displayTarget" class="display ' + STR_HIDDEN + '"/>');
             var $layer = $('#displayLayer');
             if(!$layer.length) $layer = $('<div id="displayLayer" class="display-layer"/>').appendTo(STR_BODY);
             options.layer = options.container = $layer.append(target);
@@ -188,11 +188,11 @@
             backdrop       = options.backdrop,
             $element       = $(element);
 
-        $target.attr('class', 'invisible ' + $target.data(STR_ORIGINAL_CLASS) + ' ' + (options.targetClass || '')).removeClass('hide');
+        $target.attr('class', 'invisible ' + $target.data(STR_ORIGINAL_CLASS) + ' ' + (options.targetClass || '')).removeClass(STR_HIDDEN);
 
         if($.callEvent('show', options.show, that, that.$, options) === false) return callback && callback();
 
-        if($layer) $layer.removeClass(STR_HIDE);
+        if($layer) $layer.removeClass(STR_HIDDEN);
 
         if(backdrop) {
             var backdropId = 'backdrop-' + displayName;
@@ -353,16 +353,16 @@
 
         var that = this;
         var options = that.last || that._getOptions(extraOptions);
-        if($.callEvent(STR_HIDE, options.hide, that, that.$, options) === false) return callback && callback();
+        if($.callEvent('hide', options.hide, that, that.$, options) === false) return callback && callback();
 
         that.last = false;
 
         var $target = options.$target,
             $backdrop = $('#backdrop-' + options.name);
         var afterHide = function() {
-            if(options.layer) options.layer.addClass(STR_HIDE);
-            $.callEvent('hidden', options.hidden, that, that.$, options);
-            $target.addClass(STR_HIDE);
+            if(options.layer) options.layer.addClass(STR_HIDDEN);
+            $.callEvent(STR_HIDDEN, options[STR_HIDDEN], that, that.$, options);
+            $target.addClass(STR_HIDDEN);
             $backdrop.remove();
         };
 
