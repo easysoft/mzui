@@ -1,0 +1,20 @@
+// Icons
+
+.icon-zenicon() {
+  font-family: @icon-font-name;
+  speak: none;
+  font-size: @icon-font-size;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+
+  // Better Font Rendering
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon(@icon) {
+  .icon-zenicon();
+  content: @icon;
+}
