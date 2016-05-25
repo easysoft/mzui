@@ -1,0 +1,41 @@
+.affix,
+.dock,
+.dock-top,
+.dock-bottom,
+.dock-left,
+.dock-right {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: @zindex-affix;
+  transform: translate(0%,0%);
+  .transition-normal();
+}
+
+
+.dock-top    {bottom: auto;}
+.dock-bottom {top: auto;}
+.dock-left   {right: auto}
+.dock-right  {left: auto}
+
+.affix.dock-top    {.shadow-divider();}
+.affix.dock-bottom {.shadow-divider-top();}
+
+.in-scroll {
+  .affix.dock-top    {.shadow-2()}
+  .affix.dock-bottom {.shadow-2-top()}
+
+  &.scroll-down {
+    .affix.dock-top.dock-auto {
+      transform: translate(0, -100%);
+      .shadow-0();
+    }
+
+    .affix.dock-bottom.dock-auto {
+      transform: translate(0, 100%);
+      .shadow-0();
+    }
+  }
+}

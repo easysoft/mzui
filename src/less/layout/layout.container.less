@@ -1,0 +1,38 @@
+// Page
+
+.page {
+  background-color: @page-background-color;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto;
+}
+
+
+// Container
+
+.container-fluid,
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: @padding-base-horizontal;
+  padding-right: @padding-base-horizontal;
+}
+
+@media (min-width: @screen-phone) {
+ .container {max-width: 57.6rem;}
+}
+
+@media (min-width: @screen-tablet) {
+  .container {max-width: 72rem;}
+}
+
+@media (min-width: @screen-desktop) {
+  .container {max-width: 94rem;}
+}
+
+@media (min-width: @screen-wide-desktop) {
+  .container {max-width: @screen-wide-desktop - 2 * @padding-base-horizontal;}
+}

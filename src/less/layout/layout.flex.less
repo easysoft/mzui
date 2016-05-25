@@ -1,0 +1,39 @@
+// Flex container
+
+.flex           {display: flex;}
+
+.flex-wrap      {flex-wrap: wrap}
+.flex-unwrap    {flex-wrap: none}
+
+.space-between  {justify-content: space-between;}
+.justify-start  {justify-content: flex-start;}
+.justify-end    {justify-content: flex-end;}
+.justify-center {justify-content: center;}
+
+.stretch        {align-items: stretch}
+.align-start    {align-items: flex-start;}
+.align-end      {align-items: flex-end;}
+.align-middle   {align-items: center;}
+
+
+// Flex item
+
+.flex-first    {order: -1;}
+.flex-last     {order: 1;}
+
+.flex-auto     {flex: auto}
+.flex-none     {flex: none}
+
+.selft-stretch       {align-self: stretch}
+.align-self-start    {align-self: flex-start;}
+.align-self-end      {align-self: flex-end;}
+.align-self-middle   {align-self: center;}
+
+
+// Misc
+
+.justified {
+  display: flex;
+  flex-wrap: wrap;
+  > * {flex: auto !important;}
+}
