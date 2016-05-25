@@ -5,6 +5,9 @@
   border-color: @color!important;
   color: #fff!important;
 
+  &.hover:hover,
+  tr&:hover {background-color: darken(@color, 5%)!important;}
+
   &.outline {
     background-color: transparent!important;
     color: @color!important;
@@ -19,6 +22,9 @@
 .color-pale-variant(@color, @darkColor: @color-fore) {
   background-color: @color!important;
   border-color: @color!important;
+
+  &.hover:hover,
+  tr&:hover {background-color: darken(@color, 5%)!important;}
 
   &.outline {
     background-color: transparent!important;
