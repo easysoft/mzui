@@ -4,7 +4,6 @@
 
 
 // Base styles
-// --------------------------------------------------
 
 .btn {
   display: inline-block;
@@ -15,14 +14,16 @@
   border: .1rem solid transparent;
   white-space: nowrap;
   user-select: none;
+  color: inherit;
+  background: transparent;
   
   .button-size(@btn-size; @font-size-base; @line-height-base; @padding-base-horizontal);
 
-  &:extend(.trigger all);
+  &:extend(.state all);
 }
 
+
 // Button Sizes
-// --------------------------------------------------
 
 .btn-lg {.button-size(@btn-size-lg; @font-size-large; @line-height-large; @padding-large-horizontal);}
 .btn-sm {.button-size(@btn-size-sm; @font-size-small; @line-height-small; @padding-small-horizontal);}
@@ -30,20 +31,15 @@
 
 
 // Icon in button
-// --------------------------------------------------
+
 .btn > .icon {margin: 0 -.6rem;}
 
 
 // Block button
-// --------------------------------------------------
+
 .btn.block {width: 100%;}
 
-// Vertically space out multiple block buttons
-.btn.block + .btn.block {margin-top: @space-sm;}
 
-// Specificity overrides
-// input[type="submit"],
-// input[type="reset"],
-// input[type="button"] {
-//   &.block {width: 100%;}
-// }
+// Vertically space out multiple block buttons
+
+.btn.block + .btn.block {margin-top: @space-sm;}
