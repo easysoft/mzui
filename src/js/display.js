@@ -286,8 +286,18 @@
                     suggestArrow = inverseSide[beside];
                     suggestAnimate = 'fade sacle-from-' + suggestArrow;
                 } else {
-                    if($layer) $layer.attr('data-flex', placement);
-                    suggestAnimate = placement.split('-')[0];
+                    placement = placement.split('-');
+                    var justify = placement[0], 
+                        align = placement[1],
+                        layerCss = {};
+                    if(justify == 'top' || justify == 'bottom' || justify == 'left' || justify == 'right') {
+                        layerCss.justifyContent = 'flex-' + ((justify === 'top' || justify == 'left') ? 'start' : 'end');
+                        layerCss.flexDirection = (justify == 'top' || justify == 'bottom') ? 'column' : 'row';
+                        layerCss.alignItems = align ? (align == 'center' ? 'center' : (align == 'left' ? 'flex-start' : 'flex-end')) : 'stretch';
+                    }
+
+                    if($layer) $layer.css(layerCss);
+                    suggestAnimate = justify;
                     suggestArrow = inverseSide[suggestAnimate];
                     suggestAnimate = 'enter-from-' + suggestAnimate;
                 }
