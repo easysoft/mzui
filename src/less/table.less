@@ -1,0 +1,81 @@
+// Base style
+
+.table {
+  width: 100%;
+
+  th, td {
+    vertical-align: top;
+    border-bottom: @border-width solid @border-color;
+    padding: @padding-base-vertical @padding-base-horizontal;
+  }
+
+  th {
+    position: relative;
+    font-weight: bold;
+    opacity: .7;
+
+    &:after {
+      content: ' ';
+      display: block;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: fade(@color-gray, 20%);
+    }
+  }
+
+  tr:hover {background-color: fade(@color-primary, 10%);}
+}
+
+
+// Compact table
+
+.table.compact {
+  th, td {
+    padding: @padding-small-vertical @padding-small-horizontal;
+  }
+}
+
+
+// Striped table
+
+.table.striped {
+  tbody > tr:nth-child(odd) {
+    background-color: rgba(0,0,0,.035);
+
+    &:hover {
+      background-color: fade(@color-primary, 10%);
+    }
+  }
+}
+
+
+// Table without border
+
+.table.borderless {
+  th, td {border: none;}
+}
+
+
+.table.bordered {
+  th, td {
+    border: @border-width solid @border-color-solid;
+  }
+}
+
+
+// Table with fixed layout
+
+.fixed-layout {
+  table-layout: fixed;
+  overflow: hidden;
+
+  th, td {
+    overflow: inherit;
+    white-space: nowrap;
+  }
+
+  .no-fixed-layout {overflow: visible;}
+}
