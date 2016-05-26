@@ -189,8 +189,7 @@
     "mixins": {
       "name": "样式片段",
       "src": {"less": ["mixins"]},
-      "config": true,
-      "dpds": ["config"]
+      "config": true
     },
     "setting": {
       "name": "样式配置",
@@ -268,9 +267,6 @@
     "avatar": {
       "src": "~.less"
     },
-    "page": {
-      "src": "~.less"
-    },
     "scrollListener": {
       "src": "scroll-listener.js",
       "dpds": "utils.js"
@@ -300,9 +296,18 @@
     "list": {
       "src": "~.less"
     },
+    "table": {
+      "src": "~.less"
+    },
+    "forms": {
+      "src": "~.less"
+    },
+    "article": {
+      "src": "~.less"
+    },
     "display": {
       "src": ["~.js", "~.less"],
-      "dpds": ["zepto.ajax", "layout"]
+      "dpds": ["zepto.ajax", "utils.js", "layout"]
     },
     "display.plugs": {
       "src": ["~.js", "~.less"],
@@ -319,14 +324,14 @@
       "filename": "mzui",
       "subdirectories": true,
       "settingDpds": ["setting"],
-      "includes": ["zepto", "normalize", "utilities", "scaffolding", "animations", "typography", "grid", "icons", "color", "skin", "skin.js", "avatar", "layout", "page", "scrollListener", "navs", "buttons", "labels", "appbar", "appnav", "list", "display", "display.plugs"]
+      "includes": ["zepto", "normalize", "utilities", "scaffolding", "animations", "typography", "grid", "icons", "color", "skin", "skin.js", "avatar", "layout", "scrollListener", "navs", "buttons", "labels", "appbar", "appnav", "list", "display", "display.plugs"]
     },
     "dist": {
       "title": "dist",
       "dest": "dist/",
       "filename": "mzui",
       "subdirectories": true,
-      "includes": ["colorset", "variables", "mixins", "zepto", "normalize", "scaffolding", "utilities", "typography", "animations"]
+      "includes": ["colorset", "variables", "mixins", "zepto", "normalize", "scaffolding", "utilities", "typography", "layout", "animations", "icons", "avatar", "navs", "buttons", "labels", "appbar", "appnav", "list", "table", "forms", "article", "display", "display.plugs", "scrollListener", "color", "skin", "skin.js"]
     },
     "doc": {
       "dest": "doc/",
