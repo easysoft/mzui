@@ -6,33 +6,10 @@
  * ======================================================================== */
 
 
-(function($, window){
+!(function($, window){
     'use strict';
 
     var NAME = '.ajaxform';
-    var FINGERPRINT = 'Fingerprint';
-    var savedFringetprint;
-
-    var checkFingerprint = function($form) {
-        var fingerprint = $.getFingerprint();
-        var $fingerprint = $form.find('#fingerprint');
-        if(!$fingerprint.length) {
-            $form.append("<input type='hidden' id='fingerprint'  name='fingerprint' value='" + fingerprint + "'>");
-        }
-        $fingerprint.val(fingerprint);
-    };
-
-    var setSubmitButton = function($form, action) {
-        var $btn = $form.find('[type="submit"]');
-        var textMethodName = $btn.get(0).tagName === 'INPUT' ? 'val' : 'text';
-        var disabled = action === 'disable';
-        var loadingText = $btn.data('loading');
-        var normalText = disabled ? $btn[textMethodName]() : $btn.data('normal');
-        if(disabled) $btn.data('normal', normalText);
-
-        $btn.attr('disabled', disabled ? 'disabled' : null);
-        $btn[textMethodName](disabled ? loadingText : normalText);
-    };
 
     var setAjaxForm = function($form, options)
     {
@@ -59,9 +36,6 @@
 
         callEvent('init');
 
-        // check fringetprint
-        if(options.checkfingerprint) checkFingerprint($form);
-
         $form.submit(function(e) {
             var serializeArray = $form.serializeArray();
             var formData = {};
@@ -69,14 +43,13 @@
                 formData[item.name] = item.value;
             });
             callEvent('onSubmit', formData);
-
-            setSubmitButton($form, 'disable');
+            var $submitBtn = $form.find('[type="submit"]').attr('disabled', 'disabled').addClass('disabled loading');
             $.post($form.attr('action') || window.location.href, $.param(formData), function(response, status){
                 if(status == 'success') {
                     try {
                         if(typeof response === 'string') response = $.parseJSON(response);
+                        callEvent('onResult', response);
                         if(response.result === 'success') {
-                            callEvent('onResultSuccess', response);
                             if(response.message) {
                                 $.messager.success(response.message);
                                 if(response.locate) {
@@ -92,11 +65,11 @@
                                         if($.isArray(msg) && msg.length) {
                                             msg = msg.length > 1? ('<ul><li>' + msg.join('</li><li>') + '</li></ul>') : msg[0];
                                         }
-                                        var $group = $form.find('#' + msgId + ', [name="' + msgId + '"]').closest('.form-group');
+                                        var $group = $form.find('#' + msgId + ', [name="' + msgId + '"]').closest('.control');
                                         if($group.length) {
-                                            var $msg = $group.find('.control-message');
+                                            var $msg = $group.find('.help-text');
                                             if(!$msg.length) {
-                                                $group.append('<div class="control-message">' + msg + '</div>');
+                                                $group.append('<div class="help-text">' + msg + '</div>');
                                             } else {
                                                 $msg.html(msg);
                                             }
@@ -121,13 +94,13 @@
                         $.messager.danger(window.v.lang.timeout);
                     }
                 }
-                setSubmitButton($form);
+                $submitBtn.attr('disabled', null).removeClass('disabled loading');
                 callEvent('onComplete', {response: response, status: status});
             });
             e.preventDefault();
         }).on('change', function(e){
             $form.find('.form-message').hide();
-            $(e.target).closest('.form-group').removeClass('has-error');
+            $(e.target).closest('.control').removeClass('has-error');
         });
     };
 
@@ -138,19 +111,6 @@
         });
     };
 
-    $.getFingerprint = function() {
-        if(!savedFringetprint) {
-            if($.isFunction(window[FINGERPRINT])) savedFringetprint = new window[FINGERPRINT]().get();
-            else {
-                savedFringetprint = '';
-                $.each(navigator, function(key, value) {
-                    if(typeof(value) == 'string') savedFringetprint += value.length;
-                });
-            }
-        }
-        return savedFringetprint;
-    };
-
     $(function(){$('.ajaxform').ajaxform();});
 
-}(Zepto, window));
+}(CoreLib, window));
