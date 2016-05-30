@@ -1,6 +1,6 @@
 .state,
 a {
-  .relative();
+  position: relative;
 
   &:after {
     content: ' ';
@@ -41,7 +41,6 @@ a {
 
   .open > &,
   &.open,
-  &.active,
   &:active {
     &:after {
       transform: scale(1);
@@ -63,4 +62,35 @@ a {
   &:after {display: none!important}
 }
 
-.loading {}
+.as-load-indicator,
+.loading {
+  color: transparent!important;
+  &:before {
+    .spin();
+    display: block;
+    content: ' ';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -.9rem;
+    margin-left: -.9rem;
+    border: .3rem dotted rgba(200,200,200,.5);
+    border-color: rgba(200,200,200,.1) rgba(200,200,200,.4) rgba(200,200,200,.45) rgba(200,200,200,.5);
+    width: 1.8rem;
+    height: 1.8rem;
+    border-radius: 50%;
+    .transition-fast(opacity);
+  }
+}
+
+.as-load-indicator {
+  &:before {
+    opacity: 0;
+    animation: none;
+  }
+
+  &.loading:before {
+    opacity: 1;
+    .spin();
+  }
+}
