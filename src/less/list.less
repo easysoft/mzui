@@ -54,6 +54,14 @@
       margin-top: 0;
     }
   }
+
+  &.active {
+    &:after {
+      transform: scale(1);
+      background-color: @state-cover-active-color;
+      opacity: @state-cover-active-opacity;
+    }
+  }
 }
 
 .list > .heading {
