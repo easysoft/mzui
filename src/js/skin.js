@@ -88,7 +88,7 @@
         hueSpace: 47,
         saturation: 0.7,
         lightness: 0.6,
-        threshold: 0.3,
+        threshold: 0.5,
         darkLight: 0.4,
         paleLight: 0.92
     };
