@@ -13,10 +13,10 @@
         return;
     }
 
-    var getSourceElement = function(name, element, oldSource, extraClass) {
+    var getSourceElement = function(name, element, oldSource, extraClass, nameClass) {
         var $element = $(element).next('.' + name);
         if(!$element.length) $element = oldSource;
-        return $element || '<div class="' + name + ' ' + (extraClass || '') + '"/>';
+        return $element || '<div class="' + (nameClass || name) + ' ' + (extraClass || '') + '"/>';
     };
 
     var isUndefinedThen = function(x, y) {
@@ -37,7 +37,7 @@
                 placement: isUndefinedThen(options.placement, 'beside'),
                 activeClass: isUndefinedThen(options.activeClass, 'open'),
                 shown: function(thisOptions) {
-                    $(thisOptions.$target).one('click', function(){that.hide()});
+                    $(thisOptions.$target).one($.TapName, function(){that.hide()});
                     return oldShown && oldShown();
                 }
             });
@@ -83,11 +83,12 @@
             var that = this,
                 oldSource = options.source;
             return $.extend(options, {
-                backdrop: isUndefinedThen(options.backdrop, 'modal-backdrop'),
+                backdrop: isUndefinedThen(options.backdrop, 'modal-backdrop fade'),
                 source: function() {
-                    return getSourceElement('modal', options.element, oldSource);
+                    return getSourceElement('modal', options.element, oldSource, '', 'box');
                 },
                 target: '#displayTarget',
+                targetClass: 'modal ' + (options.targetClass || ''),
                 placement: isUndefinedThen(options.placement, 'center'),
                 activeClass: isUndefinedThen(options.activeClass, 'open')
             });

@@ -8,11 +8,11 @@
 !(function($, undefined, window){
     'use strict';
 
-    var uuid                = 1,
+    var uuid                = 1200,
         TAP_EVENT_NAME      = $.TapName,
         STR_DISPLAY         = 'display',
         STR_ORIGINAL_CLASS  = 'orginalClass',
-        STR_HIDDEN            = 'hidden',
+        STR_HIDDEN          = 'hidden',
         STR_BODY            = 'body',
         NAME                = 'mzui.' + STR_DISPLAY,
         inverseSide         = {left: 'right', bottom: 'top', top: 'bottom', right: 'left'};
@@ -74,10 +74,12 @@
 
         var target = $.calValue(options.target, that, options);
         if(target === '#displayTarget') {
-            $('#displayTarget').remove();
-            target = $('<div id="displayTarget" class="display ' + STR_HIDDEN + '"/>');
-            var $layer = $('#displayLayer');
-            if(!$layer.length) $layer = $('<div id="displayLayer" class="display-layer"/>').appendTo(STR_BODY);
+            var targetId = 'displayTarget-' + options.name,
+                layerId = 'displayLayer-' + options.name;
+            $('#' + targetId).remove();
+            target = $('<div class="display ' + STR_HIDDEN + '"/>', {id: targetId});
+            var $layer = $('#' + layerId);
+            if(!$layer.length) $layer = $('<div class="display-layer"/>', {id: layerId}).appendTo(STR_BODY);
             options.layer = options.container = $layer.append(target);
         }
 
@@ -194,20 +196,26 @@
 
         if($layer) $layer.removeClass(STR_HIDDEN);
 
+        console.log(this, options);
+
         if(backdrop) {
             var backdropId = 'backdrop-' + displayName;
             $('#' + backdropId).remove();
             var $backdrop = $('<div class="display-backdrop"/>', {
                 id: backdropId,
                 type: options.display,
+                zIndex: uuid++,
                 'data-display-name': displayName
             }).appendTo(STR_BODY);
+            if(backdrop === true) backdrop = 'fade';
             if($.isStr(backdrop)) $backdrop.addClass(backdrop);
             setTimeout(function(){$backdrop.addClass('in');}, 10);
 
             if(options.backdropDismiss) {
                 $backdrop.attr('data-dismiss', STR_DISPLAY);
             }
+
+            ($layer || $target).css('zIndex', uuid++);
         }
 
         if(activeClass && element) {
@@ -219,7 +227,6 @@
             if(options.scrollTop) $(options.container).scrollTop(0);
             placement = $.calValue(placement, that, options);
             if(placement) {
-                
                 if($.isPlainObject(placement)) {
                     $target.css(placement);
                 } else if(placement === 'overlay') {
@@ -374,6 +381,7 @@
             $.callEvent(STR_HIDDEN, options[STR_HIDDEN], that, that.$, options);
             $target.addClass(STR_HIDDEN);
             $backdrop.remove();
+            if(options.layer) options.layer.remove();
         };
 
         if(options.activeClass && options.element) {
@@ -484,4 +492,4 @@
             Display.dismiss(name);
         });
     });
-}(Zepto, undefined, window));
+}(CoreLib, undefined, window));
