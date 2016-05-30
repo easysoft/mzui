@@ -26,20 +26,16 @@
     $.Display.plugs({
         dropdown: function(options) {
             var that = this,
-                oldSource = options.source,
-                oldShown = options.shown;
+                oldSource = options.source;
             return $.extend(options, {
                 backdrop: isUndefinedThen(options.backdrop, 'clean'),
-                source: function() {
+                source: options.target ? null : function() {
                     return getSourceElement('dropdown-menu', options.element, oldSource);
                 },
-                target: '#displayTarget',
+                target: isUndefinedThen(options.target, '#displayTarget'),
                 placement: isUndefinedThen(options.placement, 'beside'),
                 activeClass: isUndefinedThen(options.activeClass, 'open'),
-                shown: function(thisOptions) {
-                    $(thisOptions.$target).one($.TapName, function(){that.hide()});
-                    return oldShown && oldShown();
-                }
+                targetDismiss: isUndefinedThen(options.targetDismiss, true)
             });
         },
         popover: function(options) {
@@ -48,10 +44,10 @@
             return $.extend(options, {
                 arrow: isUndefinedThen(options.arrow, true),
                 backdrop: isUndefinedThen(options.backdrop, 'clean'),
-                source: function() {
+                source: options.target ? null : function() {
                     return getSourceElement('popover', options.element, oldSource, 'canvas with-padding');
                 },
-                target: '#displayTarget',
+                target: isUndefinedThen(options.target, '#displayTarget'),
                 placement: isUndefinedThen(options.placement, 'beside'),
                 activeClass: isUndefinedThen(options.activeClass, 'open')
             });
@@ -84,10 +80,10 @@
                 oldSource = options.source;
             return $.extend(options, {
                 backdrop: isUndefinedThen(options.backdrop, 'modal-backdrop fade'),
-                source: function() {
+                source: options.target ? null : function() {
                     return getSourceElement('modal', options.element, oldSource, '', 'box');
                 },
-                target: '#displayTarget',
+                target: isUndefinedThen(options.target, '#displayTarget'),
                 targetClass: 'modal ' + (options.targetClass || ''),
                 placement: isUndefinedThen(options.placement, 'center'),
                 activeClass: isUndefinedThen(options.activeClass, 'open')
@@ -124,7 +120,6 @@
                     });
                 },
                 hide = function($targets, duration) {
-                    console.log('HIDE', $targets);
                     $targets.each(function() {
                         var $target = $(this);
                         $target.height($target.height())[0].offsetHeight;

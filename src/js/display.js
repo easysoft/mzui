@@ -14,6 +14,7 @@
         STR_ORIGINAL_CLASS  = 'orginalClass',
         STR_HIDDEN          = 'hidden',
         STR_BODY            = 'body',
+        TARGET_EVENT_SUFFIX = '.display.oneForTarget',
         NAME                = 'mzui.' + STR_DISPLAY,
         inverseSide         = {left: 'right', bottom: 'top', top: 'bottom', right: 'left'};
 
@@ -225,6 +226,9 @@
             if(options.scrollTop) $(options.container).scrollTop(0);
             placement = $.calValue(placement, that, options);
             if(placement) {
+                if($.isStr(placement) && placement[0] == '{') {
+                    placement = $.parseJSON(placement);
+                }
                 if($.isPlainObject(placement)) {
                     $target.css(placement);
                 } else if(placement === 'overlay') {
@@ -335,6 +339,10 @@
                 that.animateCall = setTimeout(function() {
                     $.callEvent('shown', options.shown, that, that.$, options);
                 }, options.duration + 50);
+
+                if(options.targetDismiss) {
+                    $target.one(TAP_EVENT_NAME + TARGET_EVENT_SUFFIX, function(){that.hide();});
+                }
             };
 
             if(animate) {
@@ -372,7 +380,7 @@
 
         that.last = false;
 
-        var $target = options.$target,
+        var $target = options.$target.off(TARGET_EVENT_SUFFIX),
             $backdrop = $('#backdrop-' + options.name);
         var afterHide = function() {
             if(options.layer) options.layer.addClass(STR_HIDDEN);
@@ -422,6 +430,7 @@
         scrollTop: true,
         plugSkin: true,
         plugDisplay: true,
+        // targetDismiss: false,
 
         content: false,          // content source
         // load: '',                // a url to load html content to fill target
