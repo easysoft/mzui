@@ -196,8 +196,6 @@
 
         if($layer) $layer.removeClass(STR_HIDDEN);
 
-        console.log(this, options);
-
         if(backdrop) {
             var backdropId = 'backdrop-' + displayName;
             $('#' + backdropId).remove();
