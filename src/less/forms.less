@@ -9,6 +9,8 @@
   padding: @padding-small-vertical @padding-small-horizontal;
   width: 100%;
   background-color: @color-back;
+  -webkit-appearance: none;
+  border-radius: 0; // reset safari style
 
   &:focus {
     border-color: @color-focus;
@@ -20,9 +22,8 @@
   position: relative;
 
   > select {
-    -webkit-appearance: none;
+    
     outline: none;
-    border-radius: 0;
 
     &:not([multiple]) {padding-right: 2rem;}
 
@@ -163,6 +164,7 @@
 
 .control {
   &.has-label-left,
+  &.has-btn-right,
   &.has-icon-right {
     position: relative;
   }
@@ -189,6 +191,7 @@
     }
   }
 
+  &.has-btn-right,
   &.has-icon-right {
     > .icon {
       position: absolute;
@@ -208,6 +211,17 @@
       &:focus + label + .icon {
         opacity: 1;
       }
+    }
+  }
+
+  &.has-btn-right {
+    > .btn {
+      position: absolute;
+      right: 0;
+      top: 0;
+      min-width: 2rem;
+      text-align: center;
+      opacity: .5;
     }
   }
 }
