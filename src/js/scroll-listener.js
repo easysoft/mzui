@@ -41,7 +41,7 @@
             .toggleClass(options.directionClass + '-down', scrollDirection === 'down')
             .toggleClass(options.directionClass + '-up', scrollDirection === 'up');
 
-        that.$.callEvent(that, 'listenScroll', [isInScroll, scrollDirection, scrollTop]);
+        that.$container.callEvent(that, 'listenScroll', [isInScroll, scrollDirection, scrollTop]);
 
         that.isInScroll      = isInScroll;
         that.scrollDirection = scrollDirection;
@@ -62,4 +62,4 @@
         $(window).listenScroll({container: 'body'});
         $('.page').listenScroll();
     });
-}(Zepto));
+}(CoreLib));

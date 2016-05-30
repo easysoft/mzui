@@ -249,4 +249,4 @@
         // });
     });
 
-})(Zepto, window, document);
+})(CoreLib, window, document);

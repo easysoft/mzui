@@ -6,7 +6,7 @@
  * ======================================================================== */
 
 
-(function($, document, window){
+!(function($, document, window){
     'use strict';
 
     var DISABLED = 'disabled';
@@ -99,4 +99,4 @@
         e.preventDefault();
         ajaxaction(options, $this);
     });
-}(Zepto, document, window));
+}(CoreLib, document, window));

@@ -173,4 +173,4 @@
         };
     });
     $.messager = messager;
-}(Zepto, undefined));
+}(CoreLib, undefined));

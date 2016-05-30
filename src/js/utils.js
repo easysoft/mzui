@@ -5,12 +5,13 @@
  * Copyright (c) 2014 cnezsoft.com; Licensed MIT
  * ======================================================================== */
 
+window.CoreLib = window['jQuery'] || window['Zepto'];
 
 !(function($){
     'use strict';
 
     $.callEvent = function(name, func, proxy, relativeElement, params) {
-        var event = $.Event('mzui:' + name);
+        var event = $.Event(name);
         var result;
         if(relativeElement) {
             $(relativeElement).trigger(event, params);
@@ -90,4 +91,4 @@
     };
 
     $.TapName = 'ontouchstart' in document.documentElement ? 'tap' : 'click';
-}(Zepto));
+}(CoreLib));

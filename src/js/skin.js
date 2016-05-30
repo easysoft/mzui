@@ -32,7 +32,7 @@
         skin = skin === undefined ? options.skin : skin;
         if(isPale === undefined && (that.$.hasClass('dark') || options.dark)) isPale = false;
 
-        if(skin.indexOf(':') > 0) {
+        if($.isStr(skin) && skin.indexOf(':') > 0) {
             skin = skin.split(':');
             skinName = skin[0];
             skin = skin[1];
@@ -42,10 +42,9 @@
 
         if(skin === '' || skin === undefined || skin === 'random') {
             skin = Math.round(Math.random() * 360);
-        }
-        else if(allSkins[skin]) {
+        } else if(allSkins[skin]) {
             skin = allSkins[skin];
-        } else if(skin.indexOf('random') === 0) {
+        } else if($.isStr(skin) && skin.indexOf('random') === 0) {
             allSkins[skin] = skin = Math.round(Math.random() * 360);
         }
 
@@ -110,4 +109,4 @@
     $(function() {
         $('[data-skin]').skin();
     });
-}(Zepto, undefined));
+}(CoreLib, undefined));

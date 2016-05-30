@@ -345,5 +345,5 @@
 
     $.Color = Color;
 
-}(Zepto, Math, undefined));
+}(CoreLib, Math, undefined));
 
