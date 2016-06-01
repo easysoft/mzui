@@ -1,10 +1,8 @@
 // Button sizes
-.button-size(@size; @font-size; @line-height; @padding-horizontal) {
+.button-size(@size; @font-size;) {
   min-width: @size;
   height: @size;
-  padding: (@size - 0.2rem - round((@font-size * @line-height)))/2 @padding-horizontal;
   font-size: @font-size;
-  line-height: @line-height;
 
   &.circle,
   &.circle:after {border-radius: @size/2}

@@ -6,10 +6,10 @@
 // Base styles
 
 .btn {
-  display: inline-block;
+  display: inline-flex;
   font-weight: @btn-font-weight;
-  text-align: center;
-  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
   border: .1rem solid transparent;
   white-space: nowrap;
@@ -17,7 +17,7 @@
   color: inherit;
   background: transparent;
   
-  .button-size(@btn-size; @font-size-base; @line-height-base; @padding-base-horizontal);
+  .button-size(@btn-size; @font-size-base;);
 
   &:extend(.state all);
 }
@@ -25,9 +25,9 @@
 
 // Button Sizes
 
-.btn-lg {.button-size(@btn-size-lg; @font-size-large; @line-height-large; @padding-large-horizontal);}
-.btn-sm {.button-size(@btn-size-sm; @font-size-small; @line-height-small; @padding-small-horizontal);}
-.btn-xs {.button-size(@btn-size-xs; @font-size-small; @line-height-small; @padding-xs-horizontal);}
+.btn-lg {.button-size(@btn-size-lg; @font-size-large;);}
+.btn-sm {.button-size(@btn-size-sm; @font-size-small;);}
+.btn-xs {.button-size(@btn-size-xs; @font-size-small;);}
 
 
 // Icon in button
