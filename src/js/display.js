@@ -63,10 +63,13 @@
         that.$       = $element;
         that.options = options;
 
-        if(options.displayAuto) that.show();
-        if(selector && $element) {
+        if(options.displayAuto) {
+            if(selector && $element) {
+                $element.find(selector).each(triggerCallback);
+            } else that.show();
+        } else if(selector && $element) {
             var activeClass = options.activeClass;
-            triggerCallback.call($element.find(selector).filter('[data-display-auto]' + (activeClass ? (',.' + activeClass) : '')));
+            $element.find(selector).filter('[data-display-auto]' + (activeClass ? (',.' + activeClass) : '')).each(triggerCallback);
         }
     };
 
@@ -82,6 +85,8 @@
             var $layer = $('#' + layerId);
             if(!$layer.length) $layer = $('<div class="display-layer"/>', {id: layerId}).appendTo(STR_BODY);
             options.layer = options.container = $layer.append(target);
+        } else if(target === 'self') {
+            target = options.element || that.$;
         }
 
         target = $(target).addClass(STR_DISPLAY).attr('data-display-name', options.name);
@@ -122,7 +127,7 @@
                 $target.removeClass(loadingClass);
                 $(STR_BODY).removeClass(STR_DISPLAY + '-' + loadingClass);
                 $.callEvent('loaded', options['loaded'], that, that.$, options);
-                callback && callback();
+                // callback && callback();
             };
             $target.addClass(loadingClass);
             $(STR_BODY).addClass(STR_DISPLAY + '-' + loadingClass);
@@ -150,8 +155,8 @@
                 content = content ? source.html(content) : source;
             }
             fillContent(content);
-            callback && callback();
         }
+        callback && callback();
     };
 
     Display.prototype._getOptions = function(extraOptions) {
@@ -427,7 +432,7 @@
         // targetGroup: '',
         container: STR_BODY,
         // arrow: false,   // Display arrow beside target edge
-        scrollTop: true,
+        scrollTop: false,
         plugSkin: true,
         plugDisplay: true,
         // targetDismiss: false,
@@ -462,14 +467,14 @@
         // loaded: null,   // callback after load target
     };
 
-    Display.plugs = function(name, func) {
+    Display.plugs = function(name, func, fnName) {
         if($.isPlainObject(name)) {
             $.each(name, Display.plugs);
         } else {
             Display.plugs[name] = func;
             name = name.indexOf('_') === 0 ? name.substr(1) : name;
             if(!$.fn[name]) {
-                $.bindFn(name, Display, {display: name});
+                $.bindFn(fnName || name, Display, {display: name});
             }
         }
     };

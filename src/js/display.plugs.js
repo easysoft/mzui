@@ -150,6 +150,14 @@
         }
     });
 
+    $.Display.plugs('_self', function(options) {
+        return $.extend(options, {
+            trigger: false,
+            target: 'self',
+            displayAuto: isUndefinedThen(options.displayAuto, true)
+        });
+    }, 'displaySelf');
+
     var messager = new $.Display({display: 'messager'});
     messager._show = messager.show;
     messager.show = function(content, options) {
