@@ -15,7 +15,7 @@
         var that           = this;
         that.options       = options = $.extend({}, ScrollListener.DEFAULT, $element.data(), options);
         that.$             = $element;
-        that.$container    = options.container ? $(options.container) : that.$;
+        that.$container    = options.container ? (options.container == 'parent' ? that.$.parent() : $(options.container)) : that.$;
         that.lastScrollTop = 0;
         that.lastCallTime  = 0;
         var lastScrollCall = 0;
@@ -60,6 +60,6 @@
 
     $(function() {
         $(window).listenScroll({container: 'body'});
-        $('.page').listenScroll();
+        $('.listen-scroll').listenScroll();
     });
 }(CoreLib));
