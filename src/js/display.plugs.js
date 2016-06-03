@@ -53,18 +53,16 @@
             });
         },
         messager: function(options) {
-            var that = this,
-                oldContent = options.content;
+            var that = this;
             return $.extend(options, {
-                content: '',
                 autoHide: isUndefinedThen(options.autoHide, true),
                 animate: (options.animate === undefined || options.animate === true) ? 'suggest scale fade' : options.animate,
                 backdrop: isUndefinedThen(options.backdrop, 'clean'),
                 closeButton: isUndefinedThen(options.closeButton, true),
-                source: isUndefinedThen(options.source, '<div class="messager list-item"/>'),
-                template: function($messager, options) {
-                    if(options.icon) $messager.append('<i class="avatar icon icon-' + options.icon + '"/>');
-                    $messager.append('<div class="title">' + oldContent + '</div>');
+                template: function(content, options) {
+                    var $messager = $(options.source || '<div class="messager list-item"/>');
+                    if(options.icon) $messager.append('<div class="avatar"><i class="icon icon-' + options.icon + '"/></div>');
+                    $messager.append('<div class="title">' + content + '</div>');
                     if(options.closeButton) {
                         $messager.append('<button class="btn muted" type="button" data-dismiss="display"><i class="icon icon-remove"></i></button>');
                     }

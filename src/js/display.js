@@ -45,7 +45,7 @@
             if($this.is('a')) {
                 var href = $this.attr('href');
                 if(href && href !== '#' && href.indexOf('##') < 0) {
-                    if(!thisOptions.target && /^#[a-z]/i.test(href)) {
+                    if(/^#[a-z]/i.test(href)) {
                         thisOptions.target = href;
                     } else if(!thisOptions.remote) {
                         thisOptions[(thisOptions.load === true || options.load) ? 'load' : 'remote'] = href;
@@ -97,7 +97,7 @@
         return target;
     };
 
-    Display.prototype.update = function($target, options, callback) {
+    Display.prototype.update = function($target, options, callback, readyCallback) {
         var that = this;
         var fillContent = function(content) {
             var template = options.template;
@@ -116,20 +116,21 @@
             }
         };
 
-        var remote = options.remote;
-        if(options.load || remote) {
+        var remote = options.remote,
+            isRemoteContent = options.load || remote;
+        if(isRemoteContent) {
             var loadingClass = options.loadingClass;
             var ajaxEventName = 'ajaxError.mzui.' + STR_DISPLAY;
             var remoteError = options.remoteError;
             var isRemoteErrorAble = remoteError !== false && remoteError !== undefined;
             var stopLoading = function() {
                 if(isRemoteErrorAble) $(document).off(ajaxEventName);
-                $target.removeClass(loadingClass);
+                $target.removeClass(loadingClass).addClass(options.showInClass);
                 $(STR_BODY).removeClass(STR_DISPLAY + '-' + loadingClass);
                 $.callEvent('loaded', options['loaded'], that, that.$, options);
-                // callback && callback();
+                readyCallback && readyCallback();
             };
-            $target.addClass(loadingClass);
+            $target.removeClass(options.showInClass).addClass(loadingClass);
             $(STR_BODY).addClass(STR_DISPLAY + '-' + loadingClass);
 
             if(isRemoteErrorAble) {
@@ -140,7 +141,7 @@
 
             if(options.load) {
                 $target.load(options.load, stopLoading);
-            } else if(options.remote) {
+            } else if(remote) {
                 $[options.remoteType === 'json' ? 'getJSON' : 'get'](remote, function(data, status) {
                     fillContent(data);
                     stopLoading();
@@ -155,8 +156,9 @@
                 content = content ? source.html(content) : source;
             }
             fillContent(content);
+            readyCallback && readyCallback();
         }
-        callback && callback();
+        callback && callback(isRemoteContent);
     };
 
     Display.prototype._getOptions = function(extraOptions) {
@@ -198,7 +200,11 @@
 
         $target.attr('class', 'invisible ' + $target.data(STR_ORIGINAL_CLASS) + ' ' + (options.targetClass || '')).removeClass(STR_HIDDEN);
 
-        if($.callEvent('show', options.show, that, that.$, options) === false) return callback && callback();
+        if($.callEvent('show', options.show, that, that.$, options) === false) {
+            $target.attr('class', STR_ORIGINAL_CLASS);
+            if(options.layer) options.layer.remove();
+            return callback && callback();
+        }
 
         if($layer) $layer.removeClass(STR_HIDDEN);
 
@@ -208,11 +214,11 @@
             var $backdrop = $('<div class="display-backdrop"/>', {
                 id: backdropId,
                 type: options.display,
-                zIndex: uuid++,
                 'data-display-name': displayName
-            }).appendTo(STR_BODY);
+            }).appendTo(STR_BODY).css('zIndex', uuid++);
             if(backdrop === true) backdrop = 'fade';
             if($.isStr(backdrop)) $backdrop.addClass(backdrop);
+            $(STR_BODY).addClass('display-show-' + options.name);
             setTimeout(function(){$backdrop.addClass('in');}, 10);
 
             if(options.backdropDismiss) {
@@ -227,7 +233,7 @@
             $element.addClass(activeClass);
         }
 
-        that.update($target, options, function() {
+        that.update($target, options, function(isRemoteContent) {
             if(options.scrollTop) $(options.container).scrollTop(0);
             placement = $.calValue(placement, that, options);
             if(placement) {
@@ -323,16 +329,9 @@
                 $target.addClass(arrowClass);
             }
 
-            if(options.plugSkin) {
-                $target.find('[data-skin]').skin();
-            }
-
-            if(options.plugDisplay) {
-                $target.find('[data-display]').display();
-            }
-
             var afterShow = function() {
-                $target.removeClass('invisible').addClass(options.showInClass);
+                $target.removeClass('invisible');
+                if(!isRemoteContent) $target.addClass(options.showInClass);
 
                 callback && callback();
 
@@ -346,7 +345,7 @@
                 }, options.duration + 50);
 
                 if(options.targetDismiss) {
-                    $target.one(TAP_EVENT_NAME + TARGET_EVENT_SUFFIX, function(){that.hide();});
+                    $target.one((options.targetDismiss === true ? TAP_EVENT_NAME : options.targetDismiss) + TARGET_EVENT_SUFFIX, function(){that.hide();});
                 }
             };
 
@@ -366,6 +365,14 @@
                 that.animateCall = setTimeout(afterShow, 10);
             } else {
                 afterShow();
+            }
+        }, function() {
+            if(options.plugSkin) {
+                $target.find('[data-skin]').skin();
+            }
+
+            if(options.plugDisplay) {
+                $target.find('[data-display]').display();
             }
         });
 
@@ -392,6 +399,7 @@
             $.callEvent(STR_HIDDEN, options[STR_HIDDEN], that, that.$, options);
             $target.addClass(STR_HIDDEN);
             $backdrop.remove();
+            $(STR_BODY).removeClass('display-show-' + options.name);
             if(options.layer) options.layer.remove();
         };
 
