@@ -86,14 +86,14 @@
         return this.each(function(){
             var $this   = $(this);
             var thisOption = $.extend({url: $this.attr('href')}, $this.data(), options);
-            $this.on(thisOption.trigger || 'click', function(e) {
+            $this.on(thisOption.trigger || $.TapName, function(e) {
                 e.preventDefault();
                 ajaxaction(thisOption, $this);
             });
         });
     };
 
-    $(document).on('click', '.ajaxaction, [data-toggle="action"]', function(e) {
+    $(document).on($.TapName, '.ajaxaction, [data-toggle="action"]', function(e) {
         var $this   = $(this);
         var options = $.extend({url: $this.attr('href')}, $this.data(), options);
         e.preventDefault();
