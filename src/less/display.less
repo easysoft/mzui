@@ -10,7 +10,7 @@
   background-color: #000;
 }
 
-.display-backdrop.in {opacity: .3}
+.display-backdrop.in {opacity: .5}
 
 .display-layer {
   z-index: @zindex-display-layer;
@@ -26,6 +26,12 @@
   pointer-events: auto;
 
   &.invisible {.transition-none()!important;}
+}
+
+body[class^="display-show-"],
+body[class*=" display-show-"] {
+  overflow-y: hidden;
+  // position: fixed; // for iOS
 }
 
 .display-arrow:before {
