@@ -65,6 +65,9 @@ a {
 .as-load-indicator,
 .loading {
   color: transparent!important;
+
+  > * {visibility: hidden}
+
   &:before {
     .spin();
     display: block;
@@ -74,12 +77,16 @@ a {
     left: 50%;
     margin-top: -.9rem;
     margin-left: -.9rem;
-    border: .3rem dotted rgba(200,200,200,.5);
-    border-color: rgba(200,200,200,.1) rgba(200,200,200,.4) rgba(200,200,200,.45) rgba(200,200,200,.5);
+    border: .3rem dotted rgba(255,255,255,.5);
+    border-color: rgba(255,255,255,.1) rgba(255,255,255,.4) rgba(255,255,255,.5) rgba(255,255,255,.6);
     width: 1.8rem;
     height: 1.8rem;
     border-radius: 50%;
     .transition-fast(opacity);
+  }
+
+  &.loading-light:before {
+    border-color: rgba(0,0,0,.1) rgba(0,0,0,.2) rgba(0,0,0,.3) rgba(0,0,0,.4);
   }
 }
 
