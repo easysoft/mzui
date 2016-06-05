@@ -16,6 +16,8 @@
     border-color: @color-focus;
     outline: none;
   }
+
+  &[disabled], .disabled {background-color: darken(@color-back, 10%);}
 }
 
 .select {
@@ -225,6 +227,8 @@
     }
   }
 }
+
+.row, .column {.control {width: 100%}}
 
 
 // Control state
