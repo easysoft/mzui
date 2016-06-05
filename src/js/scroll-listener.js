@@ -28,6 +28,10 @@
                 that.lastCallTime = time;
             }, (time - that.lastCallTime) > options.handleInterval ? 0 : options.handleInterval);
         });
+
+        if(options.canScrollClass) {
+            that.$container.toggleClass(options.canScrollClass, that.$[0].scrollHeight > that.$.height());
+        }
     };
 
     ScrollListener.prototype.onScroll = function() {
@@ -39,7 +43,8 @@
 
         that.$container.toggleClass(options.inScrollClass, isInScroll)
             .toggleClass(options.directionClass + '-down', scrollDirection === 'down')
-            .toggleClass(options.directionClass + '-up', scrollDirection === 'up');
+            .toggleClass(options.directionClass + '-up', scrollDirection === 'up')
+            .toggleClass(options.directionClass + '-over', scrollTop + that.$.height() >= that.$[0].scrollHeight);
 
         that.$container.callEvent(that, 'listenScroll', [isInScroll, scrollDirection, scrollTop]);
 
@@ -53,7 +58,8 @@
         minDelta      : 20,
         handleInterval: 100,
         inScrollClass : 'in-scroll',
-        directionClass: 'scroll'
+        directionClass: 'scroll',
+        canScrollClass: 'can-scroll'
     };
 
     $.bindFn('listenScroll', ScrollListener);
