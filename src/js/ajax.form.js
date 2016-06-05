@@ -104,6 +104,8 @@
         });
     };
 
+    $.ajaxForm = setAjaxForm;
+
     $.fn.ajaxform = function(options) {
         return $(this).each(function() {
             var $form = $(this);
