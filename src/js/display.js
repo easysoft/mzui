@@ -319,7 +319,7 @@
                     if($layer) $layer.css(layerCss);
                     suggestAnimate = justify;
                     suggestArrow = inverseSide[suggestAnimate];
-                    suggestAnimate = 'enter-from-' + suggestAnimate;
+                    suggestAnimate = 'from-' + suggestAnimate;
                 }
             }
 
@@ -351,7 +351,7 @@
 
             if(animate) {
                 if(animate === true) {
-                    $target.addClass(suggestAnimate || 'fade');
+                    $target.addClass('enter-' + suggestAnimate || 'fade');
                 } else {
                     var animateType = typeof animate;
                     if($.isStr(animateType)) {

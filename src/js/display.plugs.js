@@ -56,8 +56,8 @@
             var that = this;
             return $.extend(options, {
                 autoHide: isUndefinedThen(options.autoHide, true),
-                animate: (options.animate === undefined || options.animate === true) ? 'suggest scale fade' : options.animate,
-                backdrop: isUndefinedThen(options.backdrop, 'clean'),
+                animate: (options.animate === undefined || options.animate === true) ? 'scale-suggest fade' : options.animate,
+                // backdrop: isUndefinedThen(options.backdrop, 'clean'),
                 closeButton: isUndefinedThen(options.closeButton, true),
                 template: function(content, options) {
                     var $messager = $(options.source || '<div class="messager list-item"/>');
@@ -83,7 +83,7 @@
                 },
                 target: isUndefinedThen(options.target, '#displayTarget'),
                 targetClass: 'modal ' + (options.targetClass || ''),
-                placement: isUndefinedThen(options.placement, 'center'),
+                placement: isUndefinedThen(options.placement, 'bottom'),
                 activeClass: isUndefinedThen(options.activeClass, 'open')
             });
         },
