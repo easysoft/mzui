@@ -24,8 +24,8 @@
 .flex-first    {order: -1;}
 .flex-last     {order: 1;}
 
-.flex-auto     {flex: auto}
-.flex-none     {flex: none}
+.flex-auto     {flex: auto!important}
+.flex-none     {flex: none!important}
 
 .selft-stretch       {align-self: stretch}
 .align-self-start    {align-self: flex-start;}
@@ -39,4 +39,6 @@
   display: flex;
   flex-wrap: wrap;
   > * {flex: auto !important;}
+
+  > .flex-none {flex: none!important}
 }

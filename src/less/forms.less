@@ -6,7 +6,7 @@
   display: block;
   border: @border-width solid @input-border-color;
   line-height: @line-height-base;
-  padding: @padding-small-vertical @padding-small-horizontal;
+  padding: (@padding-small-vertical - @border-width*2) @padding-small-horizontal;
   width: 100%;
   background-color: @color-back;
   -webkit-appearance: none;
@@ -175,7 +175,7 @@
     > label {
       position: absolute;
       left: .5rem;
-      top: .1rem;
+      top: -.1rem;
       min-width: 2rem;
       text-align: center;
       opacity: .5;
@@ -198,7 +198,7 @@
     > .icon {
       position: absolute;
       right: .5rem;
-      top: .5rem;
+      top: .4rem;
       min-width: 2rem;
       text-align: center;
       opacity: .5;
