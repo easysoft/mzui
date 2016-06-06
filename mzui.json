@@ -305,6 +305,9 @@
     "article": {
       "src": "~.less"
     },
+    "code": {
+      "src": "~.less"
+    },
     "display": {
       "src": ["~.js", "~.less"],
       "dpds": ["zepto.ajax", "utils.js", "layout"]
@@ -312,6 +315,24 @@
     "display.plugs": {
       "src": ["~.js", "~.less"],
       "dpds": "display"
+    },
+    "ajax.action": {
+      "src": "~.js",
+      "dpds": ["zepto.ajax", "utils.js"]
+    },
+    "ajax.form": {
+      "src": "~.js",
+      "dpds": ["zepto.ajax", "zepto.form", "utils.js"]
+    },
+    "transition": {
+      "src": "~.js"
+    },
+    "hammer": {
+      "src": "~.js"
+    },
+    "carousel": {
+      "src": ["~.js", "~.less"],
+      "dpds": ["transition", "hammer"]
     },
     "doc.js": {
       "src": "doc.js"
@@ -331,7 +352,7 @@
       "dest": "dist/",
       "filename": "mzui",
       "subdirectories": true,
-      "includes": ["colorset", "variables", "mixins", "zepto", "normalize", "scaffolding", "utilities", "typography", "layout", "animations", "icons", "avatar", "navs", "buttons", "labels", "appbar", "appnav", "list", "table", "forms", "article", "display", "display.plugs", "scrollListener", "color", "skin", "skin.js"]
+      "includes": ["colorset", "variables", "mixins", "zepto", "normalize", "scaffolding", "utilities", "typography", "layout", "animations", "icons", "avatar", "navs", "buttons", "labels", "appbar", "appnav", "list", "table", "forms", "article", "display", "display.plugs", "scrollListener", "color", "skin", "skin.js", "ajax.action", "ajax.form", "code"]
     },
     "doc": {
       "dest": "doc/",
