@@ -12,9 +12,11 @@
   @media (min-width: 48rem) {
     #partial {margin-top: 2rem}
   }
+  #pageLoading {display: none}
+  .display-loading #pageLoading {display: block}
   </style>
 </head>
-<body class='with-appbar-top with-appnav-top'>
+<body class='with-appbar-top with-appnav-top display-loading'>
   <!-- App bar -->
   <header class="appbar heading primary affix dock-top dock-auto">
     <nav class="nav" id='headNav'>
@@ -27,6 +29,8 @@
 
   <nav class="appnav affix dock-top nav primary-pale nav-secondary" id="navs" data-display data-selector="a" data-active-class="active" data-target="#partial" data-trigger='click' data-load="true">
   </nav>
+
+  <div class="loading loading-light" id="pageLoading"></div>
 
   <div id="partial" class="container"></div>
 
