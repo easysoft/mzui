@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ZUI</title>
+  <link rel="stylesheet" href="dist/css/mzui.css">
+  <style>
+  #headNav > a.active {font-size: 1.6rem; line-height: 2rem}
+  .appnav {top: 4.8rem;}
+  #partial {padding: 0}
+  @media (min-width: 48rem) {
+    #partial {margin-top: 2rem}
+  }
+  </style>
+</head>
+<body class='with-appbar-top with-appnav-top'>
+  <!-- App bar -->
+  <header class="appbar heading primary affix dock-top dock-auto">
+    <nav class="nav" id='headNav'>
+      <a href="index.html" class='brand-name'><strong>ZUI</strong></a>
+      <a href="doc/base.html" data-display-auto>基础</a>
+      <a href="doc/element.html">控件</a>
+      <a href="doc/javascript.html">JavaScript</a>
+    </nav>
+  </header>
+
+  <nav class="appnav affix dock-top nav primary-pale nav-secondary" id="navs" data-display data-selector="a" data-active-class="active" data-target="#partial" data-trigger='click' data-load="true">
+  </nav>
+
+  <div id="partial" class="container"></div>
+
+  <script src="dist/js/mzui.js"></script>
+  <script>
+  $(function() {
+      $('#headNav').display({
+          selector: 'a:not(.brand-name)',
+          activeClass: 'active',
+          target: '#navs',
+          trigger: 'click',
+          load: true,
+          shown: function() {
+              $('#navs > a[data-display-auto]').trigger($.TapName);
+          }
+      });
+  });
+  </script>
+</body>
+</html>
