@@ -1,0 +1,260 @@
+<style>
+.tiles .tile {padding: .5rem 1rem; text-align: center; overflow: hidden;}
+.tiles-lg .tile {padding: 1rem;}
+</style>
+
+<section class="section">
+  <div class="heading">
+    <div class="title"><strong>基于 Flex 布局的栅格体系</strong></div>
+  </div>
+  <p class="box">可用的辅助类：</p>
+  <table class="table borderless">
+    <tbody>
+      <tr>
+        <td><code>.row</code></td>
+        <td>提供自左向右的行布局容器</td>
+      </tr>
+      <tr>
+        <td><code>.column</code></td>
+        <td>提供自上向下的列布局容器</td>
+      </tr>
+      <tr>
+        <td><code>.row-reverse</code></td>
+        <td>提供自右向左的行布局容器，此时需配合 <code>.row</code> 一起使用</td>
+      </tr>
+      <tr>
+        <td><code>.column-reverse</code></td>
+        <td>提供自下向上的列布局容器，此时需配合 <code>.column</code> 一起使用</td>
+      </tr>
+      <tr>
+        <td><code>.cell</code></td>
+        <td>提供自适应大小的单元格，需要在行或列布局容器中使用</td>
+      </tr>
+      <tr>
+        <td><code>.cell-1</code> ~ <code>.cell-12</code></td>
+        <td>提供宽度为 1/12 到 12/12 的大小的单元格</td>
+      </tr>
+      <tr>
+        <td><code>.tile</code></td>
+        <td>需要在单元格（<code>.cell</code> 或 <code>.cell-*</code>）内使用，提供一个填充满单元格的容器</td>
+      </tr>
+      <tr>
+        <td><code>.gutterless</code></td>
+        <td>需要和 <code>.row</code> 或 <code>.column</code> 一起使用，用来移除行或列中单元格的内边距</td>
+      </tr>
+      <tr>
+        <td><code>.gutter-lg</code></td>
+        <td>需要和 <code>.row</code> 或 <code>.column</code> 一起使用，使得单元格的内边距更大</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="box">将 <code>.row</code> 或 <code>.column</code> 放置在 <code>.container</code> 内使用，可以使行或列重新获得内边距。</p>
+</section>
+
+<div class="section">
+  <div class="heading">
+    <div class="title"><strong>行</strong></div>
+  </div>
+  <p class="box">在 <code>.row</code> 中添加所需数目的 <code>.cell</code> 即可，所有单元格都会自动拥有合适的宽度。当一行没有足够的空间显示所有单元格时，多余的单元格会自动换行显示。以下相同颜色的单元格在同一行中。</p>
+  <div class="container tiles">
+    <div class="row">
+      <div class="cell"><div class="tile primary">.cell</div></div>
+    </div>
+    <div class="row">
+      <div class="cell"><div class="tile green">.cell</div></div>
+      <div class="cell"><div class="tile green">.cell</div></div>
+    </div>
+    <div class="row">
+      <div class="cell"><div class="tile red">.cell</div></div>
+      <div class="cell"><div class="tile red">.cell</div></div>
+      <div class="cell"><div class="tile red">.cell</div></div>
+      <div class="cell"><div class="tile red">.cell</div></div>
+      <div class="cell"><div class="tile red">.cell</div></div>
+    </div>
+    <div class="row">
+      <div class="cell"><div class="tile blue">.cell</div></div>
+      <div class="cell"><div class="tile blue">.cell</div></div>
+      <div class="cell"><div class="tile blue">.cell</div></div>
+      <div class="cell"><div class="tile blue">.cell</div></div>
+      <div class="cell"><div class="tile blue">.cell</div></div>
+      <div class="cell"><div class="tile blue">.cell</div></div>
+      <div class="cell"><div class="tile blue">.cell</div></div>
+      <div class="cell"><div class="tile blue">.cell</div></div>
+    </div>
+  </div>
+  <p class="box">使用 <code>.cell-1</code> ~ <code>.cell-12</code> 来手动指定单元格显示的宽度。指定宽度的单元格同样可以和自动宽度的单元格一起使用。</p>
+  <div class="container tiles">
+    <div class="row">
+      <div class="cell-6"><div class="tile primary">.cell-6</div></div>
+    </div>
+    <div class="row">
+      <div class="cell-4"><div class="tile green">.cell-4</div></div>
+      <div class="cell-8"><div class="tile green">.cell-8</div></div>
+    </div>
+    <div class="row">
+      <div class="cell-1"><div class="tile red">-1</div></div>
+      <div class="cell-2"><div class="tile red">.cell-2</div></div>
+      <div class="cell-3"><div class="tile red">.cell-3</div></div>
+      <div class="cell-6"><div class="tile red">.cell-6</div></div>
+    </div>
+    <div class="row">
+      <div class="cell-2"><div class="tile info">.cell-2</div></div>
+      <div class="cell-4"><div class="tile info">.cell-4</div></div>
+      <div class="cell"><div class="tile info">.cell (自动)</div></div>
+      <div class="cell"><div class="tile info">.cell (自动)</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="heading">
+    <div class="title"><strong>列</strong></div>
+  </div>
+  <p class="box">在 <code>.column</code> 中添加所需数目的 <code>.cell</code> 即可，所有单元格都会自动拥有合适的高度。应该手动为列添加一个指定的高度，否则列的高度为所有单元格的最小高度之和。以下例子中，所有列的高度指定为 15rem。当一列没有足够的高度显示所有单元格时会换行（类似多列）显示剩下的单元格。以下相同颜色的单元格在同一列中。</p>
+  <div class="container tiles">
+    <div class="column" style="height: 15rem">
+      <div class="cell"><div class="tile primary">.cell</div></div>
+    </div>
+    <div class="column" style="height: 15rem">
+      <div class="cell"><div class="tile green">.cell</div></div>
+      <div class="cell"><div class="tile green">.cell</div></div>
+    </div>
+    <div class="column" style="height: 15rem">
+      <div class="cell"><div class="tile red">.cell</div></div>
+      <div class="cell"><div class="tile red">.cell</div></div>
+      <div class="cell"><div class="tile red">.cell</div></div>
+      <div class="cell"><div class="tile red">.cell</div></div>
+      <div class="cell"><div class="tile red">.cell</div></div>
+    </div>
+  </div>
+  <p class="box">使用 <code>.cell-1</code> ~ <code>.cell-12</code> 来手动指定单元格显示的高度。指定高度的单元格同样可以和自动高度的单元格一起使用。</p>
+  <div class="container tiles">
+    <div class="column" style="height: 15rem">
+      <div class="cell-6"><div class="tile primary">.cell-6</div></div>
+    </div>
+    <div class="column" style="height: 15rem">
+      <div class="cell-4"><div class="tile green">.cell-4</div></div>
+      <div class="cell-8"><div class="tile green">.cell-8</div></div>
+    </div>
+    <div class="column" style="height: 15rem">
+      <div class="cell-3"><div class="tile red">.cell-3</div></div>
+      <div class="cell-4"><div class="tile red">.cell-4</div></div>
+      <div class="cell-5"><div class="tile red">.cell-5</div></div>
+    </div>
+    <div class="column" style="height: 15rem">
+      <div class="cell-2"><div class="tile info">.cell-2</div></div>
+      <div class="cell-4"><div class="tile info">.cell-4</div></div>
+      <div class="cell"><div class="tile info">.cell (自动)</div></div>
+      <div class="cell"><div class="tile info">.cell (自动)</div></div>
+    </div>
+  </div>
+</div>
+
+<p class="box danger">已知问题：以下行列混用在 safari 浏览器中无法正常使用。</p>
+<div class="section">
+  <div class="heading">
+    <div class="title"><strong>同时使用行或列</strong></div>
+  </div>
+  <p class="box">行或列可以同时使用来创建复杂的布局。</p>
+  <div class="container tiles tiles-lg">
+    <div class="row">
+      <div class="cell"><div class="tile state important">.row > .cell (自动)</div></div>
+      <div class="cell-8">
+        <div class="column">
+          <div class="cell-4">
+            <div class="tile state warning">.column > .cell-4</div>
+          </div>
+          <div class="cell-6">
+            <div class="row">
+              <div class="cell-6">
+                <div class="column">
+                  <div class="cell"><div class="tile state purple">.column > .cell</div></div>
+                  <div class="cell"><div class="tile state purple">.column > .cell</div></div>
+                </div>
+              </div>
+              <div class="cell-6">
+                <div class="tile state primary">.row > .cell-6</div>
+              </div>
+            </div>
+          </div>
+          <div class="cell-2">
+            <div class="row">
+              <div class="cell-3"><div class="tile state success">.row > .cell-3</div></div>
+              <div class="cell-9"><div class="tile state success">.row > .cell-9</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="heading">
+    <div class="title"><strong>单元格内边距</strong></div>
+  </div>
+  <p class="box">为 <code>.row</code> 或 <code>.column</code> 添加 <code>.gutterless</code> 来移除单元格内边距。</p>
+  <div class="container tiles tiles-lg">
+    <div class="row gutterless">
+      <div class="cell"><div class="tile state important">.row > .cell (自动)</div></div>
+      <div class="cell-8">
+        <div class="column gutterless">
+          <div class="cell-4">
+            <div class="tile state warning">.column > .cell-4</div>
+          </div>
+          <div class="cell-6">
+            <div class="row gutterless">
+              <div class="cell-6">
+                <div class="column gutterless">
+                  <div class="cell"><div class="tile state purple">.column > .cell</div></div>
+                  <div class="cell"><div class="tile state purple">.column > .cell</div></div>
+                </div>
+              </div>
+              <div class="cell-6">
+                <div class="tile state primary">.row > .cell-6</div>
+              </div>
+            </div>
+          </div>
+          <div class="cell-2">
+            <div class="row gutterless">
+              <div class="cell-3"><div class="tile state success">.row > .cell-3</div></div>
+              <div class="cell-9"><div class="tile state success">.row > .cell-9</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="box">为 <code>.row</code> 或 <code>.column</code> 添加 <code>.gutter-lg</code> 来获得双倍的单元格内边距。</p>
+    <div class="container tiles tiles-lg">
+    <div class="row gutter-lg">
+      <div class="cell"><div class="tile state important">.row > .cell (自动)</div></div>
+      <div class="cell-8">
+        <div class="column gutter-lg">
+          <div class="cell-4">
+            <div class="tile state warning">.column > .cell-4</div>
+          </div>
+          <div class="cell-6">
+            <div class="row gutter-lg">
+              <div class="cell-6">
+                <div class="column gutter-lg">
+                  <div class="cell"><div class="tile state purple">.column > .cell</div></div>
+                  <div class="cell"><div class="tile state purple">.column > .cell</div></div>
+                </div>
+              </div>
+              <div class="cell-6">
+                <div class="tile state primary">.row > .cell-6</div>
+              </div>
+            </div>
+          </div>
+          <div class="cell-2">
+            <div class="row gutter-lg">
+              <div class="cell-3"><div class="tile state success">.row > .cell-3</div></div>
+              <div class="cell-9"><div class="tile state success">.row > .cell-9</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

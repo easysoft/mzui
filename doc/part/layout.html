@@ -1,0 +1,114 @@
+<div class="section">
+  <div class="heading">
+    <div class="title"><strong>布局容器</strong></div>
+  </div>
+  <div class="box article">
+    <h5>固定页面：<code>.page</code></h5>
+    <p>打开一个覆盖在 <code>body</code> 之上的固定的容器，并拥有页面背景色，自动允许垂直滚动多余的内容。</p>
+    <p><a class="btn primary" data-display data-target="#pageExample">显示固定页面</a></p>
+
+    <h5>内容：<code>.container</code></h5>
+    <p>Container 拥有左右内边距，宽度会随着页面宽度变化，但会限定最大宽度以确保内容更易于阅读，当其宽度小于父容器宽度的时会自动居中显示。</p>
+    <p>为 <code>.container</code> 添加 <code>.fluid</code> 会得到一个液态化的内容容器，其宽度永远为100%。</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="heading"><div class="title"><strong>定位</strong></div></div>
+
+  <div class="box article">
+    <p>Positions:</p>
+    <pre class="gray"><code><strong class="text-red">.dock</strong>     {position: absolute!important;}
+<strong class="text-red">.affix</strong>    {position: fixed!important;}
+<strong class="text-red">.relative</strong> {position: relative!important;}
+<strong class="text-red">.static</strong>   {position: static!important;}</code></pre>
+    <p>定位的方向辅助类，可以与 <code>.affix</code> 和 <code>.dock</code> 配合使用：</p>
+    <pre class="gray"><code><strong class="text-red">.dock-top</strong>    {bottom: auto;}
+<strong class="text-red">.dock-bottom</strong> {top: auto;}
+<strong class="text-red">.dock-left</strong>   {right: auto;}
+<strong class="text-red">.dock-right</strong>  {left: auto;}</code></pre>
+    <p>当 <code>.dock-top</code> 和 <code>.dock-bottom</code> 与 <code>.affix</code> 一起使用时，会自动在下方和上方为容器添加阴影绘制的边框。</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="heading">
+    <div class="title"><strong>弹性盒</strong></div>
+  </div>
+
+  <p class="box">以下辅助类应用于弹性盒容器：</p>
+  <pre class="gray"><code><span class="muted">// display</span>
+<strong class="text-red">.flex</strong>        {display: flex!important;}
+<strong class="text-red">.flex-inline</strong> {display: inline-flex!important;}
+
+<span class="muted">// flex-direction</span>
+<strong class="text-red">.flex-row</strong>       {flex-direction: row;}
+<strong class="text-red">.flex-column</strong>    {flex-direction: column;}
+<strong class="text-red">.row-reverse</strong>    {flex-direction: row-reverse;}
+<strong class="text-red">.column-reverse</strong> {flex-direction: column-reverse;}
+
+<span class="muted">// flex-wrap</span>
+<strong class="text-red">.flex-wrap</strong>   {flex-wrap: wrap;}
+<strong class="text-red">.flex-unwrap</strong> {flex-wrap: unwrap;}
+
+<span class="muted">// justify-content</span>
+<strong class="text-red">.space-between</strong>  {justify-content: space-between;}
+<strong class="text-red">.justify-start</strong>  {justify-content: flex-start;}
+<strong class="text-red">.justify-end</strong>    {justify-content: flex-end;}
+<strong class="text-red">.justify-center</strong> {justify-content: center;}
+
+<span class="muted">// align-items</span>
+<strong class="text-red">.stretch</strong>      {align-items: stretch;}
+<strong class="text-red">.align-start</strong>  {align-items: flex-start;}
+<strong class="text-red">.align-end</strong>    {align-items: flex-end;}
+<strong class="text-red">.align-middle</strong> {align-items: center;}
+
+<span class="muted">// 同时获得 <strong class="text-red">.justify-center</strong> 和 <strong class="text-red">.align-middle</strong> 样式</span>
+<strong class="text-red">.flex-center</strong> {
+  justify-content: center;
+  align-items: center;
+}
+
+<span class="muted">// 使用弹性盒布局，且内部元素自动调整大小并填充水平空间，通常与导航 <strong class="text-red">.nav</strong> 一起使用</span>
+<strong class="text-red">.justified</strong> {
+  display: flex;
+  flex-wrap: wrap;
+  > * {flex: auto !important;}
+  > .flex-none {flex: none!important}
+}</code></pre>
+
+  <p class="box">以下辅助类应用于弹性盒子元素：</p>
+  <pre class="gray"><code><span class="muted">// order</span>
+<strong class="text-red">.flex-first</strong> {order: -1;}</code>
+<strong class="text-red">.flex-last</strong>  {order: 1;}</code>
+
+<span class="muted">// flex</span>
+<strong class="text-red">.flex-auto</strong>  {flex: auto;}</code>
+<strong class="text-red">.flex-none</strong>  {flex: none;}</code>
+
+<span class="muted">// align-self</span>
+<strong class="text-red">.selft-stretch</strong>      {align-self: stretch;}</code>
+<strong class="text-red">.align-self-start</strong>   {align-self: flex-start;}</code>
+<strong class="text-red">.align-self-end</strong>     {align-self: flex-end;}</code>
+<strong class="text-red">.align-self-middle</strong>  {align-self: center;}</code>
+</pre>
+  <div class="box article">
+    <p>弹性盒布局参考：</p>
+    <ul>
+      <li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes" target="_blank">使用 CSS 弹性框</a></li>
+      <li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_flexbox_to_lay_out_web_applications" target="_blank">使用flexbox来布局web应用</a></li>
+      <li><a href="http://zh.learnlayout.com/flexbox.html" target="_blank">flexbox</a></li>
+      <li><a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html" target="_blank">Flex 布局教程：语法篇</a></li>
+      <li><a href="http://www.ruanyifeng.com/blog/2015/07/flex-examples.html" target="_blank">Flex 布局教程：实例篇</a></li>
+    </ul>
+  </div>
+</div>
+
+<div id="pageExample" class="page hidden fade">
+  <div class="heading divider">
+    <div class="title"><strong>固定页面示例</strong></div>
+    <nav class="nav">
+      <a data-dismiss="display"><i class="icon-remove muted"></i></a>
+    </nav>
+  </div>
+</div>
