@@ -556,6 +556,7 @@ ol
 .page
 {
     position: fixed;
+    z-index: 1050;
     top: 0;
     right: 0;
     bottom: 0;
@@ -706,7 +707,7 @@ ol
         -ms-flex-wrap: wrap;
             flex-wrap: wrap;
 }
-.flex-unwrap
+.flex-wrap
 {
     -webkit-flex-wrap: none;
         -ms-flex-wrap: none;
@@ -1140,6 +1141,13 @@ ol
 {
     -webkit-transform: scale(.8) translate(30%, 0);
             transform: scale(.8) translate(30%, 0);
+}
+.scale-from-center
+{
+    -webkit-transform: scale(.8);
+            transform: scale(.8);
+
+    opacity: 0;
 }
 .enter-from-top
 {
@@ -3223,20 +3231,20 @@ a .icon.spin
 {
     border: .1rem solid #ddd;
 }
-.fixed-layout
+.table-fixed
 {
     overflow: hidden;
 
     table-layout: fixed;
 }
-.fixed-layout th,
-.fixed-layout td
+.table-fixed th,
+.table-fixed td
 {
     overflow: inherit;
 
     white-space: nowrap;
 }
-.fixed-layout .no-fixed-layout
+.table-fixed .no-table-fixed
 {
     overflow: visible;
 }
@@ -4689,6 +4697,8 @@ pre
     font-size: 1.2rem;
 
     display: block;
+
+    padding: 1rem;
 }
 pre code
 {
