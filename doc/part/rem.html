@@ -1,0 +1,53 @@
+<style>
+.control-group {display: flex; align-items: stretch}
+.control-group > .btn {flex: none}
+.control-group > .input {flex: auto}
+.number-range-control {width: 12rem}
+.number-range-control > .btn {border-color: #ccc!important}
+.number-range-control > .btn + .input {margin-left: -.1rem; margin-right: -.1rem; text-align: center}
+</style>
+<div class="section">
+  <div class="heading">
+    <div class="title"><strong>REM</strong></div>
+  </div>
+  <div class="article box">
+    <p><code>html</code> 标签上的字体大小设置为 <strong class='text-important'>10px</strong>。</p>
+    <p>其他所有尺寸及字体单位为 <strong class='text-important'>rem</strong>。根据需要可以将 px 单位除以 10 换算为 rem 单位。例如设置一个盒模型宽度为 345px，换算为 rem 则为：34.5rem</p>
+    <p>统一使用 rem 作为单位，可以通过更改 <code>html</code> 标签上的字体大小来整体放大和缩小UI。</p>
+    <hr class="space">
+    <p>试一试：</p>
+    <div class="control-group number-range-control">
+      <button class="btn" type="btn"><i class="icon-minus"></i></button>
+      <input type="text" class="input" readonly value="10"> 
+      <button class="btn btn-plus" type="btn"><i class="icon-plus"></i></button>
+    </div>
+    <hr class="space">
+    <p>参考资料：</p>
+    <ul>
+      <li><a href="http://www.w3cplus.com/css3/define-font-size-with-css3-rem" target="_blank">CSS3的REM设置字体大小</a></li>
+      <li><a href="https://isux.tencent.com/web-app-rem.html" target="_blank">web app变革之rem</a></li>
+      <li><a href="http://www.cnblogs.com/leejersey/p/3662612.html" target="_blank">彻底弄懂css中单位px和em,rem的区别</a></li>
+      <li><a href="https://www.zhihu.com/question/21504656" target="_blank">css3的字体大小单位[rem]到底好在哪？</a></li>
+      <li><a href="https://segmentfault.com/a/1190000003690140" target="_blank">关于移动端 rem 布局的一些总结</a></li>
+    </ul>
+  </div>
+</div>
+
+<script>
+$(function()
+{
+    $('.number-range-control > .input').val($('html').css('font-size').replace('px', ''));
+    $('.number-range-control > .btn').on($.TapName, function() {
+        var $btn = $(this);
+
+        var $group = $btn.parent();
+        var options = $.extend({max: 9999, min: 1}, $group.data());
+        var $input = $group.find('input');
+        var value = parseInt($input.val()) || 0;
+        value += $btn.hasClass('btn-plus') ? 1 : -1;
+        value = Math.min(options.max, Math.max(options.min, value));
+        $input.val(value);
+        $('html').css('font-size', value + 'px');
+    });
+});
+</script>
