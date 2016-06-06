@@ -1,0 +1,90 @@
+<section class="section">
+  <div class="heading"><div class="title"><strong>综合示例</strong></div></div>
+  <form class="box">
+    <div class="control has-label-left has-icon-right">
+      <input name="username" type="text" class="input" placeholder="用户名">
+      <label for="username"><i class="icon-user"></i></label>
+      <i class="icon icon-check"></i>
+      <p class="help-text">此用户名可用。</p>
+    </div>
+
+    <div class="control">
+      <label for="email">电子邮件</label>
+      <input name="email" type="email" class="input" placeholder="example@email.com">
+      <p class="help-text text-important">暂不支持 Gmail 邮箱。</p>
+    </div>
+
+    <div class="control has-error">
+      <label for="password">密码</label>
+      <input name="password" type="password" class="input" placeholder="">
+      <p class="help-text">密码太短，请使用不少于 6 个字符。</p>
+    </div>
+
+    <div class="control">
+      <div class="checkbox">
+        <input type="checkbox" name="buyMethod">
+        <label for="buyMethod">使用匿名购买</label>
+      </div>
+      <p class="help-text">使用匿名购买，你的详细信息将不会显示给卖家。</p>
+    </div>
+
+    <div class="control has-success">
+      <label for="address">详细地址</label>
+      <input name="address" type="text" class="input" placeholder="(选填)">
+    </div>
+
+    <div class="control has-success">
+      <label for="desc">描述</label>
+      <textarea class="textarea" name="desc" id="desc" rows="3">我要做什么...</textarea>
+    </div>
+
+    <div class="control has-warning">
+      <label for="packageType">选择送货方式</label>
+      <div class="select">
+        <select name="packageType" id="packageType">
+          <option value="normal">普通快递</option>
+          <option value="ems">EMS</option>
+          <option value="SF">顺丰</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="control has-warning">
+      <label for="gifts">选择两个礼物</label>
+      <div class="select multiple">
+        <select name="gifts" id="gifts" multiple="">
+          <option value="apple">苹果</option>
+          <option value="orange">橘子</option>
+          <option value="banana">香蕉</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="control">
+      <label>付款方式</label>
+      <div class="radio">
+        <input type="radio" name="payment">
+        <label for="payment">支付宝</label>
+      </div>
+      <div class="radio">
+        <input type="radio" name="payment">
+        <label for="payment">网银</label>
+      </div>
+    </div>
+    <div class="control">
+      <label>付款方式（行内 radio）</label>
+      <div class="radio inline-block">
+        <input type="radio" name="payment">
+        <label for="payment">支付宝</label>
+      </div>
+      <div class="radio inline-block">
+        <input type="radio" name="payment">
+        <label for="payment">网银</label>
+      </div>
+    </div>
+    <div class="control">
+      <button type="button" class="btn primary">提交</button> &nbsp; 
+      <button type="button" class="btn">取消</button>
+    </div>
+  </form>
+</section>

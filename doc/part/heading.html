@@ -1,0 +1,179 @@
+<div class="section">
+  <div class="heading">
+    <div class="title"><strong>基本用法</strong></div>
+  </div>
+  <div class="box">
+    <p class="space-sm">简单的标题栏仅仅包含一个标题：</p>
+    <div class="box outline">
+      <div class="heading">
+        <div class="title">我是标题</div>
+      </div>
+    </div>
+    <pre class="gray"><code>&lt;div class=&quot;heading&quot;&gt;
+  &lt;div class=&quot;title&quot;&gt;&#x8fd9;&#x662f;&#x4e00;&#x4e2a;&#x7b80;&#x5355;&#x7684;&#x6807;&#x9898;&#x680f;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+    <p class="space-sm">使用链接作为标题</p>
+    <div class="box outline">
+      <div class="heading">
+        <a class="title" href="#">我是可以点击的标题</a>
+      </div>
+    </div>
+    <pre class="gray"><code>&lt;div class=&quot;heading&quot;&gt;
+  &lt;a class=&quot;title&quot; href=&quot;your/site&quot;&gt;&#x6211;&#x662f;&#x6807;&#x9898;&lt;/a&gt;
+&lt;/div&gt;</code></pre>
+
+    <hr class="space">
+    <p class="space-sm">在标题栏中包含导航：</p>
+    <div class="box outline">
+      <div class="heading">
+        <nav class="nav">
+          <a><i class="icon-home"></i></a>
+          <a>项目</a>
+          <a>需求</a>
+          <a>任务</a>
+        </nav>
+      </div>
+    </div>
+    <pre class="gray"><code>&lt;div class=&quot;heading&quot;&gt;
+  &lt;nav class=&quot;nav&quot;&gt;
+    &lt;a&gt;&#x9996;&#x9875;&lt;/a&gt;
+    &lt;a&gt;&#x9879;&#x76ee;&lt;/a&gt;
+    &lt;a&gt;&#x9700;&#x6c42;&lt;/a&gt;
+    &lt;a&gt;&#x4efb;&#x52a1;&lt;/a&gt;
+  &lt;/nav&gt;
+&lt;/div&gt;</code></pre>
+
+    <hr class="space">
+    <p class="space-sm">在标题栏中包含标题和导航，此时导航会自动在右侧显示：</p>
+    <div class="box outline">
+      <div class="heading">
+        <div class="title"><strong>我是标题</strong></div>
+        <nav class="nav">
+          <a><i class="icon-search"></i></a>
+          <a><i class="icon-bars"></i></a>
+        </nav>
+      </div>
+    </div>
+    <pre class="gray"><code>&lt;div class=&quot;heading&quot;&gt;
+  &lt;div class=&quot;title&quot;&gt;&lt;strong&gt;&#x6211;&#x662f;&#x6807;&#x9898;&lt;/strong&gt;&lt;/div&gt;
+  &lt;nav class=&quot;nav&quot;&gt;
+    &lt;a&gt;&lt;i class=&quot;icon-search&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+    &lt;a&gt;&lt;i class=&quot;icon-bars&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+  &lt;/nav&gt;
+&lt;/div&gt;</code></pre>
+
+    <hr class="space">
+    <p class="space-sm">在标题栏中包含头像：</p>
+    <div class="box outline">
+      <div class="heading">
+        <div class="avatar circle primary"><i class="icon-home"></i></div>
+        <div class="title"><strong>ZUI</strong></div>
+        <nav class="nav">
+          <a><i class="icon-search"></i></a>
+          <a><i class="icon-bars"></i></a>
+        </nav>
+      </div>
+    </div>
+    <pre class="gray"><code>&lt;div class=&quot;heading&quot;&gt;
+  &lt;div class=&quot;avatar&quot;&gt;&lt;i class=&quot;icon-home&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+  &lt;div class=&quot;title&quot;&gt;&lt;strong&gt;ZUI&lt;/strong&gt;&lt;/div&gt;
+  &lt;nav class=&quot;nav&quot;&gt;
+    &lt;a&gt;&lt;i class=&quot;icon-search&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+    &lt;a&gt;&lt;i class=&quot;icon-bars&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+  &lt;/nav&gt;
+&lt;/div&gt;</code></pre>
+  </div>
+</div>
+
+<div class="section">
+  <div class="heading">
+    <div class="title"><strong>外观选项</strong></div>
+  </div>
+  <div class="box">
+    <p class="space-sm">外观选项用法参考 <strong class="text-link">基础 > 外观</strong> 章节。以下列举的常见用法。</p>
+
+    <p class="space-sm"><code>.heading.gray</code></p>
+    <div class="box outline">
+      <div class="heading gray">
+        <nav class="nav">
+          <a><i class="icon-bars"></i></a>
+        </nav>
+        <div class="title"><strong>ZUI</strong></div>
+        <nav class="nav">
+          <a><i class="icon-search"></i></a>
+        </nav>
+      </div>
+    </div>
+
+    <hr class="space">
+    <p class="space-sm"><code>.heading.dark</code></p>
+    <div class="box outline">
+      <div class="heading dark">
+        <nav class="nav">
+          <a><i class="icon-bars"></i></a>
+        </nav>
+        <div class="title"><strong>ZUI</strong></div>
+        <nav class="nav">
+          <a><i class="icon-search"></i></a>
+        </nav>
+      </div>
+    </div>
+
+    <hr class="space">
+    <p class="space-sm"><code>.heading.primary</code></p>
+    <div class="box outline">
+      <div class="heading primary">
+        <nav class="nav">
+          <a><i class="icon-bars"></i></a>
+        </nav>
+        <div class="title"><strong>ZUI</strong></div>
+        <nav class="nav">
+          <a><i class="icon-search"></i></a>
+        </nav>
+      </div>
+    </div>
+
+    <hr class="space">
+    <p class="space-sm"><code>.heading.primary-pale</code></p>
+    <div class="box outline">
+      <div class="heading primary-pale">
+        <nav class="nav">
+          <a><i class="icon-bars"></i></a>
+        </nav>
+        <div class="title"><strong>ZUI</strong></div>
+        <nav class="nav">
+          <a><i class="icon-search"></i></a>
+        </nav>
+      </div>
+    </div>
+
+    <hr class="space">
+    <p class="space-sm"><code>.heading.primary.outline</code></p>
+    <div class="box outline">
+      <div class="heading primary outline">
+        <nav class="nav">
+          <a><i class="icon-bars"></i></a>
+        </nav>
+        <div class="title"><strong>ZUI</strong></div>
+        <nav class="nav">
+          <a><i class="icon-search"></i></a>
+        </nav>
+      </div>
+    </div>
+
+    <hr class="space">
+    <p class="space-sm"><code>.heading.success.rounded</code></p>
+    <div class="box outline">
+      <div class="heading success rounded">
+        <nav class="nav">
+          <a><i class="icon-bars"></i></a>
+        </nav>
+        <div class="title"><strong>ZUI</strong></div>
+        <nav class="nav">
+          <a><i class="icon-search"></i></a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
