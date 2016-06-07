@@ -1,3 +1,37 @@
+<style>
+.container {position: relative;}
+.container:before,
+.container:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  transition: .2s;
+  opacity: 0;
+  pointer-events: none;
+}
+.container:after {
+  background-color: rgba(0, 255, 0, .2);
+  right: 0;
+  bottom: 0;
+  border: .1rem solid rgb(98, 224, 81);
+}
+.container:before {
+  content: '.container';
+  background-color: rgb(98, 224, 81);
+  color: #fff;
+  padding: .1rem 1rem;
+  transform: translate(0, -100%);
+}
+.focus-container .container {overflow: hidden;}
+.focus-container .container:before,
+.focus-container .container:after {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+</style>
+
 <div class="section">
   <div class="heading">
     <div class="title"><strong>布局容器</strong></div>
@@ -5,11 +39,12 @@
   <div class="box article">
     <h5>固定页面：<code>.page</code></h5>
     <p>打开一个覆盖在 <code>body</code> 之上的固定的容器，并拥有页面背景色，自动允许垂直滚动多余的内容。</p>
-    <p><a class="btn primary" data-display data-target="#pageExample">显示固定页面</a></p>
+    <p><a class="btn primary outline" data-display data-target="#pageExample">显示固定页面</a></p>
 
     <h5>内容：<code>.container</code></h5>
     <p>Container 拥有左右内边距，宽度会随着页面宽度变化，但会限定最大宽度以确保内容更易于阅读，当其宽度小于父容器宽度的时会自动居中显示。</p>
     <p>为 <code>.container</code> 添加 <code>.fluid</code> 会得到一个液态化的内容容器，其宽度永远为100%。</p>
+    <p><a  class="btn primary outline" id="focusContainer">提示当前页面使用的 .container</a></p>
   </div>
 </div>
 
@@ -18,12 +53,14 @@
 
   <div class="box article">
     <p>Positions:</p>
-    <pre class="gray"><code><strong class="text-red">.dock</strong>     {position: absolute!important;}
+    <pre>
+<code><strong class="text-red">.dock</strong>     {position: absolute!important;}
 <strong class="text-red">.affix</strong>    {position: fixed!important;}
 <strong class="text-red">.relative</strong> {position: relative!important;}
 <strong class="text-red">.static</strong>   {position: static!important;}</code></pre>
     <p>定位的方向辅助类，可以与 <code>.affix</code> 和 <code>.dock</code> 配合使用：</p>
-    <pre class="gray"><code><strong class="text-red">.dock-top</strong>    {bottom: auto;}
+    <pre>
+<code><strong class="text-red">.dock-top</strong>    {bottom: auto;}
 <strong class="text-red">.dock-bottom</strong> {top: auto;}
 <strong class="text-red">.dock-left</strong>   {right: auto;}
 <strong class="text-red">.dock-right</strong>  {left: auto;}</code></pre>
@@ -37,7 +74,8 @@
   </div>
 
   <p class="box">以下辅助类应用于弹性盒容器：</p>
-  <pre class="gray"><code><span class="muted">// display</span>
+  <pre>
+<code><span class="muted">// display</span>
 <strong class="text-red">.flex</strong>        {display: flex!important;}
 <strong class="text-red">.flex-inline</strong> {display: inline-flex!important;}
 
@@ -78,7 +116,8 @@
 }</code></pre>
 
   <p class="box">以下辅助类应用于弹性盒子元素：</p>
-  <pre class="gray"><code><span class="muted">// order</span>
+  <pre>
+<code><span class="muted">// order</span>
 <strong class="text-red">.flex-first</strong> {order: -1;}</code>
 <strong class="text-red">.flex-last</strong>  {order: 1;}</code>
 
@@ -112,3 +151,18 @@
     </nav>
   </div>
 </div>
+
+<script>
+$(function() {
+  $('#focusContainer').on($.TapName, function(e) {
+      var focusClass = 'focus-container',
+          $body = $('body').toggleClass(focusClass);
+      if($body.hasClass(focusClass)) {
+          $(document).one($.TapName, function() {
+              $body.removeClass(focusClass);
+          });
+      }
+      e.stopPropagation();
+  });
+});
+</script>

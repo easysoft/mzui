@@ -1,0 +1,486 @@
+<div class="section">
+  <div class="heading"><div class="title"><strong>基本用法</strong></div></div>
+  <div class="box">
+    <p class="space-sm">在 <code>table</code> 元素上使用 <code>.table</code>。在 <code>&lt;tr&gt;</code> 上使用 <code>.active</code> 来表示激活的行。</p>
+    <div class="box outline">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>名称</th>
+            <th>积分</th>
+            <th>排名</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1526</td>
+            <td>小马虎</td>
+            <td>1056</td>
+            <td class="text-red"><i class="icon icon-double-angle-up"></i> 1 </td>
+          </tr>
+          <tr class="active">
+            <td>1001</td>
+            <td>勇敢的小鸭</td>
+            <td>999</td>
+            <td class="text-red"><i class="icon icon-double-angle-up"></i> 12 </td>
+          </tr>
+          <tr>
+            <td>1045</td>
+            <td>鸡大爷</td>
+            <td>998</td>
+            <td class="text-green"><i class="icon icon-double-angle-up"></i> 23 </td>
+          </tr>
+          <tr>
+            <td>1025</td>
+            <td>猪无畏</td>
+            <td>860</td>
+            <td class="text-green"><i class="icon icon-double-angle-down"></i> 25 </td>
+          </tr>
+          <tr>
+            <td>1102</td>
+            <td>糊涂虫</td>
+            <td>749</td>
+            <td class="text-red"><i class="icon icon-double-angle-up"></i> 30 </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>ID</th>
+            <th>名称</th>
+            <th>积分</th>
+            <th>排名</th>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+  <pre>
+<code>&lt;table class=&quot;table&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;ID&lt;/th&gt;
+      &lt;th&gt;&#x540d;&#x79f0;&lt;/th&gt;
+      &lt;th&gt;&#x79ef;&#x5206;&lt;/th&gt;
+      &lt;th&gt;&#x6392;&#x540d;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1526&lt;/td&gt;
+      &lt;td&gt;&#x5c0f;&#x9a6c;&#x864e;&lt;/td&gt;
+      &lt;td&gt;1056&lt;/td&gt;
+      &lt;td class=&quot;text-red&quot;&gt;&lt;i class=&quot;icon icon-double-angle-up&quot;&gt;&lt;/i&gt; 1 &lt;/td&gt;
+    &lt;/tr&gt;
+    ...
+  &lt;/tbody&gt;
+  &lt;tfoot&gt;
+    ...
+  &lt;/tfoot&gt;
+&lt;/table&gt;</code></pre>
+</div>
+
+<div class="section">
+  <div class="heading"><div class="title"><strong>更紧凑的表格</strong></div></div>
+  <div class="box">
+    <p class="space-sm">一起使用 <code>.compact</code> 与 <code>.table</code>。</p>
+    <div class="box outline">
+      <table class="table compact">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>名称</th>
+            <th>积分</th>
+            <th>排名</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1526</td>
+            <td>小马虎</td>
+            <td>1056</td>
+            <td class="text-red"><i class="icon icon-double-angle-up"></i> 1 </td>
+          </tr>
+          <tr>
+            <td>1001</td>
+            <td>勇敢的小鸭</td>
+            <td>999</td>
+            <td class="text-red"><i class="icon icon-double-angle-up"></i> 12 </td>
+          </tr>
+          <tr>
+            <td>1045</td>
+            <td>鸡大爷</td>
+            <td>998</td>
+            <td class="text-green"><i class="icon icon-double-angle-up"></i> 23 </td>
+          </tr>
+          <tr>
+            <td>1025</td>
+            <td>猪无畏</td>
+            <td>860</td>
+            <td class="text-green"><i class="icon icon-double-angle-down"></i> 25 </td>
+          </tr>
+          <tr>
+            <td>1102</td>
+            <td>糊涂虫</td>
+            <td>749</td>
+            <td class="text-red"><i class="icon icon-double-angle-up"></i> 30 </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>ID</th>
+            <th>名称</th>
+            <th>积分</th>
+            <th>排名</th>
+          </tr>
+        </tfoot>
+      </table>      
+    </div>
+  </div>
+  <pre>
+<code>&lt;table class=&quot;table compact&quot;&gt;
+  ...
+&lt;/table&gt;</code></pre>
+</div>
+
+<div class="section">
+  <div class="heading"><div class="title"><strong>移除边框</strong></div></div>
+  <div class="box">
+    <p class="space-sm">一起使用 <code>.borderless</code> 与 <code>.table</code>。</p>
+    <div class="box outline">
+      <table class="table borderless">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>名称</th>
+            <th>积分</th>
+            <th>排名</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1526</td>
+            <td>小马虎</td>
+            <td>1056</td>
+            <td class="text-red"><i class="icon icon-double-angle-up"></i> 1 </td>
+          </tr>
+          <tr>
+            <td>1001</td>
+            <td>勇敢的小鸭</td>
+            <td>999</td>
+            <td class="text-red"><i class="icon icon-double-angle-up"></i> 12 </td>
+          </tr>
+          <tr>
+            <td>1045</td>
+            <td>鸡大爷</td>
+            <td>998</td>
+            <td class="text-green"><i class="icon icon-double-angle-up"></i> 23 </td>
+          </tr>
+          <tr>
+            <td>1025</td>
+            <td>猪无畏</td>
+            <td>860</td>
+            <td class="text-green"><i class="icon icon-double-angle-down"></i> 25 </td>
+          </tr>
+          <tr>
+            <td>1102</td>
+            <td>糊涂虫</td>
+            <td>749</td>
+            <td class="text-red"><i class="icon icon-double-angle-up"></i> 30 </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>ID</th>
+            <th>名称</th>
+            <th>积分</th>
+            <th>排名</th>
+          </tr>
+        </tfoot>
+      </table>      
+    </div>
+  </div>
+  <pre>
+<code>&lt;table class=&quot;table borderless&quot;&gt;
+  ...
+&lt;/table&gt;</code></pre>
+</div>
+
+<div class="section">
+  <div class="heading"><div class="title"><strong>完整边框</strong></div></div>
+  <div class="box">
+    <p class="space-sm">一起使用 <code>.bordered</code> 与 <code>.table</code>。</p>
+    <div class="box outline">
+      <table class="table bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>名称</th>
+            <th>积分</th>
+            <th>排名</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1526</td>
+            <td>小马虎</td>
+            <td>1056</td>
+            <td class="text-red"><i class="icon icon-double-angle-up"></i> 1 </td>
+          </tr>
+          <tr>
+            <td>1001</td>
+            <td>勇敢的小鸭</td>
+            <td>999</td>
+            <td class="text-red"><i class="icon icon-double-angle-up"></i> 12 </td>
+          </tr>
+          <tr>
+            <td>1045</td>
+            <td>鸡大爷</td>
+            <td>998</td>
+            <td class="text-green"><i class="icon icon-double-angle-up"></i> 23 </td>
+          </tr>
+          <tr>
+            <td>1025</td>
+            <td>猪无畏</td>
+            <td>860</td>
+            <td class="text-green"><i class="icon icon-double-angle-down"></i> 25 </td>
+          </tr>
+          <tr>
+            <td>1102</td>
+            <td>糊涂虫</td>
+            <td>749</td>
+            <td class="text-red"><i class="icon icon-double-angle-up"></i> 30 </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>ID</th>
+            <th>名称</th>
+            <th>积分</th>
+            <th>排名</th>
+          </tr>
+        </tfoot>
+      </table>      
+    </div>
+  </div>
+  <pre>
+<code>&lt;table class=&quot;table bordered&quot;&gt;
+  ...
+&lt;/table&gt;</code></pre>
+</div>
+
+<div class="section">
+  <div class="heading"><div class="title"><strong>隔行交替样式</strong></div></div>
+  <div class="box">
+    <p class="space-sm">一起使用 <code>.striped</code> 与 <code>.table</code>。</p>
+    <div class="box outline">
+      <table class="table striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>名称</th>
+            <th>积分</th>
+            <th>排名</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1526</td>
+            <td>小马虎</td>
+            <td>1056</td>
+            <td class="text-red"><i class="icon icon-double-angle-up"></i> 1 </td>
+          </tr>
+          <tr>
+            <td>1001</td>
+            <td>勇敢的小鸭</td>
+            <td>999</td>
+            <td class="text-red"><i class="icon icon-double-angle-up"></i> 12 </td>
+          </tr>
+          <tr>
+            <td>1045</td>
+            <td>鸡大爷</td>
+            <td>998</td>
+            <td class="text-green"><i class="icon icon-double-angle-up"></i> 23 </td>
+          </tr>
+          <tr>
+            <td>1025</td>
+            <td>猪无畏</td>
+            <td>860</td>
+            <td class="text-green"><i class="icon icon-double-angle-down"></i> 25 </td>
+          </tr>
+          <tr>
+            <td>1102</td>
+            <td>糊涂虫</td>
+            <td>749</td>
+            <td class="text-red"><i class="icon icon-double-angle-up"></i> 30 </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>ID</th>
+            <th>名称</th>
+            <th>积分</th>
+            <th>排名</th>
+          </tr>
+        </tfoot>
+      </table>      
+    </div>
+  </div>
+  <pre>
+<code>&lt;table class=&quot;table striped&quot;&gt;
+  ...
+&lt;/table&gt;</code></pre>
+</div>
+
+<div class="section">
+  <div class="heading">
+    <div class="title"><strong>固定布局</strong></div>
+  </div>
+  <div class="box article">
+    <p>使用 <code>.table-fixed</code> 来更改表格布局算法，使用固定布局，列宽不再由表格内容决定，禁用单元格内内容换行，超出的内容将被隐藏。</p>
+    <p>在 <code>&lt;tr&gt;</code> 或 <code>&lt;td&gt;</code> 上使用 <code>.no-table-fixed</code> 来移除单个单元格内 <code>{overflow: hidden;}</code> 的设定。</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="heading"><div class="title"><strong>外观选项</strong></div></div>
+  <div class="box">
+    <p class="space-sm">将外观选项中的染色辅助类与 <code>.table</code>一起使用。</p>
+    <p class="space-sm">外观选项用法参考 <strong class="text-link">基础 > 外观</strong> 章节。以下列举的常见用法。</p>
+    <p class="space-sm"><code>.table.primary.striped</code></p>
+    <div class="box outline space">
+      <table class="table primary striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>名称</th>
+            <th>积分</th>
+            <th class="state">排名</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1526</td>
+            <td>小马虎</td>
+            <td>1056</td>
+            <td class="text-red-pale"><i class="icon icon-double-angle-up"></i> 1 </td>
+          </tr>
+          <tr>
+            <td>1001</td>
+            <td>勇敢的小鸭</td>
+            <td>999</td>
+            <td class="text-red-pale"><i class="icon icon-double-angle-up"></i> 12 </td>
+          </tr>
+          <tr>
+            <td>1045</td>
+            <td>鸡大爷</td>
+            <td>998</td>
+            <td class="text-green-pale"><i class="icon icon-double-angle-up"></i> 23 </td>
+          </tr>
+          <tr>
+            <td>1025</td>
+            <td>猪无畏</td>
+            <td>860</td>
+            <td class="text-green-pale"><i class="icon icon-double-angle-down"></i> 25 </td>
+          </tr>
+          <tr>
+            <td>1102</td>
+            <td>糊涂虫</td>
+            <td>749</td>
+            <td class="text-red-pale"><i class="icon icon-double-angle-up"></i> 30 </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="space-sm"><code>.table.red.borderless.striped</code></p>
+    <div class="box outline space">
+      <table class="table red borderless striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>名称</th>
+            <th>积分</th>
+            <th>排名</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1526</td>
+            <td>小马虎</td>
+            <td>1056</td>
+            <td class="text-red-pale"><i class="icon icon-double-angle-up"></i> 1 </td>
+          </tr>
+          <tr>
+            <td>1001</td>
+            <td>勇敢的小鸭</td>
+            <td>999</td>
+            <td class="text-red-pale"><i class="icon icon-double-angle-up"></i> 12 </td>
+          </tr>
+          <tr>
+            <td>1045</td>
+            <td>鸡大爷</td>
+            <td>998</td>
+            <td class="text-green-pale"><i class="icon icon-double-angle-up"></i> 23 </td>
+          </tr>
+          <tr>
+            <td>1025</td>
+            <td>猪无畏</td>
+            <td>860</td>
+            <td class="text-green-pale"><i class="icon icon-double-angle-down"></i> 25 </td>
+          </tr>
+          <tr>
+            <td>1102</td>
+            <td>糊涂虫</td>
+            <td>749</td>
+            <td class="text-red-pale"><i class="icon icon-double-angle-up"></i> 30 </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="space-sm">外观选项可以应用在行 <code>&lt;tr&gt;</code> 上或单元格 <code>&lt;td&gt;</code> 上。</p>
+    <div class="box outline space">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>名称</th>
+            <th>积分</th>
+            <th class="dark state">排名</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1526</td>
+            <td>小马虎</td>
+            <td class="state">1056</td>
+            <td class="text-red"><i class="icon icon-double-angle-up"></i> 1 </td>
+          </tr>
+          <tr class="purple">
+            <td>1001</td>
+            <td>勇敢的小鸭</td>
+            <td>999</td>
+            <td class="text-red-pale"><i class="icon icon-double-angle-up"></i> 12 </td>
+          </tr>
+          <tr class="active">
+            <td>1045</td>
+            <td>鸡大爷</td>
+            <td>998</td>
+            <td class="text-green"><i class="icon icon-double-angle-up"></i> 23 </td>
+          </tr>
+          <tr class="success-pale">
+            <td>1025</td>
+            <td>猪无畏</td>
+            <td>860</td>
+            <td class="green"><i class="icon icon-double-angle-down"></i> 25 </td>
+          </tr>
+          <tr>
+            <td>1102</td>
+            <td>糊涂虫</td>
+            <td>749</td>
+            <td class="text-tint red-pale"><i class="icon icon-double-angle-up"></i> 30 </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

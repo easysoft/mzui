@@ -2,9 +2,45 @@
 .tiles .cell {flex: none; min-width: 10rem}
 .tiles .cell-lg {flex: none; min-width: 15rem}
 .tiles .tile {padding: .5rem 1rem;}
+.focus-item {position: relative;}
+.focus-item:before,
+.focus-item:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  transition: .2s;
+  opacity: 0;
+  pointer-events: none;
+}
+.focus-item:after {
+  background-color: rgba(0, 255, 0, .2);
+  right: 0;
+  bottom: 0;
+  border: .1rem solid rgb(98, 224, 81);
+}
+.focus-item:before {
+  content: '.focus-item';
+  background-color: rgb(98, 224, 81);
+  color: #fff;
+  padding: .1rem 1rem;
+  transform: translate(0, -100%);
+}
+.section.focus-item:before {content: '.section';}
+.layer.focus-item:before {content: '.layer';}
+.box.focus-item:before {content: '.box';}
+.canvas.focus-item:before {content: '.canvas';}
+
+.show-focus-item .focus-item {overflow: hidden;}
+.show-focus-item .focus-item:before,
+.show-focus-item .focus-item:after {
+  opacity: 1;
+  transform: translate(0, 0);
+}
 </style>
 
-<div class="section">
+<div class="section focus-item">
   <div class="heading"><div class="title"><strong>背景染色</strong></div></div>
   <div class="box">
     <p>背景染色会更改元素的背景色和具备对比鲜明的文本颜色。</p>
@@ -55,7 +91,7 @@
   </div>
 </div>
 
-<div class="section">
+<div class="section focus-item">
   <div class="heading"><div class="title"><strong>文本染色</strong></div></div>
   <div class="box">
     <p>文本染色会更改文本的颜色。</p>
@@ -98,7 +134,7 @@
   </div>
 </div>
 
-<div class="section">
+<div class="section focus-item">
   <div class="heading">
     <div class="title"><strong>状态外观</strong></div>
   </div>
@@ -122,7 +158,7 @@
   </div>
 </div>
 
-<div class="section">
+<div class="section focus-item">
   <div class="heading"><div class="title"><strong>轮廓外观</strong></div></div>
   <div class="box">
     <p>为背景染色的标签应用 <code>.outline</code> 来添加轮廓外观。</p>
@@ -157,38 +193,41 @@
   </div>
 </div>
 
-<div class="section">
+<div class="section focus-item">
   <div class="heading">
     <div class="title"><strong>容器</strong></div>
   </div>
   <div class="box gray article">
     <h5>画布：<code>.canvas</code></h5>
     <p>为标签应用主要背景色，通常为 <code>#FFF</code>。</p>
-    <div class="canvas">我在一个 <code>.canvas</code> 内。</div>
+    <div class="canvas focus-item">我在一个 <code>.canvas</code> 内。</div>
     <hr class="space">
     <h5>盒子：<code>.box</code></h5>
     <p>为标签应用画布背景，设置基本内边距，设置边框但边框颜色为透明。</p>
-    <div class="box">我在一个 <code>.box</code> 内。</div>
+    <div class="box focus-item">我在一个 <code>.box</code> 内。</div>
   </div>
   <div class="box article">
     <h5>层：<code>.canvas</code></h5>
     <p>为标签应用画布背景，设置外阴影。</p>
-    <div class="layer has-padding space">我在一个 <code>.layer</code> 内。</div>
+    <div class="layer focus-item has-padding space">我在一个 <code>.layer</code> 内。</div>
     <p>默认阴影深度为 <code>.shadow-3</code>，可以通过阴影辅助类来更改阴影深度。</p>
-    <div class="layer has-padding shadow-1 space">我在一个 <code>.layer.shadow-1</code> 内。</div>
-    <div class="layer has-padding shadow-2 space">我在一个 <code>.layer.shadow-2</code> 内。</div>
-    <div class="layer has-padding shadow-3 space">我在一个 <code>.layer.shadow-3</code> 内。</div>
+    <div class="layer focus-item has-padding shadow-1 space">我在一个 <code>.layer.shadow-1</code> 内。</div>
+    <div class="layer focus-item has-padding shadow-2 space">我在一个 <code>.layer.shadow-2</code> 内。</div>
+    <div class="layer focus-item has-padding shadow-3 space">我在一个 <code>.layer.shadow-3</code> 内。</div>
   </div>
   <div class="box article">
     <h5>分段：<code>.section</code></h5>
     <p>为标签应用画布背景，设置较小的外阴影，增加下外边距。</p>
-    <div class="section">
+    <div class="section focus-item">
       我是在一个 <code>.section</code> 内。
     </div>
   </div>
+  <div class="box article">
+    <a id="focusItemBtn" class="btn primary outline">显示当前页面使用的容器</a>
+  </div>
 </div>
 
-<div class="section">
+<div class="section focus-item">
   <div class="heading"><div class="title"><strong>形状</strong></div></div>
   <table class="table borderless">
     <tbody>
@@ -221,7 +260,7 @@
   </div>
 </div>
 
-<div class="section">
+<div class="section focus-item">
   <div class="heading"><div class="title"><strong>分割线</strong></div></div>
   <table class="table borderless">
     <tbody>
@@ -245,7 +284,7 @@
   </table>
 </div>
 
-<div class="section">
+<div class="section focus-item">
   <div class="heading"><div class="title"><strong>边距</strong></div></div>
   <table class="table borderless">
     <tbody>
@@ -305,7 +344,7 @@
   </table>
 </div>
 
-<div class="section">
+<div class="section focus-item">
   <div class="heading">
     <div class="title"><strong>加载指示器</strong>：<code>.loading</code></div>
   </div>
@@ -317,7 +356,7 @@
   </div>
 </div>
 
-<div class="section">
+<div class="section focus-item">
   <div class="heading">
     <div class="title"><strong>变形</strong></div>
   </div>
@@ -354,7 +393,7 @@
   </div>
 </div>
 
-<div class="section">
+<div class="section focus-item">
   <div class="heading">
     <div class="title"><strong>阴影</strong></div>
   </div>
@@ -395,7 +434,7 @@
   </div>
 </div>
 
-<div class="section">
+<div class="section focus-item">
   <div class="heading"><div class="title"><strong>滤镜</strong></div></div>
   <div class="box article">
     <p>模糊滤镜：<code>.blur</code></p>
@@ -410,7 +449,7 @@
   </div>
 </div>
 
-<div class="section">
+<div class="section focus-item">
   <div class="heading"><div class="title"><strong>综合应用</strong></div></div>
   <div class="box">
     <p>除背景染色和文本染色外观类仅能同时存在一个，其他所有外观选项都可以搭配使用来获得更加复杂的外观效果。</p>
@@ -421,3 +460,19 @@
     </div>
   </div>
 </div>
+
+
+<script>
+$(function() {
+  $('#focusItemBtn').on($.TapName, function(e) {
+      var focusClass = 'show-focus-item',
+          $body = $('body').toggleClass(focusClass);
+      if($body.hasClass(focusClass)) {
+          $(document).one($.TapName, function() {
+              $body.removeClass(focusClass);
+          });
+      }
+      e.stopPropagation();
+  });
+});
+</script>

@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ZUI</title>
+  <title>MZUI</title>
   <link rel="stylesheet" href="dist/css/mzui.css">
   <style>
-  #headNav > a.active {font-size: 1.6rem; line-height: 2rem}
+  #headNav > a.active {font-size: 1.6rem}
+  .appbar .icon-github {font-size: 2.1rem}
   .appnav {top: 4.8rem;}
   #partial {padding: 0}
   @media (min-width: 48rem) {
@@ -14,16 +15,22 @@
   }
   #pageLoading {display: none}
   .display-loading #pageLoading {display: block}
+
+  pre em {font-weight: bold; color: #ea644a}
   </style>
 </head>
 <body class='with-appbar-top with-appnav-top display-loading'>
   <!-- App bar -->
   <header class="appbar heading primary affix dock-top dock-auto">
     <nav class="nav" id='headNav'>
-      <a href="index.html" class='brand-name'><strong>ZUI</strong></a>
+      <a href="index.html" class='brand-name'><strong>MZUI</strong></a>
       <a href="doc/base.html" data-display-auto>基础</a>
       <a href="doc/element.html">控件</a>
-      <a href="doc/javascript.html">JavaScript</a>
+      <a href="doc/javascript.html">Javascript</a>
+    </nav>
+    <div class="title"></div>
+    <nav class="nav">
+      <a href="https://github.com/easysoft/mzui" target="_blank"><i class="icon-github"></i></a>
     </nav>
   </header>
 
