@@ -60,3 +60,31 @@
     height: 4.8rem;
   }
 }
+
+// Affix
+
+.nav.affix {
+  background-color: @color-back;
+  &:extend(.nav-lg all);
+}
+
+.with-nav-top                   {padding-top: 4.8rem;}
+.with-nav-bottom                {padding-bottom: 4.8rem;}
+.with-heading-top.with-nav-top  {
+  padding-top: 4.8rem*2;
+
+  > .nav.affix.dock-top {top: 4.8rem}
+}
+
+.in-scroll.scroll-down {
+  &.with-heading-top, .with-heading-top {
+    > .nav.dock-top {
+      transform: translate(0, -100%);
+      &.dock-auto {
+        transform: translate(0, -200%);
+      }
+    }
+  }
+}
+
+.in-scroll > .dock-top .nav-secondary {.shadow-0()}

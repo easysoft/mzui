@@ -2671,7 +2671,6 @@ a .icon.spin
     height: 3rem;
 
     vertical-align: middle;
-    text-transform: uppercase;
 
     -webkit-flex-direction: column;
         -ms-flex-direction: column;
@@ -2811,9 +2810,45 @@ a .icon.spin
     background-color: #fff;
 }
 .nav-lg > a,
-.appnav > a
+.nav.affix > a
 {
     height: 4.8rem;
+}
+.nav.affix
+{
+    background-color: #fff;
+}
+.with-nav-top
+{
+    padding-top: 4.8rem;
+}
+.with-nav-bottom
+{
+    padding-bottom: 4.8rem;
+}
+.with-heading-top.with-nav-top
+{
+    padding-top: 9.6rem;
+}
+.with-heading-top.with-nav-top > .nav.affix.dock-top
+{
+    top: 4.8rem;
+}
+.in-scroll.scroll-down.with-heading-top > .nav.dock-top,
+.in-scroll.scroll-down .with-heading-top > .nav.dock-top
+{
+    -webkit-transform: translate(0, -100%);
+            transform: translate(0, -100%);
+}
+.in-scroll.scroll-down.with-heading-top > .nav.dock-top.dock-auto,
+.in-scroll.scroll-down .with-heading-top > .nav.dock-top.dock-auto
+{
+    -webkit-transform: translate(0, -200%);
+            transform: translate(0, -200%);
+}
+.in-scroll > .dock-top .nav-secondary
+{
+    box-shadow: none;
 }
 .btn
 {
@@ -2971,64 +3006,28 @@ a .icon.spin
     margin-left: .5rem;
 }
 .heading-lg > .nav,
-.appbar > .nav
+.heading.affix > .nav
 {
     margin: .4rem;
 }
 .heading-lg > .title,
-.appbar > .title
+.heading.affix > .title
 {
     font-size: 1.6rem;
 
     padding: 1.3rem 1rem;
 }
-.appbar
+.heading.affix
 {
     background-color: #fff;
 }
-.with-appbar-top
+.with-heading-top
 {
     padding-top: 4.8rem;
 }
-.with-appbar-bottom
+.with-heading-bottom
 {
     padding-bottom: 4.8rem;
-}
-.appnav
-{
-    background-color: #fff;
-}
-.with-appnav-top
-{
-    padding-top: 4.8rem;
-}
-.with-appnav-bottom
-{
-    padding-bottom: 4.8rem;
-}
-.with-appbar-top.with-appnav-top
-{
-    padding-top: 9.6rem;
-}
-.with-appbar-top.with-appnav-top > .appnav.affix.dock-top
-{
-    top: 4.8rem;
-}
-.in-scroll.scroll-down.with-appbar-top > .appnav.dock-top,
-.in-scroll.scroll-down .with-appbar-top > .appnav.dock-top
-{
-    -webkit-transform: translate(0, -100%);
-            transform: translate(0, -100%);
-}
-.in-scroll.scroll-down.with-appbar-top > .appnav.dock-top.dock-auto,
-.in-scroll.scroll-down .with-appbar-top > .appnav.dock-top.dock-auto
-{
-    -webkit-transform: translate(0, -200%);
-            transform: translate(0, -200%);
-}
-.in-scroll > .dock-top .nav-secondary
-{
-    box-shadow: none;
 }
 .list-item,
 .list > .item

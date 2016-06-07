@@ -1,3 +1,5 @@
+// Basic
+
 .heading {
   display: flex;
   align-items: center;
@@ -17,6 +19,9 @@
   > .avatar {margin-left: .5rem;}
 }
 
+
+// Sizes
+
 .heading-lg {
   > .nav {margin: .4rem;}
 
@@ -25,3 +30,15 @@
     padding: (@padding-base-vertical + .3rem) @padding-base-horizontal;
   }
 }
+
+
+// Affix heading
+
+.heading.affix {
+  background-color: @color-back;
+  
+  &:extend(.heading-lg all);
+}
+
+.with-heading-top    {padding-top: 4.8rem;}
+.with-heading-bottom {padding-bottom: 4.8rem;}
