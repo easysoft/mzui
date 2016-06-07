@@ -32,7 +32,7 @@
                 source: options.target ? null : function() {
                     return getSourceElement('dropdown-menu', options.element, oldSource);
                 },
-                target: isUndefinedThen(options.target, '#displayTarget'),
+                target: isUndefinedThen(options.target, '!new'),
                 placement: isUndefinedThen(options.placement, 'beside'),
                 activeClass: isUndefinedThen(options.activeClass, 'open'),
                 targetDismiss: isUndefinedThen(options.targetDismiss, true)
@@ -47,7 +47,7 @@
                 source: options.target ? null : function() {
                     return getSourceElement('popover', options.element, oldSource, 'canvas with-padding');
                 },
-                target: isUndefinedThen(options.target, '#displayTarget'),
+                target: isUndefinedThen(options.target, '!new'),
                 placement: isUndefinedThen(options.placement, 'beside'),
                 activeClass: isUndefinedThen(options.activeClass, 'open')
             });
@@ -68,7 +68,7 @@
                     }
                     return $messager.addClass(options.type || 'gray');
                 },
-                target: '#displayTarget',
+                target: '!new',
                 placement: isUndefinedThen(options.placement, 'bottom-center'),
                 activeClass: isUndefinedThen(options.activeClass, 'open')
             });
@@ -81,7 +81,7 @@
                 source: options.target ? null : function() {
                     return getSourceElement('modal', options.element, oldSource, '', 'box');
                 },
-                target: isUndefinedThen(options.target, '#displayTarget'),
+                target: isUndefinedThen(options.target, '!new'),
                 targetClass: 'modal ' + (options.targetClass || ''),
                 placement: isUndefinedThen(options.placement, $.TapName === 'tap' ? 'bottom' : 'center'),
                 activeClass: isUndefinedThen(options.activeClass, 'open')
@@ -151,7 +151,7 @@
     $.Display.plugs('_self', function(options) {
         return $.extend(options, {
             trigger: false,
-            target: 'self',
+            target: '!self',
             displayAuto: isUndefinedThen(options.displayAuto, true)
         });
     }, 'displaySelf');

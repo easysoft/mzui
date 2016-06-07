@@ -77,7 +77,7 @@
         var that = this;
 
         var target = $.calValue(options.target, that, options);
-        if(target === '#displayTarget') {
+        if(target === '!new') {
             var targetId = 'displayTarget-' + options.name,
                 layerId = 'displayLayer-' + options.name;
             $('#' + targetId).remove();
@@ -85,7 +85,7 @@
             var $layer = $('#' + layerId);
             if(!$layer.length) $layer = $('<div class="display-layer"/>', {id: layerId}).appendTo(STR_BODY);
             options.layer = options.container = $layer.append(target);
-        } else if(target === 'self') {
+        } else if(target === '!self') {
             target = options.element || that.$;
         }
 
@@ -126,12 +126,12 @@
             var stopLoading = function() {
                 if(isRemoteErrorAble) $(document).off(ajaxEventName);
                 $target.removeClass(loadingClass).addClass(options.showInClass);
-                $(STR_BODY).removeClass(STR_DISPLAY + '-' + loadingClass);
+                $(STR_BODY).removeClass(STR_DISPLAY + '-loading');
                 $.callEvent('loaded', options['loaded'], that, that.$, options);
                 readyCallback && readyCallback();
             };
             $target.removeClass(options.showInClass).addClass(loadingClass);
-            $(STR_BODY).addClass(STR_DISPLAY + '-' + loadingClass);
+            $(STR_BODY).addClass(STR_DISPLAY + '-loading');
 
             if(isRemoteErrorAble) {
                 $(document).one(ajaxEventName, function(xhr, ajaxOptions, error) {
@@ -229,7 +229,7 @@
         }
 
         if(activeClass && element) {
-            $element.parent().children().removeClass(activeClass);
+            if(options.activeSingle) $element.parent().children().removeClass(activeClass);
             $element.addClass(activeClass);
         }
 
