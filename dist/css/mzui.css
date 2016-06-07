@@ -1,5 +1,5 @@
 /*!
- * mzui - v1.0.0 - 2016-06-06
+ * mzui - v1.0.0 - 2016-06-07
  * Copyright (c) 2016 cnezsoft.com; Licensed MIT
  */
 
@@ -2732,31 +2732,33 @@ a .icon.spin
             flex-wrap: nowrap;
     -webkit-overflow-scrolling: touch;
 }
-.nav > .btn,
 .nav > a
 {
-    display: block;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display:         flex;
 
     min-width: 4rem;
-
-    text-align: center;
+    height: 4rem;
+    padding: 0 1rem;
 
     opacity: .8;
 
     -webkit-flex: 0 0 auto;
         -ms-flex: 0 0 auto;
             flex: 0 0 auto;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+            align-items: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+            justify-content: center;
 }
-.nav > .btn.active,
 .nav > a.active
 {
     font-weight: bold;
 
     opacity: 1;
-}
-.nav > a
-{
-    padding: 1rem 1rem;
 }
 .nav-secondary
 {
@@ -2794,30 +2796,24 @@ a .icon.spin
 {
     border-radius: 2rem;
 }
-.nav.outline > .btn,
 .nav.outline > a
 {
     border-right: 1px solid transparent;
     border-right-color: inherit;
 }
-.nav.outline > .btn:last-child,
 .nav.outline > a:last-child
 {
     border-right: none;
 }
-.nav.outline > .btn.active,
 .nav.outline > a.active
 {
     color: #333;
     background-color: #fff;
 }
-.nav-lg > .btn,
 .nav-lg > a,
-.appnav > .btn,
 .appnav > a
 {
-    padding-top: 1.4rem;
-    padding-bottom: 1.4rem;
+    height: 4.8rem;
 }
 .btn
 {
@@ -2854,7 +2850,7 @@ a .icon.spin
 .btn.circle,
 .btn.circle:after
 {
-    border-radius: 1.5rem;
+    border-radius: 1.5rem !important;
 }
 .btn-lg
 {
@@ -2866,7 +2862,7 @@ a .icon.spin
 .btn-lg.circle,
 .btn-lg.circle:after
 {
-    border-radius: 2rem;
+    border-radius: 2rem !important;
 }
 .btn-sm
 {
@@ -2878,7 +2874,7 @@ a .icon.spin
 .btn-sm.circle,
 .btn-sm.circle:after
 {
-    border-radius: 1.2rem;
+    border-radius: 1.2rem !important;
 }
 .btn-xs
 {
@@ -2890,7 +2886,7 @@ a .icon.spin
 .btn-xs.circle,
 .btn-xs.circle:after
 {
-    border-radius: 1rem;
+    border-radius: 1rem !important;
 }
 .btn > .icon
 {
@@ -2969,6 +2965,10 @@ a .icon.spin
     -webkit-align-self: flex-start;
     -ms-flex-item-align: start;
             align-self: flex-start;
+}
+.heading > .avatar
+{
+    margin-left: .5rem;
 }
 .heading-lg > .nav,
 .appbar > .nav
@@ -3207,6 +3207,10 @@ a .icon.spin
 .table tr:hover
 {
     background-color: rgba(50, 128, 252, .1);
+}
+.table tr.active
+{
+    background-color: rgba(241, 163, 37, .1);
 }
 .table.compact th,
 .table.compact td
@@ -4690,7 +4694,7 @@ code
     padding: .2rem .5rem;
 
     color: #ea644a;
-    background-color: rgba(0, 0, 0, .08);
+    background-color: rgba(0, 0, 0, .05);
 }
 pre
 {
@@ -4699,6 +4703,9 @@ pre
     display: block;
 
     padding: 1rem;
+
+    border: .1rem solid transparent;
+    background-color: rgba(0, 0, 0, .05);
 }
 pre code
 {
