@@ -1953,7 +1953,7 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
         var that = this;
 
         var target = $.calValue(options.target, that, options);
-        if(target === '#displayTarget') {
+        if(target === '!new') {
             var targetId = 'displayTarget-' + options.name,
                 layerId = 'displayLayer-' + options.name;
             $('#' + targetId).remove();
@@ -1961,7 +1961,7 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
             var $layer = $('#' + layerId);
             if(!$layer.length) $layer = $('<div class="display-layer"/>', {id: layerId}).appendTo(STR_BODY);
             options.layer = options.container = $layer.append(target);
-        } else if(target === 'self') {
+        } else if(target === '!self') {
             target = options.element || that.$;
         }
 
@@ -2002,12 +2002,12 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
             var stopLoading = function() {
                 if(isRemoteErrorAble) $(document).off(ajaxEventName);
                 $target.removeClass(loadingClass).addClass(options.showInClass);
-                $(STR_BODY).removeClass(STR_DISPLAY + '-' + loadingClass);
+                $(STR_BODY).removeClass(STR_DISPLAY + '-loading');
                 $.callEvent('loaded', options['loaded'], that, that.$, options);
                 readyCallback && readyCallback();
             };
             $target.removeClass(options.showInClass).addClass(loadingClass);
-            $(STR_BODY).addClass(STR_DISPLAY + '-' + loadingClass);
+            $(STR_BODY).addClass(STR_DISPLAY + '-loading');
 
             if(isRemoteErrorAble) {
                 $(document).one(ajaxEventName, function(xhr, ajaxOptions, error) {
@@ -2105,7 +2105,7 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
         }
 
         if(activeClass && element) {
-            $element.parent().children().removeClass(activeClass);
+            if(options.activeSingle) $element.parent().children().removeClass(activeClass);
             $element.addClass(activeClass);
         }
 
@@ -2424,7 +2424,7 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
                 source: options.target ? null : function() {
                     return getSourceElement('dropdown-menu', options.element, oldSource);
                 },
-                target: isUndefinedThen(options.target, '#displayTarget'),
+                target: isUndefinedThen(options.target, '!new'),
                 placement: isUndefinedThen(options.placement, 'beside'),
                 activeClass: isUndefinedThen(options.activeClass, 'open'),
                 targetDismiss: isUndefinedThen(options.targetDismiss, true)
@@ -2439,7 +2439,7 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
                 source: options.target ? null : function() {
                     return getSourceElement('popover', options.element, oldSource, 'canvas with-padding');
                 },
-                target: isUndefinedThen(options.target, '#displayTarget'),
+                target: isUndefinedThen(options.target, '!new'),
                 placement: isUndefinedThen(options.placement, 'beside'),
                 activeClass: isUndefinedThen(options.activeClass, 'open')
             });
@@ -2460,7 +2460,7 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
                     }
                     return $messager.addClass(options.type || 'gray');
                 },
-                target: '#displayTarget',
+                target: '!new',
                 placement: isUndefinedThen(options.placement, 'bottom-center'),
                 activeClass: isUndefinedThen(options.activeClass, 'open')
             });
@@ -2473,7 +2473,7 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
                 source: options.target ? null : function() {
                     return getSourceElement('modal', options.element, oldSource, '', 'box');
                 },
-                target: isUndefinedThen(options.target, '#displayTarget'),
+                target: isUndefinedThen(options.target, '!new'),
                 targetClass: 'modal ' + (options.targetClass || ''),
                 placement: isUndefinedThen(options.placement, $.TapName === 'tap' ? 'bottom' : 'center'),
                 activeClass: isUndefinedThen(options.activeClass, 'open')
@@ -2543,7 +2543,7 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
     $.Display.plugs('_self', function(options) {
         return $.extend(options, {
             trigger: false,
-            target: 'self',
+            target: '!self',
             displayAuto: isUndefinedThen(options.displayAuto, true)
         });
     }, 'displaySelf');
