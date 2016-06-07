@@ -83,7 +83,7 @@
                 },
                 target: isUndefinedThen(options.target, '#displayTarget'),
                 targetClass: 'modal ' + (options.targetClass || ''),
-                placement: isUndefinedThen(options.placement, 'bottom'),
+                placement: isUndefinedThen(options.placement, $.TapName === 'tap' ? 'bottom' : 'center'),
                 activeClass: isUndefinedThen(options.activeClass, 'open')
             });
         },

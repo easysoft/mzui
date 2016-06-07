@@ -9,22 +9,20 @@
   white-space: nowrap;
   -webkit-overflow-scrolling: touch;
 
-  > .btn,
   > a {
     flex: 0 0 auto;
-    display: block;
+    display: flex;
     min-width: 4rem;
-    text-align: center;
     opacity: .8;
+    padding: 0 @padding-base-horizontal;
+    align-items: center;
+    justify-content: center;
+    height: 4rem;
 
     &.active {
       opacity: 1;
       font-weight: bold;
     }
-  }
-
-  > a {
-    padding: @padding-base-vertical @padding-base-horizontal;
   }
 }
 
@@ -44,7 +42,6 @@
 .nav.circle {border-radius: 2rem}
 
 .nav.outline {
-  > .btn,
   > a {
     border-right: 1px solid transparent;
     border-right-color: inherit;
@@ -59,9 +56,7 @@
 }
 
 .nav-lg {
-  > .btn,
   > a {
-    padding-top: 1.4rem;
-    padding-bottom: 1.4rem;
+    height: 4.8rem;
   }
 }
