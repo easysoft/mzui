@@ -21,16 +21,21 @@
   border: .1rem solid rgb(98, 224, 81);
 }
 .focus-item:before {
-  content: '.focus-item';
+  content: attr(class);
   background-color: rgb(98, 224, 81);
   color: #fff;
   padding: .1rem 1rem;
   transform: translate(0, -100%);
+  z-index: 2;
+  text-shadow: 0 .1rem .2rem rgba(0,0,0,.5);
+  border-right: .1rem solid rgba(0,0,0,.1);
+  border-bottom: .1rem solid rgba(0,0,0,.1);
 }
 .section.focus-item:before {content: '.section';}
 .layer.focus-item:before {content: '.layer';}
 .box.focus-item:before {content: '.box';}
 .canvas.focus-item:before {content: '.canvas';}
+.well.focus-item:before {content: '.well';}
 
 .show-focus-item .focus-item {overflow: hidden;}
 .show-focus-item .focus-item:before,
@@ -223,7 +228,14 @@
     </div>
   </div>
   <div class="box article">
-    <a id="focusItemBtn" class="btn primary outline">显示当前页面使用的容器</a>
+    <h5>坑：<code>.well</code></h5>
+    <p>为标签应用内阴影，设置基本内边距，使用轻微的半透明黑色背景。</p>
+    <div class="well focus-item">
+      我是在一个 <code>.well</code> 内。
+    </div>
+  </div>
+  <div class="box article">
+    <a id="focusItemBtn" class="btn primary outline">提示当前页面使用的容器</a>
   </div>
 </div>
 
