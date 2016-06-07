@@ -7,8 +7,8 @@
   <link rel="stylesheet" href="dist/css/mzui.css">
   <style>
   #headNav > a.active {font-size: 1.6rem}
-  .appbar .icon-github {font-size: 2.1rem}
-  .appnav {top: 4.8rem;}
+  .heading.affix .icon-github {font-size: 2.1rem}
+  .nav.affix {top: 4.8rem;}
   #partial {padding: 0}
   @media (min-width: 48rem) {
     #partial {margin-top: 2rem}
@@ -19,9 +19,9 @@
   pre em {font-weight: bold; color: #ea644a}
   </style>
 </head>
-<body class='with-appbar-top with-appnav-top display-loading'>
+<body class='with-heading-top with-nav-top display-loading'>
   <!-- App bar -->
-  <header class="appbar heading primary affix dock-top dock-auto">
+  <header class="heading primary affix dock-top dock-auto">
     <nav class="nav" id='headNav'>
       <a href="index.html" class='brand-name'><strong>MZUI</strong></a>
       <a href="doc/base.html" data-display-auto>基础</a>
@@ -34,7 +34,7 @@
     </nav>
   </header>
 
-  <nav class="appnav affix dock-top nav primary-pale nav-secondary" id="navs" data-display data-selector="a" data-active-class="active" data-target="#partial" data-trigger='click' data-load="true">
+  <nav class="affix dock-top nav primary-pale nav-secondary" id="navs" data-display data-selector="a" data-active-class="active" data-target="#partial" data-trigger='click' data-load="true">
   </nav>
 
   <div class="loading loading-light" id="pageLoading"></div>

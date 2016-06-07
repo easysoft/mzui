@@ -1,0 +1,466 @@
+<div class="section">
+  <div class="heading">
+    <div class="title"><strong>基本用法</strong></div>
+  </div>
+  <div class="box">
+    <p class="space-sm">简单列表：在 <code>.list</code> 内包含所需数目的 <code>.item</code>，如果使用链接 <code>&lt;a&gt;</code> 作为列表条目 <code>.item</code>，则创建了一个可以点击的列表条目。</p>
+    <div class="box outline">
+      <div class="list">
+        <a class="item">这是列表条目名称</a>
+        <a class="item"><i class="icon-star"></i>&nbsp;带图标的列表条目</a>
+        <a class="item"><div class="title">列表条目名称二 &nbsp;<small class="muted">#TAG</small></div></a>
+      </div>
+    </div>
+  </div>
+  <pre><code>&lt;div class=&quot;list&quot;&gt;
+  &lt;a class=&quot;item&quot;&gt;&#x8fd9;&#x662f;&#x5217;&#x8868;&#x9879;&#x76ee;&#x540d;&#x79f0;&lt;/a&gt;
+...
+&lt;/div&gt;</code></pre>
+
+    <div class="box">
+    <p>当列表项 <code>.item</code> 中不仅仅包含标题还包括其他内容时，需要将将标题内容放置在 <code>.title</code> 内。</p>
+    <p class="space-sm">在列表条目中包含头像：将 <code>.avatar</code> 包含在 <code>.item</code> 内的开始，并且为 <code>.item</code> 增加 <code>.with-avatar</code>。</p>
+    <p class="space-sm">如果一个列表中所有条目都包含头像，则只需要在 <code>.list</code> 上增加修饰类 <code>with-avatar</code> 即可。</p>
+    <div class="box outline">
+      <div class="list">
+        <a class="item with-avatar">
+          <div class="avatar circle"><img src="doc/img/avatar.png" alt=""></div>
+          <div class="title">Catouse</div>
+        </a>
+        <a class="item with-avatar">
+          <div class="avatar circle red">张</div>
+          <div class="title">张三</div>
+        </a>
+        <a class="item with-avatar">
+          <div class="avatar circle blue"><i class="icon icon-user"></i></div>
+          <div class="title">李四</div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <pre><code>&lt;div class=&quot;list&quot;&gt;
+  &lt;a class=&quot;item with-avatar&quot;&gt;
+    &lt;div class=&quot;avatar circle&quot;&gt;&lt;img src=&quot;doc/img/avatar.png&quot; alt=&quot;&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;title&quot;&gt;Catouse&lt;/div&gt;
+  &lt;/a&gt;
+  ...
+&lt;/div&gt;</code></pre>
+
+  <div class="box">
+    <p class="space-sm">在列表条目右侧包含图标：将 <code>.icon</code> 包含在 <code>.item</code> 的末尾。</p>
+    <div class="box outline">
+      <div class="list">
+        <a class="item">
+          <div class="avatar circle"><img src="doc/img/avatar.png" alt=""></div>
+          <div class="title">Catouse</div>
+          <i class="icon icon-chevron-right muted"></i>
+        </a>
+        <a class="item">
+          <div class="avatar circle green"><i class="icon icon-user"></i></div>
+          <div class="title">李四</div>
+          <i class="icon icon-check text-success"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <pre><code>&lt;div class=&quot;list&quot;&gt;
+  &lt;a class=&quot;item&quot;&gt;
+    &lt;div class=&quot;avatar circle&quot;&gt;&lt;img src=&quot;doc/img/avatar.png&quot; alt=&quot;&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;title&quot;&gt;Catouse&lt;/div&gt;
+    &lt;i class=&quot;icon icon-chevron-right muted&quot;&gt;&lt;/i&gt;
+  &lt;/a&gt;
+&lt;/div&gt;</code></pre>
+
+  <div class="box">
+    <p class="space-sm">在列表条目右侧包含按钮：将 <code>.btn</code> 包含在 <code>.item</code> 的末尾。</p>
+    <div class="box outline">
+      <div class="list">
+        <div class="item">
+          <div class="avatar circle"><img src="doc/img/avatar.png" alt=""></div>
+          <div class="title">Catouse</div>
+          <a class="btn text-primary"><i class="icon icon-pencil"></i></a>
+        </div>
+        <div class="item">
+          <div class="avatar circle red"><i class="icon-heart"></i></div>
+          <div class="title">我的收藏</div>
+          <a class="btn text-gray">查看&nbsp;<i class="icon-chevron-right"></i></a>
+        </div>
+        <div class="item">
+          <div class="avatar circle yellow"><i class="icon-folder-close-alt"></i></div>
+          <div class="title">项目</div>
+          <a class="btn"><i class="icon-plus-sign"></i>&nbsp;创建新项目</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <pre><code>&lt;div class=&quot;list&quot;&gt;
+  &lt;div class=&quot;item&quot;&gt;
+    &lt;div class=&quot;avatar circle&quot;&gt;&lt;img src=&quot;doc/img/avatar.png&quot; alt=&quot;&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;title&quot;&gt;Catouse&lt;/div&gt;
+    &lt;a class=&quot;btn text-primary&quot;&gt;&lt;i class=&quot;icon icon-pencil&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+  <div class="box">
+    <p class="space-sm">在列表条目内包含标签：将 <code>.label</code> 包含在 <code>.item</code> 的末尾，或者将 <code>.label</code> 放置在 <code>.title</code> 中。</p>
+    <div class="box outline">
+      <div class="list">
+        <a class="item">
+          <div class="avatar circle"><img src="doc/img/avatar.png" alt=""></div>
+          <div class="title">Catouse</div>
+          <span class="label red circle">12 条消息</span>
+        </a>
+        <a class="item">
+          <div class="avatar circle purple">李</div>
+          <div class="title">李雷 &nbsp; <span class="label yellow rounded">金牌教师</span></div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <pre><code>&lt;div class=&quot;list&quot;&gt;
+  &lt;a class=&quot;item&quot;&gt;
+    &lt;div class=&quot;avatar circle&quot;&gt;&lt;img src=&quot;doc/img/avatar.png&quot; alt=&quot;&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;title&quot;&gt;Catouse&lt;/div&gt;
+    &lt;span class=&quot;label red circle&quot;&gt;12 &#x6761;&#x6d88;&#x606f;&lt;/span&gt;
+  &lt;/a&gt;
+&lt;/div&gt;</code></pre>
+
+  <div class="box">
+    <p class="space-sm">多行列表条目：为 <code>.item</code> 增加 <code>.multi-lines</code>， 将需要多行显示的内容（例如 <code>.title</code> 或 <code>.subtitle</code>）等放置在 <code>.content</code> 内。</p>
+    <div class="box outline">
+      <div class="list">
+        <a class="item with-avatar multi-lines">
+          <div class="avatar circle"><img src="doc/img/avatar.png" alt=""></div>
+          <div class="content">
+            <div class="title">Catouse</div>
+            <div class="subtitle">面包吞噬者</div>
+          </div>
+        </a>
+        <a class="item with-avatar multi-lines">
+          <div class="avatar circle brown">李</div>
+          <div class="content">
+            <div class="title">李雷</div>
+            <div class="subtitle">我是英语老师李雷</div>
+            <div class="text-important">欢迎访问我的网站！</div>
+          </div>
+        </a>
+        <a class="item with-avatar multi-lines">
+          <div class="avatar circle red">S</div>
+          <div class="content">
+            <div class="title">Some How <small class="text-red pull-right">热门</small></div>
+            <div class="subtitle space-sm">火星环境改造成功！</div>
+            <div><img src="doc/img/img2.jpg" alt=""></div>
+            <div><small class="muted">2016年06月07日 14:49:40</small></div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <pre><code>&lt;div class=&quot;list&quot;&gt;
+  &lt;a class=&quot;item with-avatar multi-lines&quot;&gt;
+    &lt;div class=&quot;avatar circle&quot;&gt;&lt;img src=&quot;doc/img/avatar.png&quot; alt=&quot;&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;content&quot;&gt;
+      &lt;div class=&quot;title&quot;&gt;Catouse&lt;/div&gt;
+      &lt;div class=&quot;subtitle&quot;&gt;&#x9762;&#x5305;&#x541e;&#x566c;&#x8005;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/a&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+
+<div class="section">
+  <div class="heading">
+    <div class="title"><strong>分割线</strong></div>
+  </div>
+  <div class="box">
+    <p class="space-sm">为列表增加修饰类 <code>.with-divider</code> 来让列表条目之间拥有水平分割线。</p>
+    <div class="box outline">
+      <div class="list with-divider space">
+        <a class="item"><i class="muted icon-home"></i>&nbsp; 首页</a>
+        <a class="item"><i class="muted icon-folder-close"></i>&nbsp; 项目</a>
+        <a class="item"><i class="muted icon-bug"></i>&nbsp; BUG</a>
+      </div>
+      <div class="list with-divider">
+        <a class="item with-avatar">
+          <div class="avatar circle blue">张</div>
+          <div class="title">张三</div>
+        </a>
+        <a class="item with-avatar multi-lines">
+          <div class="avatar circle"><img src="doc/img/avatar.png" alt=""></div>
+          <div class="content">
+            <div class="title">Catouse</div>
+            <div class="subtitle">面包吞噬者</div>
+          </div>
+        </a>
+        <a class="item with-avatar multi-lines">
+          <div class="avatar circle primary">李</div>
+          <div class="content">
+            <div class="title">李雷</div>
+            <div class="subtitle">我是英语老师李雷</div>
+          </div>
+          <div class="label yellow">金牌教师</div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <pre><code>&lt;div class=&quot;list <em>with-divider</em>&quot;&gt;
+  ...
+&lt;/div&gt;</code></pre>
+  <div class="box">
+    <p class="space-sm">也可以在 <code>.item</code> 前后手动插入 <code>&lt;div class=&quot;divider&quot;&gt;&lt;/div&gt;</code> 来加入分割线。</p>
+    <div class="box outline">
+      <div class="list space">
+        <a class="item"><i class="muted icon-home"></i>&nbsp; 首页</a>
+        <div class="divider"></div>
+        <a class="item"><i class="muted icon-folder-close"></i>&nbsp; 项目</a>
+        <div class="divider"></div>
+        <a class="item"><i class="muted icon-bug"></i>&nbsp; BUG</a>
+        <div class="divider"></div>
+      </div>
+      <div class="list">
+        <a class="item with-avatar">
+          <div class="avatar circle blue">张</div>
+          <div class="title">张三</div>
+        </a>
+        <div class="divider"></div>
+        <a class="item with-avatar multi-lines">
+          <div class="avatar circle"><img src="doc/img/avatar.png" alt=""></div>
+          <div class="content">
+            <div class="title">Catouse</div>
+            <div class="subtitle">面包吞噬者</div>
+          </div>
+        </a>
+        <div class="divider"></div>
+        <a class="item with-avatar multi-lines">
+          <div class="avatar circle primary">李</div>
+          <div class="content">
+            <div class="title">李雷</div>
+            <div class="subtitle">我是英语老师李雷</div>
+          </div>
+          <div class="label yellow">金牌教师</div>
+        </a>
+        <div class="divider"></div>
+      </div>
+    </div>
+  </div>
+  <pre><code>&lt;div class=&quot;list&quot;&gt;
+  &lt;a class=&quot;item&quot;&gt;...&lt;/a&gt;
+  <em>&lt;div class=&quot;divider&quot;&gt;&lt;/div&gt;</em>
+  &lt;a class=&quot;item&quot;&gt;...&lt;/a&gt;
+  &lt;a class=&quot;item&quot;&gt;...&lt;/a&gt;
+  <em>&lt;div class=&quot;divider&quot;&gt;&lt;/div&gt;</em>
+  &lt;a class=&quot;item&quot;&gt;...&lt;/a&gt;
+  <em>&lt;div class=&quot;divider&quot;&gt;&lt;/div&gt;</em>
+  ...
+&lt;/div&gt;</code></pre>
+</div>
+
+<div class="section">
+  <div class="heading">
+    <div class="title"><strong>在列表中包含标题栏</strong></div>
+  </div>
+  <div class="box">
+    <p class="space-sm">将 <code>.heading</code> 直接包含在 <code>.list</code> 中。</p>
+    <div class="box outline">
+      <div class="list space">
+        <div class="heading">
+          <div class="title">快速访问</div>
+          <nav class="nav">
+            <a><i class="icon icon-search"></i></a>
+          </nav>
+        </div>
+        <a class="item"><i class="muted icon-home"></i>&nbsp; 产品</a>
+        <a class="item"><i class="muted icon-folder-close"></i>&nbsp; 项目</a>
+        <a class="item"><i class="muted icon-bug"></i>&nbsp; BUG</a>
+        <div class="divider"></div>
+        <div class="heading"><div class="title">热门用户</div></div>
+        <a class="item with-avatar">
+          <div class="avatar circle blue">张</div>
+          <div class="title">张三</div>
+        </a>
+        <a class="item with-avatar multi-lines">
+          <div class="avatar circle"><img src="doc/img/avatar.png" alt=""></div>
+          <div class="content">
+            <div class="title">Catouse</div>
+            <div class="subtitle">面包吞噬者</div>
+          </div>
+        </a>
+        <a class="item with-avatar multi-lines">
+          <div class="avatar circle primary">李</div>
+          <div class="content">
+            <div class="title">李雷</div>
+            <div class="subtitle">我是英语老师李雷</div>
+          </div>
+          <div class="label yellow">金牌教师</div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <pre><code>&lt;div class=&quot;list&quot;&gt;
+    &lt;div class=&quot;heading&quot;&gt;
+      &lt;div class=&quot;title&quot;&gt;&#x5217;&#x8868;&#x6807;&#x9898;&#x680f;&lt;/div&gt;
+      ...
+    &lt;/div&gt;
+    &lt;a class=&quot;item&quot;&gt;...&lt;/a&gt;
+    ...
+&lt;/div&gt;</code></pre>
+</div>
+
+<div class="section">
+  <div class="heading">
+    <div class="title"><strong>更加紧凑的列表</strong></div>
+  </div>
+  <div class="box">
+    <p class="space-sm">为列表增加修饰类 <code>.compact</code> 来得到一个更加紧凑的列表。</p>
+    <div class="box outline">
+      <div class="list compact">
+        <a class="item">简单的列表条目</a>
+        <a class="item"><i class="icon-star"></i>&nbsp;带图标的列表条目</a>
+        <a class="item with-avatar">
+          <div class="avatar circle blue">张</div>
+          <div class="title">张三</div>
+        </a>
+        <a class="item multi-lines">
+          <div class="avatar circle"><img src="doc/img/avatar.png" alt=""></div>
+          <div class="content">
+            <div class="title">Catouse</div>
+            <div class="subtitle">面包吞噬者</div>
+          </div>
+        </a>
+        <a class="item multi-lines">
+          <div class="avatar circle red">李</div>
+          <div class="content">
+            <div class="title">李雷</div>
+            <div class="subtitle">我是英语老师李雷</div>
+          </div>
+          <div class="label yellow">金牌教师</div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <pre><code>&lt;div class=&quot;list <em>compact</em>&quot;&gt;
+  ...
+&lt;/div&gt;</code></pre>
+</div>
+
+<div class="section">
+  <div class="heading">
+    <div class="title"><strong>多级列表</strong></div>
+  </div>
+  <div class="box">
+    <p class="space-sm">在 <code>.list</code> 内包含另一个 <code>.list</code> 即可创建一个多级列表。虽然没有限制包含的层级，但为体验起见不要创建多余 3 级的包含关系。</p>
+    <div class="box outline">
+      <div class="list space">
+        <div class="heading">
+          <div class="title"><i class="icon-th"></i> 快速访问</div>
+          <nav class="nav">
+            <a><i class="icon icon-search"></i></a>
+          </nav>
+        </div>
+        <a class="item strong"><i class="muted icon-th-list"></i>&nbsp; 精彩内容</a>
+        <div class="list">
+          <a class="item"><i class="muted icon-camera-retro"></i>&nbsp; 摄影</a>
+          <a class="item"><i class="muted icon-paint-brush"></i>&nbsp; 绘画</a>
+        </div>
+        <a class="item"><i class="muted icon-cogs"></i>&nbsp; 设置</a>
+        <div class="divider"></div>
+        <div class="heading"><div class="title"><i class="icon-comments"></i> 论坛</div></div>
+        <a class="item with-avatar">
+          <div class="avatar rounded red">火</div>
+          <div class="title">我们的火星</div>
+        </a>
+        <a class="item with-avatar multi-lines">
+          <div class="avatar rounded gray text-blue">M</div>
+          <div class="content">
+            <div class="title">月球漫步</div>
+            <div class="subtitle">月球今晨宣布切断与地球通信</div>
+          </div>
+        </a>
+        <div class="list">
+          <a class="item with-avatar">
+            <div class="avatar circle important-pale text-tint"><i class="icon-newspaper-o"></i></div>
+            <span class="title">死守月球只会没有出路</span>
+          </a>
+          <a class="item with-avatar">
+            <div class="avatar circle red-pale text-tint"><i class="icon-frown"></i></div>
+            <span class="title">月球能源告急</span>
+          </a>
+        </div>
+        <a class="item with-avatar multi-lines">
+          <div class="avatar rounded yellow"><i class="icon-rocket"></i></div>
+          <div class="content">
+            <div class="title">太阳系远征</div>
+            <div class="subtitle">离开太阳系才是人类唯一的出路</div>
+          </div>
+          <div class="label red">火热</div>
+        </a>
+        <div class="list">
+          <a class="item with-avatar">
+            <div class="avatar circle green-pale text-tint">1st</div>
+            <span class="title">发现第一颗适宜系外行星</span>
+          </a>
+          <a class="item with-avatar">
+            <div class="avatar circle red-pale text-tint">12</div>
+            <span class="title">第12天</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <pre><code>&lt;div class=&quot;list&quot;&gt;
+  &lt;a class=&quot;item&quot;&gt;...&lt;/a&gt;
+  &lt;div class=&quot;list&quot;&gt;
+    &lt;a class=&quot;item&quot;&gt;...&lt;/a&gt;
+    ...
+  &lt;/div&gt;
+  ...
+&lt;/div&gt;</code></pre>
+</div>
+
+<div class="section">
+  <div class="heading">
+    <div class="title"><strong>单独使用列表条目</strong></div>
+  </div>
+  <div class="box">
+    <p class="space-sm">列表条目可以使用 <code>.list-item</code> 来取代 <code>.item</code> 单独使用，而不需要放置在 <code>.list</code> 中。</p>
+  </div>
+  <pre><code>&lt;div class=&quot;<em>list-item</em>&quot;&gt;
+  ...
+&lt;/div&gt;</code></pre>
+</div>
+
+<div class="section">
+  <div class="heading"><div class="title"><strong>外观选项</strong></div></div>
+  <div class="box">
+    <p class="space-sm">将外观选项中的着色辅助类与 <code>.list</code> 或 <code>.item</code> 一起使用。</p>
+    <p class="space-sm">外观选项用法参考 <strong class="text-link">基础 > 外观</strong> 章节。以下列举的常见用法。</p>
+    <div class="box outline">
+      <div class="list space">
+        <a class="item primary-pale"><i class="muted icon-home"></i>&nbsp; 首页</a>
+        <a class="item primary"><i class="muted icon-folder-close"></i>&nbsp; 项目</a>
+        <a class="item dark"><i class="muted icon-bug"></i>&nbsp; BUG</a>
+      </div>
+      <div class="list">
+        <a class="item with-avatar red">
+          <div class="avatar circle blue">张</div>
+          <div class="title">张三</div>
+        </a>
+        <a class="item with-avatar multi-lines green">
+          <div class="avatar circle"><img src="doc/img/avatar.png" alt=""></div>
+          <div class="content">
+            <div class="title">Catouse</div>
+            <div class="subtitle">面包吞噬者</div>
+          </div>
+        </a>
+        <a class="item with-avatar multi-lines purple">
+          <div class="avatar circle primary">李</div>
+          <div class="content">
+            <div class="title">李雷</div>
+            <div class="subtitle">我是英语老师李雷</div>
+          </div>
+          <div class="label yellow">金牌教师</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

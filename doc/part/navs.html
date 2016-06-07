@@ -26,6 +26,53 @@
 
 <div class="section">
   <div class="heading">
+    <div class="title"><strong>固定导航</strong></div>
+  </div>
+  <div class="box">
+    <p>导航作为应用全局导航条，通常需要固定在页面顶部或底部。在 <code>&lt;body&gt;</code> 或 <code>.page</code> 上使用辅助类 <code>.with-nav-top</code> 或 <code>.with-nav-bottom</code>，并在 <code>.nav</code> 上使用辅助类 <code>.affix.dock-top</code> 或 <code>.affix.dock-bottom</code>。</p>
+  </div>
+  <pre><code><span class="muted">// &#x56fa;&#x5b9a;&#x5728;&#x9876;&#x90e8;</span>
+&lt;body class=&quot;<em>with-nav-top</em>&quot;&gt;
+  &lt;nav class=&quot;<em>nav affix dock-top</em>&quot;&gt;
+    ...
+  &lt;/nav&gt;
+&lt;/body&gt;</code></pre>
+  <pre><code><span class="muted">// 固定在底部</span>
+&lt;body class=&quot;<em>with-nav-bottom</em>&quot;&gt;
+  &lt;nav class=&quot;<em>nav affix dock-bottom</em>&quot;&gt;
+    ...
+  &lt;/nav&gt;
+&lt;/body&gt;</code></pre>
+  <div class="box">
+    <p>在同一个页面可以同时将两个应用导航条分别固定顶部和底部。</p>
+  </div>
+  <pre><code><span class="muted">// 固定在顶部和底部</span>
+&lt;body class=&quot;<em>with-nav-top with-nav-bottom</em>&quot;&gt;
+  &lt;nav class=&quot;<em>nav affix dock-top</em>&quot;&gt;
+    ...
+  &lt;/nav&gt;
+  ...
+  &lt;nav class=&quot;<em>nav affix dock-bottom</em>&quot;&gt;
+    ...
+  &lt;/nav&gt;
+&lt;/body&gt;</code></pre>
+  <div class="box">
+    <p>当应用导航条固定时，可以为 <code>.nav.affix</code> 使用 <code>.dock-auto</code> 来让固定的应用导航条响应页面滚动事件并在合适的时候自动隐藏和显示。</p>
+  </div>
+  <pre><code><span class="muted">// 固定在顶部和底部并自动显示或隐藏</span>
+&lt;body class=&quot;with-nav-top with-nav-bottom&quot;&gt;
+  &lt;nav class=&quot;nav affix dock-top <em>dock-auto</em>&quot;&gt;
+    ...
+  &lt;/nav&gt;
+  ...
+  &lt;nav class=&quot;nav affix dock-bottom <em>dock-auto</em>&quot;&gt;
+    ...
+  &lt;/nav&gt;
+&lt;/body&gt;</code></pre>
+</div>
+
+<div class="section">
+  <div class="heading">
     <div class="title"><strong>着色</strong></div>
   </div>
   <div class="box">
