@@ -1,7 +1,7 @@
 <style>
-.tiles .cell {flex: none; min-width: 10rem}
-.tiles .cell-lg {flex: none; min-width: 15rem}
-.tiles .tile {padding: .5rem 1rem;}
+.tiles .cell {flex: none; min-width: 5rem}
+.tiles .cell-lg {flex: none; min-width: 8rem}
+.tiles .tile {padding: .25rem .5rem;}
 .focus-item {position: relative;}
 .focus-item:before,
 .focus-item:after {
@@ -18,18 +18,18 @@
   background-color: rgba(0, 255, 0, .2);
   right: 0;
   bottom: 0;
-  border: .1rem solid rgb(98, 224, 81);
+  border: .05rem solid rgb(98, 224, 81);
 }
 .focus-item:before {
   content: attr(class);
   background-color: rgb(98, 224, 81);
   color: #fff;
-  padding: .1rem 1rem;
+  padding: .05rem .5rem;
   transform: translate(0, -100%);
   z-index: 2;
-  text-shadow: 0 .1rem .2rem rgba(0,0,0,.5);
-  border-right: .1rem solid rgba(0,0,0,.1);
-  border-bottom: .1rem solid rgba(0,0,0,.1);
+  text-shadow: 0 .05rem .1rem rgba(0,0,0,.5);
+  border-right: .05rem solid rgba(0,0,0,.1);
+  border-bottom: .05rem solid rgba(0,0,0,.1);
 }
 .section.focus-item:before {content: '.section';}
 .layer.focus-item:before {content: '.layer';}
@@ -363,8 +363,8 @@
   <div class="box article">
     <p>为元素应用加载指示器，并隐藏内部内容。</p>
     <p><code>.loading-light</code> 应用在浅色背景元素上，同时 <code>.loading</code> 不可省略。</p>
-    <a class="btn can-loading loading-light">点我加载</a>
-    <a class="btn primary can-loading">点我加载</a>
+    <a class="btn can-loading loading-light loading-btn">点我加载</a>
+    <a class="btn primary can-loading loading-btn">点我加载</a>
   </div>
 </div>
 
@@ -485,6 +485,10 @@ $(function() {
           });
       }
       e.stopPropagation();
+  });
+
+  $('.loading-btn').click(function() {
+    $(this).toggleClass('loading');
   });
 });
 </script>

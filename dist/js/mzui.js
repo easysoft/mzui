@@ -1780,7 +1780,7 @@ window.$ === undefined && (window.$ = Zepto)
 })(Zepto)
 
 /* ========================================================================
- * ZUI: scroll.js
+ * ZUI: utils.js
  * http://zui.sexy
  * ========================================================================
  * Copyright (c) 2014 cnezsoft.com; Licensed MIT

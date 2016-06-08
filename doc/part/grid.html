@@ -1,6 +1,6 @@
 <style>
-.tiles .tile {padding: .5rem 1rem; text-align: center; overflow: hidden;}
-.tiles-lg .tile {padding: 1rem;}
+.tiles .tile {padding: .25rem .5rem; text-align: center; overflow: hidden;}
+.tiles-lg .tile {padding: .5rem;}
 </style>
 
 <section class="section">
@@ -110,16 +110,16 @@
   <div class="heading">
     <div class="title"><strong>列</strong></div>
   </div>
-  <p class="box">在 <code>.column</code> 中添加所需数目的 <code>.cell</code> 即可，所有单元格都会自动拥有合适的高度。应该手动为列添加一个指定的高度，否则列的高度为所有单元格的最小高度之和。以下例子中，所有列的高度指定为 15rem。当一列没有足够的高度显示所有单元格时会换行（类似多列）显示剩下的单元格。以下相同颜色的单元格在同一列中。</p>
+  <p class="box">在 <code>.column</code> 中添加所需数目的 <code>.cell</code> 即可，所有单元格都会自动拥有合适的高度。应该手动为列添加一个指定的高度，否则列的高度为所有单元格的最小高度之和。以下例子中，所有列的高度指定为 8rem。当一列没有足够的高度显示所有单元格时会换行（类似多列）显示剩下的单元格。以下相同颜色的单元格在同一列中。</p>
   <div class="container tiles">
-    <div class="column" style="height: 15rem">
+    <div class="column" style="height: 8rem">
       <div class="cell"><div class="tile primary">.cell</div></div>
     </div>
-    <div class="column" style="height: 15rem">
+    <div class="column" style="height: 8rem">
       <div class="cell"><div class="tile green">.cell</div></div>
       <div class="cell"><div class="tile green">.cell</div></div>
     </div>
-    <div class="column" style="height: 15rem">
+    <div class="column" style="height: 8rem">
       <div class="cell"><div class="tile red">.cell</div></div>
       <div class="cell"><div class="tile red">.cell</div></div>
       <div class="cell"><div class="tile red">.cell</div></div>
@@ -129,19 +129,19 @@
   </div>
   <p class="box">使用 <code>.cell-1</code> ~ <code>.cell-12</code> 来手动指定单元格显示的高度。指定高度的单元格同样可以和自动高度的单元格一起使用。</p>
   <div class="container tiles">
-    <div class="column" style="height: 15rem">
+    <div class="column" style="height: 8rem">
       <div class="cell-6"><div class="tile primary">.cell-6</div></div>
     </div>
-    <div class="column" style="height: 15rem">
+    <div class="column" style="height: 8rem">
       <div class="cell-4"><div class="tile green">.cell-4</div></div>
       <div class="cell-8"><div class="tile green">.cell-8</div></div>
     </div>
-    <div class="column" style="height: 15rem">
+    <div class="column" style="height: 8rem">
       <div class="cell-3"><div class="tile red">.cell-3</div></div>
       <div class="cell-4"><div class="tile red">.cell-4</div></div>
       <div class="cell-5"><div class="tile red">.cell-5</div></div>
     </div>
-    <div class="column" style="height: 15rem">
+    <div class="column" style="height: 8rem">
       <div class="cell-2"><div class="tile info">.cell-2</div></div>
       <div class="cell-4"><div class="tile info">.cell-4</div></div>
       <div class="cell"><div class="tile info">.cell (自动)</div></div>
