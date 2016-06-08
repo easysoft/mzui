@@ -6,8 +6,8 @@
 
   > .icon {
     display: block;
-    height: 3rem;
-    line-height: 3rem;
+    height: 30*@rem;
+    line-height: 30*@rem;
   }
 
   > * {
@@ -15,7 +15,7 @@
 
     &:first-child {
       margin-left: 0;
-      min-width: 1.4rem;
+      min-width: 14*@rem;
     }
   }
 
@@ -26,7 +26,7 @@
 
   > .label {
     position: relative;
-    top: .5rem;
+    top: 5*@rem;
 
     + .label {margin-left: @space-xs;}
   }
@@ -40,7 +40,7 @@
 
   &.multi-lines {
     > * {
-      margin-top: .5rem;
+      margin-top: 5*@rem;
     }
 
     > .content {
@@ -70,8 +70,8 @@
 .list.compact > .item {padding: @space-xs @padding-base-horizontal;}
 
 .list.with-divider {
-  border: .1rem solid @divider-color;
-  border-width: .1rem 0;
+  border: @border-width solid @divider-color;
+  border-width: @border-width 0;
 
   > .item {
     &:before {
@@ -81,7 +81,7 @@
       bottom: 0;
       left: @padding-base-horizontal;
       right: 0;
-      height: .1rem;
+      height: 1*@rem;
       background-color: @divider-color;
     }
 

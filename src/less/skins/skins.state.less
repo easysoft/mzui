@@ -12,7 +12,7 @@ a {
     left: 0;
     background-color: transparent;
     opacity: 0;
-    box-shadow: 0 0 0 .1rem @state-cover-active-color;
+    box-shadow: 0 0 0 1*@rem @state-cover-active-color;
     transform: scale(.6);
     .transition-fast();
   }
@@ -32,7 +32,7 @@ a {
   &:focus {
     outline: none;
     &:after {
-      box-shadow: inset 0 0 0 .1rem fade(@state-cover-active-color, 90%);
+      box-shadow: inset 0 0 0 1*@rem fade(@state-cover-active-color, 90%);
       background-color: fade(@state-cover-active-color, 80%);
       transform: scale(1);
       opacity: @state-cover-focus-opacity;
@@ -75,12 +75,12 @@ a {
     position: absolute;
     top: 50%;
     left: 50%;
-    margin-top: -.9rem;
-    margin-left: -.9rem;
-    border: .3rem dotted rgba(255,255,255,.5);
+    margin-top: -9*@rem;
+    margin-left: -9*@rem;
+    border: 3*@rem dotted rgba(255,255,255,.5);
     border-color: rgba(255,255,255,.1) rgba(255,255,255,.4) rgba(255,255,255,.5) rgba(255,255,255,.6);
-    width: 1.8rem;
-    height: 1.8rem;
+    width: 18*@rem;
+    height: 18*@rem;
     border-radius: 50%;
     .transition-fast(opacity);
   }

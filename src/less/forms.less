@@ -27,10 +27,10 @@
     
     outline: none;
 
-    &:not([multiple]) {padding-right: 2rem;}
+    &:not([multiple]) {padding-right: 2*@rem;}
 
     &[multiple] {
-      max-height: 7.5rem;
+      max-height: 75*@rem;
       overflow-y: auto;
     }
   }
@@ -39,12 +39,12 @@
     content: ' ';
     display: block;
     position: absolute;
-    right: 1rem;
-    top: 1.2rem;
+    right: 1*@rem;
+    top: 12*@rem;
     width: 0;
     height: 0;
     border-style: solid;
-    border-width: .7rem .5rem 0 .5rem;
+    border-width: 7*@rem 5*@rem 0 5*@rem;
     border-color: @input-border-color transparent transparent transparent;
   }
 }
@@ -81,7 +81,7 @@
   > input + label {
     position: relative;
     z-index: 0;
-    padding: @padding-small-vertical 0 @padding-small-vertical 2.5rem;
+    padding: @padding-small-vertical 0 @padding-small-vertical 25*@rem;
     display: block;
 
     &:before,
@@ -90,9 +90,9 @@
       display: flex;
       position: absolute;
       left: 0;
-      top: @padding-small-vertical + 0.1rem;
-      height: 1.8rem;
-      width: 1.8rem;
+      top: @padding-small-vertical + 1*@rem;
+      height: 18*@rem;
+      width: 18*@rem;
       align-items: center;
       justify-content: center;
       color: transparent;
@@ -121,7 +121,7 @@
   }
 
   &.inline-block + .inline-block {
-    margin-left: 1rem;
+    margin-left: 1*@rem;
   }
 }
 
@@ -139,13 +139,13 @@
   + label:before {border-radius: 1rem;}
 
   + label:after {
-    width: .8rem;
-    height: .8rem;
+    width: 8*@rem;
+    height: 8*@rem;
     background-color: @color-gray;
-    border-radius: .4rem;
+    border-radius: 4*@rem;
     border: none;
-    left: .5rem;
-    top: @padding-small-vertical + 0.6rem;
+    left: 5*@rem;
+    top: @padding-small-vertical + 6*@rem;
   }
 
   &:focus + label:after {background-color: @color-primary;}
@@ -174,9 +174,9 @@
   &.has-label-left {
     > label {
       position: absolute;
-      left: .5rem;
-      top: -.1rem;
-      min-width: 2rem;
+      left: 5*@rem;
+      top: -1*@rem;
+      min-width: 2*@rem;
       text-align: center;
       opacity: .5;
     }
@@ -184,7 +184,7 @@
     .input,
     .textarea,
     .select > select {
-      padding-left: 2.5rem;
+      padding-left: 25*@rem;
 
       &:focus + label {
         color: @color-focus;
@@ -197,9 +197,9 @@
   &.has-icon-right {
     > .icon {
       position: absolute;
-      right: .5rem;
-      top: .4rem;
-      min-width: 2rem;
+      right: 5*@rem;
+      top: 4*@rem;
+      min-width: 20*@rem;
       text-align: center;
       opacity: .5;
     }
@@ -207,7 +207,7 @@
     .input,
     .textarea,
     .select > select {
-      padding-right: 2.5rem;
+      padding-right: 25*@rem;
 
       &:focus + .icon,
       &:focus + label + .icon {
@@ -221,7 +221,7 @@
       position: absolute;
       right: 0;
       top: 0;
-      min-width: 2rem;
+      min-width: 20*@rem;
       text-align: center;
       opacity: .5;
     }

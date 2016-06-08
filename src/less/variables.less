@@ -5,7 +5,8 @@
 
 // Scaffolding
 
-@root-size:               10px;
+@root-font-size:          20px;
+@rem:                     1/20rem;
 @text-color:              @color-fore;
 @page-background-color:   @color-gray-pale;
 @link-color:              inherit;
@@ -19,20 +20,20 @@
 @font-family-monospace:   Monaco, Menlo, Consolas, "Courier New", monospace;
 @font-family-base:        @font-family-sans-serif;
 
-@font-size-base:          1.4rem;
-@font-size-title:         1.6rem;
-@font-size-large:         1.8rem;
-@font-size-small:         1.2rem;
+@font-size-base:          14*@rem;
+@font-size-title:         16*@rem;
+@font-size-large:         18*@rem;
+@font-size-small:         12*@rem;
 
-@font-size-h1:            2.4rem;
-@font-size-h2:            2.0rem;
-@font-size-h3:            1.8rem;
-@font-size-h4:            1.6rem;
-@font-size-h5:            1.4rem;
-@font-size-h6:            1.2rem;
+@font-size-h1:            24*@rem;
+@font-size-h2:            20*@rem;
+@font-size-h3:            18*@rem;
+@font-size-h4:            16*@rem;
+@font-size-h5:            14*@rem;
+@font-size-h6:            12*@rem;
 
 @line-height-base:        1.428571429; // 2/1.4
-@line-height-computed:    2rem;
+@line-height-computed:    20*@rem;
 @line-height-large:       1.3333333; // 24px
 @line-height-small:       1.5;       // 18px
 
@@ -47,7 +48,7 @@
 // Dividers
 
 @divider-color:           rgba(0,0,0,.1);
-@divider-width:           .1rem;
+@divider-width:           1*@rem;
 
 
 // Borders
@@ -56,16 +57,16 @@
 @border-color-solid:        @color-gray-light;
 @border-width:              @divider-width;
 
-@border-radius-base:       .3rem;
-@border-radius-large:      .6rem;
-@border-radius-small:      .2rem;
+@border-radius-base:       3*@rem;
+@border-radius-large:      6*@rem;
+@border-radius-small:      2*@rem;
 
 
 // Spaces
 // 
 // Include margins and paddings
 
-@space:                     2rem;         // 20px default
+@space:                     20*@rem;      // 20px default
 @space-sm:                  @space / 2;   // 10px default
 @space-xs:                  @space / 4;   // 5px  default
 @space-lg:                  @space * 1.5; // 30px default
@@ -86,10 +87,10 @@
 
 // Media queries breakpoints
 
-@screen-phone:              48rem;
-@screen-tablet:             76.8rem;
-@screen-desktop:            99.2rem;
-@screen-wide-desktop:       120rem;
+@screen-phone:              480*@rem;
+@screen-tablet:             768*@rem;
+@screen-desktop:            992*@rem;
+@screen-wide-desktop:       1200*@rem;
 
 
 // Z-index
@@ -111,22 +112,22 @@
 
 @muted-opacity:             .5;
 
-@blur-value:                1rem;
+@blur-value:                10*@rem;
 @blur-value-sm:             @blur-value / 2;
 @blur-value-lg:             @blur-value * 2;
 
-@shadow-divider:            inset 0 -.1rem 0 @divider-color;
-@shadow-divider-top:        inset 0 .1rem 0 @divider-color;
-@shadow-divider-outside:    0 .1rem 0 @divider-color;
+@shadow-divider:            inset 0 -1*@rem 0 @divider-color;
+@shadow-divider-top:        inset 0 1*@rem 0 @divider-color;
+@shadow-divider-outside:    0 1*@rem 0 @divider-color;
 @shadow-0:                  none;
-@shadow-1:                  rgba(0, 0, 0, .05) 0 .1rem .4rem, rgba(0, 0, 0, .12) 0 .1rem .2rem;
-@shadow-2:                  rgba(0, 0, 0, .12) 0 .1rem .6rem, rgba(0, 0, 0, .15) 0 .1rem .4rem;
-@shadow-3:                  rgba(0, 0, 0, .15) 0 .3rem 1rem, rgba(0, 0, 0, .25) 0 .3rem 1rem;
-@shadow-4:                  rgba(0, 0, 0, .188235) 0 1rem 3rem, rgba(0, 0, 0, .227451) 0 .6rem 1rem;
-@shadow-1-top:              rgba(0, 0, 0, .05) 0 -.1rem .4rem, rgba(0, 0, 0, .12) 0 -.1rem .2rem;
-@shadow-2-top:              rgba(0, 0, 0, .12) 0 -.1rem .6rem, rgba(0, 0, 0, .15) 0 -.1rem .4rem;
-@shadow-3-top:              rgba(0, 0, 0, .15) 0 -.3rem 1rem, rgba(0, 0, 0, .25) 0 -.3rem 1rem;
-@shadow-4-top:              rgba(0, 0, 0, .188235) 0 -1rem 3rem, rgba(0, 0, 0, .227451) 0 -.6rem 1rem;
+@shadow-1:                  rgba(0, 0, 0, .05) 0 1*@rem 4*@rem, rgba(0, 0, 0, .12) 0 1*@rem 2*@rem;
+@shadow-2:                  rgba(0, 0, 0, .12) 0 1*@rem 6*@rem, rgba(0, 0, 0, .15) 0 1*@rem 4*@rem;
+@shadow-3:                  rgba(0, 0, 0, .15) 0 3*@rem 10*@rem, rgba(0, 0, 0, .25) 0 3*@rem 10*@rem;
+@shadow-4:                  rgba(0, 0, 0, .188235) 0 10*@rem 30*@rem, rgba(0, 0, 0, .227451) 0 6*@rem 10*@rem;
+@shadow-1-top:              rgba(0, 0, 0, .05) 0 -1*@rem 4*@rem, rgba(0, 0, 0, .12) 0 -1*@rem 2*@rem;
+@shadow-2-top:              rgba(0, 0, 0, .12) 0 -1*@rem 6*@rem, rgba(0, 0, 0, .15) 0 -1*@rem 4*@rem;
+@shadow-3-top:              rgba(0, 0, 0, .15) 0 -3*@rem 10*@rem, rgba(0, 0, 0, .25) 0 -3*@rem 10*@rem;
+@shadow-4-top:              rgba(0, 0, 0, .188235) 0 -10*@rem 30*@rem, rgba(0, 0, 0, .227451) 0 -6*@rem 10*@rem;
 
 @state-disabled-opacity:      .5;
 @state-cover-hover-color:     #000;
@@ -135,13 +136,13 @@
 @state-cover-active-opacity:  .11;
 @state-cover-focus-opacity:   .1;
 
-@arrow-size:                .8rem;
+@arrow-size:                8*@rem;
 
 
 // Icon
 
 @icon-font-path:          "../fonts";
-@icon-font-size:          1.4rem;
+@icon-font-size:          14*@rem;
 @icon-border-color:       @color-gray-light;
 @icon-muted-color:        @color-gray-light;
 @icon-light-color:        @color-light;
@@ -154,18 +155,18 @@
 // Buttons
 
 @btn-font-weight:                normal;
-@btn-size:                       3rem;
-@btn-size-lg:                    4rem;
-@btn-size-sm:                    2.4rem;
-@btn-size-xs:                    2rem;
+@btn-size:                       30*@rem;
+@btn-size-lg:                    40*@rem;
+@btn-size-sm:                    24*@rem;
+@btn-size-xs:                    20*@rem;
 
 
 // Avatar
 
-@avatar-size:               3rem;
-@avatar-size-lg:            4rem;
-@avatar-size-sm:            2rem;
-@avatar-size-xl:            7rem;
+@avatar-size:               30*@rem;
+@avatar-size-lg:            40*@rem;
+@avatar-size-sm:            20*@rem;
+@avatar-size-xl:            70*@rem;
 
 
 // List

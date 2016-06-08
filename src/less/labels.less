@@ -1,25 +1,25 @@
 .label {
-  display: inline-block;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   font-size: @font-size-small;
-  line-height: 1.8rem;
-  height: 2rem;
-  min-width: 2rem;
-  text-align: center;
-  padding: .1rem @padding-small-horizontal;
+  height: 20*@rem;
+  min-width: 20*@rem;
+  padding: 0 @padding-small-horizontal;
   vertical-align: middle;
   background-color: @color-gray-lighter;
-  border: .1rem solid transparent;
+  border: @border-width solid transparent;
 
   > .icon {line-height: 1}
 
   &.circle {
-    border-radius: 1rem;
-    padding: .1rem .7rem;
+    border-radius: 10*@rem;
+    padding: 1*@rem 7*@rem;
   }
 
   + .label {
-    margin-left: .5rem;
+    margin-left: 5*@rem;
 
-    &.pull-right {margin-right: .5rem}
+    &.pull-right {margin-right: 5*@rem}
   }
 }

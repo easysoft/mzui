@@ -8,7 +8,7 @@ samp {
 
 // Inline code
 code {
-  padding: .2rem .5rem;
+  padding: 2*@rem 5*@rem;
   font-size: @font-size-small;
   color: @color-red;
   background-color: rgba(0,0,0,.05);
@@ -36,7 +36,7 @@ pre {
   display: block;
   font-size: @font-size-small;
   padding: @space-sm;
-  border: .1rem solid transparent;
+  border: 1*@rem solid transparent;
   background-color: rgba(0,0,0,.05);
 
   // Account for some code outputs that place code tags in pre tags
@@ -51,7 +51,7 @@ pre {
 
 // Enable scrollable blocks of code
 .pre-scrollable {
-  max-height: 10rem;
+  max-height: 100*@rem;
   max-width: 100%;
   overflow: auto;
 }
