@@ -5,19 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>MZUI</title>
   <link rel="stylesheet" href="dist/css/mzui.css">
-  <style>
-  #headNav > a.active {font-size: .8rem}
-  .heading.affix .icon-github {font-size: 1rem}
-  .nav.affix {top: 2.4rem;}
-  #partial {padding: 0}
-  @media (min-width: 24rem) {
-    #partial {margin-top: 1rem}
-  }
-  #pageLoading {display: none}
-  .display-loading #pageLoading {display: block}
-
-  pre em {font-weight: bold; color: #ea644a}
-  </style>
+  <link rel="stylesheet" href="doc/css/doc.css">
 </head>
 <body class='with-heading-top with-nav-top display-loading'>
   <!-- App bar -->
@@ -42,19 +30,6 @@
   <div id="partial" class="container"></div>
 
   <script src="dist/js/mzui.js"></script>
-  <script>
-  $(function() {
-      $('#headNav').display({
-          selector: 'a:not(.brand-name)',
-          activeClass: 'active',
-          target: '#navs',
-          trigger: 'click',
-          load: true,
-          shown: function() {
-              $('#navs > a[data-display-auto]').trigger('click');
-          }
-      });
-  });
-  </script>
+  <script src="doc/js/doc.js"></script>
 </body>
 </html>

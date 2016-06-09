@@ -176,15 +176,18 @@
       "config": true,
       "src": "colorset.less"
     },
-    "config": {
-      "name": "Less variables",
-      "config": true,
-      "src": {"less": ["colorset", "config", "config.user"]}
+    "colorset.test": {
+      "src": "~.less"
     },
     "variables": {
       "name": "Less variables",
       "config": true,
       "src": "variables.less"
+    },
+    "config": {
+      "name": "Less variables",
+      "config": true,
+      "src": {"less": ["colorset", "variables", "variables.user"]}
     },
     "mixins": {
       "name": "样式片段",
@@ -336,6 +339,9 @@
     },
     "doc.js": {
       "src": "doc.js"
+    },
+    "doc.style": {
+      "src": "~/doc.less"
     }
   },
   "builds": {
@@ -344,23 +350,22 @@
       "dest": "dist/",
       "filename": "mzui",
       "subdirectories": true,
-      "settingDpds": ["setting"],
-      "includes": ["zepto", "normalize", "utilities", "scaffolding", "animations", "typography", "grid", "icons", "color", "skin", "skin.js", "avatar", "layout", "scrollListener", "navs", "buttons", "labels", "appbar", "appnav", "list", "display", "display.plugs"]
+      "includes": ["colorset", "variables", "mixins", "zepto", "normalize", "scaffolding", "utilities", "typography", "layout", "animations", "icons", "avatar", "navs", "buttons", "labels", "heading", "list", "table", "forms", "article", "display", "display.plugs", "scrollListener", "color", "skin", "skin.js", "ajax.action", "ajax.form", "code"]
     },
     "dist": {
       "title": "dist",
       "dest": "dist/",
       "filename": "mzui",
       "subdirectories": true,
-      "includes": ["colorset", "variables", "mixins", "zepto", "normalize", "scaffolding", "utilities", "typography", "layout", "animations", "icons", "avatar", "navs", "buttons", "labels", "heading", "list", "table", "forms", "article", "display", "display.plugs", "scrollListener", "color", "skin", "skin.js", "ajax.action", "ajax.form", "code"]
+      "bundles": ["standard"]
     },
     "doc": {
       "dest": "doc/",
-      "filename": "mzui.doc",
+      "filename": "doc",
       "subdirectories": true,
       "settingDpds": ["setting"],
-      "includes": ["doc.js"],
-      "bundles": ["standard"]
+      "includes": ["doc.js", "doc.style", "colorset.test"],
+      "bundles": ["dist"]
     }
   }
 }
