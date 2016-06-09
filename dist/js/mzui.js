@@ -1939,7 +1939,7 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
         that.$       = $element;
         that.options = options;
 
-        if(options.displayAuto) {
+        if(options.displayAuto !== undefined && options.displayAuto !== false) {
             if(selector && $element) {
                 $element.find(selector).each(triggerCallback);
             } else that.show();
@@ -2071,7 +2071,7 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
             element        = options.element,
             placement      = options.placement,
             $layer         = options.layer,
-            suggestAnimate = 'bottom', 
+            suggestAnimate = '', 
             suggestArrow   = '',
             displayName    = options.name,
             arrow          = options.arrow,
@@ -2084,6 +2084,10 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
             $target.attr('class', STR_ORIGINAL_CLASS);
             if(options.layer) options.layer.remove();
             return callback && callback();
+        }
+
+        if(options.showSingle) {
+            $target.parent().children().not($target).removeClass(options.showInClass).addClass(STR_HIDDEN);
         }
 
         if($layer) $layer.removeClass(STR_HIDDEN);
@@ -2144,8 +2148,8 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
                         eHeight = $element.height(),
                         width = $target.width(),
                         height = $target.height(),
-                        wWidth = $(window).width(),
-                        wHeight = $(window).height(),
+                        wWidth = $(document).width(),
+                        wHeight = $(document).height(),
                         floatStart = float === 'start',
                         floatEnd = float === 'end'
 
@@ -2231,7 +2235,7 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
 
             if(animate) {
                 if(animate === true) {
-                    $target.addClass('enter-' + suggestAnimate || 'fade');
+                    $target.addClass(suggestAnimate ? ('enter-' + suggestAnimate) : 'fade');
                 } else {
                     var animateType = typeof animate;
                     if($.isStr(animateType)) {
@@ -2287,9 +2291,9 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
             $(options.element).removeClass(options.activeClass);
         }
 
+        $target.removeClass(options.showInClass);
+        $backdrop.removeClass('in');
         if(options.animate) {
-            $target.removeClass(options.showInClass);
-            $backdrop.removeClass('in');
             clearTimeout(that.animateCall);
             that.animateCall = setTimeout(afterHide, options.duration + 50);
         } else {
@@ -2299,7 +2303,7 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
 
     Display.prototype.isShow = function(options) {
         options = this._getOptions(options);
-        return options.checkShow ? $.calValue(options.checkShow, this, options) : this.last;
+        return options.checkShow ? $.calValue(options.checkShow, this, options) : (options.$target ? options.$target.hasClass(options.showInClass) : options.last);
     };
 
     Display.prototype.toggle = function(options, callback) {
@@ -2344,6 +2348,7 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
         loadingClass: 'loading', // CSS class to append to target and body element
 
         showInClass: 'in',     // CSS class to be add after show target
+        // showSingle: false,     // 
         animate: true,         // boolean, CSS classes or number for duration
         duration: 300,         // animation duration
         // backdrop: false,    // show backdrop or not,
