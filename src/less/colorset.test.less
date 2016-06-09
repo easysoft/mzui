@@ -4,21 +4,21 @@
 
 .colorset {
   .clearfix();
-  padding-bottom: 10px;
-  padding-top: 20px;
-  border-bottom: 1px dashed darken(@color-back, 10%);
+  padding-bottom: 10*@rem;
+  padding-top: 20*@rem;
+  border-bottom: 1*@rem dashed darken(@color-back, 10%);
 }
 
 .color-tile {
   display: block;
-  width: 160px;
-  height: 160px;
+  width: 139*@rem;
+  height: 100*@rem;
   color: #fff;
   position: relative;
   float: left;
-  margin-right: 10px;
-  margin-bottom: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.5);
+  margin-right: 10*@rem;
+  margin-bottom: 10*@rem;
+  border: 1*@rem solid rgba(0, 0, 0, 0.5);
 
   &:after,
   &:before {
@@ -26,13 +26,13 @@
     position: absolute;
     bottom: 0;
     left: 0;
-    height: 24px;
-    line-height: 24px;
+    height: 24*@rem;
+    line-height: 24*@rem;
     width: 100%;
-    font-size: 12px;
+    font-size: 12*@rem;
     color: rgba(255, 255, 255, 0.7);
     text-align: left;
-    padding: 0 5px;
+    padding: 0 5*@rem;
     opacity: .5;
     .transition-normal();
   }
@@ -61,7 +61,7 @@
     background-color: @@c;
     &:after,
     &:before {
-      color: contrast(@@c, @color-fore, @color-back, 70%);
+      .better-color(@@c);
     }
     &:after {
       content: %("%d", @@c);
