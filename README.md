@@ -1,5 +1,7 @@
 # MZUI
 
+http://easysoft.github.io/mzui/
+
 这是 [ZUI](http://zui.sexy) 的移动优化版本。
 
 ## 特色
