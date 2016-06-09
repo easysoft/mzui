@@ -55,11 +55,7 @@
   }
 }
 
-.nav-lg {
-  > a {
-    height: 48*@rem;
-  }
-}
+.nav-lg {> a {height: 48*@rem;}}
 
 // Affix
 
@@ -79,9 +75,11 @@
 .in-scroll.scroll-down {
   &.with-heading-top, .with-heading-top {
     > .nav.dock-top {
+      // Yes, not 100%! The magic 99% to prevent bug in safari
       transform: translate(0, -100%);
       &.dock-auto {
-        transform: translate(0, -200%);
+        // Yes, not 200%! The magic 199% to prevent bug in safari
+        transform: translate(0, -199%);
       }
     }
   }

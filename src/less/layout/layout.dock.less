@@ -33,12 +33,14 @@
 
   &.scroll-down {
     .affix.dock-top.dock-auto {
-      transform: translate(0, -100%);
+      // Yes, not 100%! The magic 99% to prevent bug in safari
+      transform: translate(0, -99%);
       .shadow-0();
     }
 
     .affix.dock-bottom.dock-auto {
-      transform: translate(0, 100%);
+      // Yes, not 100%! The magic 99% to prevent bug in safari
+      transform: translate(0, 99%);
       .shadow-0();
     }
   }
