@@ -124,6 +124,10 @@
             var remoteError = options.remoteError;
             var isRemoteErrorAble = remoteError !== false && remoteError !== undefined;
             var stopLoading = function() {
+                if(that.lastRemote !== isRemoteContent) {
+                    $(options.container).scrollTop(0);
+                    that.lastRemote = isRemoteContent;
+                }
                 if(isRemoteErrorAble) $(document).off(ajaxEventName);
                 $target.removeClass(loadingClass).addClass(options.showInClass);
                 $(STR_BODY).removeClass(STR_DISPLAY + '-loading');
@@ -423,7 +427,15 @@
     };
 
     Display.prototype.toggle = function(options, callback) {
-        this[this.isShow(options) ? 'hide' : 'show'](options, callback);
+        var toggle;
+        if(options === true || options === false) {
+            toggle = options;
+            options = $.isPlainObject(callback) ? callback : null;
+            if(options) callback = null;
+        } else {
+            toggle = this.isShow(options);
+        }
+        this[toggle ? 'hide' : 'show'](options, callback);
     };
 
     Display.NAME = NAME;
@@ -478,12 +490,14 @@
     Display.plugs = function(name, func, fnName) {
         if($.isPlainObject(name)) {
             $.each(name, Display.plugs);
-        } else {
+        } else if(func) {
             Display.plugs[name] = func;
             name = name.indexOf('_') === 0 ? name.substr(1) : name;
-            if(!$.fn[name]) {
+            if(!$.fn[name] && fnName !== false) {
                 $.bindFn(fnName || name, Display, {display: name});
             }
+        } else {
+            return Display.plugs[name];
         }
     };
 
