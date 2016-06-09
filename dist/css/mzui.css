@@ -1,5 +1,5 @@
 /*!
- * mzui - v1.0.0 - 2016-06-07
+ * mzui - v1.0.0 - 2016-06-09
  * Copyright (c) 2016 cnezsoft.com; Licensed MIT
  */
 
@@ -573,28 +573,21 @@ ol
     padding-right: .5rem;
     padding-left: .5rem;
 }
-@media (min-width: 480*1/20rem)
-{
-    .container
-    {
-        max-width: 28.8rem;
-    }
-}
-@media (min-width: 768*1/20rem)
+@media (min-width: 38.4rem)
 {
     .container
     {
         max-width: 36rem;
     }
 }
-@media (min-width: 992*1/20rem)
+@media (min-width: 49.6rem)
 {
     .container
     {
         max-width: 47rem;
     }
 }
-@media (min-width: 1200*1/20rem)
+@media (min-width: 60rem)
 {
     .container
     {
@@ -669,15 +662,15 @@ ol
 }
 .in-scroll.scroll-down .affix.dock-top.dock-auto
 {
-    -webkit-transform: translate(0, -100%);
-            transform: translate(0, -100%);
+    -webkit-transform: translate(0, -99%);
+            transform: translate(0, -99%);
 
     box-shadow: none;
 }
 .in-scroll.scroll-down .affix.dock-bottom.dock-auto
 {
-    -webkit-transform: translate(0, 100%);
-            transform: translate(0, 100%);
+    -webkit-transform: translate(0, 99%);
+            transform: translate(0, 99%);
 
     box-shadow: none;
 }
@@ -2851,8 +2844,8 @@ a .icon.spin
 .in-scroll.scroll-down.with-heading-top > .nav.dock-top.dock-auto,
 .in-scroll.scroll-down .with-heading-top > .nav.dock-top.dock-auto
 {
-    -webkit-transform: translate(0, -200%);
-            transform: translate(0, -200%);
+    -webkit-transform: translate(0, -199%);
+            transform: translate(0, -199%);
 }
 .in-scroll > .dock-top .nav-secondary
 {
@@ -4701,6 +4694,7 @@ a:active:after,
 
     opacity: 1;
 }
+.code,
 code,
 kbd,
 pre,
@@ -4716,6 +4710,10 @@ code
 
     color: #ea644a;
     background-color: rgba(0, 0, 0, .05);
+}
+.code
+{
+    color: #ea644a;
 }
 pre
 {
