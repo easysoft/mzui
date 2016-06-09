@@ -9,6 +9,7 @@ $(function() {
         activeClass: 'active',
         target: '#navs',
         trigger: 'click',
+        animate: false,
         load: true,
         shown: function() {
             $('#navs > a[data-display-auto]').trigger('click');
