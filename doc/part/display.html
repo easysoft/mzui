@@ -1,15 +1,42 @@
 <div class="section">
-  <div class="heading"><div class="title"><strong>基本用法</strong></div></div>
+  <div class="heading">
+    <div class="title"><strong>介绍</strong></div>
+  </div>
   <div class="box article">
-    <p>Display 是一个辅助在页面上动态展示内容的插件，允许指定元素或者动态创建元素作为展示内容的目标，所展示的内容可以是本地的、复制已有元素内容或者来自远程服务器。</p>
+    <p>Display 的核心功能是在特定时机在显示或隐藏目标并目标上展示内容。允许指定触发元素并绑定事件来决定显示或隐藏的时机。每次显示可以更新目标内的内容，这些内容可以是本地的、复制已有元素内容或者来自远程服务器。</p>
     <p>Display 拥有丰富的选项可供定制，使用不同的选项组合实现各种丰富的功能，例如打开对话框、显示悬浮消息、展示远程内容、实现标签页、打开下拉菜单等。</p>
-    <h5>使用 data-*</code></h5>
+    <h5>名称解释</h5>
+    <table class="table bordered">
+      <tbody>
+        <tr>
+          <th style="width: 4rem">目标</th>
+          <td>页面内要操作的 DOM 元素。在选项中使用 <code>target</code> 来指定。</td>
+        </tr>
+        <tr>
+          <th>触发元素</th>
+          <td>页面内绑定触发事件的元素。目标和触发元素可以相同。</td>
+        </tr>
+        <tr>
+          <th>内容</th>
+          <td>用来显示在目标上的内容。内容可以为 HTML 文本或者复制页面上已有的元素。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section">
+  <div class="heading"><div class="title"><strong>使用方式</strong></div></div>
+  <div class="box article">
+    <h5 class="code">[data-display]</h5>
     <div class="box outline">
       <a class="btn primary outline" data-display="messager" data-content="Hello" data-type="success">使用 Display 显示消息</a>
     </div>
   </div>
-  <pre><code>&lt;a class=&quot;btn primary outline&quot; data-display=&quot;messager&quot; data-content=&quot;Hello&quot; data-type=&quot;success&quot;&gt;&#x4f7f;&#x7528; Display &#x663e;&#x793a;&#x6d88;&#x606f;&lt;/a&gt;</code></pre>
-  <h5 class="box">使用 <code>$().display()</code></h5>
+  <pre><code>&lt;a id=&quot;test&quot; class=&quot;btn primary outline&quot; data-display=&quot;messager&quot; data-content=&quot;Hello&quot; data-type=&quot;success&quot;&gt;&#x4f7f;&#x7528; Display &#x663e;&#x793a;&#x6d88;&#x606f;&lt;/a&gt;</code></pre>
+  <pre><code><span class="muted">// 使用 $().data('mzui.display') 获取 Display 实例</span>
+var myDisplay = $('#test').data('mzui.display');</code></pre>
+  <h5 class="box code">$().display()</h5>
   <pre><code><span class="muted">// HTML</span>
 &lt;a id=&quot;showDisplayMessage&quot; class=&quot;btn primary outline&quot; &gt;&#x4f7f;&#x7528; Display &#x663e;&#x793a;&#x6d88;&#x606f;&lt;/a&gt;
 
@@ -18,10 +45,13 @@ $('#showDisplayMessage').display({
   display: 'messager'
   content: 'Hello',
   type: 'success'
-});</code></pre>
+});
 
-  <h5 class="box">使用 <code>$.Display</code></h5>
-  <pre><code><span class="muted">// 创建 display 示例</span>
+<span class="muted">// 使用 $().data('mzui.display') 获取 Display 实例</span>
+var myDisplay = $('#showDisplayMessage').data('mzui.display');</code></pre>
+
+  <h5 class="box code">new $.Display()</h5>
+  <pre><code><span class="muted">// 创建 display 实例</span>
 var myDisplay = new $.Display({
   display: 'messager'
 });
@@ -31,20 +61,12 @@ myDisplay.show({
   content: 'Hello',
   type: 'success'
 });</code></pre>
-</div>
 
-<div class="section">
-  <div class="heading">
-    <div class="title"><strong>概念</strong></div>
-  </div>
-  <div class="box article">
-    <h5>目标元素</h5>
-    <p>页面内要操作的 DOM 元素。在选项中使用 <code>target</code> 来指定。</p>
-    <h5>触发元素</h5>
-    <p>页面内绑定触发事件的元素。目标元素和触发元素可以相同。</p>
-    <h5>内容</h5>
-    <p>用来显示在目标元素上的内容。内容可以为 HTML 文本或者复制页面上已有的元素。</p>
-  </div>
+  <h5 class="box code">$.Display.all[name]</h5>
+  <div class="box"><p>当已知一个 Display 实例的名称，可以根据实例名称直接从全局对象获取实例。</p></div>
+  <pre><code>var myNamedDisplay = $.Display.all['myDisplayName'];
+myNamedDisplay.show();</code></pre>
+  <p class="box">更多使用例子参见 <strong class="text-link">JS > Display 玩法</strong> 章节。</p>
 </div>
 
 <div class="section">
@@ -55,100 +77,104 @@ myDisplay.show({
     <p>Display 选项可以使用 <code>data-*</code> 属性进行设定，如果使用 JavaScript 进行调用，<code>$().display()</code>、<code>$.Display()</code> 和 <code>display.show()</code> 方法均支持设定选项，新的选项会覆盖旧的选项。</p>
     <p>全部选项如下：</p>
 
-    <h4 class="text-red">element</h4>
+    <h5 class="code">name</h5>
+    <p>用于指定当前 Display 实例所使用的名称，如果不设置此选项则会在创建每个 Display 实例时设置一个随机的名称。</p>
+    <p>当需要通过 <code>$.Display.all[name]</code> 来获取 Display 实例时应该设置一个便于记忆且全局唯一的名称。</p>
+
+    <h5 class="code">element</h5>
     <p>触发器元素：有效的 CSS 选择器字符串，或者指定为回调函数来返回结果。</p>
     <p>当使用 <code>[data-display]</code> 方式或者 <code>$().display()</code> 调用时，改参数会自动使用获取到的 Zepto 实例作为选项的值。当使用 <code>$.Display()</code> 方式调用时，可以忽略该选项，则不会绑定触发器事件。</p>
     <p>当该值为回调函数时，该回调函数拥有一个参数 <code>options</code> 表示当前 Display 实例的 options，回调函数 this 引用指向当前 Display 实例。</p>
 
-    <h4 class="text-red">selector</h4>
+    <h5 class="code">selector</h5>
     <p>触发事件代理选择器，可省略，默认为 <code>null</code>。</p>
     <p>当该选项被使用时，触发器事件会使用代理的方式进行绑定。</p>
 
-    <h4 class="text-red">target</h4>
-    <p>要操作的目标元素：<code>'!new'</code>, <code>'!self'</code> 或者有效的 CSS 选择器字符串，或者指定为回调函数来返回结果。</p>
+    <h5 class="code">target</h5>
+    <p>要操作的目标：<code>'!new'</code>, <code>'!self'</code> 或者有效的 CSS 选择器字符串，或者指定为回调函数来返回结果。</p>
     <p>当改选项被指定为 <code>'!new'</code>，会在页面中动态创建一个唯一的元素。</p>
-    <p>当该选项被指定为 <code>'!self'</code> 时，<code>element</code> 不可省略，目标元素会直接使用 <code>element</code> 选项值，这样就可以为某个元素自身更新内容。</p>
+    <p>当该选项被指定为 <code>'!self'</code> 时，<code>element</code> 不可省略，目标会直接使用 <code>element</code> 选项值，这样就可以为某个元素自身更新内容。</p>
     <p>当该值为回调函数时，该回调函数拥有一个参数 <code>options</code> 表示当前 Display 实例的 options，回调函数 this 引用指向当前 Display 实例。</p>
 
-    <h4 class="text-red">targetClass</h4>
-    <p>当目标准备显示时追加到目标元素上的 CSS class 名称，可忽略。</p>
+    <h5 class="code">targetClass</h5>
+    <p>当目标准备显示时追加到目标上的 CSS class 名称，可忽略。</p>
     <p>每次显示时都会追加，隐藏时会移除。</p>
 
-    <h4 class="text-red">container</h4>
-    <p>目标元素父元素：有效的 CSS 选择器字符串，或者指定为回调函数来返回结果。</p>
-    <p>当目标元素为动态创建时，会将动态创建的元素追加到该值对应的父元素中。一些指示目标元素显示状态的辅助类也会在该值对应的父元素上进行操作。</p>
+    <h5 class="code">container</h5>
+    <p>目标父元素：有效的 CSS 选择器字符串，或者指定为回调函数来返回结果。</p>
+    <p>当目标为动态创建时，会将动态创建的元素追加到该值对应的父元素中。一些指示目标显示状态的辅助类也会在该值对应的父元素上进行操作。</p>
     <p>当该值为回调函数时，该回调函数拥有一个参数 <code>options</code> 表示当前 Display 实例的 options，回调函数 this 引用指向当前 Display 实例。</p>
 
-    <h4 class="text-red">trigger</h4>
+    <h5 class="code">trigger</h5>
     <p>触发事件名称（例如：<code>'click'</code>, <code>'mouseenter'</code>, <code>'tap'</code>, <code>'swipeLeft'</code> 等），在触摸设备上，默认值为 <code>'tap'</code>，在非触摸设备上为 <code>'click'</code>。</p>
-    <p>当 <code>element</code> 选项有效时，会自动绑定该事件来触发目标元素的显示或切换显示过程。</p>
+    <p>当 <code>element</code> 选项有效时，会自动绑定该事件来触发目标的显示或切换显示过程。</p>
 
-    <h4 class="text-red">triggerMethod</h4>
+    <h5 class="code">triggerMethod</h5>
     <p>触发事件调用的方法：<code>'show'</code>(默认), <code>'hide'</code>, <code>'toggle'</code>。</p>
     <p>当指定的触发事件被响应时，会调用在 display 实例上的由此选项指定的方法。</p>
 
-    <h4 class="text-red">arrow</h4>
+    <h5 class="code">arrow</h5>
     <p>是否显示箭头：<code>true</code>, <code>false</code>(默认)。</p>
-    <p>启用该选项绘制目标元素边缘的合适位置显示箭头形状，这可以方便的创建带方向指示弹出层。</p>
+    <p>启用该选项绘制目标边缘的合适位置显示箭头形状，这可以方便的创建带方向指示弹出层。</p>
 
-    <h4 class="text-red">scrollTop</h4>
-    <p>是否滚动到目标元素顶部：<code>true</code>, <code>false</code>(默认)。</p>
-    <p>当目标元素可以滚动时，如果启用改选项，当目标内容显示之后会滚动到顶部。</p>
+    <h5 class="code">scrollTop</h5>
+    <p>是否滚动到目标顶部：<code>true</code>, <code>false</code>(默认)。</p>
+    <p>当目标可以滚动时，如果启用改选项，当目标内容显示之后会滚动到顶部。</p>
 
-    <h4 class="text-red">plugSkin</h4>
+    <h5 class="code">plugSkin</h5>
     <p>是否在更新内容之后初始化 skin.js 快捷绑定：<code>true</code>(默认), <code>false</code>。</p>
-    <p>参考 <strong class="text-link">JavaScript > Skin.js</strong> 章节。</p>
+    <p>参考 <strong class="text-link">JS > Skin.js</strong> 章节。</p>
 
-    <h4 class="text-red">plugDisplay</h4>
+    <h5 class="code">plugDisplay</h5>
     <p>是否在更新内容之后初始化 Display 快捷绑定：<code>true</code>(默认), <code>false</code>。</p>
     <p>当目标内容更新之后会调用 <code>$('[data-display]').display();</code>。</p>
 
-    <h4 class="text-red">targetDismiss</h4>
-    <p>是否点击目标元素自动隐藏：<code>true</code>(默认), <code>false</code>。</p>
+    <h5 class="code">targetDismiss</h5>
+    <p>是否点击目标自动隐藏：<code>true</code>(默认), <code>false</code>。</p>
     <p>当启用该选项后，目标显示后用户点击目标会隐藏目标。例如显示下拉菜单之后允许用户点击下拉菜单项目自动关闭下拉菜单。</p>
 
-    <h4 class="text-red">content</h4>
-    <p>用来更新目标元素的内容，允许使用下列值：</p>
+    <h5 class="code">content</h5>
+    <p>用来更新目标的内容，允许使用下列值：</p>
     <ul>
       <li><code>false</code>，不对目标进行更新；</li>
-      <li>字符串：用来填充目标元素的纯文本或者 HTML 源码，只有当 <code>contentType</code> 选项为 <code>'html'</code> 时才会以 HTML 源码更新目标元素；</li>
-      <li>回调函数：使用回调来返回用于更新目标元素的内容，如果在回调中返回 <code>false</code>，则不会对目标进行更新；回调函数拥有一个参数为 <code>options</code> 表示当前 Display 实例的 options，回调函数 this 引用指向当前Display 实例；</li>
+      <li>字符串：用来填充目标的纯文本或者 HTML 源码，只有当 <code>contentType</code> 选项为 <code>'html'</code> 时才会以 HTML 源码更新目标；</li>
+      <li>回调函数：使用回调来返回用于更新目标的内容，如果在回调中返回 <code>false</code>，则不会对目标进行更新；回调函数拥有一个参数为 <code>options</code> 表示当前 Display 实例的 options，回调函数 this 引用指向当前Display 实例；</li>
       <li>对象：允许使用 <code>{...}</code> 来更新目标，一般会配合 <code>template</code> 选项一起使用。</li>
     </ul>
 
-    <h4 class="text-red">contentType</h4>
+    <h5 class="code">contentType</h5>
     <p>可选值：<code>'text'</code>, <code>'html'</code>(默认)。</p>
     <p>决定填充目标时是否将内容解析为 HTML 源码。</p>
 
-    <h4 class="text-red">template</h4>
+    <h5 class="code">template</h5>
     <p>用来预处理内容的模板字符串或者回调函数。</p>
-    <p>当该选项为字符串时，会调用 <code>$.format(template, content)</code> 来格式化内容，<code>$.format</code> 用法参考 <strong class="text-link">JavaScript > Utils</strong>。</p>
+    <p>当该选项为字符串时，会调用 <code>$.format(template, content)</code> 来格式化内容，<code>$.format</code> 用法参考 <strong class="text-link">JS > Utils</strong>。</p>
     <p>当该选项为回调函数时，回调函数 this 引用指向当前Display 实例，每次调用回调函数会依次传入以下两个参数：</p>
     <ul>
       <li><code>content</code>，准备用来更新目标对象的内容；</li>
       <li><code>options</code>，当前 Display 实例的 options。</li>
     </ul>
 
-    <h4 class="text-red">load</h4>
+    <h5 class="code">load</h5>
     <p>用来表示远程内容的地址。</p>
-    <p>设置此选项，直接使用 <code>$().load()</code> 方式通过 Ajax 从远程获取内容来更新目标。以下选项会被忽略： <code>content</code>、<code>contentType</code>、<code>template</code>、<code>remote</code>、<code>remoteType</code>。</p>
+    <p>设置此选项，直接使用 <code>$().load()</code> 方式通过 Ajax 从远程获取内容来更新目标。以下选项会被忽略： <code>content</code>, <code>contentType</code>, <code>template</code>, <code>remote</code>, <code>remoteType</code>。</p>
 
-    <h4 class="text-red">remote</h4>
+    <h5 class="code">remote</h5>
     <p>用来表示远程内容的地址。</p>
-    <p>设置此选项会通过 Ajax 方式从远处获取内容再更新到目标元素。</p>
+    <p>设置此选项会通过 Ajax 方式从远处获取内容再更新到目标。</p>
 
-    <h4 class="text-red">remoteType</h4>
+    <h5 class="code">remoteType</h5>
     <p>远处内容类型，可选值： <code>'html'</code>（默认），<code>'json'</code>。</p>
     <p>一般会将远处内容视为字符串，如果将该值指定为 <code>'json'</code> 则会尝试将字符串转换为  对象。</p>
 
-    <h4 class="text-red">remoteError</h4>
+    <h5 class="code">remoteError</h5>
     <p>当从远处加载内容时（<code>remote</code> 或 <code>load</code> 选项可用）发生错误时会使用该选项来取代 <code>content</code> 选项。</p>
 
-    <h4 class="text-red">loadingClass</h4>
+    <h5 class="code">loadingClass</h5>
     <p>用来指定 CSS class 的字符串，默认为 <code>'loading'</code>。</p>
-    <p>当开始从远处服务器获取内容时会在目标元素上添加该选项指定的 CSS class，当远程连接结束之后会从目标元素上移除该值。</p>
+    <p>当开始从远处服务器获取内容时会在目标上添加该选项指定的 CSS class，当远程连接结束之后会从目标上移除该值。</p>
 
-    <h4 class="text-red">source</h4>
+    <h5 class="code">source</h5>
     <p>指定用来拷贝的 DOM 元素，允许以下值：</p>
     <ul>
       <li>字符串，用来创建 Zepto 实例的 HTML 源码，例如 <code>'&lt;div&gt;I am content in source.&lt;/div&gt;'</code>；</li>
@@ -156,11 +182,11 @@ myDisplay.show({
       <li>回调函数，该回调函数必须返回一个不为空的 Zepto 实例，回调函数拥有一个参数 <code>options</code> 表示当前 Display 实例的 options，回调函数 this 引用指向当前 Display 实例。</li>
     </ul>
 
-    <h4 class="text-red">showInClass</h4>
-    <p>当目标显示后添加到目标元素上的 CSS class，默认为 <code>'in'</code>。</p>
+    <h5 class="code">showInClass</h5>
+    <p>当目标显示后添加到目标上的 CSS class，默认为 <code>'in'</code>。</p>
     <p>该值会影响过渡动画及显示和隐藏效果，触发需要自定义过渡动画，否则不建议更改该值。</p>
 
-    <h4 class="text-red">animate</h4>
+    <h5 class="code">animate</h5>
     <p>显示和隐藏目标时是否启用过渡动画，允许使用以下值：</p>
     <ul>
       <li><code>true</code>(默认) 或 <code>false</code>；</li>
@@ -170,10 +196,10 @@ myDisplay.show({
     </ul>
     <p>多个过渡动画类型可以用空格分隔，例如：<code>'fade scale'</code>。</p>
 
-    <h4 class="text-red">duration</h4>
+    <h5 class="code">duration</h5>
     <p>数字，用来指定过渡动画执行的时间，单位为毫秒，默认为 <code>300</code>。</p>
 
-    <h4 class="text-red">backdrop</h4>
+    <h5 class="code">backdrop</h5>
     <p>指定是否启用遮罩层及遮罩层的类型，允许使用以下值：</p>
     <ul>
       <li><code>true</code>(默认) 或 <code>false</code>；</li>
@@ -182,27 +208,27 @@ myDisplay.show({
       <li>自定义的 CSS class 值，会添加到遮罩层元素上。</li>
     </ul>
 
-    <h4 class="text-red">backdropDismiss</h4>
-    <p>指定是否允许点击遮罩层来隐藏目标元素：<code>true</code>(默认) 或 <code>false</code>；</p>
+    <h5 class="code">backdropDismiss</h5>
+    <p>指定是否允许点击遮罩层来隐藏目标：<code>true</code>(默认) 或 <code>false</code>；</p>
 
-    <h4 class="text-red">autoHide</h4>
-    <p>指定是否在显示目标元素之后自动隐藏，允许以下值：</p>
+    <h5 class="code">autoHide</h5>
+    <p>指定是否在显示目标之后自动隐藏，允许以下值：</p>
     <ul>
       <li><code>false</code>（默认），不自动隐藏；</li>
       <li>数值，用于指定等待的时间，单位为毫秒，例如指定为 <code>3000</code>，则会在目标显示 3 秒之后隐藏。</li>
     </ul>
 
-    <h4 class="text-red">activeClass</h4>
-    <p>指定当通过触发元素触发事件显示目标之后添加到触发元素上的 CSS class，目标元素隐藏后会从触发元素上移除该 class，默认为<code>''</code>。</p>
+    <h5 class="code">activeClass</h5>
+    <p>指定当通过触发元素触发事件显示目标之后添加到触发元素上的 CSS class，目标隐藏后会从触发元素上移除该 class，默认为<code>''</code>。</p>
 
-    <h4 class="text-red">activeSingle</h4>
+    <h5 class="code">activeSingle</h5>
     <p>触发器及其兄弟元素释放仅允许出现一个元素拥有 <code>activeClass</code>：<code>true</code>(默认) 或 <code>false</code>。</p>
     <p>如果启用改选项，则会在显示目标之前，移除触发器兄弟元素上的所有 <code>activeClass</code> 指定的 CSS class。</p>
 
-    <h4 class="text-red">displayAuto</h4>
-    <p>指定是否在初始化之后立即显示目标元素：<code>true</code> 或 <code>false</code>(默认)。</p>
+    <h5 class="code">displayAuto</h5>
+    <p>指定是否在初始化之后立即显示目标：<code>true</code> 或 <code>false</code>(默认)。</p>
 
-    <h4 class="text-red">placement</h4>
+    <h5 class="code">placement</h5>
     <p>用于决定目标显示的位置，允许以下值：</p>
     <ul>
       <li><code>'top'</code>，在页面上方显示；</li>
@@ -230,35 +256,213 @@ myDisplay.show({
       <li><code>'beside-bottom'</code>，在触发元素下方显示；</li>
       <li><code>'beside-bottom-start'</code>，在触发元素下方靠左侧显示；</li>
       <li><code>'beside-bottom-end'</code>，在触发元素下方靠右侧显示；</li>
-      <li><code>'overlay'</code>，覆盖在触发元素所在位置，并将目标元素尺寸设置与触发元素一致；</li>
-      <li><code>{left, top, ...}</code>，JavaScript 对象，用于应用于目标元素上的 CSS 样式对象，相当于调用 $().css(placement)；</li>
+      <li><code>'overlay'</code>，覆盖在触发元素所在位置，并将目标尺寸设置与触发元素一致；</li>
+      <li><code>{left, top, ...}</code>，JavaScript 对象，用于应用于目标上的 CSS 样式对象，相当于调用 $().css(placement)；</li>
       <li><code>'{"left": ...}'</code>，JSON 对象字符串，用于转换为 CSS 样式对象；</li>
-      <li>自定义的 CSS class 值，会添加到目标元素上。</li>
+      <li>自定义的 CSS class 值，会添加到目标上。</li>
     </ul>
 
-    <h4 class="text-red">show</h4>
+    <h5 class="code">show</h5>
     <p>回调函数，用于在显示目标之前时（此时没有执行过渡动画和加载远程内容）调用。</p>
-    <p>在回调函数中返回 <code>false</code> 则会取消显示目标元素。</p>
+    <p>在回调函数中返回 <code>false</code> 则会取消显示目标。</p>
     <p>回调函数拥有一个参数 <code>options</code> 表示当前 Display 实例的 options，回调函数 this 引用指向当前 Display 实例。</p>
 
-    <h4 class="text-red">shown</h4>
+    <h5 class="code">shown</h5>
     <p>回调函数，用于在显示目标之后且过渡动画已执行完毕（此时远程内容可能还没加载完成）时调用。</p>
     <p>回调函数拥有一个参数 <code>options</code> 表示当前 Display 实例的 options，回调函数 this 引用指向当前 Display 实例。</p>
 
-    <h4 class="text-red">hide</h4>
+    <h5 class="code">hide</h5>
     <p>回调函数，用于在隐藏目标之前时（此时没有执行过渡动画）调用。</p>
     <p>回调函数拥有一个参数 <code>options</code> 表示当前 Display 实例的 options，回调函数 this 引用指向当前 Display 实例。</p>
 
-    <h4 class="text-red">hidden</h4>
+    <h5 class="code">hidden</h5>
     <p>回调函数，用于在隐藏目标之后且过渡动画已执行完毕时调用。</p>
     <p>回调函数拥有一个参数 <code>options</code> 表示当前 Display 实例的 options，回调函数 this 引用指向当前 Display 实例。</p>
 
-    <h4 class="text-red">loaded</h4>
+    <h5 class="code">loaded</h5>
     <p>回调函数，用于在远程内容加载完毕之后调用。</p>
     <p>回调函数拥有一个参数 <code>options</code> 表示当前 Display 实例的 options，回调函数 this 引用指向当前 Display 实例。</p>
 
-    <h4 class="text-red">display</h4>
+    <h5 class="code">display</h5>
     <p>所使用的插件名称：<code>''</code>(默认), <code>'messager'</code>, <code>'dropdown'</code>, <code>'popover'</code>, <code>'modal'</code>, <code>'collapse'</code>。</p>
     <p>指定 Display 所使用的插件，如果为空，则不使用插件。</p>
+    <p>Display 插件相关用法参考 <strong class="text-link">JS > Display 插件</strong> 章节。</p>
   </div>
+</div>
+
+<section class="section">
+  <div class="heading">
+    <div class="title"><strong>方法</strong></div>
+  </div>
+  <div class="box article">
+    <p>当获取 Display 实例之后就可以调用实例上的方法。</p>
+    <h5>显示目标</h5>
+    <ul>
+      <li><strong class="code">show()</strong></li>
+      <li><strong class="code">show(callback)</strong></li>
+      <li><strong class="code">show(options, callback)</strong></li>
+    </ul>
+    <p>参数：</p>
+    <ul>
+      <li><code>options</code>，当前使用的选项，此选项会与初始化时的选项进行合并，但不会覆盖初始化时的选项，同一个 Display 实例在每次调用 <code>show()</code> 方法时传入不同的选项来实现不同的功能；</li>
+      <li><code>callback</code>，显示完成之后的回调函数。</li>
+    </ul>
+    <h5>隐藏目标</h5>
+    <ul>
+      <li><strong class="code">hide()</strong></li>
+      <li><strong class="code">hide(callback)</strong></li>
+    </ul>
+    <p>参数：</p>
+    <ul>
+      <li><code>callback</code>，显示完成之后的回调函数。</li>
+    </ul>
+    <p>如果目标是临时创建的，则会在隐藏之后从页面 DOM 中移除。</p>
+    <h5>切换显示或隐藏目标</h5>
+    <ul>
+      <li><strong class="code">toggle()</strong></li>
+      <li><strong class="code">toggle(toggle)</strong></li>
+      <li><strong class="code">toggle(options, callback)</strong></li>
+    </ul>
+    <p>参数：</p>
+    <ul>
+      <li><code>toggle</code>，当前使用的选项；</li>
+      <li><code>options</code>，切换显示时使用的选项；</li>
+      <li><code>callback</code>，切换显示或隐藏之后的回调函数。</li>
+    </ul>
+    <h5>判断目标是否显示</h5>
+    <ul>
+      <li><strong class="code">isShow()</strong></li>
+      <li><strong class="code">isShow(options)</strong></li>
+    </ul>
+    <p>参数：</p>
+    <ul>
+      <li><code>options</code>，显示时使用的选项。</li>
+    </ul>
+  </div>
+</section>
+
+<div class="section">
+  <div class="heading">
+    <div class="title"><strong>解除目标</strong></div>
+  </div>
+  <div class="box article">
+    <p>解除目标有三种方式：</p>
+    <h5>调用实例方法 <span class="code">hide()</span></h5>
+  </div>
+  <pre><code>myDisplay.hide();</code></pre>
+  <div class="box article">
+    <h5>使用全局方法 <span class="code">$.Display.dismiss()</span></h5>
+    <ul>
+      <li><strong class="code">$.Display.dismiss()</strong></li>
+      <li><strong class="code">$.Display.dismiss(name)</strong></li>
+      <li><strong class="code">$.Display.dismiss(callback)</strong></li>
+      <li><strong class="code">$.Display.dismiss(name, callback)</strong></li>
+    </ul>
+    <p>参数：</p>
+    <ul>
+      <li><code>name</code>，实例名称，当次参数缺省时会自动使用上次已显示过目标实例；</li>
+      <li><code>callback</code>，在解除目标之后的回调函数。</li>
+    </ul>
+  </div>
+  <pre><code>$.Display.dismiss(function() {
+    <span class="muted">// 上一个显示的 Display 目标已隐藏</span>
+});</code></pre>
+  <div class="box article">
+    <h5>使用触发器 <span class="code">[data-dismiss="display"]</span></h5>
+    <p>点击触发器元素，会自动解除触发器元素在父级容器上对应的 Display 实例。</p>
+    <p>如果需要在任意位置解除，需要为触发器 <code>[data-display-name]</code> 属性设定为需要解除的 Display 实例名称。</p>
+  </div>
+  <pre><code>&lt;a data-dismiss=&quot;display&quot;&gt;&#x70b9;&#x6211;&#x5173;&#x95ed;&lt;/a&gt;</code></pre>
+  <pre><code><span class="muted">// 指定需要解除的实例名称</span>
+&lt;a data-dismiss=&quot;display&quot; data-display-name=&quot;myDisplayName&quot;&gt;&#x70b9;&#x6211;&#x5173;&#x95ed;&lt;/a&gt;</code></pre>
+</div>
+
+<section class="section">
+  <div class="heading">
+    <div class="title"><strong>事件</strong></div>
+  </div>
+  <div class="box article">
+    <h5>可用事件</h5>
+    <ul>
+      <li><span class="code">show</span>：在显示目标之前时（此时没有执行过渡动画和加载远程内容）触发；</li>
+      <li><span class="code">shown</span>：在显示目标之后且过渡动画已执行完毕（此时远程内容可能还没加载完成）时</li>
+      <li><span class="code">hide</span>：在隐藏目标之前时（此时没有执行过渡动画）触发；</li>
+      <li><span class="code">hidden</span>：在隐藏目标之后且过渡动画已执行完毕时触发；</li>
+      <li><span class="code">loaded</span>：在远程内容加载完毕之后触发。</li>
+    </ul>
+    <h5>在选项中使用回调监听事件</h5>
+    <p>回调函数拥有一个参数 <code>options</code> 表示当前 Display 实例的 options，回调函数 this 引用指向当前 Display 实例。</p>
+  </div>
+  <pre><code><span class="muted">// 在选项中指定回调函数来监听 show 事件</span>
+$('#test').display({
+    show: function(options) {
+        <span class="muted">// 即将显示目标</span>
+        <span class="muted">// return false; // 在此处返回 false 则取消显示目标</span>
+    }
+});</code></pre>
+  <div class="box article">
+    <h5>使用 <span class="code">$().on(eventName, function)</span> 绑定事件</h5>
+    <p>事件绑定回调函数拥有一个参数 <code>options</code> 表示当前 Display 实例的 options，回调函数 this 引用指向当前 Display 实例。</p>
+  </div>
+  <pre><code><span class="muted">// 使用 Zepto 的 $().on() 方法来绑定事件</span>
+$('#test').on('show', function(options) {
+    <span class="muted">// 即将显示目标</span>
+    <span class="muted">// return false; // 在此处返回 false 则取消显示目标</span>
+});</code></pre>
+</section>
+
+<div class="section">
+  <div class="heading">
+    <div class="title"><strong>插件机制</strong></div>
+  </div>
+  <div class="box article">
+    <p>Display 丰富的功能需要搭配不同的选项进行使用，但每次设置过多的选项会带来不便。插件机制允许重置默认选项并在获取用户设定选项之前进行一次预处理，这样就可以使用最少的选项来实现特定功能。</p>
+    <h5>使用插件</h5>
+    <p>设置 <code>display</code> 选项为要使用的插件名称即可。</p>
+    <p>当使用 <code>[data-display]</code> 形式调用时，直接将该属性值设置为要使用的插件名称即可。</p>
+    <p>插件会以其名称注册为 <code>$.fn</code> 上的方法，这样就可以使用 <code>$().plugName()</code> 的形式来调用插件。</p>
+    <p>更多插件例子参见 <strong class="text-link">JS > Display 玩法</strong> 章节。</p>
+  </div>
+  <pre><code><span class="muted">// [data-display="plugName"] 形式调用</span>
+&lt;a data-display=&quot;messager&quot; data-content=&quot;Hello&quot; data-type=&quot;success&quot;&gt;&#x4f7f;&#x7528;&#x540d;&#x79f0;&#x4e3a; messager &#x7684;&#x63d2;&#x4ef6;&lt;/a&gt;</code></pre>
+  <pre><code><span class="muted">// 以 $().plugName() 形式调用</span>
+$('#testMessager').messager();</code></pre>
+  <pre><code><span class="muted">// $().display({display: 'plugName'}) 形式调用</span>
+$('#testMessager').display({display: 'messager'});</code></pre>
+  <pre><code><span class="muted">// new $.Display({display: 'plugName'}) 形式调用</span>
+new $.Display({display: 'messager'}).show();</code></pre>
+
+  <div class="box article">
+    <h5>添加插件</h5>
+    <p>通过制定插件名称和选项预处理函数来添加插件。</p>
+    <p>插件预处理函数会在每次调用 <code>show()</code> 方法之前对选项进行预处理。</p>
+    <ul>
+      <li><strong class="code">$.Display.plugs(name, function)</strong></li>
+      <li><strong class="code">$.Display.plugs(name, function, fnName)</strong></li>
+      <li><strong class="code">$.Display.plugs(plugs)</strong></li>
+    </ul>
+    <p>参数：</p>
+    <ul>
+      <li><code>name</code>，设置插件名称；</li>
+      <li><code>function</code>，该插件使用选项预处理函数，改函数包括一个参数 <code>options</code>，<code>this</code> 引用指向当前 Display 实例，该函数需要重新返回处理过的 <code>options</code>；</li>
+      <li><code>fnName</code>，设定要绑定到 <code>$.fn</code> 上的方法名称，如果不设定此参数，则直接使用 <code>name</code> 作为方法名称，如果将此参数设定为 <code>false</code>，则不在 <code>$.fn</code> 绑定快捷方法；</li>
+      <li><code>plugs</code>，一个对象，每一个键名指定一个插件名称，其值对应为选项预处理函数，这样就可以一次性添加多个插件。</li>
+    </ul>
+    <p>如果添加一个已有该名称的插件，新的插件会覆盖旧的插件。</p>
+    <p>插件名称可以添加 <code>_</code> 前缀，这样其设置的选项预处理函数会在插件实例初始化之前对选项进行预处理，而不是在 <code>show()</code> 方法之前。</p>
+    <p>带前缀的预处理函数和不带前缀的预处理函数可以同时设定。调用的时候插件名称都不需要添加前缀。</p>
+  </div>
+
+  <div class="box article">
+    <h5>获取插件预处理函数</h5>
+    <ul>
+      <li><strong class="code">$.Display.plugs(name)</strong></li>
+    </ul>
+    <p>参数：</p>
+    <ul>
+      <li><code>name</code>，插件名称</li>
+    </ul>
+    <p>在插件的预处理函数中，先获取已有插件的预处理函数对选项进行预处理，这样可以实现对已有插件的继承。</p>
+  </div>
+  <pre><code>var messagerFlugFunc = $.Display.plugs('messager');</code></pre>
 </div>

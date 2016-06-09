@@ -4,7 +4,9 @@
 .control-group > .input {flex: auto}
 .number-range-control {width: 7rem}
 .number-range-control > .btn {border-color: #ccc!important}
-.number-range-control > .btn + .input {margin-left: -.05rem; margin-right: -.05rem; text-align: center}
+.number-range-control > .btn:first-child {border-right: none}
+.number-range-control > .btn:last-child {border-left: none}
+.number-range-control > .btn + .input {text-align: center}
 </style>
 <div class="section">
   <div class="heading">
