@@ -1,0 +1,239 @@
+<div class="section">
+  <div class="heading">
+    <div class="title"><strong>显示/隐藏</strong></div>
+  </div>
+  <div class="box">
+    <div class="box outline">
+      <a class="btn primary outline" data-display data-target="#taget1" data-trigger-method="toggle" data-animate="false">显示与隐藏</a>
+      <hr class="space">
+      <div class="box red in" id="taget1">用来显示或隐藏的内容</div>
+    </div>
+  </div>
+  <pre><code>&lt;a class=&quot;btn primary&quot; data-display data-target=&quot;#taget1&quot; data-trigger-method=&quot;toggle&quot;&gt;&#x663e;&#x793a;&#x4e0e;&#x9690;&#x85cf;&lt;/a&gt;
+&lt;div class=&quot;red box fade in&quot; id=&quot;taget1&quot;&gt;&#x7528;&#x6765;&#x663e;&#x793a;&#x6216;&#x9690;&#x85cf;&#x7684;&#x5185;&#x5bb9;&lt;/div&gt;</code></pre>
+</div>
+
+<div class="section">
+  <div class="heading">
+    <div class="title"><strong>弹出面板</strong></div>
+  </div>
+  <div class="box">
+    <div class="box outline">
+      <a class="btn primary outline" data-display data-backdrop="clean" data-target="!new" data-trigger-method="toggle" data-arrow="true" data-content="Hello" data-placement="beside-top" data-template="<div class='layer has-padding'>{0}</div>">显示弹出面板</a>
+    </div>
+  </div>
+  <pre><code>&lt;a class=&quot;btn primary outline&quot; data-display data-backdrop=&quot;clean&quot; data-target=&quot;!new&quot; data-trigger-method=&quot;toggle&quot; data-arrow=&quot;true&quot; data-content=&quot;Hello&quot; data-placement=&quot;beside-top&quot; data-template=&quot;&lt;div class=&#039;layer has-padding&#039;&gt;{0}&lt;/div&gt;&quot;&gt;&#x663e;&#x793a;&#x5f39;&#x51fa;&#x9762;&#x677f;&lt;/a&gt;</code></pre>
+  <h5 class="box"><span class="label green">内置插件</span> <strong class="code">popover</strong></h5>
+  <pre><code>&lt;a class=&quot;btn primary outline&quot; data-display=&quot;<em>popover</em>&quot; data-content=&quot;Hello&quot;&gt;&#x663e;&#x793a;&#x5f39;&#x51fa;&#x9762;&#x677f;&lt;/a&gt;</code></pre>
+</div>
+
+<div class="section">
+  <div class="heading">
+    <div class="title"><strong>左侧滑动菜单</strong></div>
+  </div>
+  <div class="box">
+    <div class="box outline">
+      <a class="btn primary outline" data-display data-backdrop="true" data-target="#target2" data-trigger-method="toggle" data-placement="left"><i class="icon-bars"></i> &nbsp;菜单</a>
+      <div id="target2" class="layer hidden affix dock-left" style="min-width: 10rem">
+        <div class="list with-divider">
+          <a class="item"><i class="muted icon-home"></i>&nbsp; 首页</a>
+          <a class="item"><i class="muted icon-folder-close"></i>&nbsp; 项目</a>
+          <a class="item"><i class="muted icon-bug"></i>&nbsp; BUG</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <pre><code>&lt;a class=&quot;btn primary outline&quot; data-display data-backdrop=&quot;true&quot; data-target=&quot;#target2&quot; data-trigger-method=&quot;toggle&quot; data-placement=&quot;left&quot;&gt;&lt;i class=&quot;icon-bars&quot;&gt;&lt;/i&gt; &amp;nbsp;&#x83dc;&#x5355;&lt;/a&gt;
+&lt;div id=&quot;target2&quot; class=&quot;layer hidden affix dock-left&quot; style=&quot;min-width: 10rem&quot;&gt;
+  &lt;div class=&quot;list with-divider&quot;&gt;
+    &lt;a class=&quot;item&quot;&gt;&lt;i class=&quot;muted icon-home&quot;&gt;&lt;/i&gt;&amp;nbsp; &#x9996;&#x9875;&lt;/a&gt;
+    &lt;a class=&quot;item&quot;&gt;&lt;i class=&quot;muted icon-folder-close&quot;&gt;&lt;/i&gt;&amp;nbsp; &#x9879;&#x76ee;&lt;/a&gt;
+    &lt;a class=&quot;item&quot;&gt;&lt;i class=&quot;muted icon-bug&quot;&gt;&lt;/i&gt;&amp;nbsp; BUG&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+<div class="section">
+  <div class="heading">
+    <div class="title"><strong>覆盖层</strong></div>
+  </div>
+  <div class="box">
+    <div class="box outline">
+      <a class="btn primary outline" data-display data-backdrop="clean" data-target="!new" data-target-dismiss="true" data-content="用于覆盖层内容" data-placement="overlay" data-target-class="layer red has-padding" style="width: 10rem; height: 5rem">打开覆盖层</a>
+    </div>
+  </div>
+  <pre><code>&lt;a class=&quot;btn primary outline&quot; data-display data-backdrop=&quot;clean&quot; data-target=&quot;!new&quot; data-target-dismiss=&quot;true&quot; data-content=&quot;&#x7528;&#x4e8e;&#x8986;&#x76d6;&#x5c42;&#x5185;&#x5bb9;&quot; data-placement=&quot;overlay&quot; data-target-class=&quot;layer red has-padding&quot; style=&quot;width: 10rem; height: 5rem&quot;&gt;&#x6253;&#x5f00;&#x8986;&#x76d6;&#x5c42;&lt;/a&gt;</code></pre>
+</div>
+
+<div class="section">
+  <div class="heading">
+    <div class="title"><strong>下拉菜单</strong></div>
+  </div>
+  <div class="box">
+    <div class="box outline">
+      <a class="btn primary outline" data-display data-backdrop="clean" data-target="#target3" data-target-dismiss="true" data-placement="beside-bottom-start">打开下拉菜单</a>
+      <div id="target3" class="layer hidden">
+        <div class="list" style="min-width: 10rem">
+          <a class="item">确认</a>
+          <a class="item">编辑</a>
+          <a class="item">删除</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <pre><code>&lt;a class=&quot;btn primary outline&quot; data-display data-backdrop=&quot;clean&quot; data-target=&quot;#target3&quot; data-target-dismiss=&quot;true&quot; data-placement=&quot;beside-bottom-start&quot;&gt;&#x6253;&#x5f00;&#x4e0b;&#x62c9;&#x83dc;&#x5355;&lt;/a&gt;
+&lt;div id=&quot;target3&quot; class=&quot;layer hidden&quot;&gt;
+  &lt;div class=&quot;list&quot; style=&quot;min-width: 10rem&quot;&gt;
+    &lt;a class=&quot;item&quot;&gt;&#x786e;&#x8ba4;&lt;/a&gt;
+    &lt;a class=&quot;item&quot;&gt;&#x7f16;&#x8f91;&lt;/a&gt;
+    &lt;a class=&quot;item&quot;&gt;&#x5220;&#x9664;&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+  <h5 class="box"><span class="label green">内置插件</span> <strong class="code">dropdown</strong></h5>
+  <pre><code>&lt;a class=&quot;btn primary outline&quot; data-display=&quot;dropdown&quot; data-placement=&quot;beside-bottom-start&quot;&gt;&#x6253;&#x5f00;&#x4e0b;&#x62c9;&#x83dc;&#x5355;&lt;/a&gt;
+&lt;div class=&quot;list dropdown-menu&quot;&gt;
+  &lt;a class=&quot;item&quot;&gt;&#x786e;&#x8ba4;&lt;/a&gt;
+  &lt;a class=&quot;item&quot;&gt;&#x7f16;&#x8f91;&lt;/a&gt;
+  &lt;a class=&quot;item&quot;&gt;&#x5220;&#x9664;&lt;/a&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+<div class="section">
+  <div class="heading">
+    <div class="title"><strong>漂浮消息</strong></div>
+  </div>
+  <div class="box">
+    <div class="box outline">
+      <a class="btn primary outline" data-display data-target-dismiss="true" data-auto-hide="5000" data-target="!new" data-animate="scale-suggest" data-content="Hello" data-placement="bottom-center" data-template="<div class='layer has-margin has-padding success'><i class='icon-check'></i> {0}</div>">显示漂浮消息</a>
+    </div>
+  </div>
+  <pre><code>&lt;a class=&quot;btn primary outline&quot; data-display data-target-dismiss=&quot;true&quot; data-auto-hide=&quot;5000&quot; data-target=&quot;!new&quot; data-animate=&quot;scale-suggest&quot; data-content=&quot;Hello&quot; data-placement=&quot;bottom-center&quot; data-template=&quot;&lt;div class=&#039;layer has-margin has-padding success&#039;&gt;&lt;i class=&#039;icon-check&#039;&gt;&lt;/i&gt; {0}&lt;/div&gt;&quot;&gt;&#x663e;&#x793a;&#x6f02;&#x6d6e;&#x6d88;&#x606f;&lt;/a&gt;</code></pre>
+  <h5 class="box"><span class="label green">内置插件</span> <strong class="code">messager</strong></h5>
+  <pre><code>&lt;a data-display=&quot;messager&quot; data-type=&quot;success&quot; data-content=&quot;hello&quot;&gt;&#x663e;&#x793a;&#x6f02;&#x6d6e;&#x6d88;&#x606f;&lt;/a&gt;</code></pre>
+  <pre><code><span class="muted">// 或者使用 JavaScript 动态弹出漂浮消息</span>
+$.messager.show('消息内容', {type: 'success', placement: 'top'});</code></pre>
+</div>
+
+<div class="section">
+  <div class="heading">
+    <div class="title"><strong>对话框</strong></div>
+  </div>
+  <div class="box">
+    <div class="box outline">
+      <a class="btn primary outline" data-display data-backdrop="true" data-target="#target4" data-placement="bottom">打开对话框</a>
+      <div id="target4" class="affix dock-bottom modal hidden">
+        <div class="heading">
+          <div class="title"><strong>对话框</strong></div>
+          <nav class="nav"><a data-dismiss="display"><i class="icon-remove muted"></i></a></nav>
+        </div>
+        <div class="content article box">
+          <p>这是对话框内容</p>
+          <p>^_^....</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <pre><code>&lt;a class=&quot;btn primary outline&quot; data-display data-backdrop=&quot;true&quot; data-target=&quot;#target4&quot; data-placement=&quot;bottom&quot;&gt;&#x6253;&#x5f00;&#x5bf9;&#x8bdd;&#x6846;&lt;/a&gt;
+&lt;div id=&quot;target4&quot; class=&quot;affix dock-bottom modal hidden&quot;&gt;
+  &lt;div class=&quot;heading&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;&lt;strong&gt;&#x5bf9;&#x8bdd;&#x6846;&lt;/strong&gt;&lt;/div&gt;
+    &lt;nav class=&quot;nav&quot;&gt;&lt;a data-dismiss=&quot;display&quot;&gt;&lt;i class=&quot;icon-remove muted&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/nav&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;content article box&quot;&gt;
+    &lt;p&gt;&#x8fd9;&#x662f;&#x5bf9;&#x8bdd;&#x6846;&#x5185;&#x5bb9;&lt;/p&gt;
+    &lt;p&gt;^_^....&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+  <h5 class="box"><span class="label green">内置插件</span> <strong class="code">modal</strong></h5>
+  <pre><code>&lt;a data-display=&quot;modal&quot; data-content=&quot;&#x5bf9;&#x8bdd;&#x6846;&#x5185;&#x5bb9;&quot;&gt;&#x6253;&#x5f00;&#x5bf9;&#x8bdd;&#x6846;&lt;/a&gt;</code></pre>
+</div>
+
+<div class="section">
+  <div class="heading">
+    <div class="title"><strong>远程对话框</strong></div>
+  </div>
+  <div class="box">
+    <div class="box outline">
+      <a class="btn primary outline" data-display data-backdrop="true" data-target="#target4" data-placement="bottom" data-remote="doc/part/remote-content-example.html" data-template="<div class='modal'>{0}</div>">打开远程对话框</a>
+    </div>
+  </div>
+  <pre><code>&lt;a class=&quot;btn primary outline&quot; data-display data-backdrop=&quot;true&quot; data-target=&quot;#target4&quot; data-placement=&quot;bottom&quot; data-remote=&quot;doc/part/remote-content-example.html&quot; data-template=&quot;&lt;div class=&#039;modal&#039;&gt;{0}&lt;/div&gt;&quot;&gt;&#x6253;&#x5f00;&#x8fdc;&#x7a0b;&#x5bf9;&#x8bdd;&#x6846;&lt;/a&gt;</code></pre>
+  <h5 class="box"><span class="label green">内置插件</span> <strong class="code">modal</strong></h5>
+  <pre><code>&lt;a data-display=&quot;modal&quot; data-remote=&quot;doc/part/remote-content-example.html&quot;&gt;&#x6253;&#x5f00;&#x5bf9;&#x8bdd;&#x6846;&lt;/a&gt;</code></pre>
+</div>
+
+<div class="section">
+  <div class="heading">
+    <div class="title"><strong>加载远程内容</strong></div>
+  </div>
+  <div class="box">
+    <div class="box outline">
+      <div id="test" data-display data-trigger="false" data-target="!self" data-display-auto data-remote="doc/part/remote-content-example.html" data-name='test'></div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="heading">
+    <div class="title"><strong>标签页</strong></div>
+  </div>
+  <div class="box">
+    <div class="box outline">
+      <nav class="nav" data-display data-selector="a" data-show-single="true" data-active-class="active" data-animate="false">
+        <a class="active" data-target="#tab1">标签1</a>
+        <a data-target="#tab2">标签2</a>
+        <a data-target="#tab3">标签3</a>
+      </nav>
+      <div>
+        <div class="box primary in" id="tab1">Tab1 内容</div>
+        <div class="box red hidden" id="tab2">Tab2 内容</div>
+        <div class="box green hidden" id="tab3">Tab3 内容</div>
+      </div>
+    </div>
+  </div>
+  <pre><code>&lt;nav class=&quot;nav&quot; data-display data-selector=&quot;a&quot; data-show-single=&quot;true&quot; data-active-class=&quot;active&quot;&gt;
+  &lt;a class=&quot;active&quot; data-target=&quot;#tab1&quot;&gt;&#x6807;&#x7b7e;1&lt;/a&gt;
+  &lt;a data-target=&quot;#tab2&quot;&gt;&#x6807;&#x7b7e;2&lt;/a&gt;
+  &lt;a data-target=&quot;#tab3&quot;&gt;&#x6807;&#x7b7e;3&lt;/a&gt;
+&lt;/nav&gt;
+&lt;div&gt;
+  &lt;div class=&quot;box primary in&quot; id=&quot;tab1&quot;&gt;Tab1 &#x5185;&#x5bb9;&lt;/div&gt;
+  &lt;div class=&quot;box red hidden&quot; id=&quot;tab2&quot;&gt;Tab2 &#x5185;&#x5bb9;&lt;/div&gt;
+  &lt;div class=&quot;box green hidden&quot; id=&quot;tab3&quot;&gt;Tab3 &#x5185;&#x5bb9;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+<div class="section">
+  <div class="heading">
+    <div class="title"><strong>折叠</strong></div>
+  </div>
+  <div class="box">
+    <h5 class="space-sm"><span class="label green">内置插件</span> <strong class="code">collapse</strong></h5>
+    <div class="box outline">
+      <a class='btn primary-pale fluid' data-display="collapse" data-target="#target6" data-group="group1">折叠一</a>
+      <div class="collapse" id="target6" data-collapse="group1">
+        <div class="box primary">折叠一 内容</div>
+      </div>
+      <a class='btn green-pale fluid' data-display="collapse" data-target="#target7" data-group="group1">折叠二</a>
+      <div class="collapse" id="target7" data-collapse="group1">
+        <div class="box green">折叠二 内容</div>
+      </div>
+      <a class='btn red-pale fluid' data-display="collapse" data-target="#target8" data-group="group1">折叠三</a>
+      <div class="collapse" id="target8" data-collapse="group1">
+        <div class="box red">折叠三 内容</div>
+      </div>
+    </div>
+  </div>
+  <pre><code>&lt;a class=&#039;btn primary-pale fluid&#039; data-display=&quot;collapse&quot; data-target=&quot;#target6&quot; data-group=&quot;group1&quot;&gt;&#x6298;&#x53e0;&#x4e00;&lt;/a&gt;
+&lt;div class=&quot;collapse&quot; id=&quot;target6&quot; data-collapse=&quot;group1&quot;&gt;
+  &lt;div class=&quot;box primary&quot;&gt;&#x6298;&#x53e0;&#x4e00; &#x5185;&#x5bb9;&lt;/div&gt;
+&lt;/div&gt;
+&lt;a class=&#039;btn green-pale fluid&#039; data-display=&quot;collapse&quot; data-target=&quot;#target7&quot; data-group=&quot;group1&quot;&gt;&#x6298;&#x53e0;&#x4e8c;&lt;/a&gt;
+&lt;div class=&quot;collapse&quot; id=&quot;target7&quot; data-collapse=&quot;group1&quot;&gt;
+  &lt;div class=&quot;box green&quot;&gt;&#x6298;&#x53e0;&#x4e8c; &#x5185;&#x5bb9;&lt;/div&gt;
+&lt;/div&gt;
+&lt;a class=&#039;btn red-pale fluid&#039; data-display=&quot;collapse&quot; data-target=&quot;#target8&quot; data-group=&quot;group1&quot;&gt;&#x6298;&#x53e0;&#x4e09;&lt;/a&gt;
+&lt;div class=&quot;collapse&quot; id=&quot;target8&quot; data-collapse=&quot;group1&quot;&gt;
+  &lt;div class=&quot;box red&quot;&gt;&#x6298;&#x53e0;&#x4e09; &#x5185;&#x5bb9;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
