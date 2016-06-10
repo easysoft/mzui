@@ -18,7 +18,7 @@
 
         var callEvent = function(name, event) {
             if(options && $.isFunction(options[name])) {
-                return options[name](event);
+                return options[name].call(event);
             }
             $form.trigger(name + NAME, event);
         };
@@ -48,7 +48,7 @@
                 if(status == 'success') {
                     try {
                         if(typeof response === 'string') response = $.parseJSON(response);
-                        callEvent('onResult', response);
+                        callEvent('onSuccess', response);
                         if(response.result === 'success') {
                             if(response.message) {
                                 $.messager.success(response.message);
@@ -86,7 +86,7 @@
                     } catch(e) {
                         showMessage(response || 'No response.');
                     }
-                    callEvent('onSuccess', response);
+                    callEvent('onResult', response);
                 } else {
                     showMessage('error: ' + status);
                     callEvent('onError', status);
