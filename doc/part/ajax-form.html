@@ -57,3 +57,19 @@ $(function() {
     <p>改事件回调函数拥有一个参数 <code>data</code>，存储了服务器响应的内容和状态。</p>
   </div>
 </div>
+
+<div class="section">
+  <div class="heading">
+    <div class="title"><strong>服务器结果</strong></div>
+  </div>
+  <div class="box article">
+    <p>Ajax form 默认处理过程只针对服务器返回的 JSON 格式内容，否则不会作进一步处理。</p>
+    <p>JSON 对象上可解析字段如下：</p>
+    <h5 class="code">result</h5>
+    <p>指示当前提交是否已被被服务器接受，可取值：<code>'success'</code>，<code>'fail'</code>。</p>
+    <h5 class="code">message</h5>
+    <p>设定一条消息，请求完成之后以漂浮消息的形式提示用户。</p>
+    <h5 class="code">locate</h5>
+    <p>指定一个网址，服务器返回提交被成功接受之后让页面跳转到该值指示的网址。</p>
+  </div>
+</div>
