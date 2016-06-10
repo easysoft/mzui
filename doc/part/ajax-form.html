@@ -1,0 +1,59 @@
+<div class="section">
+  <div class="heading">
+    <div class="title"><strong>示例</strong></div>
+  </div>
+  <div class="box article">
+    <p>Ajax Form 允许以 Ajax 的形式提交表单，并针对服务器返回的 JSON 结果做出反馈。</p>
+    <div class="box outline">
+      <form id="ajaxFormExample" action="doc/part/ajax-form-example.json">
+        <div class="control">
+          <input type="text" class="input" placeholder="请输入用户名">
+        </div>
+        <button class="btn primary" type="submit">提交</button>
+      </form>
+    </div>
+  </div>
+  <pre><code>&lt;form id=&quot;ajaxFormExample&quot; action=&quot;doc/part/ajax-form-example.json&quot;&gt;
+  &lt;div class=&quot;control&quot;&gt;
+    &lt;input type=&quot;text&quot; class=&quot;input&quot; placeholder=&quot;&#x8bf7;&#x8f93;&#x5165;&#x7528;&#x6237;&#x540d;&quot;&gt;
+  &lt;/div&gt;
+  &lt;button class=&quot;btn primary&quot; type=&quot;submit&quot;&gt;&#x63d0;&#x4ea4;&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+  <pre><code>$('#ajaxFormExample').ajaxform({
+    onResult: function(response) {
+        <span class="muted">// 处理服务器返回的结果</span>
+    } 
+});</code></pre>
+</div>
+
+<script>
+$(function() {
+    $('#ajaxFormExample').ajaxform();
+});
+</script>
+
+<div class="section">
+  <div class="heading">
+    <div class="title"><strong>事件</strong></div>
+  </div>
+  <div class="box article">
+    <p>事件的回调函数通过选项进行设定。</p>
+    <h5 class="code">init</h5>
+    <p>当初始化之后触发。</p>
+    <h5 class="code">onSubmit</h5>
+    <p>当前用户开始提交表单并在发送表单数据到服务器之前时触发，此时可以更改提交的数据。</p>
+    <p>该事件回调函数拥有一个参数 <code>formData</code>，表示当前表单要提交的数据，在回调函数中可以更改或追加要提交的数据。</p>
+    <h5 class="code">onResult</h5>
+    <p>当服务器返回结果时触发。</p>
+    <p>该事件回调函数拥有一个参数 <code>response</code>，表示服务器响应的内容，如果内容是 JSON，则 response 为 JSON 对象。</p>
+    <h5 class="code">onSuccess</h5>
+    <p>当服务器返回了正确的 JSON 结果时触发，不同于 <code>onResult</code>，此事件仅仅在服务器返回了正确的 JSON 格式结果。</p>
+    <p>该事件回调函数拥有一个参数 <code>response</code>，表示服务器响应的内容，如果内容是 JSON，则 response 为 JSON 对象。</p>
+    <h5 class="code">onError</h5>
+    <p>当服务器返回了错误时触发。</p>
+    <p>该事件回调函数拥有一个参数 <code>status</code>，表示服务器返回的状态。</p>
+    <h5 class="code">onComplete</h5>
+    <p>当请求完成时触发，无论是否发生错误。</p>
+    <p>改事件回调函数拥有一个参数 <code>data</code>，存储了服务器响应的内容和状态。</p>
+  </div>
+</div>

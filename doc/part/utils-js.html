@@ -1,0 +1,29 @@
+<div class="section">
+  <div class="heading">
+    <div class="title"><strong class="code">$.format(str, ...args)</strong></div>
+  </div>
+  <div class="box article">
+    <h5>格式化字符串</h5>
+    <p>参数：</p>
+    <ul>
+      <li><code>str</code>，要进行格式化的字符串</li>
+      <li><code>args</code>，格式化参数</li>
+    </ul>
+  </div>
+  <pre><code>var hello = $.format('{0} {1}!', 'Hello', 'world');
+<span class="muted">// hello 值为 'Hello world!'</span>
+
+var say = $.format('Say {what} to {who}', {what: 'hello', who: 'you'});
+<span class="muted">// say 值为 'Say hello to you'</span></code></pre>
+</div>
+
+<div class="section">
+  <div class="heading">
+    <div class="title"><strong class="code">$.is$(obj)</strong></div>
+  </div>
+  <div class="box">
+    <p>判断一个变量是否是 Zepto 实例。</p>
+  </div>
+  <pre><code>var a = $.is$('hello'); <span class="muted"> // a = false;</span>
+var b = $.is$($('div')); <span class="muted">// b = true;</span></code></pre>
+</div>

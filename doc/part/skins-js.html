@@ -1,0 +1,111 @@
+<div class="section">
+  <div class="heading">
+    <div class="title"><strong>示例</strong></div>
+  </div>
+  <div class="box">
+    <p class="space-sm">Skin.js 提供一种快捷方法来为控件添加自定义外观着色选项。</p>
+    <p class="space-sm"><strong class="text-link">基础 > 外观选项</strong> 预定义了常用的着色选项，但有时需要按需定义新的着色选项。</p>
+    <div class="box outline">
+      <a class="btn" data-skin="12">12</a>
+      <a class="btn" data-skin="#345264">#345264</a>
+      <a class="btn text-tint" data-skin="#80CBC4">#80CBC4</a>
+      <a class="btn pale" data-skin="#345264">#345264 浅色</a>
+      <a class="btn" data-skin>随机外观</a>
+    </div>
+  </div>
+  <pre><code>&lt;a class=&quot;btn&quot; data-skin=&quot;12&quot;&gt;12&lt;/a&gt;
+&lt;a class=&quot;btn&quot; data-skin=&quot;#345264&quot;&gt;#345264&lt;/a&gt;
+&lt;a class=&quot;btn text-tint&quot; data-skin=&quot;#80CBC4&quot;&gt;#80CBC4&lt;/a&gt;
+&lt;a class=&quot;btn pale&quot; data-skin=&quot;#345264&quot;&gt;#345264 &#x6d45;&#x8272;&lt;/a&gt;
+&lt;a class=&quot;btn&quot; data-skin=&quot;random&quot;&gt;&#x968f;&#x673a;&#x5916;&#x89c2;&lt;/a&gt;</code></pre>
+</div>
+
+<div class="section">
+  <div class="heading">
+    <div class="title"><strong>使用方法</strong></div>
+  </div>
+  <div class="box">
+    <h5 class="code">[data-skin]</h5>
+  </div>
+  <pre><code>&lt;a class=&quot;btn&quot; data-skin=&quot;12&quot;&gt;12&lt;/a&gt;</code></pre>
+  <div class="box">
+    <h5 class="code">$().skin()</h5>
+  </div>
+  <pre><code>$('#skinExample').skin({skin: 'random'});</code></pre>
+</div>
+
+<div class="section">
+  <div class="heading">
+    <div class="title"><strong>选项</strong></div>
+  </div>
+  <div class="box article">
+    <h5 class="code">skin</h5>
+    <p>用来指定着色颜色，允许以下值：</p>
+    <ul>
+      <li><code>'random'</code> 或 <code>''</code>(默认)，每次使用随机的颜色；</li>
+      <li><code>'random'</code> 作为前缀的字符串，例如 <code>'random1'</code>，使用随机的颜色，但具备相同名称的实例会使用上次生成的随机颜色，而不是创建一个新的；</li>
+      <li>正整数，例如 <code>123</code>，从色环上选择一个确定的颜色，任意一个正整数都会对应一个全局的唯一的颜色；</li>
+      <li>16 进制表示的颜色字符串，例如 <code>#340982</code>；</li>
+      <li>已通过 <code>$.Skin.set()</code> 设置过的颜色名称，例如 <code>'mySkinName'</code>。</li>
+    </ul>
+    <h5 class="code">pale</h5>
+    <p>是否确保将最终颜色为亮色，如果指定或计算后的的颜色为暗色则保留色调但转换为亮色。允许值：<code>true</code>, <code>false</code>, <code>undefined</code>(默认)。</p>
+    <p>该选项可以直接在元素上添加 <code>.pale</code> 来启用。</p>
+    <h5 class="code">dark</h5>
+    <p>是否确保将最终颜色为暗色，如果指定或计算后的的颜色为亮色则保留色调但转换为暗色。允许值：<code>true</code>, <code>false</code>, <code>undefined</code>(默认)。</p>
+    <p>该选项可以直接在元素上添加 <code>.dark</code> 来启用。</p>
+    <h5 class="code">outline</h5>
+    <p>是否为最终外观应用轮廓样式。允许值：<code>true</code>, <code>false</code>(默认)。</p>
+    <p>该选项可以直接在元素上添加 <code>.outline</code> 来启用。</p>
+    <h5 class="code">tint</h5>
+    <p>是否为文本着色。允许值：<code>true</code>, <code>false</code>(默认)。</p>
+    <p>该选项可以直接在元素上添加 <code>.text-tint</code> 来启用。</p>
+    <h5 class="code">hueSpace</h5>
+    <p>当使用整数从色环上取色时，相邻整数在色环上的距离，一般为一个质数，以便于遍历整个色环。默认值为 <code>47</code>。</p>
+    <h5 class="code">saturation</h5>
+    <p>当使用整数从色环上取色时，最终颜色使用的饱和度，默认值为 <code>0.7</code>，取值范围为 <code>0 ~ 1</code>。</p>
+    <h5 class="code">lightness</h5>
+    <p>当使用整数从色环上取色时，最终颜色使用的亮度，默认值为 <code>0.6</code>，取值范围为 <code>0 ~ 1</code>。</p>
+    <h5 class="code">threshold</h5>
+    <p>当根据颜色亮度判断是否为亮色还是暗色的阈值，默认值为 <code>0.5</code>，取值范围为 <code>0 ~ 1</code>。</p>
+    <h5 class="code">darkLight</h5>
+    <p>当需要将一个亮色转换为暗色时所使用的亮度值，默认值为 <code>0.4</code>，取值范围为 <code>0 ~ 1</code>。</p>
+    <h5 class="code">paleLight</h5>
+    <p>当需要将一个暗色转换为亮色时所使用的亮度值，默认值为 <code>0.92</code>，取值范围为 <code>0 ~ 1</code>。</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="heading">
+    <div class="title"><strong>设置全局命名颜色</strong></div>
+  </div>
+  <div class="box article">
+    <h5>设定或修改命名颜色</h5>
+    <ul>
+      <li><strong class="code">$.Skin.set(name, skin)</strong></li>
+      <li><strong class="code">$.Skin.set(skins)</strong></li>
+    </ul>
+    <p>设定一个全局命名的颜色。</p>
+    <p>参数：</p>
+    <ul>
+      <li><code>name</code>，颜色名称；</li>
+      <li><code>skin</code>，颜色值，该值可以整数 或者 16 进制颜色字符串；</li>
+      <li><code>skins</code>，JS 对象，其键值分别对应颜色名称和颜色值，用于同时设置多个全局命名颜色。</li>
+    </ul>
+  </div>
+  <pre><code><span class="muted">// 定义全局命名颜色</span>
+$.Skin.set('mySkinColor', '#859342');</code></pre>
+  <pre><code>&lt;a class=&quot;label&quot; data-skin=&quot;mySkinColor&quot;&gt;&#x4f7f;&#x7528; mySkinColor&lt;/a&gt;</code></pre>
+  <div class="box article">
+    <h5 class="code">$.Skin.all</h5>
+    <p>获取已设定的全局命名颜色。</p>
+  </div>
+  <pre><code><span class="muted">// 获取所有设定的全局命名颜色</span>
+var allSkins = $.Skin.all;
+
+<span class="muted">// 获取指定名称的全局命名颜色</span>
+var mySkinColor = $.Skin.all['mySkin']
+
+<span class="muted">// 删除指定名称的全局命名颜色</span>
+$.Skin.all['mySkin'] = null;</code></pre>
+</div>

@@ -1,0 +1,105 @@
+<div class="section">
+  <div class="heading">
+    <div class="title"><strong>综合示例</strong></div>
+  </div>
+  <div class="box">
+    <p class="space-sm">为允许滚动的元素启用滚动监听之后，会根据滚动的操作为元素添加辅助类。</p>
+    <div class="box yellow" id="listenScrollClassLabel"></div>
+    <div id="testListenScroll" style="overflow-y: auto; height: 4rem; padding: .5rem; border: .05rem solid #ddd; margin-bottom: .5rem">
+      <p>较多的内容用来测试滚动。</p>
+      <p>尝试滚动此区域。</p>
+      <p>尝试滚动此区域。</p>
+      <p>尝试滚动此区域。</p>
+      <p>尝试滚动此区域。</p>
+      <p>尝试滚动此区域。</p>
+      <p>尝试滚动此区域。</p>
+      <p>尝试滚动此区域。</p>
+      <p>尝试滚动此区域。</p>
+      <p>尝试滚动此区域。</p>
+      <p>尝试滚动此区域。</p>
+    </div>
+    <p class="space-sm">辅助类说明：</p>
+    <ul>
+      <li><code>.can-scroll</code>，当前元素能够进行滚动操作（出现滚动条）；</li>
+      <li><code>.in-scroll</code>，当前元素已向下滚动，即滚动条距离顶部大于 0；</li>
+      <li><code>.scroll-down</code>，当前（滚动时）或上一次（没有滚动时）的滚动操作是向下滚动；</li>
+      <li><code>.scroll-up</code>，当前（滚动时）或上一次（没有滚动时）的滚动操作是向上滚动；</li>
+      <li><code>.scroll-over</code>，已滚动到最底部。</li>
+    </ul>
+  </div>
+</div>
+
+
+<div class="section">
+  <div class="heading">
+    <div class="title"><strong>使用方法</strong></div>
+  </div>
+  <div class="box article">
+    <p><code>window</code> 对象已自动启用滚动监听，辅助类会添加在 <code>&lt;body&gt;</code> 上。</p>
+    <h5><span class="code">.listen-scroll</span></h5>
+    <p>通过为元素添加 <code>.listen-scroll</code> 来监听元素的滚动事件。</p>
+  </div>
+  <pre><code>&lt;div class=&quot;listen-scroll&quot;&gt;&lt;/div&gt;</code></pre>
+  <div class="box">
+    <h5><span class="code">$().listenScroll()</span></h5>
+  </div>
+  <pre><code>$('scrollDiv').listenScroll();</code></pre>
+</div>
+
+<div class="section">
+  <div class="heading">
+    <div class="title"><strong>选项</strong></div>
+  </div>
+  <div class="box article">
+    <h5 class="code">container</h5>
+    <p>有效的 CSS 选择器，决定辅助类被添加到的元素上，默认不设定此值，此时辅助类会被添加到滚动元素自身上。</p>
+    <p>设定为特殊值 <code>'parent'</code>，辅助类会被添加到滚动元素的父级元素上。</p>
+    <h5 class="code">handleInterval</h5>
+    <p>设定一个时间，单位毫秒，默认为 <code>100</code>，当用户滚动时，小于此时间的滚动事件会被忽略，用于提交性能，避免重复计算。</p>
+    <h5 class="code">inScrollClass</h5>
+    <p>设定辅助类，默认值为 <code>in-scroll</code>。</p>
+    <h5 class="code">directionClass</h5>
+    <p>设定指示滚动方向的辅助类前缀，默认为 <code>scroll</code>。</p>
+    <h5 class="code">canScrollClass</h5>
+    <p>设定辅助类，默认值为 <code>can-scroll</code>。</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="heading">
+    <div class="title"><strong>事件</strong></div>
+  </div>
+  <div class="box article">
+    <h5 class="code">listenScroll</h5>
+    <p>当滚动状态发生变化时触发。</p>
+    <p>该事件回调函数拥有三个参数：</p>
+    <ul>
+      <li><code>isInScroll</code>，滚动条距离顶部是否大于 0；</li>
+      <li><code>scrollDirection</code>，当前滚动的方向，<code>'up'</code> 或 <code>'down'</code>；</li>
+      <li><code>scrollTop</code>，滚动条距离顶部的距离。</li>
+    </ul>
+  </div>
+  <pre><code><span class="muted">// 使用选项来指定事件回调函数</span>
+$('#scrollDiv').listenScroll({
+    listenScroll: function(isInScroll, scrollDirection, scrollTop) {
+        // 处理滚动状态变化
+    }
+});</code></pre>
+    <pre><code><span class="muted">// 使用 $().on() 绑定事件</span>
+$('#scrollDiv').on('listenScroll', function(isInScroll, scrollDirection, scrollTop) {
+    // 处理滚动状态变化
+});</code></pre>
+</div>
+
+<script>
+$(function() {
+    var $label = $('#listenScrollClassLabel'),
+        $test  = $('#testListenScroll');
+    $test.listenScroll({
+        listenScroll: function() {
+            $label.text($test.attr('class'));
+        }
+    });
+    $label.text($test.attr('class'));
+});
+</script>
