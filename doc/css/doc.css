@@ -1,5 +1,5 @@
 /*!
- * mzui - v1.0.0 - 2016-06-09
+ * mzui - v1.0.0 - 2016-06-10
  * Copyright (c) 2016 cnezsoft.com; Licensed MIT
  */
 
@@ -39,6 +39,43 @@ pre em
     font-weight: bold;
 
     color: #ea644a;
+}
+#fabNav
+{
+    z-index: 2000;
+}
+#fabNav.waiting
+{
+    -webkit-transform: translate(0, 100%);
+            transform: translate(0, 100%);
+
+    opacity: 0;
+}
+#fabNav.open
+{
+    -webkit-transform: translate(0, 0) !important;
+            transform: translate(0, 0) !important;
+}
+#fabNav.open > a
+{
+    box-shadow: none !important;
+}
+#fabNav.open > a > .icon:before
+{
+    content: '\d7';
+}
+#tocModal
+{
+    top: auto;
+}
+#tocList
+{
+    padding: .25rem 0;
+}
+#tocList > .item
+{
+    padding-right: 1.5em;
+    padding-left: 5em;
 }
 .colorset
 {

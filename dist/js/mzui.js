@@ -1,5 +1,5 @@
 /*!
- * mzui - v1.0.0 - 2016-06-09
+ * mzui - v1.0.0 - 2016-06-10
  * Copyright (c) 2016 cnezsoft.com; Licensed MIT
  */
 
@@ -3287,7 +3287,7 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
 
         var callEvent = function(name, event) {
             if(options && $.isFunction(options[name])) {
-                return options[name](event);
+                return options[name].call(event);
             }
             $form.trigger(name + NAME, event);
         };
@@ -3317,7 +3317,7 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
                 if(status == 'success') {
                     try {
                         if(typeof response === 'string') response = $.parseJSON(response);
-                        callEvent('onResult', response);
+                        callEvent('onSuccess', response);
                         if(response.result === 'success') {
                             if(response.message) {
                                 $.messager.success(response.message);
@@ -3355,7 +3355,7 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
                     } catch(e) {
                         showMessage(response || 'No response.');
                     }
-                    callEvent('onSuccess', response);
+                    callEvent('onResult', response);
                 } else {
                     showMessage('error: ' + status);
                     callEvent('onError', status);

@@ -8,8 +8,9 @@
   <link rel="stylesheet" href="doc/css/doc.css">
 </head>
 <body class='with-heading-top with-nav-top display-loading'>
+
   <!-- App bar -->
-  <header class="heading primary affix dock-top dock-auto">
+  <header class="heading primary affix dock-top dock-auto" id="haedNav">
     <nav class="nav" id='headNav'>
       <a href="index.html" class='brand-name'><strong>MZUI</strong></a>
       <a href="doc/base.html" data-display-auto>基础</a>
@@ -22,12 +23,26 @@
     </nav>
   </header>
 
-  <nav class="affix dock-top nav primary-pale nav-secondary" id="navs" data-display data-selector="a" data-active-class="active" data-target="#partial" data-trigger='click' data-load="true">
+  <nav class="affix dock-top nav primary-pale nav-secondary" id="navs">
   </nav>
 
   <div class="loading loading-light" id="pageLoading"></div>
 
   <div id="partial" class="container"></div>
+
+  <nav id="fabNav" class="affix dock-bottom dock-left fab has-padding dock-auto shadow-none">
+    <a id="tocBtn" class="btn btn-lg circle primary layer"><i class="icon icon-list-ul"></i></a>
+  </nav>
+
+  <div class="modal affix enter-from-bottom" id="tocModal">
+    <div class="heading divider">
+      <div class="title"><i class="icon-list-ul muted"></i> <strong id="tocHeading"></strong></div>
+      <nav class="nav">
+        <a class="btn" data-dismiss="display"><i class="icon-remove muted"></i></a>
+      </nav>
+    </div>
+    <div class="list compact" id="tocList"></div>
+  </div>
 
   <script src="dist/js/mzui.js"></script>
   <script src="doc/js/doc.js"></script>
