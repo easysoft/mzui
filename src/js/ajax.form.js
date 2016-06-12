@@ -18,7 +18,7 @@
 
         var callEvent = function(name, event) {
             if(options && $.isFunction(options[name])) {
-                return options[name].call(event);
+                return options[name](event);
             }
             $form.trigger(name + NAME, event);
         };
