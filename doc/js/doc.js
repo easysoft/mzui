@@ -1,5 +1,5 @@
 /*!
- * mzui - v1.0.0 - 2016-06-10
+ * mzui - v1.0.0 - 2016-06-12
  * Copyright (c) 2016 cnezsoft.com; Licensed MIT
  */
 
@@ -30,10 +30,10 @@ $(function() {
         trigger: 'click',
         load: true,
         show: function() {
-            $fabNav.addClass('waiting');
+            $fabNav.addClass('disabled');
         },
         shown: function() {
-            $fabNav.removeClass('waiting');
+            $fabNav.removeClass('disabled');
             $tocList.empty();
         }
     });

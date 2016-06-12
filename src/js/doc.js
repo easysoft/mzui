@@ -25,10 +25,10 @@ $(function() {
         trigger: 'click',
         load: true,
         show: function() {
-            $fabNav.addClass('waiting');
+            $fabNav.addClass('disabled');
         },
         shown: function() {
-            $fabNav.removeClass('waiting');
+            $fabNav.removeClass('disabled');
             $tocList.empty();
         }
     });
