@@ -1,5 +1,5 @@
 /*!
- * mzui - v1.0.0 - 2016-06-12
+ * mzui - v1.0.0 - 2016-06-13
  * Copyright (c) 2016 cnezsoft.com; Licensed MIT
  */
 
@@ -2855,6 +2855,7 @@ a .icon.spin
 {
     font-size: .7rem;
     font-weight: normal;
+    line-height: 1;
 
     display: -webkit-inline-flex;
     display: -ms-inline-flexbox;
@@ -2939,6 +2940,7 @@ a .icon.spin
 .label
 {
     font-size: .6rem;
+    line-height: 1;
 
     display: -webkit-inline-flex;
     display: -ms-inline-flexbox;
