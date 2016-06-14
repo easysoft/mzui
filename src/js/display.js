@@ -232,9 +232,9 @@
             if(options.backdropDismiss) {
                 $backdrop.attr('data-dismiss', STR_DISPLAY);
             }
-
-            ($layer || $target).css('zIndex', uuid++);
         }
+        
+        ($layer || $target).css('zIndex', uuid++);
 
         if(activeClass && element) {
             if(options.activeSingle) $element.parent().children().removeClass(activeClass);
