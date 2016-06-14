@@ -161,18 +161,18 @@ myNamedDisplay.show();</code></pre>
 
     <h5 class="code">remote</h5>
     <p>用来表示远程内容的地址。</p>
-    <p>设置此选项会通过 Ajax 方式从远处获取内容再更新到目标。</p>
+    <p>设置此选项会通过 Ajax 方式从远程获取内容再更新到目标。</p>
 
     <h5 class="code">remoteType</h5>
-    <p>远处内容类型，可选值： <code>'html'</code>（默认），<code>'json'</code>。</p>
-    <p>一般会将远处内容视为字符串，如果将该值指定为 <code>'json'</code> 则会尝试将字符串转换为  对象。</p>
+    <p>远程内容类型，可选值： <code>'html'</code>（默认），<code>'json'</code>。</p>
+    <p>一般会将远程内容视为字符串，如果将该值指定为 <code>'json'</code> 则会尝试将字符串转换为  对象。</p>
 
     <h5 class="code">remoteError</h5>
-    <p>当从远处加载内容时（<code>remote</code> 或 <code>load</code> 选项可用）发生错误时会使用该选项来取代 <code>content</code> 选项。</p>
+    <p>当从远程加载内容时（<code>remote</code> 或 <code>load</code> 选项可用）发生错误时会使用该选项来取代 <code>content</code> 选项。</p>
 
     <h5 class="code">loadingClass</h5>
     <p>用来指定 CSS class 的字符串，默认为 <code>'loading'</code>。</p>
-    <p>当开始从远处服务器获取内容时会在目标上添加该选项指定的 CSS class，当远程连接结束之后会从目标上移除该值。</p>
+    <p>当开始从远程服务器获取内容时会在目标上添加该选项指定的 CSS class，当远程连接结束之后会从目标上移除该值。</p>
 
     <h5 class="code">source</h5>
     <p>指定用来拷贝的 DOM 元素，允许以下值：</p>
@@ -434,7 +434,7 @@ new $.Display({display: 'messager'}).show();</code></pre>
 
   <div class="box article">
     <h5>添加插件</h5>
-    <p>通过制定插件名称和选项预处理函数来添加插件。</p>
+    <p>通过指定插件名称和选项预处理函数来添加插件。</p>
     <p>插件预处理函数会在每次调用 <code>show()</code> 方法之前对选项进行预处理。</p>
     <ul>
       <li><strong class="code">$.Display.plugs(name, function)</strong></li>
