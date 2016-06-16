@@ -77,7 +77,7 @@
         var that = this;
 
         var target = $.calValue(options.target, that, options);
-        if(target === '!new') {
+        if(target === '!new' || target === '#displayTarget') {
             var targetId = 'displayTarget-' + options.name,
                 layerId = 'displayLayer-' + options.name;
             $('#' + targetId).remove();
@@ -233,7 +233,7 @@
                 $backdrop.attr('data-dismiss', STR_DISPLAY);
             }
         }
-        
+
         ($layer || $target).css('zIndex', uuid++);
 
         if(activeClass && element) {
