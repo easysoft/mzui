@@ -325,7 +325,7 @@
     },
     "ajax.form": {
       "src": "~.js",
-      "dpds": ["zepto.ajax", "zepto.form", "utils.js"]
+      "dpds": ["zepto.ajax", "utils.js"]
     },
     "transition": {
       "src": "~.js"

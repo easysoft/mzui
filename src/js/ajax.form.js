@@ -36,16 +36,24 @@
 
         callEvent('init');
 
-        $form.submit(function(e) {
-            var serializeArray = $form.serializeArray();
-            var formData = {};
-            $.each(serializeArray, function(idx, item) {
-                formData[item.name] = item.value;
-            });
+        $form.on('submit', function(e) {
+            e.preventDefault();
+
+            var form = $form[0];
+            var formData = new FormData(form);
             callEvent('onSubmit', formData);
+            
             var $submitBtn = $form.find('[type="submit"]').attr('disabled', 'disabled').addClass('disabled loading');
-            $.post($form.attr('action') || window.location.href, $.param(formData), function(response, status){
-                if(status == 'success') {
+
+            $.ajax({
+                url: form.action,
+                type: form.method,
+                processData: false,
+                contentType: false,
+                dataType: $form.data('type') || 'json',
+                data: formData,
+                processData: false,
+                success: function(response, status) {
                     try {
                         if(typeof response === 'string') response = $.parseJSON(response);
                         callEvent('onSuccess', response);
@@ -87,17 +95,19 @@
                         showMessage(response || 'No response.');
                     }
                     callEvent('onResult', response);
-                } else {
-                    showMessage('error: ' + status);
-                    callEvent('onError', status);
+                },
+                error: function(xhr, errorType, error) {
+                    showMessage('error: ' + error);
+                    callEvent('onError', {xhr: xhr, errorType: errorType, error: error});
                     if(window.v && window.v.lang.timeout) {
                         $.messager.danger(window.v.lang.timeout);
                     }
+                },
+                complete: function(xhr, status) {
+                    $submitBtn.attr('disabled', null).removeClass('disabled loading');
+                    callEvent('onComplete', {xhr: xhr, status: status});
                 }
-                $submitBtn.attr('disabled', null).removeClass('disabled loading');
-                callEvent('onComplete', {response: response, status: status});
             });
-            e.preventDefault();
         }).on('change', function(e){
             $form.find('.form-message').hide();
             $(e.target).closest('.control').removeClass('has-error');
