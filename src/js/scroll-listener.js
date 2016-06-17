@@ -30,7 +30,8 @@
         });
 
         if(options.canScrollClass) {
-            that.$container.toggleClass(options.canScrollClass, that.$[0].scrollHeight > that.$.height());
+            var scrollHeight = (that.$[0] === window ? $('body') : that.$)[0].scrollHeight;
+            that.$container.toggleClass(options.canScrollClass, scrollHeight > that.$.height());
         }
     };
 
