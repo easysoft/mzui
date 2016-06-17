@@ -46,6 +46,12 @@
             skin = allSkins[skin];
         } else if($.isStr(skin) && skin.indexOf('random') === 0) {
             allSkins[skin] = skin = Math.round(Math.random() * 360);
+        } else if($.isStr(skin) && skin.indexOf('@') === 0) {
+            var val = 0;
+            for(var i = skin.length - 1; i > 0; --i) {
+                val += Math.pow(3, (i - 1)) * skin.charCodeAt(i);
+            }
+            skin = val;
         }
 
         if(skinName) allSkins[skinName] = skin;
