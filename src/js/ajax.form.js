@@ -40,11 +40,50 @@
             e.preventDefault();
 
             var form = $form[0];
-            var formData = new FormData(form);
-            callEvent('onSubmit', formData);
-            
-            var $submitBtn = $form.find('[type="submit"]').attr('disabled', 'disabled').addClass('disabled loading');
+            var _formData = {};
+            $.each($form.serializeArray(), function(idx, item) {
+                var _name = item.name, 
+                    _val = item.value,
+                    _formVal = _formData[_name];
+                if(_val instanceof FileList) {
+                    var _fileVal = [];
+                    for(var i = _val.length - 1; i >= 0; --i) {
+                        _fileVal.push(_val[i]);
+                    }
+                    _val = _fileVal;
+                }
+                if($.isArray(_val)) {
+                    if(_formVal === undefined) {
+                        _formVal = _val;
+                    } else if($.isArray(_formVal)) {
+                        _formVal.push.apply(_formVal, _val);
+                    } else {
+                        _val.push(_formVal);
+                        _formVal = _val;
+                    }
+                } else if(_name.lastIndexOf(']') === _name.length - 1) {
+                    if(_formVal === undefined) {
+                        _formVal = [_val];
+                    } else {
+                        _formVal.push(_val);
+                    }
+                } else {
+                    _formVal = _val;
+                }
+                _formData[_name] = _formVal;
+            });
+            callEvent('onSubmit', _formData);
 
+            var formData = new FormData();
+            for (var key in _formData) {
+                var _val = _formData[key];
+                if($.isArray(_val)) {
+                    for(var i = _val.length - 1; i >= 0; --i) {
+                        formData.append(key, _val[i]);
+                    }
+                } else formData.append(key, _val);
+            }
+            var $submitBtn = $form.find('[type="submit"]').attr('disabled', 'disabled').addClass('disabled loading');
             $.ajax({
                 url: form.action,
                 type: form.method,
