@@ -12,9 +12,10 @@
     if (this[0]) $.each(this[0].elements, function(_, field){
       type = field.type, name = field.name
       if (name && field.nodeName.toLowerCase() != 'fieldset' &&
-        !field.disabled && type != 'submit' && type != 'reset' && type != 'button' && type != 'file' &&
+        !field.disabled && type != 'submit' && type != 'reset' && type != 'button' &&
+        // !field.disabled && type != 'submit' && type != 'reset' && type != 'button' && type != 'file' &&
         ((type != 'radio' && type != 'checkbox') || field.checked))
-          add($(field).val())
+          add(type == 'file' ? field.files : $(field).val())
     })
     return result
   }
