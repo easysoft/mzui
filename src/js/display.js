@@ -39,6 +39,7 @@
         if(!options.name) options.name    = STR_DISPLAY + uuid++;
 
         var triggerCallback = function(e) {
+            if(options.stopPropagation) e.stopPropagation();
             var $this = $(this);
             var thisOptions = $this.data() || {};
             thisOptions.element = this;
@@ -132,6 +133,7 @@
                 $target.removeClass(loadingClass).addClass(options.showInClass);
                 $(STR_BODY).removeClass(STR_DISPLAY + '-loading');
                 $.callEvent('loaded', options['loaded'], that, that.$, options);
+                Display.events.triggerHandler('loaded', [that, that.$, options]);
                 readyCallback && readyCallback();
             };
             $target.removeClass(options.showInClass).addClass(loadingClass);
@@ -234,7 +236,7 @@
             }
         }
 
-        ($layer || $target).css('zIndex', uuid++);
+        if(options.targetZIndex !== 'none') ($layer || $target).css('zIndex', options.targetZIndex || uuid++);
 
         if(activeClass && element) {
             if(options.activeSingle) $element.parent().children().removeClass(activeClass);
@@ -350,6 +352,7 @@
 
                 that.animateCall = setTimeout(function() {
                     $.callEvent('shown', options.shown, that, that.$, options);
+                    Display.events.triggerHandler('shown', [that, that.$, options]);
                 }, options.duration + 50);
 
                 if(options.targetDismiss) {
@@ -375,12 +378,19 @@
                 afterShow();
             }
         }, function() {
+            $.callEvent('displayed', options.displayed, that, that.$, options);
+            Display.events.triggerHandler('displayed', [that, that.$, options]);
+
             if(options.plugSkin) {
                 $target.find('[data-skin]').skin();
             }
 
             if(options.plugDisplay) {
                 $target.find('[data-display]').display();
+            }
+
+            if($.fn.listenScroll) {
+                $target.find('.listen-scroll').listenScroll();
             }
         });
 
@@ -405,6 +415,7 @@
         var afterHide = function() {
             if(options.layer) options.layer.addClass(STR_HIDDEN);
             $.callEvent(STR_HIDDEN, options[STR_HIDDEN], that, that.$, options);
+            Display.events.triggerHandler(STR_HIDDEN, [that, that.$, options]);
             $target.addClass(STR_HIDDEN);
             $backdrop.remove();
             $(STR_BODY).removeClass('display-show-' + options.name);
@@ -491,6 +502,8 @@
         // hidden: null,   // callback after hide target
         // loaded: null,   // callback after load target
     };
+
+    Display.events = $('<i>');
 
     Display.plugs = function(name, func, fnName) {
         if($.isPlainObject(name)) {
