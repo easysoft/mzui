@@ -1906,7 +1906,7 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
  * Copyright (c) 2014 cnezsoft.com; Licensed MIT
  * ======================================================================== */
 
-!(function($, undefined, window){
+!(function($, undefined, window, document){
     'use strict';
 
     var uuid                = 1200,
@@ -2050,7 +2050,7 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
                     $(STR_BODY).removeClass('has-' + STR_DISPLAY + '-' + STR_LOADING);
                     if(options.$backdrop) options.$backdrop.removeClass(loadingClass);
                     $.callEvent('loaded', options['loaded'], that, that.$, options);
-                    Display.events.triggerHandler('loaded', [that, that.$, options]);
+                    $(document).triggerHandler(STR_DISPLAY + '.loaded', [that, that.$, options]);
                     ajaxOptions.complete && ajaxOptions.complete(xhr, status);
                     readyCallback && readyCallback();
                 }
@@ -2115,7 +2115,7 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
         }
 
         if(options.showSingle) {
-            $target.parent().children().not($target).removeClass(options.showInClass).addClass(STR_HIDDEN);
+            (options.showSingle === true ? $target.parent().children() : $(options.showSingle)).not($target).removeClass(options.showInClass).addClass(STR_HIDDEN);
         }
 
         if($layer) $layer.removeClass(STR_HIDDEN);
@@ -2152,14 +2152,15 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
                 if($.isStr(placement) && placement[0] == '{') {
                     placement = $.parseJSON(placement);
                 }
+                var $body = $('body');
                 if($.isPlainObject(placement)) {
                     $target.css(placement);
                 } else if(placement === 'overlay') {
                     var offset = $element.offset();
                     $target.css({
                         position: 'absolute',
-                        left: offset.left,
-                        top: offset.top,
+                        left: offset.left - (options.layer ? $body.scrollLeft() : 0),
+                        top: offset.top - (options.layer ? $body.scrollTop() : 0),
                         width: $element.width(),
                         height: $element.height()
                     });
@@ -2169,8 +2170,8 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
                     var beside = placement[1] || 'auto', 
                         float = placement[2] || 'center',
                         offset = $element.offset(),
-                        eTop = offset.top,
-                        eLeft = offset.left,
+                        eTop = offset.top - (options.layer ? $body.scrollTop() : 0),
+                        eLeft = offset.left - (options.layer ? $body.scrollLeft() : 0),
                         left, top,
                         eWidth = $element.width(),
                         eHeight = $element.height(),
@@ -2216,7 +2217,7 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
                     });
 
                     suggestArrow = inverseSide[beside];
-                    suggestAnimate = 'fade sacle-from-' + suggestArrow;
+                    suggestAnimate = 'fade scale-from-' + suggestArrow;
                 } else {
                     placement = placement.split('-');
                     var justify = placement[0], 
@@ -2254,7 +2255,7 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
 
                 that.animateCall = setTimeout(function() {
                     $.callEvent('shown', options.shown, that, that.$, options);
-                    Display.events.triggerHandler('shown', [that, that.$, options]);
+                    $(document).triggerHandler(STR_DISPLAY + '.shown', [that, that.$, options]);
                 }, options.duration + 50);
 
                 if(options.targetDismiss) {
@@ -2266,10 +2267,9 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
                 if(animate === true) {
                     $target.addClass(suggestAnimate ? ('enter-' + suggestAnimate) : 'fade');
                 } else {
-                    var animateType = typeof animate;
-                    if($.isStr(animateType)) {
+                    if($.isStr(animate)) {
                         $target.addClass(animate.replace('suggest', suggestAnimate));
-                    } else if($.isNum(animateType)) {
+                    } else if($.isNum(animate)) {
                         options.duration = animate;
                     }
                 }
@@ -2281,7 +2281,7 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
             }
         }, function() {
             $.callEvent('displayed', options.displayed, that, that.$, options);
-            Display.events.triggerHandler('displayed', [that, that.$, options]);
+            $(document).triggerHandler(STR_DISPLAY + '.displayed', [that, that.$, options]);
 
             if(options.plugSkin) {
                 $target.find('[data-skin]').skin();
@@ -2317,7 +2317,7 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
         var afterHide = function() {
             if(options.layer) options.layer.addClass(STR_HIDDEN);
             $.callEvent(STR_HIDDEN, options[STR_HIDDEN], that, that.$, options);
-            Display.events.triggerHandler(STR_HIDDEN, [that, that.$, options]);
+            $(document).triggerHandler(STR_DISPLAY + '.' + STR_HIDDEN, [that, that.$, options]);
             $target.addClass(STR_HIDDEN);
             $backdrop.remove();
             $(STR_BODY).removeClass(STR_DISPLAY + '-show-' + options.name);
@@ -2404,8 +2404,6 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
         // loaded: null,   // callback after load target
     };
 
-    Display.events = $('<i>');
-
     Display.plugs = function(name, func, fnName) {
         if($.isPlainObject(name)) {
             $.each(name, Display.plugs);
@@ -2445,7 +2443,7 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
             Display.dismiss(name);
         });
     });
-}(CoreLib, undefined, window));
+}(CoreLib, undefined, window, document));
 
 /* ========================================================================
  * ZUI: scroll.js
@@ -2539,59 +2537,10 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
         _collapse: function(options) {
             return $.extend(options, {
                 triggerMethod: 'toggle',
-                duration: 200,
+                animate: false,
                 showInClass: 'in',
                 activeClass: 'collapse-open',
-                group: isUndefinedThen(options.group, options.selector ? ('collapse-group-' + (++$.uuid)) : false),
-                checkShow: function(thisOptions) {
-                    return thisOptions.selector ? $(thisOptions.element).hasClass('collapse-open') : thisOptions.$target.hasClass('in');
-                }
-            });
-        },
-        collapse: function(options) {
-            var oldShow = options.show,
-                oldHide = options.hide,
-                show = function($targets, duration) {
-                    $targets.each(function() {
-                        var $target = $(this);
-                        $target.removeClass('collapse').addClass('collapsing');
-                        var height = $target[0].scrollHeight;
-                        $target.height(0);
-                        setTimeout(function(){
-                            $target.height(height);
-                            setTimeout(function() {
-                                $target.addClass('collapse').removeClass('collapsing').height('');
-                            }, duration + 50);
-                        }, 10);
-                    });
-                },
-                hide = function($targets, duration) {
-                    $targets.each(function() {
-                        var $target = $(this);
-                        $target.height($target.height())[0].offsetHeight;
-                        $target.removeClass('collapse').addClass('collapsing');
-                        $target.height(0);
-                        setTimeout(function() {
-                            $target.removeClass('collapsing in').addClass('collapse').height('');
-                        }, duration + 50);
-                    });
-                };
-            return $.extend(options, {
-                show: function(thisOptions) {
-                    var $target = thisOptions.$target,
-                        group = thisOptions.group;
-                    if(group) {
-                        var $group = group === true ? $target.parent().find('.collapse.in') : $('.collapse.in[data-collapse="' + group + '"]');
-                        if($group.length) hide($group.not($target), thisOptions.duration);
-                    }
-                    show($target, thisOptions.duration);
-                    return oldShow && oldShow();
-                },
-                hide: function(thisOptions) {
-                    var $target = thisOptions.$target;
-                    hide($target, thisOptions.duration);
-                    return oldHide && oldHide();
-                }
+                showSingle: isUndefinedThen(options.group || options.showSingle, options.selector ? ('collapse-group-' + (++$.uuid)) : false)
             });
         }
     });

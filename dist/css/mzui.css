@@ -2863,34 +2863,26 @@ a .icon.spin
 {
     font-size: .7rem;
     font-weight: normal;
-    line-height: 1;
+    line-height: 1rem;
 
-    display: -webkit-inline-flex;
-    display: -ms-inline-flexbox;
-    display:         inline-flex;
+    display: inline-block;
 
     min-width: 1.5rem;
     height: 1.5rem;
-    padding-right: .5rem;
-    padding-left: .5rem;
+    padding: .2rem .5rem;
 
     cursor: pointer;
     -webkit-user-select: none;
        -moz-user-select: none;
         -ms-user-select: none;
             user-select: none;
+    text-align: center;
+    vertical-align: middle;
     white-space: nowrap;
 
     color: inherit;
     border: .05rem solid transparent;
     background: transparent;
-
-    -webkit-justify-content: center;
-    -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
-            align-items: center;
 }
 .btn.circle,
 .btn.circle:after
@@ -2900,9 +2892,11 @@ a .icon.spin
 .btn-lg
 {
     font-size: .9rem;
+    line-height: 1.2rem;
 
     min-width: 2rem;
     height: 2rem;
+    padding: .35rem .5rem;
 }
 .btn-lg.circle,
 .btn-lg.circle:after
@@ -2912,9 +2906,11 @@ a .icon.spin
 .btn-sm
 {
     font-size: .6rem;
+    line-height: .9rem;
 
     min-width: 1.2rem;
     height: 1.2rem;
+    padding: .1rem .5rem;
 }
 .btn-sm.circle,
 .btn-sm.circle:after
@@ -2924,9 +2920,11 @@ a .icon.spin
 .btn-xs
 {
     font-size: .6rem;
+    line-height: .9rem;
 
     min-width: 1rem;
     height: 1rem;
+    padding: 0rem .5rem;
 }
 .btn-xs.circle,
 .btn-xs.circle:after
@@ -2945,14 +2943,17 @@ a .icon.spin
 {
     margin-top: .5rem;
 }
+.btn > .label
+{
+    position: relative;
+    top: -.05rem;
+}
 .label
 {
     font-size: .6rem;
-    line-height: 1;
+    line-height: .9rem;
 
-    display: -webkit-inline-flex;
-    display: -ms-inline-flexbox;
-    display:         inline-flex;
+    display: inline-block;
 
     min-width: 1rem;
     height: 1rem;
@@ -2962,13 +2963,6 @@ a .icon.spin
 
     border: .05rem solid transparent;
     background-color: #e5e5e5;
-
-    -webkit-justify-content: center;
-    -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
-            align-items: center;
 }
 .label > .icon
 {
@@ -2976,9 +2970,16 @@ a .icon.spin
 }
 .label.circle
 {
-    padding: .05rem .35rem;
+    padding: .05rem .25rem;
 
     border-radius: .5rem;
+}
+.label.badge
+{
+    position: absolute;
+    z-index: 1;
+    top: -.5rem;
+    right: -.5rem;
 }
 .heading
 {
@@ -3297,6 +3298,9 @@ a .icon.spin
     border-color: #2196f3;
     outline: none;
 }
+.input[readonly],
+.textarea[readonly],
+.select > select[readonly],
 .input[disabled],
 .textarea[disabled],
 .select > select[disabled],
@@ -4276,12 +4280,8 @@ tr.primary-pale:hover
 }
 .primary-pale.outline
 {
-    border-color: #3280fc !important;
-    background-color: #ebf2f9 !important;
-}
-.primary-pale.text-tint
-{
-    color: #3280fc !important;
+    color: #ebf2f9 !important;
+    border-color: #ebf2f9 !important;
 }
 .primary-pale .active
 {
@@ -4303,13 +4303,8 @@ tr.success-pale:hover
 .green-pale.outline,
 .success-pale.outline
 {
-    border-color: #38b03f !important;
-    background-color: #ddf4df !important;
-}
-.green-pale.text-tint,
-.success-pale.text-tint
-{
-    color: #38b03f !important;
+    color: #ddf4df !important;
+    border-color: #ddf4df !important;
 }
 .green-pale .active,
 .success-pale .active
@@ -4332,13 +4327,8 @@ tr.info-pale:hover
 .blue-pale.outline,
 .info-pale.outline
 {
-    border-color: #03b8cf !important;
-    background-color: #ddf3f5 !important;
-}
-.blue-pale.text-tint,
-.info-pale.text-tint
-{
-    color: #03b8cf !important;
+    color: #ddf3f5 !important;
+    border-color: #ddf3f5 !important;
 }
 .blue-pale .active,
 .info-pale .active
@@ -4361,13 +4351,8 @@ tr.warning-pale:hover
 .yellow-pale.outline,
 .warning-pale.outline
 {
-    border-color: #f1a325 !important;
-    background-color: #fff0d5 !important;
-}
-.yellow-pale.text-tint,
-.warning-pale.text-tint
-{
-    color: #f1a325 !important;
+    color: #fff0d5 !important;
+    border-color: #fff0d5 !important;
 }
 .yellow-pale .active,
 .warning-pale .active
@@ -4390,13 +4375,8 @@ tr.danger-pale:hover
 .red-pale.outline,
 .danger-pale.outline
 {
-    border-color: #ea644a !important;
-    background-color: #ffe5e0 !important;
-}
-.red-pale.text-tint,
-.danger-pale.text-tint
-{
-    color: #ea644a !important;
+    color: #ffe5e0 !important;
+    border-color: #ffe5e0 !important;
 }
 .red-pale .active,
 .danger-pale .active
@@ -4419,13 +4399,8 @@ tr.important-pale:hover
 .brown-pale.outline,
 .important-pale.outline
 {
-    border-color: #bd7b46 !important;
-    background-color: #f7ebe1 !important;
-}
-.brown-pale.text-tint,
-.important-pale.text-tint
-{
-    color: #bd7b46 !important;
+    color: #f7ebe1 !important;
+    border-color: #f7ebe1 !important;
 }
 .brown-pale .active,
 .important-pale .active
@@ -4448,13 +4423,8 @@ tr.special-pale:hover
 .purple-pale.outline,
 .special-pale.outline
 {
-    border-color: #8666b8 !important;
-    background-color: #f5eeff !important;
-}
-.purple-pale.text-tint,
-.special-pale.text-tint
-{
-    color: #8666b8 !important;
+    color: #f5eeff !important;
+    border-color: #f5eeff !important;
 }
 .purple-pale .active,
 .special-pale .active
@@ -4473,12 +4443,8 @@ tr.gray:hover
 }
 .gray.outline
 {
-    border-color: #333 !important;
-    background-color: #f1f1f1 !important;
-}
-.gray.text-tint
-{
-    color: #333 !important;
+    color: #f1f1f1 !important;
+    border-color: #f1f1f1 !important;
 }
 .gray .active
 {
@@ -4496,12 +4462,8 @@ tr.white:hover
 }
 .white.outline
 {
-    border-color: #333 !important;
-    background-color: #fff !important;
-}
-.white.text-tint
-{
-    color: #333 !important;
+    color: #fff !important;
+    border-color: #fff !important;
 }
 .white .active
 {

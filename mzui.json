@@ -313,7 +313,7 @@
     },
     "display": {
       "src": ["~.js", "~.less"],
-      "dpds": ["zepto.ajax", "utils.js", "layout"]
+      "dpds": ["zepto.ajax", "utils.js"]
     },
     "display.plugs": {
       "src": ["~.js", "~.less"],
