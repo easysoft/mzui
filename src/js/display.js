@@ -149,7 +149,7 @@
                     $(STR_BODY).removeClass('has-' + STR_DISPLAY + '-' + STR_LOADING);
                     if(options.$backdrop) options.$backdrop.removeClass(loadingClass);
                     $.callEvent('loaded', options['loaded'], that, that.$, options);
-                    Display.events.triggerHandler('loaded', [that, that.$, options]);
+                    $(document).triggerHandler(STR_DISPLAY + '.loaded', [that, that.$, options]);
                     ajaxOptions.complete && ajaxOptions.complete(xhr, status);
                     readyCallback && readyCallback();
                 }
@@ -214,7 +214,7 @@
         }
 
         if(options.showSingle) {
-            $target.parent().children().not($target).removeClass(options.showInClass).addClass(STR_HIDDEN);
+            (options.showSingle === true ? $target.parent().children() : $(options.showSingle)).not($target).removeClass(options.showInClass).addClass(STR_HIDDEN);
         }
 
         if($layer) $layer.removeClass(STR_HIDDEN);
@@ -353,7 +353,7 @@
 
                 that.animateCall = setTimeout(function() {
                     $.callEvent('shown', options.shown, that, that.$, options);
-                    Display.events.triggerHandler('shown', [that, that.$, options]);
+                    $(document).triggerHandler(STR_DISPLAY + '.shown', [that, that.$, options]);
                 }, options.duration + 50);
 
                 if(options.targetDismiss) {
@@ -380,7 +380,7 @@
             }
         }, function() {
             $.callEvent('displayed', options.displayed, that, that.$, options);
-            Display.events.triggerHandler('displayed', [that, that.$, options]);
+            $(document).triggerHandler(STR_DISPLAY + '.displayed', [that, that.$, options]);
 
             if(options.plugSkin) {
                 $target.find('[data-skin]').skin();
@@ -416,7 +416,7 @@
         var afterHide = function() {
             if(options.layer) options.layer.addClass(STR_HIDDEN);
             $.callEvent(STR_HIDDEN, options[STR_HIDDEN], that, that.$, options);
-            Display.events.triggerHandler(STR_HIDDEN, [that, that.$, options]);
+            $(document).triggerHandler(STR_DISPLAY + '.' + STR_HIDDEN, [that, that.$, options]);
             $target.addClass(STR_HIDDEN);
             $backdrop.remove();
             $(STR_BODY).removeClass(STR_DISPLAY + '-show-' + options.name);
@@ -502,8 +502,6 @@
         // hidden: null,   // callback after hide target
         // loaded: null,   // callback after load target
     };
-
-    Display.events = $('<i>');
 
     Display.plugs = function(name, func, fnName) {
         if($.isPlainObject(name)) {
