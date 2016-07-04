@@ -1,20 +1,31 @@
+// Base style
+
 .label {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
+  display: inline-block;
   font-size: @font-size-small;
   height: 20*@rem;
   min-width: 20*@rem;
-  line-height: 1;
+  line-height: 20*@rem - 2 * @border-width;
   padding: 0 @padding-small-horizontal;
-  vertical-align: middle;
   background-color: @color-gray-lighter;
   border: @border-width solid transparent;
+  vertical-align: middle;
 
   > .icon {line-height: 1}
 
   &.circle {
     border-radius: 10*@rem;
-    padding: 1*@rem 7*@rem;
+    padding: 1*@rem 5*@rem;
   }
 }
+
+
+// Badge
+
+.label.badge {
+  position: absolute;
+  top: -10*@rem;
+  right: -10*@rem;
+  z-index: 1;
+}
+

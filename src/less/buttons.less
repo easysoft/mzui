@@ -6,20 +6,17 @@
 // Base styles
 
 .btn {
-  display: inline-flex;
+  display: inline-block;
   font-weight: @btn-font-weight;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
   cursor: pointer;
   border: @border-width solid transparent;
   white-space: nowrap;
   user-select: none;
   color: inherit;
   background: transparent;
-  padding-left: @space-sm;
-  padding-right: @space-sm;
-  line-height: 1;
-  
+  vertical-align: middle;
+
   .button-size(@btn-size; @font-size-base;);
 
   &:extend(.state all);
@@ -46,3 +43,11 @@
 // Vertically space out multiple block buttons
 
 .btn.block + .btn.block {margin-top: @space-sm;}
+
+
+// Label or badge in button
+
+.btn > .label {
+  position: relative;
+  top: -1*@rem;
+}

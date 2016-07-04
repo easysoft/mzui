@@ -1,8 +1,12 @@
 // Button sizes
 .button-size(@size; @font-size;) {
+  @button-line-height: @font-size + .3rem;
+
   min-width: @size;
   height: @size;
   font-size: @font-size;
+  line-height: @button-line-height;
+  padding: (@size - 2 * @border-width - @button-line-height)/2 @space-sm;
 
   &.circle,
   &.circle:after {border-radius: @size/2 !important}
