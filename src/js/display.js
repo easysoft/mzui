@@ -13,8 +13,9 @@
         STR_DISPLAY         = 'display',
         STR_ORIGINAL_CLASS  = 'orginalClass',
         STR_HIDDEN          = 'hidden',
+        STR_LOADING         = 'loading',
         STR_BODY            = 'body',
-        TARGET_EVENT_SUFFIX = '.display.oneForTarget',
+        TARGET_EVENT_SUFFIX = '.' + STR_DISPLAY + '.oneTarget',
         NAME                = 'mzui.' + STR_DISPLAY,
         inverseSide         = {left: 'right', bottom: 'top', top: 'bottom', right: 'left'};
 
@@ -43,13 +44,14 @@
             var $this = $(this);
             var thisOptions = $this.data() || {};
             thisOptions.element = this;
+
             if($this.is('a')) {
                 var href = $this.attr('href');
                 if(href && href !== '#' && href.indexOf('##') < 0) {
                     if(/^#[a-z]/i.test(href)) {
                         thisOptions.target = href;
                     } else if(!thisOptions.remote) {
-                        thisOptions[(thisOptions.load === true || options.load) ? 'load' : 'remote'] = href;
+                        thisOptions.remote = href;
                     }
                 }
                 if(e) e.preventDefault();
@@ -78,19 +80,19 @@
         var that = this;
 
         var target = $.calValue(options.target, that, options);
-        if(target === '!new' || target === '#displayTarget') {
-            var targetId = 'displayTarget-' + options.name,
-                layerId = 'displayLayer-' + options.name;
+        if(target === '!new' || target === '#' + STR_DISPLAY + 'Target') {
+            var targetId = STR_DISPLAY + 'Target-' + options.name,
+                layerId = STR_DISPLAY + 'Layer-' + options.name;
             $('#' + targetId).remove();
-            target = $('<div class="display ' + STR_HIDDEN + '"/>', {id: targetId});
+            target = $('<div class="' + STR_DISPLAY + ' ' + STR_HIDDEN + '"/>', {id: targetId});
             var $layer = $('#' + layerId);
-            if(!$layer.length) $layer = $('<div class="display-layer"/>', {id: layerId}).appendTo(STR_BODY);
+            if(!$layer.length) $layer = $('<div class="' + STR_DISPLAY + '-layer"/>', {id: layerId}).appendTo(STR_BODY);
             options.layer = options.container = $layer.append(target);
         } else if(target === '!self') {
             target = options.element || that.$;
         }
 
-        target = $(target).addClass(STR_DISPLAY).attr('data-display-name', options.name);
+        target = $(target).addClass(STR_DISPLAY).attr('data-' + STR_DISPLAY + '-name', options.name);
         if(!target.parent().length) {
             target.appendTo(options.container);
         }
@@ -117,42 +119,41 @@
             }
         };
 
-        var remote = options.remote,
-            isRemoteContent = options.load || remote;
-        if(isRemoteContent) {
-            var loadingClass = options.loadingClass;
-            var ajaxEventName = 'ajaxError.mzui.' + STR_DISPLAY;
-            var remoteError = options.remoteError;
-            var isRemoteErrorAble = remoteError !== false && remoteError !== undefined;
-            var stopLoading = function() {
-                if(that.lastRemote !== isRemoteContent) {
-                    $(options.container).scrollTop(0);
-                    that.lastRemote = isRemoteContent;
-                }
-                if(isRemoteErrorAble) $(document).off(ajaxEventName);
-                $target.removeClass(loadingClass).addClass(options.showInClass);
-                $(STR_BODY).removeClass(STR_DISPLAY + '-loading');
-                $.callEvent('loaded', options['loaded'], that, that.$, options);
-                Display.events.triggerHandler('loaded', [that, that.$, options]);
-                readyCallback && readyCallback();
-            };
+        var remote = $.calValue(options.remote, that, options);
+        if(remote) {
+            var remoteCall   = $.uuid++,
+                loadingClass = options.loadingClass;
             $target.removeClass(options.showInClass).addClass(loadingClass);
-            $(STR_BODY).addClass(STR_DISPLAY + '-loading');
+            $(STR_BODY).addClass('has-' + STR_DISPLAY + '-' + STR_LOADING);
+            if(options.$backdrop) options.$backdrop.addClass(loadingClass);
 
-            if(isRemoteErrorAble) {
-                $(document).one(ajaxEventName, function(xhr, ajaxOptions, error) {
-                    fillContent($.calValue(remoteError, that, [options, xhr, ajaxOptions, error]))
-                });
-            }
-
-            if(options.load) {
-                $target.load(options.load, stopLoading);
-            } else if(remote) {
-                $[options.remoteType === 'json' ? 'getJSON' : 'get'](remote, function(data, status) {
+            var ajaxOptions = $.isStr(remote) ? {url: remote} : remote;
+            if(that.xhr) that.xhr.abort();
+            that.remoteCall  = remoteCall;
+            that.xhr = $.ajax($.extend({
+                dataType: options.remoteType || 'html',
+                error: options.remoteError
+            }, ajaxOptions, {
+                success: function(data, status, xhr) {
                     fillContent(data);
-                    stopLoading();
-                });
-            }
+                    ajaxOptions.success && ajaxOptions.success(data, status, xhr);
+                },
+                complete: function(xhr, status) {
+                    that.xhr = 0;
+                    if(that.remoteCall !== remoteCall) return;
+                    if(that.lastRemote !== remote) {
+                        $(options.container).scrollTop(0);
+                        that.lastRemote = remote;
+                    }
+                    $target.removeClass(loadingClass).addClass(options.showInClass);
+                    $(STR_BODY).removeClass('has-' + STR_DISPLAY + '-' + STR_LOADING);
+                    if(options.$backdrop) options.$backdrop.removeClass(loadingClass);
+                    $.callEvent('loaded', options['loaded'], that, that.$, options);
+                    Display.events.triggerHandler('loaded', [that, that.$, options]);
+                    ajaxOptions.complete && ajaxOptions.complete(xhr, status);
+                    readyCallback && readyCallback();
+                }
+            }));
         } else {
             var content = $.calValue(options.content, that, options),
                 source = options.source;
@@ -164,7 +165,7 @@
             fillContent(content);
             readyCallback && readyCallback();
         }
-        callback && callback(isRemoteContent);
+        callback && callback(remote);
     };
 
     Display.prototype._getOptions = function(extraOptions) {
@@ -221,7 +222,7 @@
         if(backdrop) {
             var backdropId = 'backdrop-' + displayName;
             $('#' + backdropId).remove();
-            var $backdrop = $('<div class="display-backdrop"/>', {
+            var $backdrop = options.$backdrop = $('<div class="display-backdrop"/>', {
                 id: backdropId,
                 type: options.display,
                 'data-display-name': displayName
@@ -386,7 +387,7 @@
             }
 
             if(options.plugDisplay) {
-                $target.find('[data-display]').display();
+                $target.find('[data-' + STR_DISPLAY + ']').display();
             }
 
             if($.fn.listenScroll) {
@@ -418,7 +419,7 @@
             Display.events.triggerHandler(STR_HIDDEN, [that, that.$, options]);
             $target.addClass(STR_HIDDEN);
             $backdrop.remove();
-            $(STR_BODY).removeClass('display-show-' + options.name);
+            $(STR_BODY).removeClass(STR_DISPLAY + '-show-' + options.name);
             if(options.layer) options.layer.remove();
         };
 
@@ -467,20 +468,19 @@
         // targetGroup: '',
         container: STR_BODY,
         // arrow: false,   // Display arrow beside target edge
-        scrollTop: false,
+        // scrollTop: false,
         plugSkin: true,
         plugDisplay: true,
         // targetDismiss: false,
 
         content: false,          // content source
-        // load: '',                // a url to load html content to fill target
         // remote: '',              // remote source
         // remoteType: 'html',      // html or json
         // remoteError: '',         // content or function for remote error
         // contentType: 'html',     // Content type: html or text
         // source: '',              // function or jquery selector
         // template: null,          // string to format content,
-        loadingClass: 'loading', // CSS class to append to target and body element
+        loadingClass: STR_LOADING, // CSS class to append to target and body element
 
         showInClass: 'in',     // CSS class to be add after show target
         // showSingle: false,     // 

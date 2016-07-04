@@ -79,7 +79,7 @@
             return $.extend(options, {
                 backdrop: isUndefinedThen(options.backdrop, 'modal-backdrop fade'),
                 source: options.target ? null : function() {
-                    return getSourceElement('modal', options.element, oldSource, '', 'content has-padding');
+                    return getSourceElement('modal', options.element, oldSource, '', 'content');
                 },
                 target: isUndefinedThen(options.target, '!new'),
                 targetClass: 'modal ' + (options.targetClass || ''),
@@ -89,7 +89,6 @@
         },
         _collapse: function(options) {
             return $.extend(options, {
-                activeClass: isUndefinedThen(options.activeClass, 'open'),
                 triggerMethod: 'toggle',
                 duration: 200,
                 showInClass: 'in',
