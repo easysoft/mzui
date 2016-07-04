@@ -5,7 +5,7 @@
  * Copyright (c) 2014 cnezsoft.com; Licensed MIT
  * ======================================================================== */
 
-!(function($, undefined, window){
+!(function($, undefined, window, document){
     'use strict';
 
     var uuid                = 1200,
@@ -251,14 +251,15 @@
                 if($.isStr(placement) && placement[0] == '{') {
                     placement = $.parseJSON(placement);
                 }
+                var $body = $('body');
                 if($.isPlainObject(placement)) {
                     $target.css(placement);
                 } else if(placement === 'overlay') {
                     var offset = $element.offset();
                     $target.css({
                         position: 'absolute',
-                        left: offset.left,
-                        top: offset.top,
+                        left: offset.left - (options.layer ? $body.scrollLeft() : 0),
+                        top: offset.top - (options.layer ? $body.scrollTop() : 0),
                         width: $element.width(),
                         height: $element.height()
                     });
@@ -268,8 +269,8 @@
                     var beside = placement[1] || 'auto', 
                         float = placement[2] || 'center',
                         offset = $element.offset(),
-                        eTop = offset.top,
-                        eLeft = offset.left,
+                        eTop = offset.top - (options.layer ? $body.scrollTop() : 0),
+                        eLeft = offset.left - (options.layer ? $body.scrollLeft() : 0),
                         left, top,
                         eWidth = $element.width(),
                         eHeight = $element.height(),
@@ -542,4 +543,4 @@
             Display.dismiss(name);
         });
     });
-}(CoreLib, undefined, window));
+}(CoreLib, undefined, window, document));
