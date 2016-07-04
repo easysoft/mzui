@@ -4,8 +4,8 @@ $(function() {
         activeClass: 'active',
         target: '#navs',
         trigger: 'click',
+        name: 'headNav',
         animate: false,
-        load: true,
         shown: function() {
             $('#navs > a[data-display-auto]').trigger('click');
         }
@@ -23,7 +23,7 @@ $(function() {
         activeClass: 'active',
         target: '#partial',
         trigger: 'click',
-        load: true,
+        name: 'navs',
         show: function() {
             $fabNav.addClass('disabled');
         },
@@ -38,6 +38,7 @@ $(function() {
         target: '#tocModal',
         backdrop: true,
         targetDismiss: true,
+        name: 'tocModal',
         show: function() {
             $fabNav.addClass('open').find('.btn').removeClass('primary');
             if($tocList.children().length) return;
