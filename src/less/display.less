@@ -11,6 +11,13 @@
 }
 
 .display-backdrop.in {opacity: .5}
+.display-backdrop.loading:before {
+  width: 30*@rem;
+  height: 30*@rem;
+  margin-top: -15*@rem;
+  margin-left: -15*@rem;
+  border-width: 5*@rem;
+}
 
 .display-layer {
   z-index: @zindex-display-layer;
