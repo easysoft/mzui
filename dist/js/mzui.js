@@ -1,5 +1,5 @@
 /*!
- * mzui - v1.0.0 - 2016-06-12
+ * mzui - v1.0.0 - 2016-07-04
  * Copyright (c) 2016 cnezsoft.com; Licensed MIT
  */
 
@@ -1833,7 +1833,32 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
         };
     };
 
+    $.formatDate = function(date, format) {
+        if(!(date instanceof Date)) date = new Date(date);
+
+        var dateInfo = {
+            'M+': date.getMonth() + 1,
+            'd+': date.getDate(),
+            'h+': date.getHours(),
+            'm+': date.getMinutes(),
+            's+': date.getSeconds(),
+            'q+': Math.floor((date.getMonth() + 3) / 3),
+            'S+': date.getMilliseconds()
+        };
+        if(/(y+)/i.test(format)) {
+            format = format.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length));
+        }
+        for(var k in dateInfo) {
+            if(new RegExp('(' + k + ')').test(format)) {
+                format = format.replace(RegExp.$1, RegExp.$1.length == 1 ? dateInfo[k] : ('00' + dateInfo[k]).substr(('' + dateInfo[k]).length));
+            }
+        }
+        return format;
+    };
+
     $.format = function(str, args) {
+        if(str instanceof Date) return $.formatDate(str, args);
+
         if(arguments.length > 1) {
             var reg;
             if(arguments.length == 2 && typeof(args) == "object") {
@@ -1889,8 +1914,9 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
         STR_DISPLAY         = 'display',
         STR_ORIGINAL_CLASS  = 'orginalClass',
         STR_HIDDEN          = 'hidden',
+        STR_LOADING         = 'loading',
         STR_BODY            = 'body',
-        TARGET_EVENT_SUFFIX = '.display.oneForTarget',
+        TARGET_EVENT_SUFFIX = '.' + STR_DISPLAY + '.oneTarget',
         NAME                = 'mzui.' + STR_DISPLAY,
         inverseSide         = {left: 'right', bottom: 'top', top: 'bottom', right: 'left'};
 
@@ -1915,16 +1941,18 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
         if(!options.name) options.name    = STR_DISPLAY + uuid++;
 
         var triggerCallback = function(e) {
+            if(options.stopPropagation) e.stopPropagation();
             var $this = $(this);
             var thisOptions = $this.data() || {};
             thisOptions.element = this;
+
             if($this.is('a')) {
                 var href = $this.attr('href');
                 if(href && href !== '#' && href.indexOf('##') < 0) {
                     if(/^#[a-z]/i.test(href)) {
                         thisOptions.target = href;
                     } else if(!thisOptions.remote) {
-                        thisOptions[(thisOptions.load === true || options.load) ? 'load' : 'remote'] = href;
+                        thisOptions.remote = href;
                     }
                 }
                 if(e) e.preventDefault();
@@ -1953,19 +1981,19 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
         var that = this;
 
         var target = $.calValue(options.target, that, options);
-        if(target === '!new') {
-            var targetId = 'displayTarget-' + options.name,
-                layerId = 'displayLayer-' + options.name;
+        if(target === '!new' || target === '#' + STR_DISPLAY + 'Target') {
+            var targetId = STR_DISPLAY + 'Target-' + options.name,
+                layerId = STR_DISPLAY + 'Layer-' + options.name;
             $('#' + targetId).remove();
-            target = $('<div class="display ' + STR_HIDDEN + '"/>', {id: targetId});
+            target = $('<div class="' + STR_DISPLAY + ' ' + STR_HIDDEN + '"/>', {id: targetId});
             var $layer = $('#' + layerId);
-            if(!$layer.length) $layer = $('<div class="display-layer"/>', {id: layerId}).appendTo(STR_BODY);
+            if(!$layer.length) $layer = $('<div class="' + STR_DISPLAY + '-layer"/>', {id: layerId}).appendTo(STR_BODY);
             options.layer = options.container = $layer.append(target);
         } else if(target === '!self') {
             target = options.element || that.$;
         }
 
-        target = $(target).addClass(STR_DISPLAY).attr('data-display-name', options.name);
+        target = $(target).addClass(STR_DISPLAY).attr('data-' + STR_DISPLAY + '-name', options.name);
         if(!target.parent().length) {
             target.appendTo(options.container);
         }
@@ -1992,41 +2020,41 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
             }
         };
 
-        var remote = options.remote,
-            isRemoteContent = options.load || remote;
-        if(isRemoteContent) {
-            var loadingClass = options.loadingClass;
-            var ajaxEventName = 'ajaxError.mzui.' + STR_DISPLAY;
-            var remoteError = options.remoteError;
-            var isRemoteErrorAble = remoteError !== false && remoteError !== undefined;
-            var stopLoading = function() {
-                if(that.lastRemote !== isRemoteContent) {
-                    $(options.container).scrollTop(0);
-                    that.lastRemote = isRemoteContent;
-                }
-                if(isRemoteErrorAble) $(document).off(ajaxEventName);
-                $target.removeClass(loadingClass).addClass(options.showInClass);
-                $(STR_BODY).removeClass(STR_DISPLAY + '-loading');
-                $.callEvent('loaded', options['loaded'], that, that.$, options);
-                readyCallback && readyCallback();
-            };
+        var remote = $.calValue(options.remote, that, options);
+        if(remote) {
+            var remoteCall   = $.uuid++,
+                loadingClass = options.loadingClass;
             $target.removeClass(options.showInClass).addClass(loadingClass);
-            $(STR_BODY).addClass(STR_DISPLAY + '-loading');
+            $(STR_BODY).addClass('has-' + STR_DISPLAY + '-' + STR_LOADING);
+            if(options.$backdrop) options.$backdrop.addClass(loadingClass);
 
-            if(isRemoteErrorAble) {
-                $(document).one(ajaxEventName, function(xhr, ajaxOptions, error) {
-                    fillContent($.calValue(remoteError, that, [options, xhr, ajaxOptions, error]))
-                });
-            }
-
-            if(options.load) {
-                $target.load(options.load, stopLoading);
-            } else if(remote) {
-                $[options.remoteType === 'json' ? 'getJSON' : 'get'](remote, function(data, status) {
+            var ajaxOptions = $.isStr(remote) ? {url: remote} : remote;
+            if(that.xhr) that.xhr.abort();
+            that.remoteCall  = remoteCall;
+            that.xhr = $.ajax($.extend({
+                dataType: options.remoteType || 'html',
+                error: options.remoteError
+            }, ajaxOptions, {
+                success: function(data, status, xhr) {
                     fillContent(data);
-                    stopLoading();
-                });
-            }
+                    ajaxOptions.success && ajaxOptions.success(data, status, xhr);
+                },
+                complete: function(xhr, status) {
+                    that.xhr = 0;
+                    if(that.remoteCall !== remoteCall) return;
+                    if(that.lastRemote !== remote) {
+                        $(options.container).scrollTop(0);
+                        that.lastRemote = remote;
+                    }
+                    $target.removeClass(loadingClass).addClass(options.showInClass);
+                    $(STR_BODY).removeClass('has-' + STR_DISPLAY + '-' + STR_LOADING);
+                    if(options.$backdrop) options.$backdrop.removeClass(loadingClass);
+                    $.callEvent('loaded', options['loaded'], that, that.$, options);
+                    Display.events.triggerHandler('loaded', [that, that.$, options]);
+                    ajaxOptions.complete && ajaxOptions.complete(xhr, status);
+                    readyCallback && readyCallback();
+                }
+            }));
         } else {
             var content = $.calValue(options.content, that, options),
                 source = options.source;
@@ -2038,7 +2066,7 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
             fillContent(content);
             readyCallback && readyCallback();
         }
-        callback && callback(isRemoteContent);
+        callback && callback(remote);
     };
 
     Display.prototype._getOptions = function(extraOptions) {
@@ -2095,7 +2123,7 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
         if(backdrop) {
             var backdropId = 'backdrop-' + displayName;
             $('#' + backdropId).remove();
-            var $backdrop = $('<div class="display-backdrop"/>', {
+            var $backdrop = options.$backdrop = $('<div class="display-backdrop"/>', {
                 id: backdropId,
                 type: options.display,
                 'data-display-name': displayName
@@ -2108,9 +2136,9 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
             if(options.backdropDismiss) {
                 $backdrop.attr('data-dismiss', STR_DISPLAY);
             }
-
-            ($layer || $target).css('zIndex', uuid++);
         }
+
+        if(options.targetZIndex !== 'none') ($layer || $target).css('zIndex', options.targetZIndex || uuid++);
 
         if(activeClass && element) {
             if(options.activeSingle) $element.parent().children().removeClass(activeClass);
@@ -2226,6 +2254,7 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
 
                 that.animateCall = setTimeout(function() {
                     $.callEvent('shown', options.shown, that, that.$, options);
+                    Display.events.triggerHandler('shown', [that, that.$, options]);
                 }, options.duration + 50);
 
                 if(options.targetDismiss) {
@@ -2251,12 +2280,19 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
                 afterShow();
             }
         }, function() {
+            $.callEvent('displayed', options.displayed, that, that.$, options);
+            Display.events.triggerHandler('displayed', [that, that.$, options]);
+
             if(options.plugSkin) {
                 $target.find('[data-skin]').skin();
             }
 
             if(options.plugDisplay) {
-                $target.find('[data-display]').display();
+                $target.find('[data-' + STR_DISPLAY + ']').display();
+            }
+
+            if($.fn.listenScroll) {
+                $target.find('.listen-scroll').listenScroll();
             }
         });
 
@@ -2281,9 +2317,10 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
         var afterHide = function() {
             if(options.layer) options.layer.addClass(STR_HIDDEN);
             $.callEvent(STR_HIDDEN, options[STR_HIDDEN], that, that.$, options);
+            Display.events.triggerHandler(STR_HIDDEN, [that, that.$, options]);
             $target.addClass(STR_HIDDEN);
             $backdrop.remove();
-            $(STR_BODY).removeClass('display-show-' + options.name);
+            $(STR_BODY).removeClass(STR_DISPLAY + '-show-' + options.name);
             if(options.layer) options.layer.remove();
         };
 
@@ -2332,20 +2369,19 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
         // targetGroup: '',
         container: STR_BODY,
         // arrow: false,   // Display arrow beside target edge
-        scrollTop: false,
+        // scrollTop: false,
         plugSkin: true,
         plugDisplay: true,
         // targetDismiss: false,
 
         content: false,          // content source
-        // load: '',                // a url to load html content to fill target
         // remote: '',              // remote source
         // remoteType: 'html',      // html or json
         // remoteError: '',         // content or function for remote error
         // contentType: 'html',     // Content type: html or text
         // source: '',              // function or jquery selector
         // template: null,          // string to format content,
-        loadingClass: 'loading', // CSS class to append to target and body element
+        loadingClass: STR_LOADING, // CSS class to append to target and body element
 
         showInClass: 'in',     // CSS class to be add after show target
         // showSingle: false,     // 
@@ -2367,6 +2403,8 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
         // hidden: null,   // callback after hide target
         // loaded: null,   // callback after load target
     };
+
+    Display.events = $('<i>');
 
     Display.plugs = function(name, func, fnName) {
         if($.isPlainObject(name)) {
@@ -2490,7 +2528,7 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
             return $.extend(options, {
                 backdrop: isUndefinedThen(options.backdrop, 'modal-backdrop fade'),
                 source: options.target ? null : function() {
-                    return getSourceElement('modal', options.element, oldSource, '', 'box');
+                    return getSourceElement('modal', options.element, oldSource, '', 'content');
                 },
                 target: isUndefinedThen(options.target, '!new'),
                 targetClass: 'modal ' + (options.targetClass || ''),
@@ -2500,7 +2538,6 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
         },
         _collapse: function(options) {
             return $.extend(options, {
-                activeClass: isUndefinedThen(options.activeClass, 'open'),
                 triggerMethod: 'toggle',
                 duration: 200,
                 showInClass: 'in',
@@ -2563,6 +2600,7 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
         return $.extend(options, {
             trigger: false,
             target: '!self',
+            targetZIndex: 'none',
             displayAuto: isUndefinedThen(options.displayAuto, true)
         });
     }, 'displaySelf');
@@ -2620,7 +2658,8 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
         });
 
         if(options.canScrollClass) {
-            that.$container.toggleClass(options.canScrollClass, that.$[0].scrollHeight > that.$.height());
+            var scrollHeight = (that.$[0] === window ? $('body') : that.$)[0].scrollHeight;
+            that.$container.toggleClass(options.canScrollClass, scrollHeight > that.$.height());
         }
     };
 
@@ -3058,6 +3097,12 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
             skin = allSkins[skin];
         } else if($.isStr(skin) && skin.indexOf('random') === 0) {
             allSkins[skin] = skin = Math.round(Math.random() * 360);
+        } else if($.isStr(skin) && skin.indexOf('@') === 0) {
+            var val = 0;
+            for(var i = skin.length - 1; i > 0; --i) {
+                val += Math.pow(3, (i - 1)) * skin.charCodeAt(i);
+            }
+            skin = val;
         }
 
         if(skinName) allSkins[skinName] = skin;
@@ -3240,9 +3285,10 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
     if (this[0]) $.each(this[0].elements, function(_, field){
       type = field.type, name = field.name
       if (name && field.nodeName.toLowerCase() != 'fieldset' &&
-        !field.disabled && type != 'submit' && type != 'reset' && type != 'button' && type != 'file' &&
+        !field.disabled && type != 'submit' && type != 'reset' && type != 'button' &&
+        // !field.disabled && type != 'submit' && type != 'reset' && type != 'button' && type != 'file' &&
         ((type != 'radio' && type != 'checkbox') || field.checked))
-          add($(field).val())
+          add(type == 'file' ? field.files : $(field).val())
     })
     return result
   }
@@ -3305,16 +3351,62 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
 
         callEvent('init');
 
-        $form.submit(function(e) {
-            var serializeArray = $form.serializeArray();
-            var formData = {};
-            $.each(serializeArray, function(idx, item) {
-                formData[item.name] = item.value;
+        $form.on('submit', function(e) {
+            e.preventDefault();
+
+            var form = $form[0];
+            var _formData = {};
+            $.each($form.serializeArray(), function(idx, item) {
+                var _name = item.name, 
+                    _val = item.value,
+                    _formVal = _formData[_name];
+                if(_val instanceof FileList) {
+                    var _fileVal = [];
+                    for(var i = _val.length - 1; i >= 0; --i) {
+                        _fileVal.push(_val[i]);
+                    }
+                    _val = _fileVal;
+                }
+                if($.isArray(_val)) {
+                    if(_formVal === undefined) {
+                        _formVal = _val;
+                    } else if($.isArray(_formVal)) {
+                        _formVal.push.apply(_formVal, _val);
+                    } else {
+                        _val.push(_formVal);
+                        _formVal = _val;
+                    }
+                } else if(_name.lastIndexOf(']') === _name.length - 1) {
+                    if(_formVal === undefined) {
+                        _formVal = [_val];
+                    } else {
+                        _formVal.push(_val);
+                    }
+                } else {
+                    _formVal = _val;
+                }
+                _formData[_name] = _formVal;
             });
-            callEvent('onSubmit', formData);
+            callEvent('onSubmit', _formData);
+
+            var formData = new FormData();
+            for (var key in _formData) {
+                var _val = _formData[key];
+                if($.isArray(_val)) {
+                    for(var i = _val.length - 1; i >= 0; --i) {
+                        formData.append(key, _val[i]);
+                    }
+                } else formData.append(key, _val);
+            }
             var $submitBtn = $form.find('[type="submit"]').attr('disabled', 'disabled').addClass('disabled loading');
-            $.post($form.attr('action') || window.location.href, $.param(formData), function(response, status){
-                if(status == 'success') {
+            $.ajax({
+                url: form.action,
+                type: form.method,
+                processData: false,
+                contentType: false,
+                dataType: $form.data('type') || 'json',
+                data: formData,
+                success: function(response, status) {
                     try {
                         if(typeof response === 'string') response = $.parseJSON(response);
                         callEvent('onSuccess', response);
@@ -3328,9 +3420,10 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
                                 if(response.locate) location.href = response.locate;
                             }
                         } else {
-                            if(response.message) {
-                                if($.isPlainObject(response.message)) {
-                                    $.each(response.message, function(msgId, msg) {
+                            var message = response.message || response.reason || response.error;
+                            if(message) {
+                                if($.isPlainObject(message)) {
+                                    $.each(message, function(msgId, msg) {
                                         if($.isArray(msg) && msg.length) {
                                             msg = msg.length > 1? ('<ul><li>' + msg.join('</li><li>') + '</li></ul>') : msg[0];
                                         }
@@ -3348,7 +3441,7 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
                                         }
                                     });
                                 } else {
-                                    showMessage(response.message);
+                                    showMessage(message);
                                 }
                             }
                         }
@@ -3356,17 +3449,19 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
                         showMessage(response || 'No response.');
                     }
                     callEvent('onResult', response);
-                } else {
-                    showMessage('error: ' + status);
-                    callEvent('onError', status);
+                },
+                error: function(xhr, errorType, error) {
+                    showMessage('error: ' + error);
+                    callEvent('onError', {xhr: xhr, errorType: errorType, error: error});
                     if(window.v && window.v.lang.timeout) {
                         $.messager.danger(window.v.lang.timeout);
                     }
+                },
+                complete: function(xhr, status) {
+                    $submitBtn.attr('disabled', null).removeClass('disabled loading');
+                    callEvent('onComplete', {xhr: xhr, status: status});
                 }
-                $submitBtn.attr('disabled', null).removeClass('disabled loading');
-                callEvent('onComplete', {response: response, status: status});
             });
-            e.preventDefault();
         }).on('change', function(e){
             $form.find('.form-message').hide();
             $(e.target).closest('.control').removeClass('has-error');
