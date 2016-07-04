@@ -316,7 +316,7 @@
                     });
 
                     suggestArrow = inverseSide[beside];
-                    suggestAnimate = 'fade sacle-from-' + suggestArrow;
+                    suggestAnimate = 'fade scale-from-' + suggestArrow;
                 } else {
                     placement = placement.split('-');
                     var justify = placement[0], 
@@ -366,10 +366,9 @@
                 if(animate === true) {
                     $target.addClass(suggestAnimate ? ('enter-' + suggestAnimate) : 'fade');
                 } else {
-                    var animateType = typeof animate;
-                    if($.isStr(animateType)) {
+                    if($.isStr(animate)) {
                         $target.addClass(animate.replace('suggest', suggestAnimate));
-                    } else if($.isNum(animateType)) {
+                    } else if($.isNum(animate)) {
                         options.duration = animate;
                     }
                 }
