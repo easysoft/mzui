@@ -19,7 +19,7 @@
   </div>
   <div class="box">
     <div class="box outline">
-      <a class="btn primary outline" data-display data-backdrop="clean" data-target="!new" data-trigger-method="toggle" data-arrow="true" data-content="Hello" data-placement="beside-top" data-template="<div class='layer has-padding'>{0}</div>">显示弹出面板</a>
+      <a class="btn primary outline" data-display data-backdrop="clean" data-target="!new" data-trigger-method="toggle" data-arrow="true" data-content="Hello" data-placement="beside-bottom" data-template="<div class='layer has-padding'>{0}</div>">显示弹出面板</a>
     </div>
   </div>
   <pre><code>&lt;a class=&quot;btn primary outline&quot; data-display data-backdrop=&quot;clean&quot; data-target=&quot;!new&quot; data-trigger-method=&quot;toggle&quot; data-arrow=&quot;true&quot; data-content=&quot;Hello&quot; data-placement=&quot;beside-top&quot; data-template=&quot;&lt;div class=&#039;layer has-padding&#039;&gt;{0}&lt;/div&gt;&quot;&gt;&#x663e;&#x793a;&#x5f39;&#x51fa;&#x9762;&#x677f;&lt;/a&gt;</code></pre>
@@ -72,7 +72,7 @@
   <div class="box">
     <div class="box outline">
       <a class="btn primary outline" data-display data-backdrop="clean" data-target="#target3" data-target-dismiss="true" data-placement="beside-bottom-start">打开下拉菜单</a>
-      <div id="target3" class="layer hidden">
+      <div id="target3" class="layer hidden fade">
         <div class="list" style="min-width: 10rem">
           <a class="item">确认</a>
           <a class="item">编辑</a>
@@ -211,31 +211,32 @@ $.messager.show('消息内容', {type: 'success', placement: 'top'});</code></pr
   </div>
   <div class="box">
     <h5 class="space-sm"><span class="label green">内置插件</span> <strong class="code">collapse</strong></h5>
+    <p class="space-sm">内置插件折叠不支持动画选项，包括 <code>animate</code> 和 <code>duration</code>。</p>
     <div class="box outline">
-      <a class='btn primary-pale fluid' data-display="collapse" data-target="#target6" data-group="group1">折叠一</a>
-      <div class="collapse" id="target6" data-collapse="group1">
+      <a class='btn primary-pale fluid' data-display="collapse" data-target="#target6" data-group=".group1">折叠一</a>
+      <div class="collapse group1" id="target6">
         <div class="box primary">折叠一 内容</div>
       </div>
-      <a class='btn green-pale fluid' data-display="collapse" data-target="#target7" data-group="group1">折叠二</a>
-      <div class="collapse" id="target7" data-collapse="group1">
+      <a class='btn green-pale fluid' data-display="collapse" data-target="#target7" data-group=".group1">折叠二</a>
+      <div class="collapse group1" id="target7">
         <div class="box green">折叠二 内容</div>
       </div>
-      <a class='btn red-pale fluid' data-display="collapse" data-target="#target8" data-group="group1">折叠三</a>
-      <div class="collapse" id="target8" data-collapse="group1">
+      <a class='btn red-pale fluid' data-display="collapse" data-target="#target8" data-group=".group1">折叠三</a>
+      <div class="collapse group1" id="target8">
         <div class="box red">折叠三 内容</div>
       </div>
     </div>
   </div>
-  <pre><code>&lt;a class=&#039;btn primary-pale fluid&#039; data-display=&quot;collapse&quot; data-target=&quot;#target6&quot; data-group=&quot;group1&quot;&gt;&#x6298;&#x53e0;&#x4e00;&lt;/a&gt;
-&lt;div class=&quot;collapse&quot; id=&quot;target6&quot; data-collapse=&quot;group1&quot;&gt;
+  <pre><code>&lt;a class=&#039;btn primary-pale fluid&#039; data-display=&quot;collapse&quot; data-target=&quot;#target6&quot; data-group=&quot;.group1&quot;&gt;&#x6298;&#x53e0;&#x4e00;&lt;/a&gt;
+&lt;div class=&quot;collapse group1&quot; id=&quot;target6&quot;&gt;
   &lt;div class=&quot;box primary&quot;&gt;&#x6298;&#x53e0;&#x4e00; &#x5185;&#x5bb9;&lt;/div&gt;
 &lt;/div&gt;
-&lt;a class=&#039;btn green-pale fluid&#039; data-display=&quot;collapse&quot; data-target=&quot;#target7&quot; data-group=&quot;group1&quot;&gt;&#x6298;&#x53e0;&#x4e8c;&lt;/a&gt;
-&lt;div class=&quot;collapse&quot; id=&quot;target7&quot; data-collapse=&quot;group1&quot;&gt;
+&lt;a class=&#039;btn green-pale fluid&#039; data-display=&quot;collapse&quot; data-target=&quot;#target7&quot; data-group=&quot;.group1&quot;&gt;&#x6298;&#x53e0;&#x4e8c;&lt;/a&gt;
+&lt;div class=&quot;collapse group1&quot; id=&quot;target7&quot;&gt;
   &lt;div class=&quot;box green&quot;&gt;&#x6298;&#x53e0;&#x4e8c; &#x5185;&#x5bb9;&lt;/div&gt;
 &lt;/div&gt;
-&lt;a class=&#039;btn red-pale fluid&#039; data-display=&quot;collapse&quot; data-target=&quot;#target8&quot; data-group=&quot;group1&quot;&gt;&#x6298;&#x53e0;&#x4e09;&lt;/a&gt;
-&lt;div class=&quot;collapse&quot; id=&quot;target8&quot; data-collapse=&quot;group1&quot;&gt;
+&lt;a class=&#039;btn red-pale fluid&#039; data-display=&quot;collapse&quot; data-target=&quot;#target8&quot; data-group=&quot;.group1&quot;&gt;&#x6298;&#x53e0;&#x4e09;&lt;/a&gt;
+&lt;div class=&quot;collapse group1&quot; id=&quot;target8&quot;&gt;
   &lt;div class=&quot;box red&quot;&gt;&#x6298;&#x53e0;&#x4e09; &#x5185;&#x5bb9;&lt;/div&gt;
 &lt;/div&gt;</code></pre>
 </div>

@@ -100,6 +100,9 @@ myNamedDisplay.show();</code></pre>
     <p>当目标准备显示时追加到目标上的 CSS class 名称，可忽略。</p>
     <p>每次显示时都会追加，隐藏时会移除。</p>
 
+    <h5 class="code">targetZIndex</h5>
+    <p>是否重新设定目标样式中的 <code>z-index</code> 值，默认为空值，允许自动设定全局不断递增的用于层的值。设定此选项为一个整数来重置该值，如果指定为 <code>'none'</code> 则不进行设定。</p>
+
     <h5 class="code">container</h5>
     <p>目标父元素：有效的 CSS 选择器字符串，或者指定为回调函数来返回结果。</p>
     <p>当目标为动态创建时，会将动态创建的元素追加到该值对应的父元素中。一些指示目标显示状态的辅助类也会在该值对应的父元素上进行操作。</p>
@@ -155,12 +158,8 @@ myNamedDisplay.show();</code></pre>
       <li><code>options</code>，当前 Display 实例的 options。</li>
     </ul>
 
-    <h5 class="code">load</h5>
-    <p>用来表示远程内容的地址。</p>
-    <p>设置此选项，直接使用 <code>$().load()</code> 方式通过 Ajax 从远程获取内容来更新目标。以下选项会被忽略： <code>content</code>, <code>contentType</code>, <code>template</code>, <code>remote</code>, <code>remoteType</code>。</p>
-
     <h5 class="code">remote</h5>
-    <p>用来表示远程内容的地址。</p>
+    <p>用来表示远程内容的地址或使用一个对象来提供 Ajax 请求所使用的参数（参考 <a href="http://zeptojs.com/#$.ajax" target="_blank">Zepto.Ajax</a>）。</p>
     <p>设置此选项会通过 Ajax 方式从远程获取内容再更新到目标。</p>
 
     <h5 class="code">remoteType</h5>
@@ -222,7 +221,7 @@ myNamedDisplay.show();</code></pre>
     <p>指定当通过触发元素触发事件显示目标之后添加到触发元素上的 CSS class，目标隐藏后会从触发元素上移除该 class，默认为<code>''</code>。</p>
 
     <h5 class="code">activeSingle</h5>
-    <p>触发器及其兄弟元素释放仅允许出现一个元素拥有 <code>activeClass</code>：<code>true</code>(默认) 或 <code>false</code>。</p>
+    <p>设定触发器及其兄弟元素是否仅允许出现一个元素拥有 <code>activeClass</code>：<code>true</code>(默认) 或 <code>false</code>。</p>
     <p>如果启用改选项，则会在显示目标之前，移除触发器兄弟元素上的所有 <code>activeClass</code> 指定的 CSS class。</p>
 
     <h5 class="code">displayAuto</h5>
@@ -388,7 +387,8 @@ myNamedDisplay.show();</code></pre>
       <li><span class="code">shown</span>：在显示目标之后且过渡动画已执行完毕（此时远程内容可能还没加载完成）时</li>
       <li><span class="code">hide</span>：在隐藏目标之前时（此时没有执行过渡动画）触发；</li>
       <li><span class="code">hidden</span>：在隐藏目标之后且过渡动画已执行完毕时触发；</li>
-      <li><span class="code">loaded</span>：在远程内容加载完毕之后触发。</li>
+      <li><span class="code">loaded</span>：在远程内容加载完毕之后触发；</li>
+      <li><span class="code">displayed</span>：在页面显示内容之后触发，如果是加载远程内容，则在远程内容加载完毕并在页面显示之后触发。</li>
     </ul>
     <h5>在选项中使用回调监听事件</h5>
     <p>回调函数拥有一个参数 <code>options</code> 表示当前 Display 实例的 options，回调函数 this 引用指向当前 Display 实例。</p>
@@ -409,6 +409,23 @@ $('#test').on('show', function(options) {
     <span class="muted">// 即将显示目标</span>
     <span class="muted">// return false; // 在此处返回 false 则取消显示目标</span>
 });</code></pre>
+
+    <div class="box article">
+      <h5>全局事件</h5>
+      <p>全局事件对所有 Display 实例生效。全局事件在 <code>document</code> 对象上触发，只需要在 <code>document</code> 上绑定事件即可。</p>
+    </div>
+    <pre><code>$(document).on('display.shown', function(e, display, element, options) {
+    <span class="muted">// 此时有 Display 在页面显示</span>
+});</code></pre>
+    <div class="box article">
+      <p>支持以下全局事件：</p>
+      <ul>
+        <li><span class="code">display.shown</span>；</li>
+        <li><span class="code">display.hidden</span>；</li>
+        <li><span class="code">display.loaded</span>；</li>
+        <li><span class="code">display.displayed</span>。</li>
+      </ul>
+    </div>
 </section>
 
 <div class="section">
