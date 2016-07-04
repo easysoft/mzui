@@ -90,59 +90,10 @@
         _collapse: function(options) {
             return $.extend(options, {
                 triggerMethod: 'toggle',
-                duration: 200,
+                animate: false,
                 showInClass: 'in',
                 activeClass: 'collapse-open',
-                group: isUndefinedThen(options.group, options.selector ? ('collapse-group-' + (++$.uuid)) : false),
-                checkShow: function(thisOptions) {
-                    return thisOptions.selector ? $(thisOptions.element).hasClass('collapse-open') : thisOptions.$target.hasClass('in');
-                }
-            });
-        },
-        collapse: function(options) {
-            var oldShow = options.show,
-                oldHide = options.hide,
-                show = function($targets, duration) {
-                    $targets.each(function() {
-                        var $target = $(this);
-                        $target.removeClass('collapse').addClass('collapsing');
-                        var height = $target[0].scrollHeight;
-                        $target.height(0);
-                        setTimeout(function(){
-                            $target.height(height);
-                            setTimeout(function() {
-                                $target.addClass('collapse').removeClass('collapsing').height('');
-                            }, duration + 50);
-                        }, 10);
-                    });
-                },
-                hide = function($targets, duration) {
-                    $targets.each(function() {
-                        var $target = $(this);
-                        $target.height($target.height())[0].offsetHeight;
-                        $target.removeClass('collapse').addClass('collapsing');
-                        $target.height(0);
-                        setTimeout(function() {
-                            $target.removeClass('collapsing in').addClass('collapse').height('');
-                        }, duration + 50);
-                    });
-                };
-            return $.extend(options, {
-                show: function(thisOptions) {
-                    var $target = thisOptions.$target,
-                        group = thisOptions.group;
-                    if(group) {
-                        var $group = group === true ? $target.parent().find('.collapse.in') : $('.collapse.in[data-collapse="' + group + '"]');
-                        if($group.length) hide($group.not($target), thisOptions.duration);
-                    }
-                    show($target, thisOptions.duration);
-                    return oldShow && oldShow();
-                },
-                hide: function(thisOptions) {
-                    var $target = thisOptions.$target;
-                    hide($target, thisOptions.duration);
-                    return oldHide && oldHide();
-                }
+                showSingle: isUndefinedThen(options.group || options.showSingle, options.selector ? ('collapse-group-' + (++$.uuid)) : false)
             });
         }
     });
