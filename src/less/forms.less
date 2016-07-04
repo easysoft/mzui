@@ -18,17 +18,19 @@
     outline: none;
   }
 
-  &[disabled], .disabled {background-color: darken(@color-back, 10%);}
+  &[disabled], .disabled {
+    opacity: 1!important;
+    background-color: darken(@color-back, 10%);
+  }
 }
 
 .select {
   position: relative;
 
   > select {
-    
     outline: none;
 
-    &:not([multiple]) {padding-right: 2*@rem;}
+    &:not([multiple]) {padding-right: 25*@rem;}
 
     &[multiple] {
       max-height: 75*@rem;
@@ -176,7 +178,7 @@
     > label {
       position: absolute;
       left: 5*@rem;
-      top: -1*@rem;
+      top: 0;
       min-width: 2*@rem;
       text-align: center;
       opacity: .5;
