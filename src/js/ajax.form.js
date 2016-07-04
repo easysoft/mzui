@@ -91,7 +91,6 @@
                 contentType: false,
                 dataType: $form.data('type') || 'json',
                 data: formData,
-                processData: false,
                 success: function(response, status) {
                     try {
                         if(typeof response === 'string') response = $.parseJSON(response);
@@ -106,9 +105,10 @@
                                 if(response.locate) location.href = response.locate;
                             }
                         } else {
-                            if(response.message) {
-                                if($.isPlainObject(response.message)) {
-                                    $.each(response.message, function(msgId, msg) {
+                            var message = response.message || response.reason || response.error;
+                            if(message) {
+                                if($.isPlainObject(message)) {
+                                    $.each(message, function(msgId, msg) {
                                         if($.isArray(msg) && msg.length) {
                                             msg = msg.length > 1? ('<ul><li>' + msg.join('</li><li>') + '</li></ul>') : msg[0];
                                         }
@@ -126,7 +126,7 @@
                                         }
                                     });
                                 } else {
-                                    showMessage(response.message);
+                                    showMessage(message);
                                 }
                             }
                         }
