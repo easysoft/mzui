@@ -1,5 +1,5 @@
 /*!
- * mzui - v1.0.0 - 2016-07-05
+ * mzui - v0.1.0 - 2016-07-05
  * Copyright (c) 2016 cnezsoft.com; Licensed MIT
  */
 
@@ -87,6 +87,10 @@ $(function() {
     $(document).on($.TapName, '.btn-begin', function() {
         $('#beginLink').trigger('click');
     });
+
+    if($(window).width() > 1200) {
+        $.messager.warning("MZUI 专为移动端设计，在移动设备上访问效果更佳。", {placement: 'top-center'});
+    }
 });
 
 /*! Apache License 2.0 https://github.com/google/code-prettify*/
