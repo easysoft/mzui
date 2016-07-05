@@ -102,7 +102,7 @@
         </nav>
       </div>
     </div>
-    <pre><code>&lt;div class=&quot;heading&quot;&gt;
+    <pre class="prettyprint"><code>&lt;div class=&quot;heading&quot;&gt;
   &lt;nav class=&quot;nav&quot;&gt;
     &lt;a&gt;&lt;i class=&quot;icon-bars&quot;&gt;&lt;/i&gt;&lt;/a&gt;
   &lt;/nav&gt;
@@ -121,13 +121,13 @@
   <div class="box">
     <p>标题栏作为应用全局标题栏通常需要固定在页面顶部或底部。在 <code>&lt;body&gt;</code> 或 <code>.page</code> 上使用辅助类 <code>.with-heading-top</code> 或 <code>.with-heading-bottom</code>，并在 <code>.heading</code> 上使用辅助类 <code>.affix.dock-top</code> 或 <code>.affix.dock-bottom</code>。</p>
   </div>
-  <pre><code><span class="muted">// &#x56fa;&#x5b9a;&#x5728;&#x9876;&#x90e8;</span>
+  <pre class="prettyprint"><code><span class="muted">// &#x56fa;&#x5b9a;&#x5728;&#x9876;&#x90e8;</span>
 &lt;body class=&quot;<em>with-heading-top</em>&quot;&gt;
   &lt;header class=&quot;<em>heading affix dock-top</em>&quot;&gt;
     ...
   &lt;/header&gt;
 &lt;/body&gt;</code></pre>
-  <pre><code><span class="muted">// 固定在底部</span>
+  <pre class="prettyprint"><code><span class="muted">// 固定在底部</span>
 &lt;body class=&quot;<em>with-heading-bottom</em>&quot;&gt;
   &lt;footer class=&quot;<em>heading affix dock-bottom</em>&quot;&gt;
     ...
@@ -136,7 +136,7 @@
   <div class="box">
     <p>在同一个页面可以同时将两个应用标题栏分别固定顶部和底部。</p>
   </div>
-  <pre><code><span class="muted">// 固定在顶部和底部</span>
+  <pre class="prettyprint"><code><span class="muted">// 固定在顶部和底部</span>
 &lt;body class=&quot;<em>with-heading-top with-heading-bottom</em>&quot;&gt;
   &lt;header class=&quot;<em>heading affix dock-top</em>&quot;&gt;
     ...
@@ -149,7 +149,7 @@
   <div class="box">
     <p>当应用标题栏固定时，可以为 <code>.heading.affix</code> 使用 <code>.dock-auto</code> 来让固定的应用标题栏响应页面滚动事件并在合适的时候自动隐藏和显示。</p>
   </div>
-  <pre><code><span class="muted">// 固定在顶部和底部并自动显示或隐藏</span>
+  <pre class="prettyprint"><code><span class="muted">// 固定在顶部和底部并自动显示或隐藏</span>
 &lt;body class=&quot;with-heading-top with-heading-bottom&quot;&gt;
   &lt;header class=&quot;heading affix dock-top <em>dock-auto</em>&quot;&gt;
     ...

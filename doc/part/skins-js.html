@@ -13,7 +13,7 @@
       <a class="btn" data-skin>随机外观</a>
     </div>
   </div>
-  <pre><code>&lt;a class=&quot;btn&quot; data-skin=&quot;12&quot;&gt;12&lt;/a&gt;
+  <pre class="prettyprint"><code>&lt;a class=&quot;btn&quot; data-skin=&quot;12&quot;&gt;12&lt;/a&gt;
 &lt;a class=&quot;btn&quot; data-skin=&quot;#345264&quot;&gt;#345264&lt;/a&gt;
 &lt;a class=&quot;btn text-tint&quot; data-skin=&quot;#80CBC4&quot;&gt;#80CBC4&lt;/a&gt;
 &lt;a class=&quot;btn pale&quot; data-skin=&quot;#345264&quot;&gt;#345264 &#x6d45;&#x8272;&lt;/a&gt;
@@ -27,11 +27,11 @@
   <div class="box">
     <h5 class="code">[data-skin]</h5>
   </div>
-  <pre><code>&lt;a class=&quot;btn&quot; data-skin=&quot;12&quot;&gt;12&lt;/a&gt;</code></pre>
+  <pre class="prettyprint"><code>&lt;a class=&quot;btn&quot; data-skin=&quot;12&quot;&gt;12&lt;/a&gt;</code></pre>
   <div class="box">
     <h5 class="code">$().skin()</h5>
   </div>
-  <pre><code>$('#skinExample').skin({skin: 'random'});</code></pre>
+  <pre class="prettyprint"><code>$('#skinExample').skin({skin: 'random'});</code></pre>
 </div>
 
 <div class="section">
@@ -93,14 +93,14 @@
       <li><code>skins</code>，JS 对象，其键值分别对应颜色名称和颜色值，用于同时设置多个全局命名颜色。</li>
     </ul>
   </div>
-  <pre><code><span class="muted">// 定义全局命名颜色</span>
+  <pre class="prettyprint"><code><span class="muted">// 定义全局命名颜色</span>
 $.Skin.set('mySkinColor', '#859342');</code></pre>
-  <pre><code>&lt;a class=&quot;label&quot; data-skin=&quot;mySkinColor&quot;&gt;&#x4f7f;&#x7528; mySkinColor&lt;/a&gt;</code></pre>
+  <pre class="prettyprint"><code>&lt;a class=&quot;label&quot; data-skin=&quot;mySkinColor&quot;&gt;&#x4f7f;&#x7528; mySkinColor&lt;/a&gt;</code></pre>
   <div class="box article">
     <h5 class="code">$.Skin.all</h5>
     <p>获取已设定的全局命名颜色。</p>
   </div>
-  <pre><code><span class="muted">// 获取所有设定的全局命名颜色</span>
+  <pre class="prettyprint"><code><span class="muted">// 获取所有设定的全局命名颜色</span>
 var allSkins = $.Skin.all;
 
 <span class="muted">// 获取指定名称的全局命名颜色</span>

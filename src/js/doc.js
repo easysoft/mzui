@@ -62,4 +62,10 @@ $(function() {
         $(window).scrollTop($section.offset().top - scrollTopOffset);
         e.preventDefault();
     });
+
+    $(document).on('display.displayed', function(e, display, $trigger, options) {
+        if(window.prettyPrint && options.$target && options.$target.find('.prettyprint').length) {
+            window.prettyPrint();
+        }
+    });
 });

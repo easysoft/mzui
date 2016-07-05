@@ -33,11 +33,11 @@
       <a class="btn primary outline" data-display="messager" data-content="Hello" data-type="success">使用 Display 显示消息</a>
     </div>
   </div>
-  <pre><code>&lt;a id=&quot;test&quot; class=&quot;btn primary outline&quot; data-display=&quot;messager&quot; data-content=&quot;Hello&quot; data-type=&quot;success&quot;&gt;&#x4f7f;&#x7528; Display &#x663e;&#x793a;&#x6d88;&#x606f;&lt;/a&gt;</code></pre>
-  <pre><code><span class="muted">// 使用 $().data('mzui.display') 获取 Display 实例</span>
+  <pre class="prettyprint"><code>&lt;a id=&quot;test&quot; class=&quot;btn primary outline&quot; data-display=&quot;messager&quot; data-content=&quot;Hello&quot; data-type=&quot;success&quot;&gt;&#x4f7f;&#x7528; Display &#x663e;&#x793a;&#x6d88;&#x606f;&lt;/a&gt;</code></pre>
+  <pre class="prettyprint"><code><span class="muted">// 使用 $().data('mzui.display') 获取 Display 实例</span>
 var myDisplay = $('#test').data('mzui.display');</code></pre>
   <h5 class="box code">$().display()</h5>
-  <pre><code><span class="muted">// HTML</span>
+  <pre class="prettyprint"><code><span class="muted">// HTML</span>
 &lt;a id=&quot;showDisplayMessage&quot; class=&quot;btn primary outline&quot; &gt;&#x4f7f;&#x7528; Display &#x663e;&#x793a;&#x6d88;&#x606f;&lt;/a&gt;
 
 <span class="muted">// Javascript</span>
@@ -51,7 +51,7 @@ $('#showDisplayMessage').display({
 var myDisplay = $('#showDisplayMessage').data('mzui.display');</code></pre>
 
   <h5 class="box code">new $.Display()</h5>
-  <pre><code><span class="muted">// 创建 display 实例</span>
+  <pre class="prettyprint"><code><span class="muted">// 创建 display 实例</span>
 var myDisplay = new $.Display({
   display: 'messager'
 });
@@ -64,7 +64,7 @@ myDisplay.show({
 
   <h5 class="box code">$.Display.all[name]</h5>
   <div class="box"><p>当已知一个 Display 实例的名称，可以根据实例名称直接从全局对象获取实例。</p></div>
-  <pre><code>var myNamedDisplay = $.Display.all['myDisplayName'];
+  <pre class="prettyprint"><code>var myNamedDisplay = $.Display.all['myDisplayName'];
 myNamedDisplay.show();</code></pre>
   <p class="box">更多使用例子参见 <strong class="text-link">JS > Display 玩法</strong> 章节。</p>
 </div>
@@ -348,7 +348,7 @@ myNamedDisplay.show();</code></pre>
     <p>解除目标有三种方式：</p>
     <h5>调用实例方法 <span class="code">hide()</span></h5>
   </div>
-  <pre><code>myDisplay.hide();</code></pre>
+  <pre class="prettyprint"><code>myDisplay.hide();</code></pre>
   <div class="box article">
     <h5>使用全局方法 <span class="code">$.Display.dismiss()</span></h5>
     <ul>
@@ -363,7 +363,7 @@ myNamedDisplay.show();</code></pre>
       <li><code>callback</code>，在解除目标之后的回调函数。</li>
     </ul>
   </div>
-  <pre><code>$.Display.dismiss(function() {
+  <pre class="prettyprint"><code>$.Display.dismiss(function() {
     <span class="muted">// 上一个显示的 Display 目标已隐藏</span>
 });</code></pre>
   <div class="box article">
@@ -371,8 +371,8 @@ myNamedDisplay.show();</code></pre>
     <p>点击触发器元素，会自动解除触发器元素在父级容器上对应的 Display 实例。</p>
     <p>如果需要在任意位置解除，需要为触发器 <code>[data-display-name]</code> 属性设定为需要解除的 Display 实例名称。</p>
   </div>
-  <pre><code>&lt;a data-dismiss=&quot;display&quot;&gt;&#x70b9;&#x6211;&#x5173;&#x95ed;&lt;/a&gt;</code></pre>
-  <pre><code><span class="muted">// 指定需要解除的实例名称</span>
+  <pre class="prettyprint"><code>&lt;a data-dismiss=&quot;display&quot;&gt;&#x70b9;&#x6211;&#x5173;&#x95ed;&lt;/a&gt;</code></pre>
+  <pre class="prettyprint"><code><span class="muted">// 指定需要解除的实例名称</span>
 &lt;a data-dismiss=&quot;display&quot; data-display-name=&quot;myDisplayName&quot;&gt;&#x70b9;&#x6211;&#x5173;&#x95ed;&lt;/a&gt;</code></pre>
 </div>
 
@@ -393,7 +393,7 @@ myNamedDisplay.show();</code></pre>
     <h5>在选项中使用回调监听事件</h5>
     <p>回调函数拥有一个参数 <code>options</code> 表示当前 Display 实例的 options，回调函数 this 引用指向当前 Display 实例。</p>
   </div>
-  <pre><code><span class="muted">// 在选项中指定回调函数来监听 show 事件</span>
+  <pre class="prettyprint"><code><span class="muted">// 在选项中指定回调函数来监听 show 事件</span>
 $('#test').display({
     show: function(options) {
         <span class="muted">// 即将显示目标</span>
@@ -404,7 +404,7 @@ $('#test').display({
     <h5>使用 <span class="code">$().on(eventName, function)</span> 绑定事件</h5>
     <p>事件绑定回调函数拥有一个参数 <code>options</code> 表示当前 Display 实例的 options，回调函数 this 引用指向当前 Display 实例。</p>
   </div>
-  <pre><code><span class="muted">// 使用 Zepto 的 $().on() 方法来绑定事件</span>
+  <pre class="prettyprint"><code><span class="muted">// 使用 Zepto 的 $().on() 方法来绑定事件</span>
 $('#test').on('show', function(options) {
     <span class="muted">// 即将显示目标</span>
     <span class="muted">// return false; // 在此处返回 false 则取消显示目标</span>
@@ -414,7 +414,7 @@ $('#test').on('show', function(options) {
       <h5>全局事件</h5>
       <p>全局事件对所有 Display 实例生效。全局事件在 <code>document</code> 对象上触发，只需要在 <code>document</code> 上绑定事件即可。</p>
     </div>
-    <pre><code>$(document).on('display.shown', function(e, display, element, options) {
+    <pre class="prettyprint"><code>$(document).on('display.shown', function(e, display, element, options) {
     <span class="muted">// 此时有 Display 在页面显示</span>
 });</code></pre>
     <div class="box article">
@@ -440,13 +440,13 @@ $('#test').on('show', function(options) {
     <p>插件会以其名称注册为 <code>$.fn</code> 上的方法，这样就可以使用 <code>$().plugName()</code> 的形式来调用插件。</p>
     <p>更多插件例子参见 <strong class="text-link">JS > Display 玩法</strong> 章节。</p>
   </div>
-  <pre><code><span class="muted">// [data-display="plugName"] 形式调用</span>
+  <pre class="prettyprint"><code><span class="muted">// [data-display="plugName"] 形式调用</span>
 &lt;a data-display=&quot;messager&quot; data-content=&quot;Hello&quot; data-type=&quot;success&quot;&gt;&#x4f7f;&#x7528;&#x540d;&#x79f0;&#x4e3a; messager &#x7684;&#x63d2;&#x4ef6;&lt;/a&gt;</code></pre>
-  <pre><code><span class="muted">// 以 $().plugName() 形式调用</span>
+  <pre class="prettyprint"><code><span class="muted">// 以 $().plugName() 形式调用</span>
 $('#testMessager').messager();</code></pre>
-  <pre><code><span class="muted">// $().display({display: 'plugName'}) 形式调用</span>
+  <pre class="prettyprint"><code><span class="muted">// $().display({display: 'plugName'}) 形式调用</span>
 $('#testMessager').display({display: 'messager'});</code></pre>
-  <pre><code><span class="muted">// new $.Display({display: 'plugName'}) 形式调用</span>
+  <pre class="prettyprint"><code><span class="muted">// new $.Display({display: 'plugName'}) 形式调用</span>
 new $.Display({display: 'messager'}).show();</code></pre>
 
   <div class="box article">
@@ -481,5 +481,5 @@ new $.Display({display: 'messager'}).show();</code></pre>
     </ul>
     <p>在插件的预处理函数中，先获取已有插件的预处理函数对选项进行预处理，这样可以实现对已有插件的继承。</p>
   </div>
-  <pre><code>var messagerFlugFunc = $.Display.plugs('messager');</code></pre>
+  <pre class="prettyprint"><code>var messagerFlugFunc = $.Display.plugs('messager');</code></pre>
 </div>

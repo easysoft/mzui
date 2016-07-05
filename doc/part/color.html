@@ -21,14 +21,14 @@
       <li><code>hslaColor</code>，一个对象来使用 HSL 颜色模型设定颜色，例如 <code>{h: 350, s: 0.5, l: 0.9, a: 1}</code>，其中 <code>h</code> 取值范围为 <code>0 ~ 359</code>，<code>s</code> 和 <code>l</code> 取值范围为 <code>0 ~ 1</code>，其中 <code>a</code> 代表透明度，可以省略，默认为 <code>1</code>；</li>
     </ul>
   </div>
-  <pre><code>var myColor = new $.Color('#095823');</code></pre>
+  <pre class="prettyprint"><code>var myColor = new $.Color('#095823');</code></pre>
   <div class="box article">
     <h5>判断字符串是否是有效的颜色表达式</h5>
     <ul>
       <li><strong class="code">$.Color.isColor(str)</strong></li>
     </ul>
   </div>
-  <pre><code>var isColor = $.Color.isColor('#2343x');</code> <span class="muted">// '#2343x' 不是有效的颜色值</span></pre>
+  <pre class="prettyprint"><code>var isColor = $.Color.isColor('#2343x');</code> <span class="muted">// '#2343x' 不是有效的颜色值</span></pre>
 </div>
 
 <div class="section">

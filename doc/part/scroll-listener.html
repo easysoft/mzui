@@ -39,11 +39,11 @@
     <h5><span class="code">.listen-scroll</span></h5>
     <p>通过为元素添加 <code>.listen-scroll</code> 来监听元素的滚动事件。</p>
   </div>
-  <pre><code>&lt;div class=&quot;listen-scroll&quot;&gt;&lt;/div&gt;</code></pre>
+  <pre class="prettyprint"><code>&lt;div class=&quot;listen-scroll&quot;&gt;&lt;/div&gt;</code></pre>
   <div class="box">
     <h5><span class="code">$().listenScroll()</span></h5>
   </div>
-  <pre><code>$('scrollDiv').listenScroll();</code></pre>
+  <pre class="prettyprint"><code>$('scrollDiv').listenScroll();</code></pre>
 </div>
 
 <div class="section">
@@ -79,13 +79,13 @@
       <li><code>scrollTop</code>，滚动条距离顶部的距离。</li>
     </ul>
   </div>
-  <pre><code><span class="muted">// 使用选项来指定事件回调函数</span>
+  <pre class="prettyprint"><code><span class="muted">// 使用选项来指定事件回调函数</span>
 $('#scrollDiv').listenScroll({
     listenScroll: function(isInScroll, scrollDirection, scrollTop) {
         // 处理滚动状态变化
     }
 });</code></pre>
-    <pre><code><span class="muted">// 使用 $().on() 绑定事件</span>
+    <pre class="prettyprint"><code><span class="muted">// 使用 $().on() 绑定事件</span>
 $('#scrollDiv').on('listenScroll', function(isInScroll, scrollDirection, scrollTop) {
     // 处理滚动状态变化
 });</code></pre>

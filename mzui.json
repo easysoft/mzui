@@ -164,6 +164,13 @@
       "dpds": ["zepto.core", "zepto.event", "zepto.touch", "zepto.data"],
       "desc": "String.prototype.trim and Array.prototype.reduce methods (if they are missing) for compatibility with iOS 3.x."
     },
+    "prettyprint": {
+      "name": "Google Javascript code prettifier",
+      "src": ["assets/prettify/prettify.js"],
+      "desc": "An embeddable script that makes source-code snippets in HTML prettier.",
+      "pver": "1.?",
+      "website": "https://github.com/google/code-prettify"
+    },
     "normalize": {
       "name": "全局样式表",
       "src": {"less": ["normalize"]},
@@ -364,7 +371,7 @@
       "filename": "doc",
       "subdirectories": true,
       "settingDpds": ["setting"],
-      "includes": ["doc.js", "doc.style", "colorset.test"],
+      "includes": ["doc.js", "doc.style", "colorset.test", "prettyprint"],
       "bundles": ["dist"]
     }
   }
