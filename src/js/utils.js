@@ -1,8 +1,8 @@
 /* ========================================================================
  * MZUI: utils.js
- * http://zui.sexy
+ * https://github.com/easysoft/mzui
  * ========================================================================
- * Copyright (c) 2014 cnezsoft.com; Licensed MIT
+ * Copyright (c) 2016 cnezsoft.com; Licensed MIT
  * ======================================================================== */
 
 window.CoreLib = window['jQuery'] || window['Zepto'];
@@ -59,9 +59,10 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
             'M+': date.getMonth() + 1,
             'd+': date.getDate(),
             'h+': date.getHours(),
+            // 'H+': date.getHours() % 12,
             'm+': date.getMinutes(),
             's+': date.getSeconds(),
-            'q+': Math.floor((date.getMonth() + 3) / 3),
+            // 'q+': Math.floor((date.getMonth() + 3) / 3),
             'S+': date.getMilliseconds()
         };
         if(/(y+)/i.test(format)) {

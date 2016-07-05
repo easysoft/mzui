@@ -1,8 +1,8 @@
 /* ========================================================================
- * MZUI: scroll.js
- * http://zui.sexy
+ * MZUI: display.plugs.js
+ * https://github.com/easysoft/mzui
  * ========================================================================
- * Copyright (c) 2014 cnezsoft.com; Licensed MIT
+ * Copyright (c) 2016 cnezsoft.com; Licensed MIT
  * ======================================================================== */
 
 !(function($, undefined){

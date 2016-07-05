@@ -1,3 +1,10 @@
+//
+// List
+// --------------------------------------------------
+
+
+// Base style
+
 .list-item,
 .list > .item {
   position: relative;
@@ -39,13 +46,9 @@
   }
 
   &.multi-lines {
-    > * {
-      margin-top: 5*@rem;
-    }
+    > * {margin-top: 5*@rem;}
 
-    > .content {
-      margin-top: 0;
-    }
+    > .content {margin-top: 0;}
   }
 
   &.active {
@@ -57,6 +60,9 @@
   }
 }
 
+
+// Heading in list
+
 .list > .heading {
   .title {
     opacity: @muted-opacity;
@@ -66,8 +72,14 @@
   }
 }
 
+
+// Compact list
+
 .list-item.compact,
 .list.compact > .item {padding: @space-xs @padding-base-horizontal;}
+
+
+// List with divider
 
 .list.with-divider {
   border: @border-width solid @divider-color;
@@ -100,6 +112,9 @@
 
    &.with-avatar + .divider {margin-left: @padding-base-horizontal + @avatar-size + @space-sm}
 }
+
+
+// Nested list
 
 .list > .list {
   margin-left: @list-nested-group-margin;

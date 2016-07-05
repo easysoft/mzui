@@ -1,15 +1,15 @@
 /* ========================================================================
  * MZUI: ajaxform.js
- * http://zui.sexy
+ * https://github.com/easysoft/mzui
  * ========================================================================
- * Copyright (c) 2014 cnezsoft.com; Licensed MIT
+ * Copyright (c) 2016 cnezsoft.com; Licensed MIT
  * ======================================================================== */
 
 
-!(function($, window){
+!(function($, window, undefined){
     'use strict';
 
-    var NAME = '.ajaxform';
+    var NAME = 'mzui.ajaxform';
 
     var setAjaxForm = function($form, options)
     {
@@ -20,7 +20,7 @@
             if(options && $.isFunction(options[name])) {
                 return options[name](event);
             }
-            $form.trigger(name + NAME, event);
+            $form.trigger(name + '.' + NAME, event);
         };
 
         var showMessage = function(message) {
@@ -164,4 +164,4 @@
 
     $(function(){$('.ajaxform').ajaxform();});
 
-}(CoreLib, window));
+}(CoreLib, window, undefined));

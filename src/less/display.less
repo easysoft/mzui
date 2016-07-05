@@ -1,3 +1,10 @@
+//
+// Display
+// --------------------------------------------------
+
+
+// Backdrop and layer style
+
 .display-backdrop,
 .display-layer,
 {
@@ -35,11 +42,16 @@
   &.invisible {.transition-none()!important;}
 }
 
+
+// Hide scrollbars on shown display targets
+
 body[class^="display-show-"],
 body[class*=" display-show-"] {
   overflow-y: hidden;
-  // position: fixed; // for iOS
 }
+
+
+// Arrow style
 
 .display-arrow:before {
   content: ' ';

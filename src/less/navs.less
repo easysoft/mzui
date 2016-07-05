@@ -2,6 +2,9 @@
 // Navs
 // --------------------------------------------------
 
+
+// Base style
+
 .nav {
   display: flex;
   flex-wrap: nowrap;
@@ -26,6 +29,9 @@
   }
 }
 
+
+// Secondary nav
+
 .nav-secondary {
   box-shadow: inset 0 -1*@rem 0 rgba(0,0,0,.1);
 
@@ -38,6 +44,9 @@
   &.important-pale > .active {box-shadow: inset 0 -2*@rem 0 @color-important;}
   &.special-pale > .active   {box-shadow: inset 0 -2*@rem 0 @color-special;}
 }
+
+
+// Skin options
 
 .nav.circle {border-radius: 20*@rem}
 
@@ -55,9 +64,13 @@
   }
 }
 
+
+// Large navs
+
 .nav-lg {> a {height: 48*@rem;}}
 
-// Affix
+
+// Affix navs
 
 .nav.affix {
   background-color: @color-back;

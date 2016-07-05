@@ -1,34 +1,28 @@
 //
-// Component animations
+// Animations
 // --------------------------------------------------
 
-// Heads up!
-//
-// We don't use the `.opacity()` mixin here since it causes a bug with text
-// fields in IE7-8. Source: https://github.com/twbs/bootstrap/pull/3552.
+
+// Transitions
 
 .fade {
   .transition-fast();
   opacity: 0;
-  &.in {
-    opacity: 1;
-  }
+
+  &.in {opacity: 1;}
 }
 
 .scale {
   .transition-fast();
   transform: scale(.8);
-  &.in {
-    transform: scale(1);
-  }
+
+  &.in {transform: scale(1);}
 }
 
 .collapse {
   display: none;
 
-  &.in {
-    display: block;
-  }
+  &.in {display: block;}
 }
 
 .collapsing {
@@ -36,6 +30,9 @@
   overflow: hidden;
   transition: ease height @animation-speed-fast;
 }
+
+
+// enter-from-* and scale-from-*
 
 [class^="scale-from-"],
 [class*=" scale-from-"],
@@ -58,6 +55,9 @@
 .enter-from-left   {transform: translate(-105%, 0);}
 .enter-from-right  {transform: translate(105%, 0);}
 .enter-from-center {opacity: 0; transform: scale(.8) translate(0, 50%);}
+
+
+// Spin animation
 
 @keyframes spin {
   0%   {transform: rotate(0deg);}

@@ -1,31 +1,51 @@
+//
+// Document style
+// --------------------------------------------------
+
+
+// Head navs
+
 #headNav > a.active {font-size: .8rem}
 .heading.affix .icon-github {font-size: 1rem}
 .nav.affix {top: 2.4rem;}
+
+
+// Partial content
+
 #partial {padding: 0}
+
 @media (min-width: 24rem) {
   #partial {margin-top: 1rem}
 }
+
+
+// Display loading style
+
 #pageLoading {display: none}
 .has-display-loading #pageLoading {display: block}
 
-pre em {font-weight: bold; color: #ea644a}
 
-#fabNav {z-index: 2000}
+// Code
+
+pre em {
+  font-weight: bold;
+  color: #ea644a;
+}
+
+
+// TOC menu
+
 #fabNav.waiting {
   transform: translate(0, 100%);
   opacity: 0;
 }
 #fabNav.open {transform: translate(0,0)!important}
 #fabNav.open > a {box-shadow: none!important}
-#fabNav.open > a > .icon:before {
-  content: '\d7';
-}
+#fabNav.open > a > .icon:before {content: '\d7';}
 
-#tocModal {
-  top: auto;
-}
+#tocModal {top: auto;}
 #tocList {padding: .25rem 0}
 #tocList > .item {
-  padding-left: 5em;
+  padding-left: 1.5em;
   padding-right: 1.5em;
 }
