@@ -19,6 +19,51 @@
 }
 
 
+// Misc
+
+.avatar-xl > small {font-size: .9rem;}
+
+.icon-5x {font-size: 3.5rem}
+
+
+// Index page
+
+#indexPage {
+  margin-top: -2.4rem;
+  display: none;
+
+  .graph1 {
+    > .avatar + .avatar {margin-left: -.5rem}
+
+    .avatar-xl > small {color: #fff}
+  }
+
+  .graph2 {
+    max-width: 25rem;
+    width: 95%;
+    margin: .5rem auto;
+
+    .tile {
+      padding: .5rem .1rem;
+      font-size: .6rem;
+    }
+  }
+
+  > .content {padding: 1rem}
+}
+
+body.has-index-content #indexPage {display: block}
+
+#leadContent {
+  padding: 1.5rem;
+
+  > h1 {
+    font-weight: normal;
+    font-size: 1.5rem;
+  }
+}
+
+
 // Display loading style
 
 #pageLoading {display: none}
@@ -42,6 +87,7 @@ pre em {
 #fabNav.open {transform: translate(0,0)!important}
 #fabNav.open > a {box-shadow: none!important}
 #fabNav.open > a > .icon:before {content: '\d7';}
+body.has-index-content #fabNav {display: none}
 
 #tocModal {top: auto;}
 #tocList {padding: .25rem 0}

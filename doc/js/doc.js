@@ -18,6 +18,9 @@ $(function() {
         trigger: 'click',
         name: 'headNav',
         animate: false,
+        show: function() {
+            $('body').removeClass('has-index-content');
+        },
         shown: function() {
             $('#navs > a[data-display-auto]').trigger('click');
         }
@@ -79,6 +82,10 @@ $(function() {
         if(window.prettyPrint && options.$target && options.$target.find('.prettyprint').length) {
             window.prettyPrint();
         }
+    });
+
+    $('#beginBtn').on($.TapName, function() {
+        $('#beginLink').trigger('click');
     });
 });
 

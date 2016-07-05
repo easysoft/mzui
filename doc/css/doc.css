@@ -26,6 +26,57 @@
         margin-top: 1rem;
     }
 }
+.avatar-xl > small
+{
+    font-size: .9rem;
+}
+.icon-5x
+{
+    font-size: 3.5rem;
+}
+#indexPage
+{
+    display: none;
+
+    margin-top: -2.4rem;
+}
+#indexPage .graph1 > .avatar + .avatar
+{
+    margin-left: -.5rem;
+}
+#indexPage .graph1 .avatar-xl > small
+{
+    color: #fff;
+}
+#indexPage .graph2
+{
+    width: 95%;
+    max-width: 25rem;
+    margin: .5rem auto;
+}
+#indexPage .graph2 .tile
+{
+    font-size: .6rem;
+
+    padding: .5rem .1rem;
+}
+#indexPage > .content
+{
+    padding: 1rem;
+}
+body.has-index-content #indexPage
+{
+    display: block;
+}
+#leadContent
+{
+    padding: 1.5rem;
+}
+#leadContent > h1
+{
+    font-size: 1.5rem;
+    font-weight: normal;
+}
 #pageLoading
 {
     display: none;
@@ -59,6 +110,10 @@ pre em
 #fabNav.open > a > .icon:before
 {
     content: '\d7';
+}
+body.has-index-content #fabNav
+{
+    display: none;
 }
 #tocModal
 {

@@ -7,18 +7,19 @@
   <link rel="stylesheet" href="dist/css/mzui.css">
   <link rel="stylesheet" href="doc/css/doc.css">
 </head>
-<body class='with-heading-top with-nav-top has-display-loading'>
+<body class='with-heading-top with-nav-top has-index-content'>
 
   <!-- App bar -->
   <header class="heading primary affix dock-top dock-auto" id="haedNav">
     <nav class="nav" id='headNav'>
       <a href="index.html" class='brand-name'><strong>MZUI</strong></a>
-      <a href="doc/base.html" data-display-auto>基础</a>
+      <a href="doc/base.html" id="beginLink">基础</a>
       <a href="doc/element.html">控件</a>
       <a href="doc/javascript.html">JS</a>
     </nav>
     <div class="title"></div>
     <nav class="nav">
+      <a href="" target="_blank" class="hidden"><i class="icon-download-alt"></i></a>
       <a href="https://github.com/easysoft/mzui" target="_blank"><i class="icon-github"></i></a>
     </nav>
   </header>
@@ -28,7 +29,71 @@
 
   <div class="loading loading-light" id="pageLoading"></div>
 
-  <div id="partial" class="container"></div>
+  <div id="partial" class="container">
+    <div id="indexPage">
+      <div class="primary text-center" id="leadContent">
+        <h1><span class="title">MZUI</span></h1>
+        <p class="muted">为移动端设计，基于 Flex 的 UI 框架。</p>
+        <div class="space"></div>
+        <a id="beginBtn" class="btn outline white">开始使用 <i class="icon-arrow-right"></i></a>
+      </div>
+      <div class="content white shadow-divider text-center">
+        <div class="graph1 flex flex-center has-padding space-sm">
+          <div class="avatar circle primary avatar-xl"><small class="code">FLEX</small></div>
+          <div class="avatar circle info text-info avatar-xl"><i class="icon icon-mobile"></i></div>
+          <div class="avatar circle red text-red avatar-xl"><i class="icon icon-tablet"></i></div>
+          <div class="avatar circle green text-green avatar-xl"><i class="icon icon-wechat"></i></div>
+        </div>
+        <h2 class="text-primary lead">现代化</h2>
+        <p class="muted">基于 Flex 设计，支持移动端全部主流浏览器<br>支持 Android 微信内置浏览器</p>
+      </div>
+      <div class="content white shadow-divider text-center">
+        <div class="row graph2">
+          <div class="cell-4"><div class="tile red">着色</div></div>
+          <div class="cell-3"><div class="tile blue">状态</div></div>
+          <div class="cell-2"><div class="tile green">形状</div></div>
+          <div class="cell-3"><div class="tile yellow">容器</div></div>
+          <div class="cell-2"><div class="tile brown">边距</div></div>
+          <div class="cell-3"><div class="tile purple">变形</div></div>
+          <div class="cell-3"><div class="tile primary">阴影</div></div>
+          <div class="cell-4"><div class="tile dark">滤镜</div></div>
+        </div>
+        <h2 class="text-yellow lead">灵活</h2>
+        <p class="muted">独立的外观选项，适合大部分控件，<br>满足多样的外观定制需求</p>
+      </div>
+      <div class="content white shadow-divider text-center">
+        <div class="graph3 flex flex-center has-padding space-sm">
+          <div class="avatar red outline avatar-xl"><small class="code">Gulp</small></div>
+          <div class="avatar avatar-xl"><i class="icon icon-bolt muted text-yellow"></i></div>
+          <div class="avatar red text-red avatar-xl"><i class="icon icon-wrench"></i></div>
+        </div>
+        <h2 class="text-red lead">可定制</h2>
+        <p class="muted">所有内容可以按需使用，基于 Gulp 构建自定义版本非常简单</p>
+      </div>
+      <div class="content white text-center">
+        <div class="graph3 flex flex-center has-padding space-sm">
+          <div class="avatar circle dark outline avatar-xl"><small class="text-dark">Zepto</small></div>
+          <div class="avatar avatar-xl"><i class="icon icon-plus muted"></i></div>
+          <div class="avatar circle primary outline avatar-xl"><small class="text-dark">MZUI</small></div>
+        </div>
+        <h2 class="text-green lead">轻量</h2>
+        <p class="muted">JS 和 CSS 压缩之后在 50KB 左右<br>启用 GZip 压缩会更小（css 10KB, js 17KB）<br>不需要任何其他依赖！（已内置 Zepto 1.1.6 核心组件）</p>
+      </div>
+      <div class="content primary-pale text-center">
+        <div class="graph4 flex flex-center space-sm">
+          <i class="icon text-info icon-hand-right icon-5x"></i>
+        </div>
+        <a id="beginBtn" class="btn btn-lg info">开始使用 <i class="icon-arrow-right"></i></a>&nbsp; 
+        <a class="btn btn-lg primary">立即下载 <i class="icon-download-alt"></i></a>
+      </div>
+      <div class="content dark text-center">
+        <div class="graph4 flex flex-center space-sm">
+          <i class="icon icon-github icon-5x"></i>
+        </div>
+        <a href="https://github.com/easysoft/mzui" target="_blank" class="btn btn-lg outline white">在 Github 上支持我们 <i class="icon-thumbs-o-up"></i></a>
+      </div>
+    </div>
+  </div>
 
   <nav id="fabNav" class="affix dock-bottom dock-left fab has-padding dock-auto shadow-none">
     <a id="tocBtn" class="btn btn-lg circle primary layer"><i class="icon icon-list-ul"></i></a>
