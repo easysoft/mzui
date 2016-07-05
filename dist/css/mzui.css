@@ -1,5 +1,5 @@
 /*!
- * mzui - v1.0.0 - 2016-07-04
+ * mzui - v1.0.0 - 2016-07-05
  * Copyright (c) 2016 cnezsoft.com; Licensed MIT
  */
 
@@ -421,7 +421,7 @@ h6
     font-weight: bold;
     line-height: 1.1;
 
-    margin: 0;
+    margin: 0 0 .5rem 0;
 
     color: inherit;
 }
@@ -545,6 +545,7 @@ hr.space
 }
 blockquote
 {
+    margin: .5rem;
     padding: .5rem .5rem;
 
     border-left: .25rem solid rgba(0, 0, 0, .1);
@@ -552,7 +553,22 @@ blockquote
 ul,
 ol
 {
+    margin: .5rem;
     padding-left: 1rem;
+}
+p,
+ul,
+ol,
+blockquote,
+pre,
+table,
+img,
+video,
+iframe,
+object,
+embed
+{
+    margin: 0 0 .5rem 0;
 }
 .page
 {
@@ -2696,6 +2712,7 @@ a .icon.spin
 
     width: 100%;
     height: 100%;
+    margin: 0;
 }
 .avatar-sm
 {
@@ -3625,26 +3642,6 @@ a .icon.spin
 .control.has-warning .help-text
 {
     color: #f1a325;
-}
-.article p,
-.article ul,
-.article ol,
-.article blockquote,
-.article pre,
-.article table,
-.article h1,
-.article h2,
-.article h3,
-.article h4,
-.article h5,
-.article h6,
-.article img,
-.article video,
-.article iframe,
-.article object,
-.article embed
-{
-    margin-bottom: .5rem;
 }
 .article img,
 .article video,
@@ -4700,6 +4697,7 @@ samp
 {
     font-family: Monaco, Menlo, Consolas, 'Courier New', monospace;
 }
+kbd,
 code
 {
     font-size: .6rem;
@@ -4713,13 +4711,28 @@ code
 {
     color: #ea644a;
 }
+kbd
+{
+    font-weight: bold;
+
+    color: #666;
+    border: .05rem solid rgba(0, 0, 0, .1);
+    border-bottom-width: .1rem;
+    border-radius: .1rem;
+}
 pre
 {
     font-size: .6rem;
 
     display: block;
+    overflow: auto;
 
+    max-width: 100%;
+    max-height: 10rem;
     padding: .5rem;
+
+    word-wrap: normal;
+    word-break: normal;
 
     border: .05rem solid transparent;
     background-color: rgba(0, 0, 0, .05);
@@ -4734,10 +4747,66 @@ pre code
     border-radius: 0;
     background-color: transparent;
 }
-.pre-scrollable
+.com
 {
-    overflow: auto;
+    color: #93a1a1;
+}
+.lit
+{
+    color: #195f91;
+}
+.pun,
+.opn,
+.clo
+{
+    color: #93a1a1;
+}
+.fun
+{
+    color: #dc322f;
+}
+.str,
+.atv
+{
+    color: #d14;
+}
+.kwd,
+.prettyprint .tag
+{
+    color: #1e347b;
+}
+.typ,
+.atn,
+.dec,
+.var
+{
+    color: teal;
+}
+.pln
+{
+    color: #48484c;
+}
+.prettyprint.linenums
+{
+    padding: .25rem .5rem .25rem 0;
 
-    max-width: 100%;
-    max-height: 5rem;
+    word-wrap: break-word;
+    word-break: break-all;
+
+    border: .05rem solid rgba(0, 0, 0, .1);
+    box-shadow: inset 2rem 0 0 #fbfbfc, inset 2.05rem 0 0 #ececf0;
+}
+.prettyprint.linenums code
+{
+    white-space: pre-wrap;
+}
+.prettyprint ol.linenums
+{
+    line-height: 1rem;
+
+    margin-bottom: 0;
+    padding-left: 2.25rem;
+
+    color: #bebec5;
+    text-shadow: 0 .05rem 0 #fff;
 }

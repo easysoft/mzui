@@ -1,5 +1,5 @@
 /*!
- * mzui - v1.0.0 - 2016-07-04
+ * mzui - v1.0.0 - 2016-07-05
  * Copyright (c) 2016 cnezsoft.com; Licensed MIT
  */
 
@@ -1780,10 +1780,10 @@ window.$ === undefined && (window.$ = Zepto)
 })(Zepto)
 
 /* ========================================================================
- * ZUI: utils.js
- * http://zui.sexy
+ * MZUI: utils.js
+ * https://github.com/easysoft/mzui
  * ========================================================================
- * Copyright (c) 2014 cnezsoft.com; Licensed MIT
+ * Copyright (c) 2016 cnezsoft.com; Licensed MIT
  * ======================================================================== */
 
 window.CoreLib = window['jQuery'] || window['Zepto'];
@@ -1840,9 +1840,10 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
             'M+': date.getMonth() + 1,
             'd+': date.getDate(),
             'h+': date.getHours(),
+            // 'H+': date.getHours() % 12,
             'm+': date.getMinutes(),
             's+': date.getSeconds(),
-            'q+': Math.floor((date.getMonth() + 3) / 3),
+            // 'q+': Math.floor((date.getMonth() + 3) / 3),
             'S+': date.getMilliseconds()
         };
         if(/(y+)/i.test(format)) {
@@ -1900,10 +1901,10 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
 }(CoreLib));
 
 /* ========================================================================
- * ZUI: display.js
- * http://zui.sexy
+ * MZUI: display.js
+ * https://github.com/easysoft/mzui
  * ========================================================================
- * Copyright (c) 2014 cnezsoft.com; Licensed MIT
+ * Copyright (c) 2016 cnezsoft.com; Licensed MIT
  * ======================================================================== */
 
 !(function($, undefined, window, document){
@@ -2446,10 +2447,10 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
 }(CoreLib, undefined, window, document));
 
 /* ========================================================================
- * ZUI: scroll.js
- * http://zui.sexy
+ * MZUI: display.plugs.js
+ * https://github.com/easysoft/mzui
  * ========================================================================
- * Copyright (c) 2014 cnezsoft.com; Licensed MIT
+ * Copyright (c) 2016 cnezsoft.com; Licensed MIT
  * ======================================================================== */
 
 !(function($, undefined){
@@ -2576,10 +2577,10 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
 }(CoreLib, undefined));
 
 /* ========================================================================
- * ZUI: scroll.js
- * http://zui.sexy
+ * MZUI: scroll-listener.js
+ * https://github.com/easysoft/mzui
  * ========================================================================
- * Copyright (c) 2014 cnezsoft.com; Licensed MIT
+ * Copyright (c) 2016 cnezsoft.com; Licensed MIT
  * ======================================================================== */
 
 
@@ -2649,10 +2650,10 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
 }(CoreLib));
 
 /* ========================================================================
- * ZUI: color.js
- * http://zui.sexy
+ * MZUI: color.js
+ * https://github.com/easysoft/mzui
  * ========================================================================
- * Copyright (c) 2014 cnezsoft.com; Licensed MIT
+ * Copyright (c) 2016 cnezsoft.com; Licensed MIT
  * ======================================================================== */
 
 
@@ -2999,10 +3000,10 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
 
 
 /* ========================================================================
- * ZUI: skin.js
- * http://zui.sexy
+ * MZUI: skin.js
+ * https://github.com/easysoft/mzui
  * ========================================================================
- * Copyright (c) 2014 cnezsoft.com; Licensed MIT
+ * Copyright (c) 2016 cnezsoft.com; Licensed MIT
  * ======================================================================== */
 
 
@@ -3117,109 +3118,6 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
     });
 }(CoreLib, undefined));
 
-/* ========================================================================
- * ZUI: ajaxaction.js
- * http://zui.sexy
- * ========================================================================
- * Copyright (c) 2014 cnezsoft.com; Licensed MIT
- * ======================================================================== */
-
-
-!(function($, document, window){
-    'use strict';
-
-    var DISABLED = 'disabled';
-    var ajaxaction = function(options, $element) {
-        // console.log('ajaxaction', options, $element);
-        options = $.extend({
-            spinner: 'spinner-indicator'
-        }, options);
-
-        var callEvent = function(name, event) {
-            if(options && $.isFunction(options[name])) {
-                return options[name](event);
-            }
-        };
-
-        if(options.confirm && !confirm(options.confirm)) return;
-
-        if(callEvent('before') === false) return;
-        if($element) {
-            if($element.hasClass(DISABLED)) return false;
-            $element.addClass(DISABLED);
-            if(options.spinner) {
-                var $spinner = $element.find('.icon-' + options.spinner);
-                if($spinner.length) $spinner.removeClass('hidden');
-                else $element.prepend('<i class="icon icon-spin icon-' + options.spinner + '"> </i>');
-            }
-        }
-
-        $[options.method || 'get'](options.url, options.data, function(response, status){
-            if(status == 'success') {
-                try {
-                    response = $.parseJSON(response);
-                    if(response.result === 'success') {
-                        callEvent('onResultSuccess', response);
-                        if(response.message) {
-                            $.messager.success(response.message);
-                            if(response.locate) {
-                                setTimeout(function(){location.href = response.locate;}, 1200);
-                            }
-                        } else {
-                            if(response.locate) location.href = response.locate;
-                        }
-                    } else {
-                        callEvent('onResultFailed', response);
-                        if(response.message) {
-                            $.messager.show(response.message);
-                            if(response.locate) {
-                                setTimeout(function(){location.href = response.locate;}, 1200);
-                            }
-                        }
-                    }
-                } catch(e) {
-                    callEvent('onNoResponse');
-                }
-                callEvent('onSuccess', response);
-            } else {
-                callEvent('onError', status);
-                if(window.v && window.v.lang.timeout) {
-                    $.messager.danger(window.v.lang.timeout);
-                }
-            }
-
-            if($element) {
-                $element.removeClass(DISABLED);
-                if(options.spinner) {
-                    var $spinner = $element.find('.icon-' + options.spinner);
-                    if($spinner.length) $spinner.addClass('hidden');
-                }
-            }
-            callEvent('onComplete', {response: response, status: status});
-        });
-    };
-
-    $.ajaxaction = ajaxaction; 
-
-    $.fn.ajaxaction = function(options) {
-        return this.each(function(){
-            var $this   = $(this);
-            var thisOption = $.extend({url: $this.attr('href')}, $this.data(), options);
-            $this.on(thisOption.trigger || $.TapName, function(e) {
-                e.preventDefault();
-                ajaxaction(thisOption, $this);
-            });
-        });
-    };
-
-    $(document).on($.TapName, '.ajaxaction, [data-toggle="action"]', function(e) {
-        var $this   = $(this);
-        var options = $.extend({url: $this.attr('href')}, $this.data(), options);
-        e.preventDefault();
-        ajaxaction(options, $this);
-    });
-}(CoreLib, document, window));
-
 //     Zepto.js
 //     (c) 2010-2014 Thomas Fuchs
 //     Zepto.js may be freely distributed under the MIT license.
@@ -3263,17 +3161,17 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
 })(Zepto)
 
 /* ========================================================================
- * ZUI: ajaxform.js
- * http://zui.sexy
+ * MZUI: ajaxform.js
+ * https://github.com/easysoft/mzui
  * ========================================================================
- * Copyright (c) 2014 cnezsoft.com; Licensed MIT
+ * Copyright (c) 2016 cnezsoft.com; Licensed MIT
  * ======================================================================== */
 
 
-!(function($, window){
+!(function($, window, undefined){
     'use strict';
 
-    var NAME = '.ajaxform';
+    var NAME = 'mzui.ajaxform';
 
     var setAjaxForm = function($form, options)
     {
@@ -3284,7 +3182,7 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
             if(options && $.isFunction(options[name])) {
                 return options[name](event);
             }
-            $form.trigger(name + NAME, event);
+            $form.trigger(name + '.' + NAME, event);
         };
 
         var showMessage = function(message) {
@@ -3428,4 +3326,4 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
 
     $(function(){$('.ajaxform').ajaxform();});
 
-}(CoreLib, window));
+}(CoreLib, window, undefined));
