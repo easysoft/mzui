@@ -1,5 +1,5 @@
 /*!
- * mzui - v1.0.0 - 2016-07-05
+ * mzui - v0.1.0 - 2016-07-05
  * Copyright (c) 2016 cnezsoft.com; Licensed MIT
  */
 
@@ -3941,6 +3941,11 @@ body[class*=' display-show-']
 {
     margin-bottom: 1.5rem;
 }
+.center-block
+{
+    margin-right: auto;
+    margin-left: auto;
+}
 .no-padding
 {
     padding: 0!important;
@@ -4280,6 +4285,7 @@ tr.primary-pale:hover
     color: #ebf2f9 !important;
     border-color: #ebf2f9 !important;
 }
+.primary-pale.text-tint,
 .primary-pale .active
 {
     color: #3280fc;
@@ -4303,6 +4309,8 @@ tr.success-pale:hover
     color: #ddf4df !important;
     border-color: #ddf4df !important;
 }
+.green-pale.text-tint,
+.success-pale.text-tint,
 .green-pale .active,
 .success-pale .active
 {
@@ -4327,6 +4335,8 @@ tr.info-pale:hover
     color: #ddf3f5 !important;
     border-color: #ddf3f5 !important;
 }
+.blue-pale.text-tint,
+.info-pale.text-tint,
 .blue-pale .active,
 .info-pale .active
 {
@@ -4351,6 +4361,8 @@ tr.warning-pale:hover
     color: #fff0d5 !important;
     border-color: #fff0d5 !important;
 }
+.yellow-pale.text-tint,
+.warning-pale.text-tint,
 .yellow-pale .active,
 .warning-pale .active
 {
@@ -4375,6 +4387,8 @@ tr.danger-pale:hover
     color: #ffe5e0 !important;
     border-color: #ffe5e0 !important;
 }
+.red-pale.text-tint,
+.danger-pale.text-tint,
 .red-pale .active,
 .danger-pale .active
 {
@@ -4399,6 +4413,8 @@ tr.important-pale:hover
     color: #f7ebe1 !important;
     border-color: #f7ebe1 !important;
 }
+.brown-pale.text-tint,
+.important-pale.text-tint,
 .brown-pale .active,
 .important-pale .active
 {
@@ -4423,6 +4439,8 @@ tr.special-pale:hover
     color: #f5eeff !important;
     border-color: #f5eeff !important;
 }
+.purple-pale.text-tint,
+.special-pale.text-tint,
 .purple-pale .active,
 .special-pale .active
 {
@@ -4443,6 +4461,7 @@ tr.gray:hover
     color: #f1f1f1 !important;
     border-color: #f1f1f1 !important;
 }
+.gray.text-tint,
 .gray .active
 {
     color: #333;
@@ -4462,6 +4481,7 @@ tr.white:hover
     color: #fff !important;
     border-color: #fff !important;
 }
+.white.text-tint,
 .white .active
 {
     color: #333;
@@ -4728,7 +4748,6 @@ pre
     overflow: auto;
 
     max-width: 100%;
-    max-height: 10rem;
     padding: .5rem;
 
     word-wrap: normal;
