@@ -329,7 +329,7 @@ function buildBundle(name, callback, type) {
             if(f.indexOf('~/') === 0 || f.indexOf('/') < 0) {
                 source.less[idx] = f = 'src/less/' + (f.indexOf('~/') === 0 ? f.substr(2) : f);
             }
-            if(f.lastIndexOf('.less') < f.length - 5) {
+            if(f.lastIndexOf('.less') < (f.length - 5) && f.lastIndexOf('.css') < f.length - 4) {
                 source.less[idx] = f = f + '.less';
             }
 
