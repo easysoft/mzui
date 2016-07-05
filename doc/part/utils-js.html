@@ -19,6 +19,107 @@ var say = $.format('Say {what} to {who}', {what: 'hello', who: 'you'});
 
 <div class="section">
   <div class="heading">
+    <div class="title"><strong class="code">$.format(date, format)</strong></div>
+  </div>
+  <div class="box article">
+    <h5>格式化日期时间</h5>
+    <p>参数：</p>
+    <ul>
+      <li><code>date</code>，要格式化的日期时间对象；</li>
+      <li><code>format</code>，格式化字符串。</li>
+    </ul>
+  </div>
+  <pre class="prettyprint"><code>var now = new Date();
+var sayNow = $.format(now, '现在时间是 yyyy年MM月dd日 hh:mm:ss');
+<span class="muted">// sayNow 值为 '现在时间是 2016年07月05日 13:42:35'</span></code></pre>
+  <div class="box">
+    <h5>格式参数：</h5>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>参数</th>
+          <th>输出示例</th>
+          <th>说明</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>yyyy</code></td>
+          <td><code>'2016'</code></td>
+          <td>四位数字表示的年份</td>
+        </tr>
+        <tr>
+          <td><code>yy</code></td>
+          <td><code>'16'</code></td>
+          <td>两位数字表示的年份</td>
+        </tr>
+        <tr>
+          <td><code>MM</code></td>
+          <td><code>'07'</code></td>
+          <td>两位数字表示的月份，不足两位在起始用 0 填充</td>
+        </tr>
+        <tr>
+          <td><code>M</code></td>
+          <td><code>'7'</code></td>
+          <td>一位或两位数字表示的月份</td>
+        </tr>
+        <tr>
+          <td><code>dd</code></td>
+          <td><code>'05'</code></td>
+          <td>两位数字表示的日期，不足两位在起始用 0 填充</td>
+        </tr>
+        <tr>
+          <td><code>d</code></td>
+          <td><code>'12'</code></td>
+          <td>一位或两位数字表示的日期</td>
+        </tr>
+        <tr>
+          <td><code>hh</code></td>
+          <td><code>'09'</code></td>
+          <td>两位数字表示的小时，不足两位在起始用 0 填充</td>
+        </tr>
+        <tr>
+          <td><code>h</code></td>
+          <td><code>'9'</code></td>
+          <td>一位或两位数字表示的小时</td>
+        </tr>
+        <tr>
+          <td><code>mm</code></td>
+          <td><code>'00'</code></td>
+          <td>两位数字表示的分钟，不足两位在起始用 0 填充</td>
+        </tr>
+        <tr>
+          <td><code>m</code></td>
+          <td><code>'0'</code></td>
+          <td>一位或两位数字表示的分钟</td>
+        </tr>
+        <tr>
+          <td><code>ss</code></td>
+          <td><code>'23'</code></td>
+          <td>两位数字表示的秒数，不足两位在起始用 0 填充</td>
+        </tr>
+        <tr>
+          <td><code>s</code></td>
+          <td><code>'23'</code></td>
+          <td>一位或两位数字表示的秒数</td>
+        </tr>
+        <tr>
+          <td><code>ss</code></td>
+          <td><code>'23'</code></td>
+          <td>两位数字表示的秒数，不足两位在起始用 0 填充</td>
+        </tr>
+        <tr>
+          <td><code>S</code></td>
+          <td><code>'236'</code></td>
+          <td>毫秒数</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section">
+  <div class="heading">
     <div class="title"><strong class="code">$.is$(obj)</strong></div>
   </div>
   <div class="box">

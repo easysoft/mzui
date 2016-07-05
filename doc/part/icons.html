@@ -1,12 +1,15 @@
 <style>
 #iconsExample > a {color: #333; display: block; float: left; width: 3rem; height: 3rem; text-align: center; position: relative; padding: .25rem 0}
 #iconsExample > a > i:before {font-size: 1.05rem}
-#iconsExample > a > small {font-size: .5rem; display: block; opacity: .7}
-.icon-10x:before {font-size: 5rem}
-.icon-5x:before {font-size: 2.5rem}
+#iconsExample > a > small {font-size: .5rem; display: block; opacity: .7; line-height: 1}
+.icon-10x {min-width: 5rem;}
+.icon-5x {min-width: 2.5rem;}
+.icon-2x {min-width: 1.4rem;}
+.icon-10x:before {font-size: 5rem;}
+.icon-5x:before {font-size: 2.5rem;}
 #iconPreviewModal {top: auto;}
-#iconPreviewModal .icons {padding: 1rem}
-#iconPreviewModal .icons > i {display: inline-block; margin: .4rem; line-height: 1}
+#iconPreviewModal .icons {padding: 1rem 0; text-align: center;}
+#iconPreviewModal .icons > i {display: inline-block; text-align: center; margin: .4rem; line-height: 1}
 body.show-icon-modal #fabNav {z-index: 0}
 body.show-icon-modal {padding-bottom: 10.5rem!important}
 </style>
@@ -352,8 +355,8 @@ body.show-icon-modal {padding-bottom: 10.5rem!important}
 <div class="modal hidden affix enter-from-bottom" id="iconPreviewModal">
   <a data-dismiss="display" class="btn dock-top dock-right dock"><i class="icon-remove muted"></i></a>
   <div class="icons"><i class="icon-10x icon-resize"></i><i class="icon-5x icon-resize"></i><i class="icon-2x icon-resize"></i><i class="icon-resize"></i></div>
-  <h3 class="has-padding"><small class="muted"><i class="icon-resize icon-tmp"></i></small> <span class="name code">icon-resize</span></h3>
-  <pre class="copyable"><code><span class="tag">&lt;i</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"icon <em class="name">icon-resize</em>"</span><span class="tag">&gt;&lt;/i&gt;</span></code></pre>
+  <h3 class="has-padding text-center code">.<span class="name">icon-resize</span></h3>
+  <pre class="copyable text-center no-margin"><code><span class="tag">&lt;i</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"icon <em class="name">icon-resize</em>"</span><span class="tag">&gt;&lt;/i&gt;</span></code></pre>
 </div>
 
 <script>
