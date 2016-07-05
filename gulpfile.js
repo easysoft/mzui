@@ -20,6 +20,8 @@ var extend         = require('extend'),
     gulp           = require('gulp'),
     mzui           = require('./mzui.json'),
     pkg            = require('./package.json'),
+    gzipSize       = require('gzip-size'),
+    bytes          = require('bytes'),
     showFileDetail = true;
 
 // Disable the 'possible EventEmitter memory leak detected' warning.
@@ -489,6 +491,16 @@ gulp.task('default', function() {
     buildBundle('all');
 });
 
+gulp.task('gzipSize:dist', function() {
+    var css = fs.readFileSync('dist/css/mzui.min.css', {encoding: 'utf8'});
+    var cssGzip = gzipSize.sync(css);
+    console.log('           mzui.min.css'.italic + ' ' + bytes(css.length).red + ('(' + css.length + ')').gray + ' -> ' + bytes(cssGzip).green + ('(' + cssGzip + ')').gray);
+
+    var js = fs.readFileSync('dist/js/mzui.min.js', {encoding: 'utf8'});
+    var jsGzip = gzipSize.sync(js);
+    console.log('           mzui.min.js'.italic + ' ' + bytes(js.length).red + ('(' + js.length + ')').gray + ' -> ' + bytes(jsGzip).green + ('(' + jsGzip + ')').gray);
+});
+
 // Init custom gulp tasks
 if(isFileExist("gulpfile.custom.js")) {
     require("./gulpfile.custom.js")(gulp, {
@@ -508,6 +520,7 @@ if(isFileExist("gulpfile.custom.js")) {
         pkg         : pkg,
         del         : del,
         mkdirp      : mkdirp,
-        runSequence : runSequence
+        runSequence : runSequence,
+        gzipSize    : gzipSize
     });
 }
