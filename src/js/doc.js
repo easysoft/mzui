@@ -79,7 +79,7 @@ $(function() {
         }
     });
 
-    $('#beginBtn').on($.TapName, function() {
+    $(document).on($.TapName, '.btn-begin', function() {
         $('#beginLink').trigger('click');
     });
 });
