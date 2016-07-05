@@ -1,4 +1,5 @@
-// Inline and block code styles
+// Inline code styles
+
 .code,
 code,
 kbd,
@@ -7,7 +8,9 @@ samp {
   font-family: @font-family-monospace;
 }
 
-// Inline code
+
+// Inline code 
+
 kbd,
 code {
   padding: 2*@rem 5*@rem;
@@ -18,7 +21,9 @@ code {
 
 .code {color: @color-red;}
 
+
 // Keyboard text
+
 kbd {
   border: @border-width solid @border-color;
   border-radius: .1rem;
@@ -27,13 +32,21 @@ kbd {
   font-weight: bold;
 }
 
+
 // Blocks of code
+
 pre {
   display: block;
   font-size: @font-size-small;
   padding: @space-sm;
   border: 1*@rem solid transparent;
   background-color: rgba(0,0,0,.05);
+  word-break: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  max-height: 200*@rem;
+  max-width: 100%;
+  overflow: auto;
 
   // Account for some code outputs that place code tags in pre tags
   code {
@@ -42,18 +55,12 @@ pre {
     color: inherit;
     background-color: transparent;
     border-radius: 0;
+    white-space: nowrap;
   }
 }
 
-// Enable scrollable blocks of code
-.pre-scrollable {
-  max-height: 100*@rem;
-  max-width: 100%;
-  overflow: auto;
-}
 
-
-// prettify.css
+// Google code prettify
 
 .com { color: #93a1a1; }
 .lit { color: #195f91; }
@@ -66,14 +73,20 @@ pre {
 
 .prettyprint {
   &.linenums {
-    .box-shadow(~"inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0");
+    border: @border-width solid @border-color;
+    padding: @space-sm/2 @space-sm @space-sm/2 0;
+    .box-shadow(~"inset 2rem 0 0 #fbfbfc, inset 2.05rem 0 0 #ececf0");
+    word-wrap: break-word;
+    word-break: break-all;
+
+    code {white-space: pre-wrap;}
   }
 
   ol.linenums {
-    padding-left: 40px;
+    padding-left: 2.25rem;
     color: #bebec5;
-    line-height: 20px;
-    text-shadow: 0 1px 0 #fff;
+    line-height: 1rem;
+    text-shadow: 0 .05rem 0 #fff;
     margin-bottom: 0;
   }
 }
