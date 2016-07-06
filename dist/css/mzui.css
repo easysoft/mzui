@@ -1078,6 +1078,32 @@ embed
 {
     padding: .5rem;
 }
+.row.gutter-sm,
+.column.gutter-sm
+{
+    margin: -.125rem -.125rem 0;
+}
+.row.gutter-sm:not(:last-child),
+.column.gutter-sm:not(:last-child)
+{
+    margin-bottom: .125rem;
+}
+.row.gutter-sm .row,
+.column.gutter-sm .row,
+.row.gutter-sm .column,
+.column.gutter-sm .column
+{
+    margin: -.125rem;
+}
+.row.gutter-sm .cell,
+.column.gutter-sm .cell,
+.row.gutter-sm [class^='cell-'],
+.column.gutter-sm [class^='cell-'],
+.row.gutter-sm [class*=' cell-'],
+.column.gutter-sm [class*=' cell-']
+{
+    padding: .125rem;
+}
 .fade
 {
     transition: .3s cubic-bezier(.175, .885, .32, 1);
