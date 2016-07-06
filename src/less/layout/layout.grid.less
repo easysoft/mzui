@@ -100,4 +100,19 @@
     [class^="cell-"],
     [class*=" cell-"] {padding: @space/2}
   }
+
+  &.gutter-sm {
+    margin: -@space/8 -@space/8 0;
+
+    &:not(:last-child) {
+      margin-bottom: @space/8;
+    }
+
+    .row,
+    .column {margin: -@space/8}
+
+    .cell,
+    [class^="cell-"],
+    [class*=" cell-"] {padding: @space/8}
+  }
 }
