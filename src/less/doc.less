@@ -23,6 +23,63 @@
 
 .icon-5x {font-size: 3.5rem}
 
+.path-zui-36 {
+  display: inline-block;
+  background-color: #fff;
+  border-radius: 18px;
+  height: 36px;
+  width: 36px;
+  position: relative;
+  overflow: hidden;
+  &:before,
+  &:after {
+    content: ' ';
+    display: block;
+    position: absolute;
+    border: 2px solid @color-primary;
+    left: 11px;
+    width: 14px;
+    height: 4px;
+  }
+  &:before {
+    top: 9px;
+    border-bottom: none;
+  }
+  &:after {
+    top: 23px;
+    border-top: none;
+  }
+  .path-1,
+  .path-2,
+  .path-1:before,
+  .path-1:after,
+  .path-2:before {
+    display: block;
+    content: ' ';
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background-color: @color-primary;
+  }
+  .path-1 {
+    left: 15px;
+    top: 19px;
+  }
+  .path-1:before,
+  .path-2:before {
+    left: -2px;
+    top: 2px;
+  }
+  .path-1:after {
+    left: 2px;
+    top: -2px;
+  }
+  .path-2 {
+    left: 21px;
+    top: 13px;
+  }
+}
+
 
 // Index page
 

@@ -26,6 +26,84 @@
 {
     font-size: 3.5rem;
 }
+.path-zui-36
+{
+    position: relative;
+
+    display: inline-block;
+    overflow: hidden;
+
+    width: 36px;
+    height: 36px;
+
+    border-radius: 18px;
+    background-color: #fff;
+}
+.path-zui-36:before,
+.path-zui-36:after
+{
+    position: absolute;
+    left: 11px;
+
+    display: block;
+
+    width: 14px;
+    height: 4px;
+
+    content: ' ';
+
+    border: 2px solid #3280fc;
+}
+.path-zui-36:before
+{
+    top: 9px;
+
+    border-bottom: none;
+}
+.path-zui-36:after
+{
+    top: 23px;
+
+    border-top: none;
+}
+.path-zui-36 .path-1,
+.path-zui-36 .path-2,
+.path-zui-36 .path-1:before,
+.path-zui-36 .path-1:after,
+.path-zui-36 .path-2:before
+{
+    position: absolute;
+
+    display: block;
+
+    width: 2px;
+    height: 2px;
+
+    content: ' ';
+
+    background-color: #3280fc;
+}
+.path-zui-36 .path-1
+{
+    top: 19px;
+    left: 15px;
+}
+.path-zui-36 .path-1:before,
+.path-zui-36 .path-2:before
+{
+    top: 2px;
+    left: -2px;
+}
+.path-zui-36 .path-1:after
+{
+    top: -2px;
+    left: 2px;
+}
+.path-zui-36 .path-2
+{
+    top: 13px;
+    left: 21px;
+}
 #indexPage
 {
     margin-top: -2.4rem;
