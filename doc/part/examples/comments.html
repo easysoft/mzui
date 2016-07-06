@@ -1,0 +1,90 @@
+<style>
+.comments .item > .content > .imgs {margin-top: 0}
+.comments .item > .content > .imgs img {margin: 0}
+.comments > .list {box-shadow: inset .1rem 0 0 rgba(0,0,0,.1)}
+#fabNav {display: none!important} /* 隐藏主界面浮动按钮 */
+</style>
+<div class="section" data-display="modal" data-selector=".btn-reply" data-remote="doc/part/examples/comments-reply.html" data-placement="bottom">
+  <div class="heading">
+    <div class="title"><i class="icon icon-comments-alt muted"></i> <strong>评论</strong> <small class="muted">(122)</small></div>
+  </div>
+  <div class="list comments">
+    <div class="item with-avatar multi-lines">
+      <a class="avatar circle"><img src="doc/img/avatar.png" alt=""></a>
+      <div class="content">
+        <div>
+          <a class="text-link strong">Catouse</a>
+          <div class="muted small pull-right">刚刚</div>
+        </div>
+        <div class="btn-reply state">当人们还在争论何去何从的时候，太阳在 46 亿年前诞生之时就已经帮地球做出了决定。</div>
+      </div>
+    </div>
+    <div class="item with-avatar multi-lines">
+      <a class="avatar circle" data-dark="true" data-skin>赵</a>
+      <div class="content">
+        <div>
+          <a class="text-link strong">赵大宝</a>
+          <div class="muted small pull-right">33 分钟前</div>
+        </div>
+        <div class="btn-reply state">看看我叔叔从火星发来的照片~~</div>
+        <div class="row imgs gutter-sm">
+          <div class="cell-3"><a data-display="modal" data-target-dismiss="true" data-placement="center" data-content="<img src='doc/img/img1.jpg' alt='' class='no-margin'>"><img src='doc/img/img1.jpg' alt=''></a></div>
+          <div class="cell-3"><a data-display="modal" data-target-dismiss="true" data-placement="center" data-content="<img src='doc/img/img2.jpg' alt='' class='no-margin'>"><img src='doc/img/img2.jpg' alt=''></a></div>
+          <div class="cell-3"><a data-display="modal" data-target-dismiss="true" data-placement="center" data-content="<img src='doc/img/img3.jpg' alt='' class='no-margin'>"><img src='doc/img/img3.jpg' alt=''></a></div>
+          <div class="cell-3"><a data-display="modal" data-target-dismiss="true" data-placement="center" data-content="<img src='doc/img/img4.jpg' alt='' class='no-margin'>"><img src='doc/img/img4.jpg' alt=''></a></div>
+        </div>
+      </div>
+    </div>
+    <div class="list">
+      <div class="item with-avatar multi-lines">
+        <a class="avatar circle"><img src="doc/img/avatar.png" alt=""></a>
+        <div class="content">
+          <div>
+            <a class="text-link strong">Catouse</a>
+            <div class="muted small pull-right">2 分钟前</div>
+          </div>
+          <div class="btn-reply state">火星不能复制。</div>
+        </div>
+      </div>
+      <div class="item with-avatar multi-lines">
+        <a class="avatar circle" data-dark="true" data-skin>李</a>
+        <div class="content">
+          <div>
+            <a class="text-link strong">李开心</a>
+            <div class="muted small pull-right">29 分钟前</div>
+          </div>
+          <div class="btn-reply state">真开心:)</div>
+        </div>
+      </div>
+    </div>
+    <div class="item with-avatar multi-lines">
+      <a class="avatar circle"><img src="doc/img/avatar.png" alt=""></a>
+      <div class="content">
+        <div>
+          <a class="text-link strong">Catouse</a>
+          <div class="muted small pull-right">1 个小时前</div>
+        </div>
+        <div class="btn-reply state">听说地球 1102 号传送门又发生爆炸了？！</div>
+      </div>
+    </div>
+    <div class="item with-avatar multi-lines">
+      <a class="avatar circle" data-dark="true" data-skin>孙</a>
+      <div class="content">
+        <div>
+          <a class="text-link strong">孙悟空</a>
+          <div class="muted small pull-right">1 个小时前</div>
+        </div>
+        <div class="btn-reply state">大家还是现实一点吧，专心写代码才是正事。</div>
+      </div>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <nav class="nav justified pager">
+    <a class="pager-more"><span>已显示 <strong>20</strong> 项，共 <strong>57</strong> 项 &nbsp; <span class="text-link">显示更多 <i class="icon icon-double-angle-down"></i></span></span></a>  </nav>
+</div>
+<div class="text-center text-gray small"><i class="icon-lightbulb"></i> 点击评论内容进行回复</div>
+
+<nav class="fab affix dock-bottom dock-right shadow-none dock-auto">
+  <a href="https://github.com/easysoft/mzui/blob/master/doc/part/examples/comments.html" class="btn circle shadow-2 has-margin-sm dark" target="_blank"><i class="icon-code"></i> 示例源码</a>
+  <a title="评论" class="btn circle shadow-2 has-margin-sm btn-lg primary" data-display="modal" data-remote="doc/part/examples/comments-post.html" data-placement="bottom"><i class="icon icon-comments"></i></a>
+</nav>
