@@ -1,5 +1,5 @@
 /*!
- * mzui - v0.1.0 - 2016-07-05
+ * mzui - v0.1.0 - 2016-07-06
  * Copyright (c) 2016 cnezsoft.com; Licensed MIT
  */
 
@@ -36,8 +36,6 @@
 }
 #indexPage
 {
-    display: none;
-
     margin-top: -2.4rem;
 }
 #indexPage .graph1 > .avatar + .avatar
@@ -64,9 +62,9 @@
 {
     padding: 1rem;
 }
-body.has-index-content #indexPage
+body.has-index-content
 {
-    display: block;
+    box-shadow: inset 0 2.4rem 0 2.4rem #3280fc;
 }
 #leadContent
 {

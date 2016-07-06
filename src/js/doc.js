@@ -6,6 +6,13 @@
  * ======================================================================== */
 
 $(function() {
+    var $fabNav = $('#fabNav'),
+        $partial = $('#partial'),
+        $tocList = $('#tocList'),
+        $navs = $('#navs'),
+        $modalHeading = $('#tocHeading'),
+        scrollTopOffset = $('#headNav').height() * 2 + 10;
+
     $('#headNav').display({
         selector: 'a:not(.brand-name)',
         activeClass: 'active',
@@ -14,19 +21,13 @@ $(function() {
         name: 'headNav',
         animate: false,
         show: function() {
+            $partial.empty();
             $('body').removeClass('has-index-content');
         },
-        shown: function() {
+        displayed: function() {
             $('#navs > a[data-display-auto]').trigger('click');
         }
     });
-
-    var $fabNav = $('#fabNav'),
-        $partial = $('#partial'),
-        $tocList = $('#tocList'),
-        $navs = $('#navs'),
-        $modalHeading = $('#tocHeading'),
-        scrollTopOffset = $('#headNav').height() * 2 + 10;
 
     $navs.display({
         selector: 'a',
@@ -68,7 +69,6 @@ $(function() {
 
     $tocList.on('click', 'a', function(e) {
         var $section = $($(this).data('target'));
-        console.log($section.offset().top - scrollTopOffset);
         $(window).scrollTop($section.offset().top - scrollTopOffset);
         e.preventDefault();
     });
