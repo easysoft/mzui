@@ -41,6 +41,9 @@ $(function() {
         shown: function() {
             $fabNav.removeClass('disabled');
             $tocList.empty();
+        },
+        displayed: function() {
+            $fabNav.toggleClass('hidden', !$partial.find('.section').children('.heading').children('.title').length);
         }
     });
 
@@ -84,6 +87,6 @@ $(function() {
     });
 
     if($(window).width() > 1200) {
-        $.messager.warning("MZUI 专为移动端设计，在移动设备上访问效果更佳。", {placement: 'top-center'});
+        $.messager.warning("MZUI 专为移动端设计，在移动设备上访问效果更佳。", {placement: 'top-center', targetZIndex: 3000});
     }
 });

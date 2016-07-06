@@ -1,0 +1,54 @@
+<style>
+.profile-haeder {position: relative; overflow: hidden; min-height: 8rem}
+.profile-haeder > .back {top: -2rem; left: -2rem; right: -2rem; bottom: -2rem; background-position: center; background-size: cover}
+.profile-haeder > .front {background: rgba(0,0,0,.1); text-align: center; padding: 1.5rem}
+</style>
+<div class="profile-haeder space shadow">
+  <div class="red dock blur-lg back" style="background-image: url(doc/img/img2.jpg)"></div>
+  <div class="front dock text-white">
+    <div class="avatar avatar-xl circle space-sm">
+      <img src="doc/img/avatar.png" alt="">
+    </div>
+    <h4 class="lead text-shadow-black">Catouse</h4>
+  </div>
+</div>
+
+<div class="section">
+  <div class="list with-divider">
+    <a class="item with-avatar">
+      <div class="avatar text-gray"><i class="icon-list-ul"></i></div>
+      <div class="title">订单列表</div>
+      <i class="icon icon-chevron-right muted"></i>
+    </a>
+    <a class="item with-avatar">
+      <div class="avatar text-gray"><i class="icon icon-comments"></i></div>
+      <div class="title">我的消息</div>
+      <i class="icon icon-chevron-right muted"></i>
+    </a>
+    <a class="item with-avatar">
+      <div class="avatar text-gray"><i class="icon icon-lock"></i></div>
+      <div class="title">安全中心</div>
+      <i class="icon icon-chevron-right muted"></i>
+    </a>
+    <a class="item with-avatar">
+      <div class="avatar text-gray"><i class="icon-cog"></i></div>
+      <div class="title">个人设置</div>
+      <i class="icon icon-chevron-right muted"></i>
+    </a>
+    <a class="item with-avatar">
+      <div class="avatar text-gray"><i class="icon-qrcode"></i></div>
+      <div class="title">我的二维码</div>
+      <i class="icon icon-chevron-right muted"></i>
+    </a>
+  </div>
+</div>
+
+<div class="modal affix hidden" id="myQrcode" style="top: auto">
+  <div class="heading">
+    <div class="title"><i class="icon-qrcode"></i> <strong>我的二维码</strong></div>
+    <nav class="nav"><a data-dismiss="display"><i class="icon-remove muted"></i></a></nav>
+  </div>
+  <div class="content box text-center">
+    <img src="img/qrcode.png" alt="">
+  </div>
+</div>

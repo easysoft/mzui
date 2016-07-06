@@ -1,0 +1,84 @@
+<div class="has-padding">
+  <div class="column">
+    <div class="cell flex-center">
+      <a class="info btn btn-lg" data-display data-target="#login1">登录场景一</a>
+    </div>
+    <div class="cell flex-center">
+      <a class="info btn btn-lg" data-display data-target="#login2">登录场景二</a>
+    </div>
+  </div>
+</div>
+
+<div class="page fade hidden scale-from-center" id="login2">
+  <div class="dock blur-lg" style="background: url('/doc/img/img3.jpg') no-repeat center; background-size: cover; top: -2rem; right: -2rem; bottom: -2rem; left: -2rem"></div>
+  <div class="dock flex flex-center">
+    <div class="modal rounded">
+      <div class="heading divider primary-pale">
+        <div class="title">登录</div>
+        <nav class="nav">
+          <a class="text-link">没有账号？立即注册</a>
+        </nav>
+      </div>
+      <form action="" class="content box">
+        <div class="control has-label-left has-error">
+          <input type="text" class="input" placeholder="手机号/邮箱/用户名">
+          <label for="account"><i class="icon-user"></i></label>
+          <div class="help-text">用户名不存在</div>
+        </div>
+        <div class="control has-label-left">
+          <input type="password" class="input" placeholder="密码">
+          <label for="account"><i class="icon-key"></i></label>
+        </div>
+        <div class="control">
+          <button type="submit" class="btn block primary">登录</button>
+        </div>
+      </form>
+    </div>    
+  </div>
+  <a class="btn dock dock-top dock-right text-white" data-dismiss="display"><i class="icon icon-remove muted"></i></a>
+</div>
+
+<div class="page hidden enter-from-bottom with-nav-top with-nav-bottom" id="login1">
+  <nav class="nav affix dock-top justify-center">
+    <a>简体中文</a>
+    <a>繁體中文</a>
+    <a>English</a>
+  </nav>
+  <div id="login" class="column fluid-v no-margin flex-nowrap">
+    <div class="cell gray" id="loginLogo">
+      <div class="tile flex-center flex flex-column article">
+        <img src="https://www.ranzhico.com/data/upload/201606/f_d51b90b045761b36b24686901c1e0856.png" alt="然之协同">
+      </div>
+    </div>
+    <div class="cell box">
+      <div class="tile flex-center flex flex-column">
+        <form method="post">
+          <div class="control box danger form-message hide-empty" style="display: none;"></div>
+          <div class="control has-label-left fluid">
+            <input autofocus="" id="account" name="account" type="text" class="input" placeholder="请输入成员名或Email">
+            <label for="account" title="用户名"><i class="icon icon-user"></i></label>
+            <p class="help-text"></p>
+          </div>
+          <div class="control has-label-left fluid">
+            <input id="password" name="password" type="password" class="input" placeholder="密码">
+            <label for="password" title="密码"><i class="icon icon-lock"></i></label>
+            <p class="help-text"></p>
+          </div>
+          <div class="control">
+            <button type="submit" class="btn primary fluid">登录</button>
+          </div>
+          <div class="control">
+            <div class="checkbox">
+              <input type="checkbox" name="keepLogin" value="on">
+              <label for="keepLogin">保持登录</label>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <nav class="nav affix dock-bottom justified">
+    <a data-dismiss="display">关闭示例</a>
+  </nav>
+</div>
