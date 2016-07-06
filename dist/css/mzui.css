@@ -1,5 +1,5 @@
 /*!
- * mzui - v0.1.0 - 2016-07-05
+ * mzui - v0.1.0 - 2016-07-06
  * Copyright (c) 2016 cnezsoft.com; Licensed MIT
  */
 
