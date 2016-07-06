@@ -124,7 +124,7 @@ body.has-index-content #fabNav
 }
 .colorset
 {
-    padding-top: 1rem;
+    padding-top: .5rem;
     padding-bottom: .5rem;
 
     border-bottom: .05rem dashed #e6e6e6;
