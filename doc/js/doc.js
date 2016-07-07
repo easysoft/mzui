@@ -1,5 +1,5 @@
 /*!
- * mzui - v0.1.0 - 2016-07-06
+ * mzui - v0.1.0 - 2016-07-07
  * Copyright (c) 2016 cnezsoft.com; Licensed MIT
  */
 
@@ -16,9 +16,10 @@ $(function() {
         $tocList = $('#tocList'),
         $navs = $('#navs'),
         $modalHeading = $('#tocHeading'),
-        scrollTopOffset = $('#headNav').height() * 2 + 10;
+        $headNav = $('#headNav'),
+        scrollTopOffset = $headNav.height() * 2 + 10;
 
-    $('#headNav').display({
+    $headNav.display({
         selector: 'a:not(.brand-name)',
         activeClass: 'active',
         target: '#navs',
@@ -29,7 +30,7 @@ $(function() {
             $partial.empty();
             $('body').removeClass('has-index-content');
         },
-        displayed: function() {
+        displayed: function(options) {
             $('#navs > a[data-display-auto]').trigger('click');
         }
     });
@@ -39,6 +40,7 @@ $(function() {
         activeClass: 'active',
         target: '#partial',
         trigger: 'click',
+        targetZIndex: 'none',
         name: 'navs',
         show: function() {
             $fabNav.addClass('disabled');
@@ -47,7 +49,19 @@ $(function() {
             $fabNav.removeClass('disabled');
             $tocList.empty();
         },
-        displayed: function() {
+        displayed: function(options) {
+            var $parent = $headNav.children('.active');
+            var parentName = $parent.data('pageName');
+            var parentTitle = $parent.text();
+            var $element = $(options.element);
+            var elementName = $element.attr('href').replace('doc/part/', '');
+            var gaOptions = {
+                hitType: 'pageview', 
+                page: window.location.pathname + parentName + '/' + elementName, 
+                title: parentTitle + ' > ' + $element.text()
+            };
+            ga('send', gaOptions);
+
             $fabNav.toggleClass('hidden', !$partial.find('.section').children('.heading').children('.title').length);
         }
     });
