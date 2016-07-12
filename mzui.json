@@ -159,6 +159,16 @@
       "dpds": ["zepto.core"],
       "desc": "Provides `andSelf` & `end()` chaining methods"
     },
+    "zepto.scroll": {
+      "name": "Zepto stack",
+      "pver": "1.0.0",
+      "ver": "1.0.0",
+      "src": {"js": ["assets/zepto/scroll.js"]},
+      "thirdpart": true,
+      "website": "https://github.com/suprMax/ZeptoScroll",
+      "dpds": ["zepto.core"],
+      "desc": "Zepto scroll animate plug"
+    },
     "zepto": {
       "name": "Zepto defaults",
       "dpds": ["zepto.core", "zepto.event", "zepto.touch", "zepto.data"],
@@ -349,6 +359,12 @@
     },
     "doc.style": {
       "src": "~/doc.less"
+    },
+    "custom.js": {
+      "src": "app.custom.js"
+    },
+    "variables.custom": {
+      "src": "variables.custom.less"
     }
   },
   "builds": {
@@ -365,6 +381,13 @@
       "filename": "mzui",
       "subdirectories": true,
       "bundles": ["standard"]
+    },
+    "custom": {
+      "title": "Custom edition",
+      "dest": "build/",
+      "filename": "mzui",
+      "subdirectories": true,
+      "includes": ["colorset", "variables", "variables.custom", "mixins", "zepto", "zepto.scroll", "normalize", "scaffolding", "utilities", "typography", "layout", "animations", "icons", "avatar", "navs", "buttons", "labels", "heading", "list", "table", "forms", "article", "display", "display.plugs", "scrollListener", "color", "skin", "skin.js", "ajax.action", "ajax.form", "code", "custom.js"]
     },
     "doc": {
       "dest": "doc/",
