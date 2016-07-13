@@ -11,6 +11,8 @@
  * 可定制：所有内容可以按需使用，基于 Gulp 构建自定义版本非常简单；
  * 轻量：JS 和 CSS 压缩之后在 50KB 左右，启用 GZip 压缩之后会更小（css 10KB, js 17KB），**不需要任何其他依赖！**（已内置 Zepto 1.1.6 核心组件）；
 
+![mzui-v1 0 0-5](https://cloud.githubusercontent.com/assets/472425/16789673/320a2f5e-48e2-11e6-883a-7aca4304bbc4.gif)
+
 ## 浏览器兼容性
 
 支持的浏览器：
@@ -40,7 +42,7 @@
 
  * 行列混用栅格在 iOS safari 上不可用；
 
-## 桌面端
+## 桌面端方案推荐
 
 欢迎使用 [ZUI: http://zui.sexy](http://zui.sexy)。
 
