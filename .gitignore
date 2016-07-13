@@ -6,6 +6,6 @@ builds/
 *.sublime-workspace
 ISSUES.md
 /*.zip
-*.custom.*
+*custom.*
 example/
 _mixins/
