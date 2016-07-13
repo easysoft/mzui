@@ -34,36 +34,36 @@
     display: inline-block;
     overflow: hidden;
 
-    width: 36px;
-    height: 36px;
+    width: 3.6rem;
+    height: 3.6rem;
 
-    border-radius: 18px;
+    border-radius: 1.8rem;
     background-color: #fff;
 }
 .path-zui-36:before,
 .path-zui-36:after
 {
     position: absolute;
-    left: 11px;
+    left: 1.1rem;
 
     display: block;
 
-    width: 14px;
-    height: 4px;
+    width: 1.4rem;
+    height: .4rem;
 
     content: ' ';
 
-    border: 2px solid #3280fc;
+    border: .2rem solid #3280fc;
 }
 .path-zui-36:before
 {
-    top: 9px;
+    top: .9rem;
 
     border-bottom: none;
 }
 .path-zui-36:after
 {
-    top: 23px;
+    top: 2.3rem;
 
     border-top: none;
 }
@@ -77,8 +77,8 @@
 
     display: block;
 
-    width: 2px;
-    height: 2px;
+    width: .2rem;
+    height: .2rem;
 
     content: ' ';
 
@@ -86,24 +86,24 @@
 }
 .path-zui-36 .path-1
 {
-    top: 19px;
-    left: 15px;
+    top: 1.9rem;
+    left: 1.5rem;
 }
 .path-zui-36 .path-1:before,
 .path-zui-36 .path-2:before
 {
-    top: 2px;
-    left: -2px;
+    top: .2rem;
+    left: -.2rem;
 }
 .path-zui-36 .path-1:after
 {
-    top: -2px;
-    left: 2px;
+    top: -.2rem;
+    left: .2rem;
 }
 .path-zui-36 .path-2
 {
-    top: 13px;
-    left: 21px;
+    top: 1.3rem;
+    left: 2.1rem;
 }
 #indexPage
 {
@@ -129,9 +129,13 @@
 
     padding: .5rem .1rem;
 }
+#indexPage .graph5 .large
+{
+    font-size: 2.5rem;
+}
 #indexPage > .content
 {
-    padding: 1rem;
+    padding: 1.5rem .5rem;
 }
 body.has-index-content
 {

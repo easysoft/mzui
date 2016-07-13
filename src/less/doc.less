@@ -26,9 +26,9 @@
 .path-zui-36 {
   display: inline-block;
   background-color: #fff;
-  border-radius: 18px;
-  height: 36px;
-  width: 36px;
+  border-radius: 1.8rem;
+  height: 3.6rem;
+  width: 3.6rem;
   position: relative;
   overflow: hidden;
   &:before,
@@ -36,17 +36,17 @@
     content: ' ';
     display: block;
     position: absolute;
-    border: 2px solid @color-primary;
-    left: 11px;
-    width: 14px;
-    height: 4px;
+    border: 0.2rem solid @color-primary;
+    left: 1.1rem;
+    width: 1.4rem;
+    height: 0.4rem;
   }
   &:before {
-    top: 9px;
+    top: .9rem;
     border-bottom: none;
   }
   &:after {
-    top: 23px;
+    top: 2.3rem;
     border-top: none;
   }
   .path-1,
@@ -57,26 +57,26 @@
     display: block;
     content: ' ';
     position: absolute;
-    width: 2px;
-    height: 2px;
+    width: 0.2rem;
+    height: 0.2rem;
     background-color: @color-primary;
   }
   .path-1 {
-    left: 15px;
-    top: 19px;
+    left: 1.5rem;
+    top: 1.9rem;
   }
   .path-1:before,
   .path-2:before {
-    left: -2px;
-    top: 2px;
+    left: -0.2rem;
+    top: 0.2rem;
   }
   .path-1:after {
-    left: 2px;
-    top: -2px;
+    left: 0.2rem;
+    top: -0.2rem;
   }
   .path-2 {
-    left: 21px;
-    top: 13px;
+    left: 2.1rem;
+    top: 1.3rem;
   }
 }
 
@@ -103,7 +103,11 @@
     }
   }
 
-  > .content {padding: 1rem}
+  .graph5 {
+    .large {font-size: 2.5rem}
+  }
+
+  > .content {padding: 1.5rem .5rem}
 }
 
 body.has-index-content {box-shadow: inset 0 2.4rem 0 0 #3280fc}
