@@ -201,6 +201,10 @@ body.has-index-content #fabNav
     padding-right: 1.5em;
     padding-left: 1.5em;
 }
+.fab > .btn + .btn
+{
+    margin-left: 0 !important;
+}
 .colorset
 {
     padding-top: .5rem;
