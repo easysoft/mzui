@@ -1,5 +1,5 @@
 /*!
- * mzui - v0.1.0 - 2016-07-07
+ * mzui - v0.1.0 - 2016-07-13
  * Copyright (c) 2016 cnezsoft.com; Licensed MIT
  */
 
@@ -54,10 +54,10 @@ $(function() {
             var parentName = $parent.data('pageName');
             var parentTitle = $parent.text();
             var $element = $(options.element);
-            var elementName = $element.attr('href').replace('doc/part/', '');
+            var elementName = $element.attr('href').replace('doc/part/', '').replace('examples/', '');
             var gaOptions = {
                 hitType: 'pageview', 
-                page: window.location.pathname + parentName + '/' + elementName, 
+                page: window.location.pathname + '#' + parentName + '/' + elementName, 
                 title: parentTitle + ' > ' + $element.text()
             };
             ga('send', gaOptions);

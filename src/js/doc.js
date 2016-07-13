@@ -49,10 +49,10 @@ $(function() {
             var parentName = $parent.data('pageName');
             var parentTitle = $parent.text();
             var $element = $(options.element);
-            var elementName = $element.attr('href').replace('doc/part/', '');
+            var elementName = $element.attr('href').replace('doc/part/', '').replace('examples/', '');
             var gaOptions = {
                 hitType: 'pageview', 
-                page: window.location.pathname + parentName + '/' + elementName, 
+                page: window.location.pathname + '#' + parentName + '/' + elementName, 
                 title: parentTitle + ' > ' + $element.text()
             };
             ga('send', gaOptions);

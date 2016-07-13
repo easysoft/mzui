@@ -201,20 +201,10 @@
       "config": true,
       "src": "variables.less"
     },
-    "config": {
-      "name": "Less variables",
-      "config": true,
-      "src": {"less": ["colorset", "variables", "variables.user"]}
-    },
     "mixins": {
       "name": "样式片段",
       "src": {"less": ["mixins"]},
       "config": true
-    },
-    "setting": {
-      "name": "样式配置",
-      "config": true,
-      "dpds": ["config", "mixins"]
     },
     "utilities": {
       "name": "常用辅助类",
@@ -393,8 +383,7 @@
       "dest": "doc/",
       "filename": "doc",
       "subdirectories": true,
-      "settingDpds": ["setting"],
-      "includes": ["doc.js", "doc.style", "colorset.test", "prettyprint"],
+      "includes": ["colorset", "variables", "mixins", "doc.js", "doc.style", "colorset.test", "prettyprint"],
       "bundles": ["dist"]
     }
   }
