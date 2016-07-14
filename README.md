@@ -2,7 +2,7 @@
 
 为移动端设计，基于 Flex 的 UI 框架。
 
-示例和文档：http://easysoft.github.io/mzui/
+示例和文档：http://zui.sexy/m/
 
 ## 特色
 
