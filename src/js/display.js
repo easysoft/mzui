@@ -48,13 +48,13 @@
             if($this.is('a')) {
                 var href = $this.attr('href');
                 if(href && href !== '#' && href.indexOf('##') < 0) {
-                    if(/^#[a-z]/i.test(href)) {
+                    if(!options.target && /^#[a-z]/i.test(href)) {
                         thisOptions.target = href;
                     } else if(!thisOptions.remote) {
                         thisOptions.remote = href;
                     }
                 }
-                if(e) e.preventDefault();
+                if(e && options.preventDefault !== false) e.preventDefault();
             }
             that[options.triggerMethod](thisOptions);
         };

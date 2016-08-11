@@ -90,6 +90,12 @@ myNamedDisplay.show();</code></pre>
     <p>触发事件代理选择器，可省略，默认为 <code>null</code>。</p>
     <p>当该选项被使用时，触发器事件会使用代理的方式进行绑定。</p>
 
+    <h5 class="code">preventDefault</h5>
+    <p>是否在触发器上触发事件发生时调用 <code>e.preventDefault()</code> 来阻止浏览器默认行为。默认为 <code>true</code>。</p>
+
+    <h5 class="code">stopPropagation</h5>
+    <p>是否在触发器上触发事件发生时调用 <code>e.stopPropagation()</code> 来阻止事件冒泡。默认为 <code>false</code>。</p>
+
     <h5 class="code">target</h5>
     <p>要操作的目标：<code>'!new'</code>, <code>'!self'</code> 或者有效的 CSS 选择器字符串，或者指定为回调函数来返回结果。</p>
     <p>当改选项被指定为 <code>'!new'</code>，会在页面中动态创建一个唯一的元素。</p>
