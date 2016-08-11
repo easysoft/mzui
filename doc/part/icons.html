@@ -16,7 +16,7 @@ body.show-icon-modal {padding-bottom: 10.5rem!important}
 
 <div class="section">
   <div class="heading"><div class="title"><strong>图标</strong></div></div>
-  <div class="box"><p>MZUI 中的图标基于 <a href="http://fortawesome.github.io/Font-Awesome/" target="_blank">FontAwesome</a> 定制，包含 329 个图标。</p></div>
+  <div class="box"><p>MZUI 中的图标基于 <a href="http://fortawesome.github.io/Font-Awesome/" target="_blank">FontAwesome</a> 定制，包含 <strong class="text-icon-total-count">332</strong> 个图标。</p></div>
   <div class="clearfix" id="iconsExample">
     <a data-icon-code="resize"><i class="icon-resize"></i><small>resize</small></a>
     <a data-icon-code="expand-full"><i class="icon-expand-full"></i><small>expand-full</small></a>
@@ -330,6 +330,9 @@ body.show-icon-modal {padding-bottom: 10.5rem!important}
     <a data-icon-code="moon"><i class="icon-moon"></i><small>moon</small></a>
     <a data-icon-code="archive"><i class="icon-archive"></i><small>archive</small></a>
     <a data-icon-code="bug"><i class="icon-bug"></i><small>bug</small></a>
+    <a data-icon-code="zhifubao"><i class="icon-zhifubao"></i><small>zhifubao</small></a>
+    <a data-icon-code="zhifubao-square"><i class="icon-zhifubao-square"></i><small>zhifubao-square</small></a>
+    <a data-icon-code="taobao"><i class="icon-taobao"></i><small>taobao</small></a>
     <a data-icon-code="weibo"><i class="icon-weibo"></i><small>weibo</small></a>
     <a data-icon-code="renren"><i class="icon-renren"></i><small>renren</small></a>
     <a data-icon-code="chrome"><i class="icon-chrome"></i><small>chrome</small></a>
@@ -362,7 +365,7 @@ body.show-icon-modal {padding-bottom: 10.5rem!important}
 <script>
 $(function() {
     var $backdrop = $('#backdropIconsExample');
-    $('#iconsExample').display({
+    var $icons = $('#iconsExample').display({
         name: 'iconsExample',
         selector: 'a',
         targetZIndex: 2010,
@@ -380,6 +383,7 @@ $(function() {
             $backdrop.removeClass('in');
             setTimeout(function(){$backdrop.addClass('hidden')}, 300);
         }
-    })
+    });
+    $('.text-icon-total-count').text($icons.children('a').length);
 });
 </script>
