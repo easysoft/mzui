@@ -379,6 +379,9 @@
       "subdirectories": true,
       "includes": ["colorset", "variables", "variables.custom", "mixins", "zepto", "zepto.scroll", "normalize", "scaffolding", "utilities", "typography", "layout", "animations", "icons", "avatar", "navs", "buttons", "labels", "heading", "list", "table", "forms", "article", "display", "display.plugs", "scrollListener", "color", "skin", "skin.js", "ajax.action", "ajax.form", "code", "custom.js"]
     },
+    "onlyZepto": {
+      "includes": ["zepto.core", "zepto.event", "zepto.touch", "zepto.data", "zepto.ajax", "zepto.form"]
+    },
     "doc": {
       "dest": "doc/",
       "filename": "doc",
