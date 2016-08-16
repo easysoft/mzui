@@ -13,6 +13,20 @@
 
 ![mzui-v1 0 0-5](https://cloud.githubusercontent.com/assets/472425/16789673/320a2f5e-48e2-11e6-883a-7aca4304bbc4.gif)
 
+## 快速使用
+
+### NPM
+
+```
+npm install mzui
+```
+
+### Bower
+
+```
+bower install mzui
+```
+
 ## 浏览器兼容性
 
 支持的浏览器：
