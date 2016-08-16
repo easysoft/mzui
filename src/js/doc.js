@@ -77,7 +77,6 @@ $(function() {
                 $tocList.append('<a class="item" data-target="#' + sectionId + '">' + $section.children('.heading').find('.title').text() + '</a>')
             });
             $modalHeading.text($('#navs > .active').text());
-
         },
         hide: function() {
             $fabNav.removeClass('open').find('.btn').addClass('primary');
