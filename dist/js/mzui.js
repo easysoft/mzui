@@ -1,5 +1,5 @@
 /*!
- * mzui - v1.0.0 - 2016-07-13
+ * MZUI - v1.0.0 - 2016-08-16
  * Copyright (c) 2016 cnezsoft.com; Licensed MIT
  */
 
@@ -1950,13 +1950,13 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
             if($this.is('a')) {
                 var href = $this.attr('href');
                 if(href && href !== '#' && href.indexOf('##') < 0) {
-                    if(/^#[a-z]/i.test(href)) {
+                    if(!options.target && /^#[a-z]/i.test(href)) {
                         thisOptions.target = href;
                     } else if(!thisOptions.remote) {
                         thisOptions.remote = href;
                     }
                 }
-                if(e) e.preventDefault();
+                if(e && options.preventDefault !== false) e.preventDefault();
             }
             that[options.triggerMethod](thisOptions);
         };
@@ -2868,16 +2868,16 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
         if(isUndefined(dark)) dark = new Color(0, 0, 0, 1);
         else dark = new Color(dark);
 
-        if(this.a < 0.5) return dark;
-
-        if(isUndefined(threshold)) threshold = 0.43;
-        else threshold = number(threshold);
-
         if(dark.luma() > light.luma()) {
             var t = light;
             light = dark;
             dark = t;
         }
+
+        if(this.a < 0.5) return dark;
+
+        if(isUndefined(threshold)) threshold = 0.43;
+        else threshold = number(threshold);
 
         if(this.luma() < threshold) {
             return light;

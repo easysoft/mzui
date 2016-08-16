@@ -1,5 +1,5 @@
 /*!
- * mzui - v1.0.0 - 2016-07-13
+ * MZUI - v1.0.0 - 2016-08-16
  * Copyright (c) 2016 cnezsoft.com; Licensed MIT
  */
 
@@ -1746,7 +1746,6 @@ a .icon.spin
 {
     content: '\e641';
 }
-.icon-check2:before,
 .icon-checked:before
 {
     content: '\e642';
@@ -2634,6 +2633,20 @@ a .icon.spin
 .icon-bug:before
 {
     content: '\e745';
+}
+.icon-zhifubao:before,
+.icon-alipay:before
+{
+    content: '\e901';
+}
+.icon-zhifubao-square:before,
+.icon-alipay-square:before
+{
+    content: '\e900';
+}
+.icon-taobao:before
+{
+    content: '\e902';
 }
 .icon-weibo:before
 {
