@@ -1,12 +1,30 @@
 {
   "name": "mzui",
+  "title": "MZUI",
   "version": "1.0.0",
-  "description": "",
+  "description": "为移动端设计，基于 Flex 的 UI 框架。",
+  "keywords": [
+    "css",
+    "js",
+    "less",
+    "html5",
+    "responsive",
+    "front-end",
+    "framework",
+    "web",
+    "mobile",
+    "flexbox"
+  ],
   "repository": {
-    "type": "git"
+    "type": "git",
+    "url": "https://github.com/easysoft/mzui.git"
   },
   "author": "cnezsoft.com",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/easysoft/mzui/issues"
+  },
+  "homepage": "http://zui.sexy/m/",
   "devDependencies": {
     "bytes": "^2.4.0",
     "colors": "^1.1.2",
@@ -33,5 +51,17 @@
     "moment": "^2.11.0",
     "run-sequence": "^1.1.5",
     "string-format": "^0.5.0"
-  }
+  },
+  "files": [
+    "dist",
+    "assets",
+    "doc",
+    "src",
+    "gulpfile.js",
+    "index.html",
+    "CHANGES.md",
+    "README.md",
+    "mzui.json",
+    "LICENSE"
+  ]
 }
