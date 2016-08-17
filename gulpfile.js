@@ -37,10 +37,11 @@ var today = moment();
 var typeSet = ['less', 'js', 'resource'],
     lib     = mzui.lib,
     builds  = mzui.builds,
-    banner  = ('/*!\n' +
+    BANNER  = ('/*!\n' +
         ' * {title} - v{version} - {date}\n' +
         ' * Copyright (c) {year} {author}; Licensed {license}\n' +
-        ' */\n\n').format({
+        ' */\n\n'),
+    BANNER_OPTONS = {
         title: pkg.title || pkg.name,
         version: pkg.version,
         date: today.format('YYYY-MM-DD'),
@@ -49,7 +50,15 @@ var typeSet = ['less', 'js', 'resource'],
         year: today.format('YYYY'),
         author: pkg.author,
         license: pkg.license
-    });
+    };
+
+function formatBanner(options) {
+    if(options && options.title) {
+        options.title = BANNER_OPTONS.title + ': ' + options.title;
+    }
+    options = Object.assign({}, BANNER_OPTONS, options);
+    return BANNER.format(options);
+}
 
 function tryStatSync(path) {
     try {
@@ -241,8 +250,9 @@ function buildBundle(name, callback, type) {
                     filename: name,
                     includes: [name],
                     thirdpart: buildLib.thirdpart,
-                    settingDpds: ['setting'],
-                    ignoreBasic: true
+                    settingDpds: (buildLib.src && buildLib.src.less && buildLib.src.less.length) ? ['setting'] : null,
+                    ignoreBasic: true,
+                    ignoreDpds: true
                 };
             } else {
                 console.log(('           Cannot found the build config: ' + name).red);
@@ -253,14 +263,11 @@ function buildBundle(name, callback, type) {
         console.log(('           === BUILD BUNDLES ' + name.toUpperCase() + ' [' + build.bundles.join(', ') + '] ===').blue.bold);
         var bundlesTaskList = [];
         build.bundles.forEach(function(bundleName) {
-            var bundleBuild = builds[bundleName];
-            if(bundleBuild) {
-                gulp.task('build:' + bundleName, function(cb) {
-                    buildBundle(bundleName, cb, type);
-                });
+            gulp.task('build:' + bundleName, function(cb) {
+                buildBundle(bundleName, cb, type);
+            });
 
-                bundlesTaskList.push('build:' + bundleName);
-            }
+            bundlesTaskList.push('build:' + bundleName);
         });
 
         gulp.task('build:' + name + ':bundles', function(cb) {
@@ -283,6 +290,7 @@ function buildBundle(name, callback, type) {
 
     console.log(('           --- build ' + name + ' ---').cyan.bold);
 
+    var banner = formatBanner({title: name});
     var source = getBuildSource(build),
         bannerContent = build.thirdpart ?
         '' : banner;
