@@ -16,11 +16,16 @@
         if(!$form.length || $form.data(NAME)) return;
         $form.data(NAME, 1);
 
-        var callEvent = function(name, event) {
+        var callEvent = function(name, data) {
+            var result;
+            var event = $.Event(name);
+            if(!$.isArray(data)) data = [data];
+            $form.trigger(event, data);
+            result = event.result;
             if(options && $.isFunction(options[name])) {
-                return options[name](event);
+                result = options[name].apply($form, data);
             }
-            $form.trigger(name + '.' + NAME, event);
+            return result;
         };
 
         var showMessage = function(message) {
@@ -72,7 +77,8 @@
                 }
                 _formData[_name] = _formVal;
             });
-            callEvent('onSubmit', _formData);
+            
+            if(callEvent('onSubmit', _formData) === false) return;
 
             var formData = new FormData();
             for (var key in _formData) {
@@ -85,13 +91,14 @@
             }
             var $submitBtn = $form.find('[type="submit"]').attr('disabled', 'disabled').addClass('disabled loading');
             $.ajax({
-                url: form.action,
-                type: form.method,
+                url: options.url || form.action,
+                type: options.type || form.method,
                 processData: false,
                 contentType: false,
-                dataType: $form.data('type') || 'json',
-                data: formData,
+                dataType: options.dataType || $form.data('type') || 'json',
+                data: options.dataConverter ? options.dataConverter(formData) : formData,
                 success: function(response, status) {
+                    if(callEvent('onResponse', [response, status]) === false) return;
                     try {
                         if(typeof response === 'string') response = $.parseJSON(response);
                         callEvent('onSuccess', response);
