@@ -105,7 +105,7 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
     };
 
     $.is$ = function(obj) {
-        return $.zepto.isZ(obj)
+        return window.jQuery === $ ? (obj instanceof jQuery) : $.zepto.isZ(obj)
     };
 
     $.isStr = function(x) {
@@ -117,4 +117,6 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
     };
 
     $.TapName = 'ontouchstart' in document.documentElement ? 'tap' : 'click';
+
+    if(!$.uuid) $.uuid = 0;
 }(CoreLib));

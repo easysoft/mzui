@@ -84,9 +84,9 @@
             var targetId = STR_DISPLAY + 'Target-' + options.name,
                 layerId = STR_DISPLAY + 'Layer-' + options.name;
             $('#' + targetId).remove();
-            target = $('<div class="' + STR_DISPLAY + ' ' + STR_HIDDEN + '"/>', {id: targetId});
+            target = $('<div class="' + STR_DISPLAY + ' ' + STR_HIDDEN + '"/>').attr({id: targetId});
             var $layer = $('#' + layerId);
-            if(!$layer.length) $layer = $('<div class="' + STR_DISPLAY + '-layer"/>', {id: layerId}).appendTo(STR_BODY);
+            if(!$layer.length) $layer = $('<div class="' + STR_DISPLAY + '-layer"/>').attr({id: layerId}).appendTo(STR_BODY);
             options.layer = options.container = $layer.append(target);
         } else if(target === '!self') {
             target = options.element || that.$;
@@ -222,7 +222,7 @@
         if(backdrop) {
             var backdropId = 'backdrop-' + displayName;
             $('#' + backdropId).remove();
-            var $backdrop = options.$backdrop = $('<div class="display-backdrop"/>', {
+            var $backdrop = options.$backdrop = $('<div class="display-backdrop"/>').attr({
                 id: backdropId,
                 type: options.display,
                 'data-display-name': displayName
