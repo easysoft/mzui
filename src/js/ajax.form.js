@@ -6,13 +6,12 @@
  * ======================================================================== */
 
 
-!(function($, window, undefined){
+!(function($, window, undefined) {
     'use strict';
 
     var NAME = 'mzui.ajaxform';
 
-    var setAjaxForm = function($form, options)
-    {
+    var setAjaxForm = function($form, options) {
         if(!$form.length || $form.data(NAME)) return;
         $form.data(NAME, 1);
 
@@ -38,8 +37,6 @@
                 $.messager.warning(message, {time: 10000});
             }
         };
-
-        callEvent('init');
 
         $form.on('submit', function(e) {
             e.preventDefault();
@@ -77,8 +74,12 @@
                 }
                 _formData[_name] = _formVal;
             });
-            
+
             if(callEvent('onSubmit', _formData) === false) return;
+
+            if(options.dataConverter) {
+                _formData = options.dataConverter(_formData);
+            }
 
             var formData = new FormData();
             for (var key in _formData) {
@@ -89,6 +90,7 @@
                     }
                 } else formData.append(key, _val);
             }
+
             var $submitBtn = $form.find('[type="submit"]').attr('disabled', 'disabled').addClass('disabled loading');
             $.ajax({
                 url: options.url || form.action,
@@ -96,7 +98,7 @@
                 processData: false,
                 contentType: false,
                 dataType: options.dataType || $form.data('type') || 'json',
-                data: options.dataConverter ? options.dataConverter(formData) : formData,
+                data: formData,
                 success: function(response, status) {
                     if(callEvent('onResponse', [response, status]) === false) return;
                     try {
@@ -143,10 +145,11 @@
                     callEvent('onResult', response);
                 },
                 error: function(xhr, errorType, error) {
-                    showMessage('error: ' + error);
-                    callEvent('onError', {xhr: xhr, errorType: errorType, error: error});
-                    if(window.v && window.v.lang.timeout) {
-                        $.messager.danger(window.v.lang.timeout);
+                    if(callEvent('onError', [xhr, errorType, error]) !== false) {
+                        showMessage('error: ' + error);
+                        if(window.v && window.v.lang.timeout) {
+                            $.messager.danger(window.v.lang.timeout);
+                        }
                     }
                 },
                 complete: function(xhr, status) {
@@ -158,6 +161,8 @@
             $form.find('.form-message').hide();
             $(e.target).closest('.control').removeClass('has-error');
         });
+
+        callEvent('init');
     };
 
     $.ajaxForm = setAjaxForm;

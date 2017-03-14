@@ -41,11 +41,12 @@
         var scrollTop       = that.$.scrollTop();
         var isInScroll      = scrollTop > 0;
         var scrollDirection = scrollTop > that.lastScrollTop ? 'down' : 'up';
+        var directionClass  = options.directionClass;
 
         that.$container.toggleClass(options.inScrollClass, isInScroll)
-            .toggleClass(options.directionClass + '-down', scrollDirection === 'down')
-            .toggleClass(options.directionClass + '-up', scrollDirection === 'up')
-            .toggleClass(options.directionClass + '-over', scrollTop + that.$.height() >= that.$[0].scrollHeight);
+            .toggleClass(directionClass + '-down', scrollDirection === 'down')
+            .toggleClass(directionClass + '-up', scrollDirection === 'up')
+            .toggleClass(directionClass + '-over', scrollTop + that.$.height() >= that.$[0].scrollHeight);
 
         that.$container.callEvent(that, 'listenScroll', [isInScroll, scrollDirection, scrollTop]);
 
