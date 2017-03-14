@@ -22,7 +22,8 @@ var extend         = require('extend'),
     pkg            = require('./package.json'),
     gzipSize       = require('gzip-size'),
     bytes          = require('bytes'),
-    showFileDetail = true;
+    showFileDetail = true,
+    noZeptoJS      = process.argv[3] === '-nozepto' || process.argv[4] === '-nozepto';
 
 // Disable the 'possible EventEmitter memory leak detected' warning.
 gulp.setMaxListeners(0);
@@ -82,6 +83,7 @@ function getItemList(list, items, ignoreDpds, ignoreBasic) {
             getItemList(name, items, ignoreDpds, ignoreBasic);
         });
     } else if(!(list === 'basic' && ignoreBasic)) {
+        if(noZeptoJS && list && list.indexOf('zepto') === 0) return;
         var item = lib[list];
         if(item && items.indexOf(list) < 0) {
             if(!ignoreDpds && item.dpds) {
