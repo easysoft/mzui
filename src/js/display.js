@@ -538,7 +538,7 @@
         $(document).on(TAP_EVENT_NAME, '[data-dismiss="' + STR_DISPLAY + '"]', function() {
             var $this = $(this), dataName = 'data-' + STR_DISPLAY + '-name';
             name = $this.attr(dataName);
-            if(!name || name == 'null') name = $this.closest('.' + STR_DISPLAY).attr(dataName);
+            if(!name || name == 'null' || name == 'undefined') name = $this.closest('.' + STR_DISPLAY).attr(dataName);
             Display.dismiss(name);
         });
     });
