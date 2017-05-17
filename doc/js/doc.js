@@ -1,6 +1,6 @@
 /*!
- * mzui - v1.0.0 - 2016-08-11
- * Copyright (c) 2016 cnezsoft.com; Licensed MIT
+ * MZUI: doc - v1.0.0 - 2017-05-17
+ * Copyright (c) 2017 cnezsoft.com; Licensed MIT
  */
 
 /* ========================================================================

@@ -1,6 +1,6 @@
 /*!
- * MZUI - v1.0.0 - 2016-08-16
- * Copyright (c) 2016 cnezsoft.com; Licensed MIT
+ * MZUI: standard - v1.0.0 - 2017-05-17
+ * Copyright (c) 2017 cnezsoft.com; Licensed MIT
  */
 
 /*! Zepto v1.1.6 - zeptojs.com/license */
@@ -1886,7 +1886,7 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
     };
 
     $.is$ = function(obj) {
-        return $.zepto.isZ(obj)
+        return window.jQuery === $ ? (obj instanceof jQuery) : $.zepto.isZ(obj)
     };
 
     $.isStr = function(x) {
@@ -1898,6 +1898,8 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
     };
 
     $.TapName = 'ontouchstart' in document.documentElement ? 'tap' : 'click';
+
+    if(!$.uuid) $.uuid = 0;
 }(CoreLib));
 
 /* ========================================================================
@@ -1986,9 +1988,9 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
             var targetId = STR_DISPLAY + 'Target-' + options.name,
                 layerId = STR_DISPLAY + 'Layer-' + options.name;
             $('#' + targetId).remove();
-            target = $('<div class="' + STR_DISPLAY + ' ' + STR_HIDDEN + '"/>', {id: targetId});
+            target = $('<div class="' + STR_DISPLAY + ' ' + STR_HIDDEN + '"/>').attr({id: targetId});
             var $layer = $('#' + layerId);
-            if(!$layer.length) $layer = $('<div class="' + STR_DISPLAY + '-layer"/>', {id: layerId}).appendTo(STR_BODY);
+            if(!$layer.length) $layer = $('<div class="' + STR_DISPLAY + '-layer"/>').attr({id: layerId}).appendTo(STR_BODY);
             options.layer = options.container = $layer.append(target);
         } else if(target === '!self') {
             target = options.element || that.$;
@@ -2124,7 +2126,7 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
         if(backdrop) {
             var backdropId = 'backdrop-' + displayName;
             $('#' + backdropId).remove();
-            var $backdrop = options.$backdrop = $('<div class="display-backdrop"/>', {
+            var $backdrop = options.$backdrop = $('<div class="display-backdrop"/>').attr({
                 id: backdropId,
                 type: options.display,
                 'data-display-name': displayName
@@ -2440,7 +2442,7 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
         $(document).on(TAP_EVENT_NAME, '[data-dismiss="' + STR_DISPLAY + '"]', function() {
             var $this = $(this), dataName = 'data-' + STR_DISPLAY + '-name';
             name = $this.attr(dataName);
-            if(!name || name == 'null') name = $this.closest('.' + STR_DISPLAY).attr(dataName);
+            if(!name || name == 'null' || name == 'undefined') name = $this.closest('.' + STR_DISPLAY).attr(dataName);
             Display.dismiss(name);
         });
     });
@@ -2619,11 +2621,12 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
         var scrollTop       = that.$.scrollTop();
         var isInScroll      = scrollTop > 0;
         var scrollDirection = scrollTop > that.lastScrollTop ? 'down' : 'up';
+        var directionClass  = options.directionClass;
 
         that.$container.toggleClass(options.inScrollClass, isInScroll)
-            .toggleClass(options.directionClass + '-down', scrollDirection === 'down')
-            .toggleClass(options.directionClass + '-up', scrollDirection === 'up')
-            .toggleClass(options.directionClass + '-over', scrollTop + that.$.height() >= that.$[0].scrollHeight);
+            .toggleClass(directionClass + '-down', scrollDirection === 'down')
+            .toggleClass(directionClass + '-up', scrollDirection === 'up')
+            .toggleClass(directionClass + '-over', scrollTop + that.$.height() >= that.$[0].scrollHeight);
 
         that.$container.callEvent(that, 'listenScroll', [isInScroll, scrollDirection, scrollTop]);
 
@@ -3168,21 +3171,25 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
  * ======================================================================== */
 
 
-!(function($, window, undefined){
+!(function($, window, undefined) {
     'use strict';
 
     var NAME = 'mzui.ajaxform';
 
-    var setAjaxForm = function($form, options)
-    {
+    var setAjaxForm = function($form, options) {
         if(!$form.length || $form.data(NAME)) return;
         $form.data(NAME, 1);
 
-        var callEvent = function(name, event) {
+        var callEvent = function(name, data) {
+            var result;
+            var event = $.Event(name);
+            if(!$.isArray(data)) data = [data];
+            $form.trigger(event, data);
+            result = event.result;
             if(options && $.isFunction(options[name])) {
-                return options[name](event);
+                result = options[name].apply($form, data);
             }
-            $form.trigger(name + '.' + NAME, event);
+            return result;
         };
 
         var showMessage = function(message) {
@@ -3195,8 +3202,6 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
                 $.messager.warning(message, {time: 10000});
             }
         };
-
-        callEvent('init');
 
         $form.on('submit', function(e) {
             e.preventDefault();
@@ -3234,7 +3239,12 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
                 }
                 _formData[_name] = _formVal;
             });
-            callEvent('onSubmit', _formData);
+
+            if(callEvent('onSubmit', _formData) === false) return;
+
+            if(options.dataConverter) {
+                _formData = options.dataConverter(_formData);
+            }
 
             var formData = new FormData();
             for (var key in _formData) {
@@ -3245,15 +3255,17 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
                     }
                 } else formData.append(key, _val);
             }
+
             var $submitBtn = $form.find('[type="submit"]').attr('disabled', 'disabled').addClass('disabled loading');
             $.ajax({
-                url: form.action,
-                type: form.method,
+                url: options.url || form.action,
+                type: options.type || form.method,
                 processData: false,
                 contentType: false,
-                dataType: $form.data('type') || 'json',
+                dataType: options.dataType || $form.data('type') || 'json',
                 data: formData,
                 success: function(response, status) {
+                    if(callEvent('onResponse', [response, status]) === false) return;
                     try {
                         if(typeof response === 'string') response = $.parseJSON(response);
                         callEvent('onSuccess', response);
@@ -3298,10 +3310,11 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
                     callEvent('onResult', response);
                 },
                 error: function(xhr, errorType, error) {
-                    showMessage('error: ' + error);
-                    callEvent('onError', {xhr: xhr, errorType: errorType, error: error});
-                    if(window.v && window.v.lang.timeout) {
-                        $.messager.danger(window.v.lang.timeout);
+                    if(callEvent('onError', [xhr, errorType, error]) !== false) {
+                        showMessage('error: ' + error);
+                        if(window.v && window.v.lang.timeout) {
+                            $.messager.danger(window.v.lang.timeout);
+                        }
                     }
                 },
                 complete: function(xhr, status) {
@@ -3313,6 +3326,8 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
             $form.find('.form-message').hide();
             $(e.target).closest('.control').removeClass('has-error');
         });
+
+        callEvent('init');
     };
 
     $.ajaxForm = setAjaxForm;

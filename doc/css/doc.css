@@ -1,6 +1,6 @@
 /*!
- * mzui - v1.0.0 - 2016-08-11
- * Copyright (c) 2016 cnezsoft.com; Licensed MIT
+ * MZUI: doc - v1.0.0 - 2017-05-17
+ * Copyright (c) 2017 cnezsoft.com; Licensed MIT
  */
 
 .heading.affix .icon-github
@@ -139,7 +139,7 @@
 }
 body.has-index-content
 {
-    box-shadow: inset 0 2.4rem 0 0 #3280fc;
+    box-shadow: inset 0 2.4rem 0 0 #38b03f;
 }
 #leadContent
 {
@@ -166,15 +166,13 @@ pre em
 }
 #fabNav.waiting
 {
-    -webkit-transform: translate(0, 100%);
-            transform: translate(0, 100%);
+    transform: translate(0, 100%);
 
     opacity: 0;
 }
 #fabNav.open
 {
-    -webkit-transform: translate(0, 0) !important;
-            transform: translate(0, 0) !important;
+    transform: translate(0, 0) !important;
 }
 #fabNav.open > a
 {
@@ -1283,7 +1281,7 @@ body.has-index-content #fabNav
 .colorset .color-red:after,
 .colorset .color-red:before
 {
-    color: #333;
+    color: #fff;
     background-color: #ea644a;
 }
 .colorset .color-red:after
@@ -1429,7 +1427,7 @@ body.has-index-content #fabNav
 .colorset .color-green:after,
 .colorset .color-green:before
 {
-    color: #333;
+    color: #fff;
     background-color: #38b03f;
 }
 .colorset .color-green:after
@@ -1502,7 +1500,7 @@ body.has-index-content #fabNav
 .colorset .color-blue:after,
 .colorset .color-blue:before
 {
-    color: #333;
+    color: #fff;
     background-color: #03b8cf;
 }
 .colorset .color-blue:after
@@ -1575,7 +1573,7 @@ body.has-index-content #fabNav
 .colorset .color-brown:after,
 .colorset .color-brown:before
 {
-    color: #333;
+    color: #fff;
     background-color: #bd7b46;
 }
 .colorset .color-brown:after
@@ -1867,7 +1865,7 @@ body.has-index-content #fabNav
 .colorset .color-success:after,
 .colorset .color-success:before
 {
-    color: #333;
+    color: #fff;
     background-color: #38b03f;
 }
 .colorset .color-success:after
@@ -2013,7 +2011,7 @@ body.has-index-content #fabNav
 .colorset .color-danger:after,
 .colorset .color-danger:before
 {
-    color: #333;
+    color: #fff;
     background-color: #ea644a;
 }
 .colorset .color-danger:after
@@ -2086,7 +2084,7 @@ body.has-index-content #fabNav
 .colorset .color-info:after,
 .colorset .color-info:before
 {
-    color: #333;
+    color: #fff;
     background-color: #03b8cf;
 }
 .colorset .color-info:after
@@ -2159,7 +2157,7 @@ body.has-index-content #fabNav
 .colorset .color-important:after,
 .colorset .color-important:before
 {
-    color: #333;
+    color: #fff;
     background-color: #bd7b46;
 }
 .colorset .color-important:after
