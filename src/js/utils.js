@@ -116,7 +116,7 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
         return typeof x == 'number';
     };
 
-    $.TapName = 'ontouchstart' in document.documentElement ? 'tap' : 'click';
+    $.TapName = 'click';
 
     if(!$.uuid) $.uuid = 0;
 }(CoreLib));
