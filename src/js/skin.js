@@ -6,7 +6,7 @@
  * ======================================================================== */
 
 
-(function($, undefined){
+(function($, undefined, Math){
     'use strict';
 
     var NAME = 'mzui.skin',
@@ -115,4 +115,4 @@
     $(function() {
         $('[data-skin]').skin();
     });
-}(CoreLib, undefined));
+}(CoreLib, undefined, Math));
