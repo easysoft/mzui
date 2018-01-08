@@ -3,24 +3,19 @@
 .row,
 .column {
   display: flex;
-  margin: -@space/4 -@space/4 0;
   flex-wrap: wrap;
   align-items: stretch;
   align-content: stretch;
   flex: auto;
 
-  &:not(:last-child) {
-    margin-bottom: @space/4;
-  }
-
-  .row,
-  .column {margin: -@space/4}
+  &.single {flex-wrap: nowrap}
 }
 
+.row,
 .flex-row       {flex-direction: row}
 .row-reverse    {flex-direction: row-reverse}
-.flex-column,
-.column         {flex-direction: column;}
+.column,
+.flex-column    {flex-direction: column;}
 .column-reverse {flex-direction: column-reverse;}
 
 
@@ -30,13 +25,16 @@
 [class^="cell-"],
 [class*=" cell-"] {
   display: flex;
-  padding: @space / 4;
   align-items: stretch;
 }
 
 .tile,
-.cell {flex: auto}
+.cell:not(.fixed) {
+  flex: auto;
+  max-width: 100%;
+}
 
+.cell.fixed,
 [class^="cell-"],
 [class*=" cell-"] {flex: none}
 
@@ -75,44 +73,57 @@
 
 .row,
 .column {
+  margin: (-(@space/4)) (-(@space/4)) 0;
+
+  &:not(:last-child) {
+    margin-bottom: (@space/4);
+  }
+
+  .row,
+  .column {margin: (-(@space/4))}
+
+  .cell,
+  [class^="cell-"],
+  [class*=" cell-"] {padding: (@space/4)}
+
+  &.gutter-lg {
+    margin: (-(@space/2)) (-(@space/2)) 0;
+
+    &:not(:last-child) {
+      margin-bottom: (@space/2);
+    }
+
+    .row,
+    .column {margin: (-(@space/2))}
+
+    .cell,
+    [class^="cell-"],
+    [class*=" cell-"] {padding: (@space/2)}
+  }
+
+  &.gutter-sm {
+    margin: (-@space/8) (-@space/8) 0;
+
+    &:not(:last-child) {
+      margin-bottom: (@space/8);
+    }
+
+    .row,
+    .column {margin: (-@space/8);}
+
+    .cell,
+    [class^="cell-"],
+    [class*=" cell-"] {padding: (@space/8)}
+  }
+
   &.gutterless {
 
     &,
     .row,
-    .column {margin: 0;}
+    .column {margin: 0!important;}
 
     .cell,
     [class^="cell-"],
-    [class*=" cell-"] {padding: 0}
-  }
-
-  &.gutter-lg {
-    margin: -@space/2 -@space/2 0;
-
-    &:not(:last-child) {
-      margin-bottom: @space/2;
-    }
-
-    .row,
-    .column {margin: -@space/2}
-
-    .cell,
-    [class^="cell-"],
-    [class*=" cell-"] {padding: @space/2}
-  }
-
-  &.gutter-sm {
-    margin: -@space/8 -@space/8 0;
-
-    &:not(:last-child) {
-      margin-bottom: @space/8;
-    }
-
-    .row,
-    .column {margin: -@space/8}
-
-    .cell,
-    [class^="cell-"],
-    [class*=" cell-"] {padding: @space/8}
+    [class*=" cell-"] {padding: 0!important}
   }
 }
