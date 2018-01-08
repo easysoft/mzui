@@ -81,6 +81,10 @@
 
   &.text-tint,
   .active {color: @darkColor}
+
+  &.long-shadow {
+    .long-shadow(darken(@color, 8%));
+  }
 }
 
 .better-color(@backgroundColor) {
