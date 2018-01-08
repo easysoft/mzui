@@ -320,7 +320,7 @@
     },
     "display": {
       "src": ["~.js", "~.less"],
-      "dpds": ["zepto.ajax", "utils.js"]
+      "dpds": ["utils.js"]
     },
     "display.plugs": {
       "src": ["~.js", "~.less"],
@@ -328,11 +328,11 @@
     },
     "ajax.action": {
       "src": "~.js",
-      "dpds": ["zepto.ajax", "utils.js"]
+      "dpds": ["utils.js"]
     },
     "ajax.form": {
       "src": "~.js",
-      "dpds": ["zepto.ajax", "zepto.form", "utils.js"]
+      "dpds": ["utils.js"]
     },
     "transition": {
       "src": "~.js"
@@ -363,7 +363,7 @@
       "dest": "dist/",
       "filename": "mzui",
       "subdirectories": true,
-      "includes": ["colorset", "variables", "mixins", "zepto", "normalize", "scaffolding", "utilities", "typography", "layout", "animations", "icons", "avatar", "navs", "buttons", "labels", "heading", "list", "table", "forms", "article", "display", "display.plugs", "scrollListener", "color", "skin", "skin.js", "ajax.action", "ajax.form", "code"]
+      "includes": ["colorset", "variables", "mixins", "normalize", "scaffolding", "utilities", "typography", "layout", "animations", "icons", "avatar", "navs", "buttons", "labels", "heading", "list", "table", "forms", "article", "display", "display.plugs", "scrollListener", "color", "skin", "skin.js", "ajax.action", "ajax.form", "code"]
     },
     "dist": {
       "title": "dist",
