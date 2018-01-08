@@ -432,9 +432,40 @@
         "name": "bold",
         "categories": ["Text Editor Icons"]
     },
+    "italic": {
+        "code" : "f033",
+        "name" : "italic",
+        "categories": ["Text Editor Icons"]
+    },
+    "header": {
+        "code" : "f1dc",
+        "name" : "header",
+        "categories": ["Text Editor Icons"]
+    },
+    "underline": {
+        "code" : "f0cd",
+        "name" : "underline",
+        "categories": ["Text Editor Icons"]
+    },
+    "strikethrough": {
+        "code" : "f0cc",
+        "name" : "strikethrough",
+        "categories": ["Text Editor Icons"]
+    },
+    "eraser": {
+        "code": "f12d",
+        "name": "eraser",
+        "categories": ["Text Editor Icons"]
+    },
     "align-justify": {
         "code": "e636",
         "name": "align-justify",
+        "filter": ["text"],
+        "categories": ["Text Editor Icons"]
+    },
+    "align-left": {
+        "code": "e633",
+        "name": "align-left",
         "filter": ["text"],
         "categories": ["Text Editor Icons"]
     },
@@ -1356,8 +1387,14 @@
     "minus-sign-alt": {
         "code": "e71c"
     },
+    "plus-sign-alt": {
+        "code": "f0fe"
+    },
     "check-minus": {
         "code": "e71d"
+    },
+    "check-plus": {
+        "code": "f196"
     },
     "level-up": {
         "code": "e71e",
@@ -1589,10 +1626,33 @@
         "name": "Cube",
         "categories": ["Web Application Icons"]
     },
-    "align-left": {
-        "code": "e633",
-        "name": "align-left",
-        "filter": ["text"],
-        "categories": ["Text Editor Icons"]
+    "database": {
+        "code": "f1c0",
+        "name": "Database",
+        "categories": ["Web Application Icons"]
+    },
+    "chanzhi": {
+        "code": "e906",
+        "name": "Chanzhi",
+        "shaped": true,
+        "categories": ["Brand Icons"]
+    },
+    "chanzhi-pro": {
+        "code": "e905",
+        "name": "Chanzhi pro",
+        "shaped": true,
+        "categories": ["Brand Icons"]
+    },
+    "zsite": {
+        "code": "e904",
+        "name": "Changer presss",
+        "shaped": true,
+        "categories": ["Brand Icons"]
+    },
+    "zsite-pro": {
+        "code": "e903",
+        "name": "Changer press pro",
+        "shaped": true,
+        "categories": ["Brand Icons"]
     }
 }
