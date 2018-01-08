@@ -10,13 +10,13 @@
 <body class='with-heading-top with-nav-top has-index-content'>
 
   <!-- App bar -->
-  <header class="heading green affix dock-top dock-auto" id="haedNav">
+  <header class="heading primary affix dock-top dock-auto" id="haedNav">
     <nav class="nav" id='headNav'>
-      <a href="index.html" class='brand-name' data-page-name="index"><strong>MZUI</strong></a>
-      <a href="doc/base.html" id="beginLink" data-page-name="base">基础</a>
-      <a href="doc/element.html" data-page-name="element">控件</a>
-      <a href="doc/javascript.html" data-page-name="javascript">JS</a>
-      <a href="doc/examples.html" data-page-name="examples">示例</a>
+      <a data-url="index.html" class='brand-name' data-page-name="index"><strong>MZUI</strong></a>
+      <a data-url="doc/base.html" id="beginLink" data-page-name="base">基础</a>
+      <a data-url="doc/element.html" data-page-name="element">控件</a>
+      <a data-url="doc/javascript.html" data-page-name="javascript">JS</a>
+      <a data-url="doc/examples.html" data-page-name="examples">示例</a>
     </nav>
     <div class="title"></div>
     <nav class="nav">
@@ -24,14 +24,14 @@
     </nav>
   </header>
 
-  <nav class="affix dock-top nav success-pale nav-secondary" id="navs">
+  <nav class="affix dock-top nav primary-pale nav-secondary" id="navs">
   </nav>
 
   <div class="loading loading-light" id="pageLoading"></div>
 
   <div id="partial" class="container">
     <div id="indexPage">
-      <div class="green text-center" id="leadContent">
+      <div class="primary text-center" id="leadContent">
         <h1><span class="title">MZUI</span></h1>
         <p class="muted">为移动端设计，基于 Flex 的 UI 框架。</p>
         <div class="space"></div>
@@ -45,16 +45,16 @@
           <div class="avatar circle primary avatar-xl"><small class="code">FLEX</small></div>
           <div class="avatar circle info text-info avatar-xl"><i class="icon icon-mobile"></i></div>
           <div class="avatar circle red text-red avatar-xl"><i class="icon icon-tablet"></i></div>
-          <div class="avatar circle green text-green avatar-xl"><i class="icon icon-wechat"></i></div>
+          <div class="avatar circle primary text-primary avatar-xl"><i class="icon icon-wechat"></i></div>
         </div>
-        <h2 class="text-green lead">现代化</h2>
+        <h2 class="text-primary lead">现代化</h2>
         <p class="muted">基于 Flex 设计，支持移动端全部主流浏览器<br>支持 Android 微信内置浏览器</p>
       </div>
       <div class="content white shadow-divider text-center">
         <div class="row graph2">
           <div class="cell-4"><div class="tile red">着色</div></div>
           <div class="cell-3"><div class="tile blue">状态</div></div>
-          <div class="cell-2"><div class="tile green">形状</div></div>
+          <div class="cell-2"><div class="tile primary">形状</div></div>
           <div class="cell-3"><div class="tile yellow">容器</div></div>
           <div class="cell-2"><div class="tile brown">边距</div></div>
           <div class="cell-3"><div class="tile purple">变形</div></div>
@@ -79,7 +79,7 @@
           <div class="avatar avatar-xl"><i class="icon icon-plus muted"></i></div>
           <div class="avatar circle primary outline avatar-xl"><small class="text-dark">MZUI</small></div>
         </div>
-        <h2 class="text-green lead">轻量</h2>
+        <h2 class="text-primary lead">轻量</h2>
         <p class="muted">JS 和 CSS 压缩之后在 50KB 左右<br>启用 GZip 压缩会更小（css 10KB, js 17KB）<br>不需要任何其他依赖！（已内置 Zepto 1.1.6 核心组件）</p>
       </div>
       <div class="content primary-pale text-center">
@@ -91,7 +91,7 @@
         <div class="space-sm"></div>
         <p class="small muted">最新版本 v1.0.0 &nbsp; <a target="_blank" href="https://github.com/easysoft/mzui/archive/v1.0.0.zip" target="_blank">下载源码</a></p>
       </div>
-      <div class="content green text-center">
+      <div class="content primary text-center">
         <div class="graph4 flex flex-center">
           <i class="icon icon-comments-alt icon-5x"></i>
         </div>
@@ -120,7 +120,7 @@
   </div>
 
   <nav id="fabNav" class="affix dock-bottom dock-left fab has-padding dock-auto shadow-none">
-    <a id="tocBtn" class="btn circle green layer btn-lg"><i class="icon icon-list-ul"></i></a>
+    <a id="tocBtn" class="btn circle primary layer btn-lg"><i class="icon icon-list-ul"></i></a>
   </nav>
 
   <div class="modal affix enter-from-bottom" id="tocModal">
@@ -130,10 +130,10 @@
         <a class="btn" data-dismiss="display"><i class="icon-remove muted"></i></a>
       </nav>
     </div>
-    <div class="list compact" id="tocList"></div>
+    <div class="list" id="tocList"></div>
   </div>
 
-  <script src="http://cdn.staticfile.org/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <!-- MZUI -->
   <script src="dist/js/mzui.js"></script>
   
