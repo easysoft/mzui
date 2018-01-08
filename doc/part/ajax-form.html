@@ -43,15 +43,26 @@ $(function() {
     <h5 class="code">onSubmit</h5>
     <p>当前用户开始提交表单并在发送表单数据到服务器之前时触发，此时可以更改提交的数据。</p>
     <p>该事件回调函数拥有一个参数 <code>formData</code>，表示当前表单要提交的数据，在回调函数中可以更改或追加要提交的数据。</p>
-    <h5 class="code">onResult</h5>
+    <h5 class="code">onResponse</h5>
     <p>当服务器返回结果时触发。</p>
-    <p>该事件回调函数拥有一个参数 <code>response</code>，表示服务器响应的内容，如果内容是 JSON，则 response 为 JSON 对象。</p>
+    <p>该事件回调函数拥有两个参数：</p>
+    <ul>
+      <li><code>response</code>：表示服务器响应的内容，如果内容是 JSON，则 response 为 JSON 对象；</li>
+      <li><code>status</code>：请求状态；</li>
+    </ul>
+    <p>如果在此回调函数中返回 <code>false</code>，则会终止这次处理，如果返回字符串或者对象，则使用返回的内容作为下一步要处理的内容（这意味着可以在这个回调函数中更改或转换服务器返回的数据）。</p>
     <h5 class="code">onSuccess</h5>
     <p>当服务器返回了正确的 JSON 结果时触发，不同于 <code>onResult</code>，此事件仅仅在服务器返回了正确的 JSON 格式结果。</p>
     <p>该事件回调函数拥有一个参数 <code>response</code>，表示服务器响应的内容，如果内容是 JSON，则 response 为 JSON 对象。</p>
+    <p>如果在该事件回调函数中返回 <code>false</code>，则终止默认处理方式。</p>
     <h5 class="code">onError</h5>
     <p>当服务器返回了错误时触发。</p>
-    <p>该事件回调函数拥有一个参数 <code>status</code>，表示服务器返回的状态。</p>
+    <p>该事件回调函数参数定义如下： </p>
+    <ul>
+      <li><code>error</code>：错误对象或消息文本；</li>
+      <li><code>errorType</code>：错误类型；</li>
+    </ul>
+    <p>如果在该事件回调函数中返回 <code>false</code>，则终止默认处理方式。</p>
     <h5 class="code">onComplete</h5>
     <p>当请求完成时触发，无论是否发生错误。</p>
     <p>改事件回调函数拥有一个参数 <code>data</code>，存储了服务器响应的内容和状态。</p>
