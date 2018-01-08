@@ -1,6 +1,6 @@
 /*!
- * MZUI: standard - v1.0.0 - 2017-05-17
- * Copyright (c) 2017 cnezsoft.com; Licensed MIT
+ * MZUI: standard - v1.0.0 - 2018-01-08
+ * Copyright (c) 2018 cnezsoft.com; Licensed MIT
  */
 
 /*! normalize.css v4.1.1 | MIT License | github.com/necolas/normalize.css */
@@ -1378,6 +1378,22 @@ a .icon.spin
 {
     content: '\f1ce';
 }
+.icon-chanzhi:before
+{
+    content: '\e906';
+}
+.icon-chanzhi-pro:before
+{
+    content: '\e905';
+}
+.icon-zsite:before
+{
+    content: '\e904';
+}
+.icon-zsite-pro:before
+{
+    content: '\e903';
+}
 .icon-qq:before
 {
     content: '\f600';
@@ -1637,6 +1653,26 @@ a .icon.spin
 .icon-bold:before
 {
     content: '\e62f';
+}
+.icon-italic:before
+{
+    content: '\f033';
+}
+.icon-header:before
+{
+    content: '\f1dc';
+}
+.icon-underline:before
+{
+    content: '\f0cd';
+}
+.icon-strikethrough:before
+{
+    content: '\f0cc';
+}
+.icon-eraser:before
+{
+    content: '\f12d';
 }
 .icon-align-justify:before
 {
@@ -2422,9 +2458,17 @@ a .icon.spin
 {
     content: '\e71c';
 }
+.icon-plus-sign-alt:before
+{
+    content: '\f0fe';
+}
 .icon-check-minus:before
 {
     content: '\e71d';
+}
+.icon-check-plus:before
+{
+    content: '\f196';
 }
 .icon-level-up:before
 {
@@ -2644,6 +2688,10 @@ a .icon.spin
 {
     content: '\e751';
 }
+.icon-database:before
+{
+    content: '\f1c0';
+}
 .icon-align-left:before
 {
     content: '\e633';
@@ -2712,8 +2760,6 @@ a .icon.spin
     display: flex;
     overflow-x: auto;
 
-    white-space: nowrap;
-
     -ms-flex-wrap: nowrap;
         flex-wrap: nowrap;
     -webkit-overflow-scrolling: touch;
@@ -2726,6 +2772,8 @@ a .icon.spin
     min-width: 2rem;
     height: 2rem;
     padding: 0 .5rem;
+
+    white-space: nowrap;
 
     opacity: .8;
 
