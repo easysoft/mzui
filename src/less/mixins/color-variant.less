@@ -1,5 +1,47 @@
 // Color variant
 
+.long-shadow(@shadowColor) {
+  text-shadow: @shadowColor 1px 1px,
+      @shadowColor 2px 2px,
+      @shadowColor 3px 3px,
+      @shadowColor 4px 4px,
+      @shadowColor 5px 5px,
+      @shadowColor 6px 6px,
+      @shadowColor 7px 7px,
+      @shadowColor 8px 8px,
+      @shadowColor 9px 9px,
+      @shadowColor 10px 10px,
+      @shadowColor 11px 11px,
+      @shadowColor 12px 12px,
+      @shadowColor 14px 14px,
+      @shadowColor 15px 15px,
+      @shadowColor 16px 16px,
+      @shadowColor 17px 17px,
+      @shadowColor 18px 18px,
+      @shadowColor 19px 19px,
+      @shadowColor 20px 20px,
+      @shadowColor 21px 21px,
+      @shadowColor 22px 22px,
+      @shadowColor 23px 23px,
+      @shadowColor 24px 24px,
+      @shadowColor 25px 25px,
+      @shadowColor 26px 26px,
+      @shadowColor 27px 27px,
+      @shadowColor 28px 28px,
+      @shadowColor 29px 29px,
+      @shadowColor 30px 30px,
+      @shadowColor 31px 31px,
+      @shadowColor 32px 32px,
+      @shadowColor 33px 33px,
+      @shadowColor 34px 34px,
+      @shadowColor 35px 35px,
+      @shadowColor 36px 36px,
+      @shadowColor 37px 37px,
+      @shadowColor 38px 38px,
+      @shadowColor 39px 39px,
+      @shadowColor 40px 40px;
+}
+
 .color-variant(@color) {
   background-color: @color!important;
   border-color: @color!important;
@@ -12,10 +54,15 @@
     background-color: transparent!important;
     color: @color!important;
 
+    &.hover-solid:hover,
     .active {
       color: #fff!important;
       background-color: @color!important;
     }
+  }
+
+  &.long-shadow {
+    .long-shadow(darken(@color, 8%));
   }
 }
 
