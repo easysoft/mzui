@@ -46,7 +46,7 @@
             thisOptions.element = this;
 
             if($this.is('a')) {
-                var href = $this.attr('href');
+                var href = $this.data('url') || $this.attr('href');
                 if(href && href !== '#' && href.indexOf('##') < 0) {
                     if(!options.target && /^#[a-z]/i.test(href)) {
                         thisOptions.target = href;
