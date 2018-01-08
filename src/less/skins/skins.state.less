@@ -15,6 +15,7 @@ a {
     box-shadow: 0 0 0 (1*@rem) @state-cover-active-color;
     transform: scale(@state-scale-from);
     .transition-fast();
+    pointer-events: none;
   }
 
   &.circle:after {.circle()}
