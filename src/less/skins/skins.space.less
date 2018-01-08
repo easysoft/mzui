@@ -1,21 +1,24 @@
-.space    {margin-bottom: @space;}
-.space-sm {margin-bottom: @space-sm;}
-.space-xs {margin-bottom: @space-xs;}
-.space-xl {margin-bottom: @space-xl;}
-.space-lg {margin-bottom: @space-lg;}
+.space    {margin-bottom: @space!important;}
+.space-sm {margin-bottom: @space-sm!important;}
+.space-xs {margin-bottom: @space-xs!important;}
+.space-xl {margin-bottom: @space-xl!important;}
+.space-lg {margin-bottom: @space-lg!important;}
 
 .center-block   {margin-left: auto; margin-right: auto}
 .no-padding     {padding: 0!important;}
 .no-margin      {margin: 0!important;}
 .has-margin     {margin: @space!important}
 .has-margin-sm  {margin: @space-sm!important}
-.has-padding    {padding: @padding-base-vertical @padding-base-horizontal!important;;}
-.has-padding-sm {padding: @padding-small-vertical @padding-small-horizontal!important;;}
+.has-padding    {padding: @padding-base-vertical @padding-base-horizontal!important;}
+.has-padding-xs {padding: @space-xs!important;}
+.has-padding-sm {padding: @padding-small-vertical @padding-small-horizontal!important;}
+.has-padding-lg {padding: @padding-large-vertical @padding-large-horizontal!important;}
+.has-padding-xl {padding: (2.5*@padding-base-vertical) (2.5*@padding-base-horizontal)!important;}
 .has-padding-v  {
-    padding-top: @padding-base-vertical!important;;
-    padding-bottom: @padding-base-vertical!important;;
+    padding-top: @padding-base-vertical!important;
+    padding-bottom: @padding-base-vertical!important;
 }
 .has-padding-h  {
-    padding-left: @padding-base-horizontal!important;;
-    padding-right: @padding-base-horizontal!important;;
+    padding-left: @padding-base-horizontal!important;
+    padding-right: @padding-base-horizontal!important;
 }
