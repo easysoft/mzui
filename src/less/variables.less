@@ -6,7 +6,7 @@
 // Scaffolding
 
 @root-font-size:          20px;
-@rem:                     1/20rem;
+@rem:                     (1/20rem);
 @text-color:              @color-fore;
 @page-background-color:   @color-gray-pale;
 @link-color:              inherit;
@@ -20,20 +20,20 @@
 @font-family-monospace:   Monaco, Menlo, Consolas, "Courier New", monospace;
 @font-family-base:        @font-family-sans-serif;
 
-@font-size-base:          14*@rem;
-@font-size-title:         16*@rem;
-@font-size-large:         18*@rem;
-@font-size-small:         12*@rem;
+@font-size-base:          (14*@rem);
+@font-size-title:         (16*@rem);
+@font-size-large:         (18*@rem);
+@font-size-small:         (12*@rem);
 
-@font-size-h1:            24*@rem;
-@font-size-h2:            20*@rem;
-@font-size-h3:            18*@rem;
-@font-size-h4:            16*@rem;
-@font-size-h5:            14*@rem;
-@font-size-h6:            12*@rem;
+@font-size-h1:            (24*@rem);
+@font-size-h2:            (20*@rem);
+@font-size-h3:            (18*@rem);
+@font-size-h4:            (16*@rem);
+@font-size-h5:            (14*@rem);
+@font-size-h6:            (12*@rem);
 
 @line-height-base:        1.428571429; // 2/1.4
-@line-height-computed:    20*@rem;
+@line-height-computed:    (20*@rem);
 @line-height-large:       1.3333333; // 24px
 @line-height-small:       1.5;       // 18px
 
@@ -48,7 +48,7 @@
 // Dividers
 
 @divider-color:             rgba(0,0,0,.1);
-@divider-width:             1*@rem;
+@divider-width:             (1*@rem);
 
 
 // Borders
@@ -57,20 +57,20 @@
 @border-color-solid:        @color-gray-light;
 @border-width:              @divider-width;
 
-@border-radius-base:        3*@rem;
-@border-radius-large:       6*@rem;
-@border-radius-small:       2*@rem;
+@border-radius-base:        (3*@rem);
+@border-radius-large:       (6*@rem);
+@border-radius-small:       (2*@rem);
 
 
 // Spaces
-// 
+//
 // Include margins and paddings
 
-@space:                     20*@rem;      // 20px default
-@space-sm:                  @space / 2;   // 10px default
-@space-xs:                  @space / 4;   // 5px  default
-@space-lg:                  @space * 1.5; // 30px default
-@space-xl:                  @space * 2;   // 40px default
+@space:                     (20*@rem);      // 20px default
+@space-sm:                  (@space / 2);   // 10px default
+@space-xs:                  (@space / 4);   // 5px  default
+@space-lg:                  (@space * 1.5); // 30px default
+@space-xl:                  (@space * 2);   // 40px default
 
 @padding-base-vertical:     @space-sm;
 @padding-base-horizontal:   @space-sm;
@@ -81,8 +81,8 @@
 @padding-small-vertical:    @space-xs;
 @padding-small-horizontal:  @space-xs;
 
-@padding-xs-vertical:       @space / 10; // 2px
-@padding-xs-horizontal:     @space / 5;  // 4px
+@padding-xs-vertical:       (@space/10); // 2px
+@padding-xs-horizontal:     (@space/5);  // 4px
 
 
 // Media queries breakpoints
@@ -112,22 +112,22 @@
 
 @muted-opacity:             .5;
 
-@blur-value:                10*@rem;
-@blur-value-sm:             @blur-value / 2;
-@blur-value-lg:             @blur-value * 2;
+@blur-value:                (10*@rem);
+@blur-value-sm:             (@blur-value / 2);
+@blur-value-lg:             (@blur-value * 2);
 
-@shadow-divider:            inset 0 -1*@rem 0 @divider-color;
-@shadow-divider-top:        inset 0 1*@rem 0 @divider-color;
-@shadow-divider-outside:    0 1*@rem 0 @divider-color;
+@shadow-divider:            inset 0 (-(1*@rem)) 0 @divider-color;
+@shadow-divider-top:        inset 0 (1*@rem) 0 @divider-color;
+@shadow-divider-outside:    0 (1*@rem) 0 @divider-color;
 @shadow-0:                  none;
-@shadow-1:                  rgba(0, 0, 0, .05) 0 1*@rem 4*@rem, rgba(0, 0, 0, .12) 0 1*@rem 2*@rem;
-@shadow-2:                  rgba(0, 0, 0, .12) 0 1*@rem 6*@rem, rgba(0, 0, 0, .15) 0 1*@rem 4*@rem;
-@shadow-3:                  rgba(0, 0, 0, .15) 0 3*@rem 10*@rem, rgba(0, 0, 0, .25) 0 3*@rem 10*@rem;
-@shadow-4:                  rgba(0, 0, 0, .188235) 0 10*@rem 30*@rem, rgba(0, 0, 0, .227451) 0 6*@rem 10*@rem;
-@shadow-1-top:              rgba(0, 0, 0, .05) 0 -1*@rem 4*@rem, rgba(0, 0, 0, .12) 0 -1*@rem 2*@rem;
-@shadow-2-top:              rgba(0, 0, 0, .12) 0 -1*@rem 6*@rem, rgba(0, 0, 0, .15) 0 -1*@rem 4*@rem;
-@shadow-3-top:              rgba(0, 0, 0, .15) 0 -3*@rem 10*@rem, rgba(0, 0, 0, .25) 0 -3*@rem 10*@rem;
-@shadow-4-top:              rgba(0, 0, 0, .188235) 0 -10*@rem 30*@rem, rgba(0, 0, 0, .227451) 0 -6*@rem 10*@rem;
+@shadow-1:                  rgba(0, 0, 0, .05) 0 (1*@rem) (4*@rem), rgba(0, 0, 0, .12) 0 (1*@rem) (2*@rem);
+@shadow-2:                  rgba(0, 0, 0, .12) 0 (1*@rem) (6*@rem), rgba(0, 0, 0, .15) 0 (1*@rem) (4*@rem);
+@shadow-3:                  rgba(0, 0, 0, .15) 0 (3*@rem) (10*@rem), rgba(0, 0, 0, .25) 0 (3*@rem) (10*@rem);
+@shadow-4:                  rgba(0, 0, 0, .188235) 0 (10*@rem) (30*@rem), rgba(0, 0, 0, .227451) 0 (6*@rem) (10*@rem);
+@shadow-1-top:              rgba(0, 0, 0, .05) 0 -(1*@rem) (4*@rem), rgba(0, 0, 0, .12) 0 -(1*@rem) (2*@rem);
+@shadow-2-top:              rgba(0, 0, 0, .12) 0 -(1*@rem) (6*@rem), rgba(0, 0, 0, .15) 0 -(1*@rem) (4*@rem);
+@shadow-3-top:              rgba(0, 0, 0, .15) 0 -(3*@rem) (10*@rem), rgba(0, 0, 0, .25) 0 -(3*@rem) (10*@rem);
+@shadow-4-top:              rgba(0, 0, 0, .188235) 0 -(10*@rem) (30*@rem), rgba(0, 0, 0, .227451) 0 -(6*@rem) (10*@rem);
 
 @state-disabled-opacity:     .5;
 @state-cover-hover-color:    #000;
@@ -136,7 +136,7 @@
 @state-cover-active-opacity: .11;
 @state-cover-focus-opacity:  .1;
 
-@arrow-size:                8*@rem;
+@arrow-size:                (8*@rem);
 
 
 // Icon
@@ -155,18 +155,18 @@
 // Buttons
 
 @btn-font-weight:           normal;
-@btn-size:                  30*@rem;
-@btn-size-lg:               40*@rem;
-@btn-size-sm:               24*@rem;
-@btn-size-xs:               20*@rem;
+@btn-size:                  (30*@rem);
+@btn-size-lg:               (40*@rem);
+@btn-size-sm:               (24*@rem);
+@btn-size-xs:               (20*@rem);
 
 
 // Avatar
 
-@avatar-size:               30*@rem;
-@avatar-size-lg:            40*@rem;
-@avatar-size-sm:            20*@rem;
-@avatar-size-xl:            70*@rem;
+@avatar-size:               (30*@rem);
+@avatar-size-lg:            (40*@rem);
+@avatar-size-sm:            (20*@rem);
+@avatar-size-xl:            (70*@rem);
 
 
 // List

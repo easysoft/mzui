@@ -19,14 +19,14 @@
 
   > .nav {align-self: flex-start;}
 
-  > .avatar {margin-left: 5*@rem;}
+  > .avatar {margin-left: (5*@rem);}
 
   > .headline {
     font-size: @font-size-title;
     padding: @padding-base-vertical @padding-base-horizontal;
     width: 100%;
 
-    &.indent {margin-left: 40*@rem}
+    &.indent {margin-left: (40*@rem)}
   }
 }
 
@@ -34,11 +34,11 @@
 // Sizes
 
 .heading-lg {
-  > .nav {margin: 4*@rem;}
+  > .nav {margin: (4*@rem);}
 
   > .title {
     font-size: @font-size-title;
-    padding: (@padding-base-vertical + 3*@rem) @padding-base-horizontal;
+    padding: (@padding-base-vertical + (3*@rem)) @padding-base-horizontal;
   }
 }
 
@@ -51,5 +51,5 @@
   &:extend(.heading-lg all);
 }
 
-.with-heading-top    {padding-top: 48*@rem;}
-.with-heading-bottom {padding-bottom: 48*@rem;}
+.with-heading-top    {padding-top: (48*@rem);}
+.with-heading-bottom {padding-bottom: (48*@rem);}

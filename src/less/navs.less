@@ -14,13 +14,12 @@
   > a {
     flex: 0 0 auto;
     display: flex;
-    min-width: 40*@rem;
+    min-width: (40*@rem);
     opacity: .8;
     padding: 0 @padding-base-horizontal;
     align-items: center;
     justify-content: center;
-    height: 40*@rem;
-    white-space: nowrap;
+    height: (40*@rem);
 
     &.active {
       opacity: 1;
@@ -33,22 +32,22 @@
 // Secondary nav
 
 .nav-secondary {
-  box-shadow: inset 0 -1*@rem 0 rgba(0,0,0,.1);
+  box-shadow: inset 0 (-1*@rem) 0 rgba(0,0,0,.1);
 
-  > .active {box-shadow: inset 0 -2*@rem 0 @color-white;}
+  > .active {box-shadow: inset 0 (-2*@rem) 0 @color-white;}
 
-  &.primary-pale > .active   {box-shadow: inset 0 -2*@rem 0 @color-primary;}
-  &.success-pale > .active   {box-shadow: inset 0 -2*@rem 0 @color-success;}
-  &.danger-pale > .active    {box-shadow: inset 0 -2*@rem 0 @color-danger;}
-  &.warning-pale > .active   {box-shadow: inset 0 -2*@rem 0 @color-warning;}
-  &.important-pale > .active {box-shadow: inset 0 -2*@rem 0 @color-important;}
-  &.special-pale > .active   {box-shadow: inset 0 -2*@rem 0 @color-special;}
+  &.primary-pale > .active   {box-shadow: inset 0 (-2*@rem) 0 @color-primary;}
+  &.success-pale > .active   {box-shadow: inset 0 (-2*@rem) 0 @color-success;}
+  &.danger-pale > .active    {box-shadow: inset 0 (-2*@rem) 0 @color-danger;}
+  &.warning-pale > .active   {box-shadow: inset 0 (-2*@rem) 0 @color-warning;}
+  &.important-pale > .active {box-shadow: inset 0 (-2*@rem) 0 @color-important;}
+  &.special-pale > .active   {box-shadow: inset 0 (-2*@rem) 0 @color-special;}
 }
 
 
 // Skin options
 
-.nav.circle {border-radius: 20*@rem}
+.nav.circle {border-radius: (20*@rem)}
 
 .nav.outline {
   > a {
@@ -67,7 +66,7 @@
 
 // Large navs
 
-.nav-lg {> a {height: 48*@rem;}}
+.nav-lg {> a {height: (48*@rem);}}
 
 
 // Affix navs
@@ -77,12 +76,12 @@
   &:extend(.nav-lg all);
 }
 
-.with-nav-top                   {padding-top: 48*@rem;}
-.with-nav-bottom                {padding-bottom: 48*@rem;}
+.with-nav-top                   {padding-top: (48*@rem);}
+.with-nav-bottom                {padding-bottom: (48*@rem);}
 .with-heading-top.with-nav-top  {
-  padding-top: 48*@rem*2;
+  padding-top: (48*@rem)*2;
 
-  > .nav.affix.dock-top {top: 48*@rem}
+  > .nav.affix.dock-top {top: (48*@rem)}
 }
 
 .in-scroll.scroll-down {

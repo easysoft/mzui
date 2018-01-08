@@ -11,7 +11,7 @@
   display: block;
   border: @border-width solid @input-border-color;
   line-height: @line-height-base;
-  padding: (@padding-small-vertical - @border-width*2) @padding-small-horizontal;
+  padding: (@padding-small-vertical - (@border-width*2)) @padding-small-horizontal;
   width: 100%;
   background-color: @color-back;
   -webkit-appearance: none;
@@ -36,10 +36,10 @@
   > select {
     outline: none;
 
-    &:not([multiple]) {padding-right: 25*@rem;}
+    &:not([multiple]) {padding-right: (25*@rem);}
 
     &[multiple] {
-      max-height: 75*@rem;
+      max-height: (75*@rem);
       overflow-y: auto;
     }
   }
@@ -48,12 +48,12 @@
     content: ' ';
     display: block;
     position: absolute;
-    right: 10*@rem;
-    top: 11*@rem;
+    right: (10*@rem);
+    top: (11*@rem);
     width: 0;
     height: 0;
     border-style: solid;
-    border-width: 7*@rem 5*@rem 0 5*@rem;
+    border-width: (7*@rem) (5*@rem) 0 (5*@rem);
     border-color: @input-border-color transparent transparent transparent;
   }
 }
@@ -90,7 +90,7 @@
   > input + label {
     position: relative;
     z-index: 0;
-    padding: @padding-small-vertical 0 @padding-small-vertical 25*@rem;
+    padding: @padding-small-vertical 0 @padding-small-vertical (25*@rem);
     display: block;
 
     &:before,
