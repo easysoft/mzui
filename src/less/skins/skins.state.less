@@ -12,7 +12,7 @@ a {
     left: 0;
     background-color: transparent;
     opacity: 0;
-    box-shadow: 0 0 0 (1*@rem) @state-cover-active-color;
+    box-shadow: 0 0 0 (1*@rem) fade(@state-cover-active-color, 30%);
     transform: scale(@state-scale-from);
     .transition-fast();
     pointer-events: none;
@@ -34,7 +34,7 @@ a {
   &:focus {
     outline: none;
     &:after {
-      box-shadow: inset 0 0 0 (1*@rem) fade(@state-cover-active-color, 20%), 0 0 0 (2*@rem) fade(@color-focus, 40%);
+      box-shadow: inset 0 0 0 (1*@rem) fade(@color-focus, 40%), 0 0 0 (2*@rem) fade(@color-focus, 40%);
       background-color: fade(@state-cover-active-color, 10%);
       transform: scale(1);
       opacity: @state-cover-focus-opacity;
