@@ -1,5 +1,5 @@
 /*!
- * MZUI: doc - v1.0.0 - 2018-01-08
+ * MZUI: doc - v1.0.0 - 2018-01-09
  * Copyright (c) 2018 cnezsoft.com; Licensed MIT
  */
 
@@ -104,8 +104,9 @@ $(function() {
         $('#beginLink').trigger('click');
     });
 
-    if($(window).width() > 1200) {
+    if(!window.localStorage.getItem('mzuiTip') && $(window).width() > 1200) {
         $.messager.warning("MZUI 专为移动端设计，在移动设备上访问效果更佳。", {placement: 'top-center', targetZIndex: 3000});
+        window.localStorage.setItem('mzuiTip', new Date().toLocaleString());
     }
 });
 
