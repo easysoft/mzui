@@ -99,7 +99,8 @@ $(function() {
         $('#beginLink').trigger('click');
     });
 
-    if($(window).width() > 1200) {
+    if(!window.localStorage.getItem('mzuiTip') && $(window).width() > 1200) {
         $.messager.warning("MZUI 专为移动端设计，在移动设备上访问效果更佳。", {placement: 'top-center', targetZIndex: 3000});
+        window.localStorage.setItem('mzuiTip', new Date().toLocaleString());
     }
 });
