@@ -15,12 +15,20 @@
   width: 100%;
   background-color: @color-back;
   -webkit-appearance: none;
-  border-radius: 0; // reset safari style
-  min-height: 30*@rem;
+  // border-radius: 0; // reset safari style
+  min-height: (30*@rem);
+  transition: border @animation-speed-fast @animation-type, box-shadow @animation-speed-fast @animation-type;
+  box-shadow: none;
+  color: inherit;
+
+  &:hover {
+    border-color: darken(@input-border-color, 20%);
+  }
 
   &:focus {
     border-color: @color-focus;
     outline: none;
+    box-shadow: 0 0 0 (2*@rem) fade(@color-focus, 30%);
   }
 
   &[readonly],
@@ -99,13 +107,13 @@
       display: flex;
       position: absolute;
       left: 0;
-      top: @padding-small-vertical + 1*@rem;
-      height: 18*@rem;
-      width: 18*@rem;
+      top: (@padding-small-vertical + (1*@rem));
+      height: (18*@rem);
+      width: (18*@rem);
       align-items: center;
       justify-content: center;
       color: transparent;
-      border: @border-width * 2 solid @input-border-color;
+      border: (@border-width * 2) solid @color-gray;
       .transition-fast();
     }
   }
@@ -116,8 +124,12 @@
     color: @color-gray;
   }
 
-  > input:focus + label:before {border-color: @color-primary;}
+  > input:focus + label:before {
+    border-color: @color-primary;
+    box-shadow: inset 0 0 0 (1*@rem) fade(@color-focus, 30%), 0 0 0 (2*@rem) fade(@color-focus, 30%);
+  }
 
+  &.checked > input + label:after,
   > input:checked + label:after {
     opacity: 1;
     transform: scale(1);
@@ -130,34 +142,55 @@
   }
 
   &.inline-block + .inline-block {
-    margin-left: 1*@rem;
+    margin-left: (1*@rem);
   }
 }
 
 .checkbox > input {
+  + label:before {
+    border-radius: @border-radius-small;
+  }
+
   + label:after {
     .icon-zenicon();
     content: @icon-check;
     border: none;
   }
 
-  &:focus + label:after {color: @color-primary;}
+  &:focus + label:after {
+    color: @color-primary;
+  }
+
+  &:checked + label:before,
+  &:checked + label:after {
+    color: @color-white;
+    background-color: @color-primary;
+    border-radius: @border-radius-small;
+  }
 }
 
 .radio > input {
-  + label:before {border-radius: 1rem;}
+  + label:before {border-radius: 50%;}
 
   + label:after {
-    width: 8*@rem;
-    height: 8*@rem;
+    width: (8*@rem);
+    height: (8*@rem);
     background-color: @color-gray;
-    border-radius: 4*@rem;
+    border-radius: (4*@rem);
     border: none;
-    left: 5*@rem;
-    top: @padding-small-vertical + 6*@rem;
+    left: (5*@rem);
+    top: (@padding-small-vertical + (6*@rem));
   }
 
   &:focus + label:after {background-color: @color-primary;}
+
+  &:checked + label:before {
+    border-color: @color-primary;
+  }
+
+  &:checked + label:after {
+    background-color: @color-primary;
+  }
 }
 
 
@@ -166,11 +199,18 @@
 .control {
   > label {
     display: block;
-    font-weight: bold;
+    // font-weight: bold;
     padding: @padding-small-vertical 0;
+    font-size: @font-size-small;
   }
 
-  &:not(:last-child) {margin-bottom: @space/2;}
+  &:not(:last-child) {margin-bottom: (@space/2);}
+
+
+}
+
+::-webkit-input-placeholder {
+  font-size: (12*@rem);
 }
 
 .control {
@@ -183,9 +223,9 @@
   &.has-label-left {
     > label {
       position: absolute;
-      left: 5*@rem;
+      left: (5*@rem);
       top: 0;
-      min-width: 2*@rem;
+      min-width: (2*@rem);
       text-align: center;
       opacity: .5;
     }
@@ -193,7 +233,7 @@
     .input,
     .textarea,
     .select > select {
-      padding-left: 25*@rem;
+      padding-left: (25*@rem);
 
       &:focus + label {
         color: @color-focus;
@@ -206,9 +246,9 @@
   &.has-icon-right {
     > .icon {
       position: absolute;
-      right: 5*@rem;
-      top: 4*@rem;
-      min-width: 20*@rem;
+      right: (5*@rem);
+      top: (4*@rem);
+      min-width: (20*@rem);
       text-align: center;
       opacity: .5;
     }
@@ -216,7 +256,7 @@
     .input,
     .textarea,
     .select > select {
-      padding-right: 25*@rem;
+      padding-right: (25*@rem);
 
       &:focus + .icon,
       &:focus + label + .icon {
@@ -230,7 +270,7 @@
       position: absolute;
       right: 0;
       top: 0;
-      min-width: 20*@rem;
+      min-width: (20*@rem);
       text-align: center;
       opacity: .5;
     }
@@ -261,4 +301,124 @@
   .textarea,
   .select > select {border-color: @color-warning;}
   .help-text       {color: @color-warning;}
+}
+
+
+// Search control
+.control.search {
+  position: relative;
+  margin: 0;
+
+  > label {
+    position: absolute;
+    height: (30*@rem);
+    min-width: (30*@rem);
+    padding: 0;
+    line-height: (30*@rem);
+    text-align: center;
+    opacity: .6;
+    transition: transform @animation-speed-fast @animation-type, opacity @animation-speed-fast @animation-type;
+  }
+
+  > .input {
+    padding-left: (30*@rem);
+    padding-right: (30*@rem);
+    transition: all @animation-speed-fast @animation-type;
+  }
+
+  > .close {
+    display: block;
+    position: absolute;
+    height: (30*@rem);
+    min-width: (30*@rem);
+    line-height: (30*@rem);
+    text-align: center;
+    right: 0;
+    top: 0;
+    opacity: 0.6;
+    transform: scale(1);
+    transition: transform @animation-speed-fast @animation-type, opacity @animation-speed-fast @animation-type;
+    cursor: pointer;
+  }
+
+  &:not(.empty),
+  &.focus {
+    > .input {
+      padding-left: (5*@rem);
+    }
+
+    > label {
+      opacity: 0;
+      transform: scale(0);
+    }
+  }
+
+  &.empty {
+    > .close {
+      opacity: 0;
+      transform: scale(0);
+    }
+  }
+}
+
+
+// Flex control group
+
+.control.flex {
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+
+  > .select,
+  > .textarea,
+  > .input {
+    flex: auto;
+    width: auto;
+  }
+
+  > label {
+    font-weight: normal;
+    width: (60*@rem);
+    align-self: flex-start;
+    font-size: @font-size-base;
+  }
+
+  > label,
+  > div,
+  > span,
+  > .addon,
+  > .btn {
+    flex: none;
+  }
+
+  > .block,
+  > .help-text {
+    flex: auto;
+    width: 100%;
+    margin-bottom: 0;
+  }
+
+  > .addon {
+    line-height: @line-height-base;
+    padding: (@padding-small-vertical - @border-width) @padding-small-horizontal;
+    border: @border-width solid @input-border-color;
+    background-color: @color-gray-light;
+  }
+
+  > *:first-child {
+    border-right: none;
+  }
+
+  > .btn:last-child {
+    border-left: none!important;
+  }
+}
+
+// clean readonly input box
+
+.clean.input[readonly] {
+  padding: 0;
+  border-color: transparent;
+  min-height: inherit;
+  line-height: inherit;
 }
