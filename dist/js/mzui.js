@@ -121,7 +121,7 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
         return typeof x == 'number';
     };
 
-    $.TapName = 'click';
+    $.TapName = 'ontouchstart' in document.documentElement ? 'touchstart' : 'click';
 
     if(!$.uuid) $.uuid = 0;
 }(CoreLib));
@@ -383,31 +383,27 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
                 if($.isPlainObject(placement)) {
                     $target.css(placement);
                 } else if(placement === 'overlay') {
-                    var offset = $element.offset();
-                    $target.css({
-                        position: 'absolute',
-                        left: offset.left - (options.layer ? $body.scrollLeft() : 0),
-                        top: offset.top - (options.layer ? $body.scrollTop() : 0),
-                        width: $element.width(),
-                        height: $element.height()
-                    });
+                    var bounding = $element[0].getBoundingClientRect();
+                    $target.css({position: 'absolute', left: bounding.left, top: bounding.top, width: bounding.width, height: bounding.height});
                 } else if(placement.indexOf('beside') === 0) {
-                    $target.css({position: 'absolute'});
+                    $target.css({position: 'fixed'});
                     placement = placement.split('-');
+                    var $win = $(window);
                     var beside = placement[1] || 'auto', 
                         float = placement[2] || 'center',
                         offset = $element.offset(),
-                        eTop = offset.top - (options.layer ? $body.scrollTop() : 0),
-                        eLeft = offset.left - (options.layer ? $body.scrollLeft() : 0),
-                        left, top,
-                        eWidth = $element.width(),
-                        eHeight = $element.height(),
+                        bounding = $element[0].getBoundingClientRect(),
                         width = $target.width(),
                         height = $target.height(),
-                        wWidth = $(document).width(),
-                        wHeight = $(document).height(),
+                        wWidth = $win.width(),
+                        wHeight = $win.height(),
                         floatStart = float === 'start',
-                        floatEnd = float === 'end'
+                        floatEnd = float === 'end',
+                        top, left;
+                    var eTop = bounding.top,
+                        eLeft = bounding.left,
+                        eWidth = bounding.width,
+                        eHeight = bounding.height;
 
                     if(beside === 'auto') {
                         if(eTop + eHeight + height <= wHeight) {
