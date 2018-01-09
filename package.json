@@ -1,7 +1,7 @@
 {
   "name": "mzui",
   "title": "MZUI",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "为移动端设计，基于 Flex 的 UI 框架。",
   "keywords": [
     "css",
