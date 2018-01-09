@@ -47,9 +47,18 @@ a {
   &.active,
   &:active {
     &:after {
-      transform: scale(@state-active-scale);
+      box-shadow: none;
+      background-color: @state-cover-hover-color;
+      opacity: @state-cover-hover-opacity;
+      transform: scale(1);
+    }
+  }
+
+  &:active {
+    &:after {
+      box-shadow: inset 0 0 0 (1*@rem) fade(@color-focus, 20%), 0 0 0 (2*@rem) fade(@color-focus, 20%);
       background-color: @state-cover-active-color;
-      opacity: @state-cover-active-opacity;
+      transform: scale(@state-active-scale);
     }
   }
 }
