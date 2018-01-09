@@ -1,5 +1,5 @@
 /*!
- * MZUI: doc - v1.0.0 - 2018-01-09
+ * MZUI: doc - v1.0.1 - 2018-01-09
  * Copyright (c) 2018 cnezsoft.com; Licensed MIT
  */
 
