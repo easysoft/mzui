@@ -11,12 +11,26 @@
 .justify-end    {justify-content: flex-end!important;}
 .flex-center,
 .justify-center {justify-content: center!important;}
+.space-around   {justify-content: space-around!important;}
 
 .stretch        {align-items: stretch!important;}
 .align-start    {align-items: flex-start!important;}
 .align-end      {align-items: flex-end!important;}
-.flex-center,
-.align-middle   {align-items: center;}
+.flex-middle,
+.align-middle   {align-items: center!important;}
+
+.content-start         {align-content: flex-start!important;}
+.content-end           {align-content: flex-end!important;}
+.content-center        {align-content: center!important;}
+.content-space-between {align-content: space-between!important;}
+.content-space-around  {align-content: space-around!important;}
+.content-stretch       {align-content: stretch!important;}
+
+.center-content {
+  .flex();
+  .justify-center();
+  .align-middle();
+}
 
 
 // Flex item
@@ -26,6 +40,7 @@
 
 .flex-auto     {flex: auto!important}
 .flex-none     {flex: none!important}
+.flex-1        {flex: 1!important}
 
 .selft-stretch       {align-self: stretch!important;}
 .align-self-start    {align-self: flex-start!important;}
@@ -38,7 +53,7 @@
 .justified {
   display: flex;
   flex-wrap: wrap;
-  
+
   > * {flex: auto !important;}
   > .flex-none {flex: none!important}
 }

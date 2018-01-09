@@ -16,7 +16,7 @@
   bottom: 0;
   z-index: @zindex-affix;
   transform: translate(0%,0%);
-  .transition-normal();
+  .transition-normal(left, top, right, bottom, transform, box-shadow);
 }
 
 .dock-top    {bottom: auto;}
@@ -50,6 +50,6 @@
   .transition-normal(box-shadow);
 
   &.in-scroll {
-    box-shadow: inset rgba(0, 0, 0, .05) 0 1*@rem 5*@rem, inset rgba(0, 0, 0, .08) 0 1*@rem 2*@rem;
+    box-shadow: inset rgba(0, 0, 0, .05) 0 (1*@rem) (5*@rem), inset rgba(0, 0, 0, .08) 0 (1*@rem) (2*@rem);
   }
 }
