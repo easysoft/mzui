@@ -9,7 +9,7 @@
  * 现代化：基于 Flex 设计，支持移动端全部主流浏览器，支持 Android 微信内置浏览器；
  * 灵活：独立的外观选项，适合大部分控件，满足多样的外观定制需求；
  * 可定制：所有内容可以按需使用，基于 Gulp 构建自定义版本非常简单；
- * 轻量：JS 和 CSS 压缩之后在 50KB 左右，启用 GZip 压缩之后会更小（css 10KB, js 17KB），**不需要任何其他依赖！**（已内置 Zepto 1.1.6 核心组件）；
+ * 轻量：JS（mzui.min.js）压缩后在 20KB 左右，CSS（mzui.min.css）压缩后在 76KB 左右，启用 GZip 压缩之后会更小（css 16KB, js 8KB），JS 部分兼容 jQuery 最新版本；
 
 ![mzui-v1 0 0-5](https://cloud.githubusercontent.com/assets/472425/16789673/320a2f5e-48e2-11e6-883a-7aca4304bbc4.gif)
 
