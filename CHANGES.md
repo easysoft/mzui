@@ -1,5 +1,53 @@
 # 更新记录
 
+## v 1.0.1
+
+此版本对桌面端 UI 进行了优化，加入大量实用辅助类，增加了对 jQuery 的支持，并将 ZeptoJS 从标准版中分离，现在可以自行搭配 jQuery 使用。
+
+### 更新明细
+
++ 增加了对 jQuery 的支持，将 ZeptoJS 从标准版中分离，现在可以自行搭配 jQuery 最新版本使用。ZeptoJS 版本将不再维护，推荐使用 jQuery；
++ 优化了界面所使用的字体，现在字体集合为 `'Helvetica Neue', Helvetica, 'Microsoft Yahei', 'PingFang SC', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', sans-serif;`；
++ 优化了在触摸屏上的点击事件，现在使用 `touchstart` 来代替 `tap`；
++ 图标：
+  * 增加了一些图标，与 <a href="http://zui.sexy/#control/icon" target="_blank">ZUI 官方图标集</a>保持一致；
++ 外观选项：
+  * 增加了 `.accent`、`.text-accent` 和 `.accent-pale` 相关着色辅助类；
+  * 增加了 `.mute-light` 和 `.muted-dark` 来获得不同程度的弱化效果；
+  * 优化了状态类效果，而且可以使用 `.hover`、`.focus` 和 `.active` 类来强制获得状态效果；
+  * 增加了 `.hover-solid` 来实现鼠标悬停或触摸时填充背景的效果；
+  * 增加了 `.divider-top`、`.divider-left`、`.divider-right` 和 `divider-all` 来为元素不同方向应用边框鲜果；
+  * 增加了 更多的边距外观选项；
+  * 增加了 `.highlight` 类用于为元素应用荧光笔背景效果；
+  * 增加了 `.long-shadow` 类用于为元素应用长阴影效果；
++ 导航：
+  * 优化了导航外观，修复了有时会自动换行的问题；
+  * 增加了 `.nav-lg` 和 `.nav-sm` 类来应用不同大小的导航外观；
++ 列表：
+  * 优化了多行列表项外观；
++ 栅格：
+  * 优化了单元格的间距，增加了更多控制间距对辅助类（`.gutter-lg`、`.gutter-sm`）；
+  * 增加了 `.single` 类，用于禁用行或列换行；
++ 按钮：
+  * 优化按钮样式，按钮元素的 `display` 更改为 `inline-flex`；
++ 标签：
+  * 优化标签样式，标签元素的 `display` 更改为 `inline-flex`；
+  * 增加了 `.label-sm` 类用于应用小尺寸的标签外观；
++ 布局：
+  * 增加了更多 Flex 辅助类；
+  * 增加了对滚动条显示对辅助类（`.scroll-x`、`.scroll-y`、`.scroll-none`）；
++ Display：
+  * 增加了 `preventDefault` 和 `stopPropagation` 选项来更改点击事件行为；
+  * 优化了 `placement` 选项，现在计算的位置更准确；
+  * 增加了对触发元素 `data-url` 属性对支持，使用此属性来指定远程加载地址可以阻止有时非期望跳转的问题；
++ Ajax 表单：
+  * 增加了 `onResponse` 事件，允许在此事件中格式化服务器返回的内容或者取消此次处理；
+  * 优化了 `onSubmit` 事件，可以在此事件中格式化要提交的表单数据，或者取消此次提交；
+  * 优化了 `onSuccess` 事件，可以在此事件中取消默认处理；
+  * 优化了 `onError` 事件，可以在此事件中取消默认处理；
+
+
+
 ## v 1.0.0
 
 🎈🎈🎈 MZUI 第一版本！🎈🎈🎈
