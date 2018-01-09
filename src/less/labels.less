@@ -6,21 +6,35 @@
 // Base style
 
 .label {
-  display: inline-block;
+  display: inline-flex;
   font-size: @font-size-small;
-  height: 20*@rem;
-  min-width: 20*@rem;
-  line-height: 20*@rem - 2 * @border-width;
+  height: (20*@rem);
+  min-width: (20*@rem);
   padding: 0 @padding-small-horizontal;
   background-color: @color-gray-lighter;
   border: @border-width solid transparent;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  line-height: 1;
   vertical-align: middle;
 
   > .icon {line-height: 1}
 
   &.circle {
-    border-radius: 10*@rem;
-    padding: 1*@rem 5*@rem;
+    border-radius: (10*@rem);
+    padding: (1*@rem) (5*@rem);
+  }
+}
+
+.label-sm {
+  height: (18*@rem);
+  min-width: (18*@rem);
+  padding: 0 (@padding-small-horizontal/4);
+
+  &.circle {
+    border-radius: (9*@rem);
+    padding: 0 (2*@rem);
   }
 }
 
