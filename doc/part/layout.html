@@ -97,17 +97,31 @@
 <strong class="text-red">.justify-start</strong>  {justify-content: flex-start;}
 <strong class="text-red">.justify-end</strong>    {justify-content: flex-end;}
 <strong class="text-red">.justify-center</strong> {justify-content: center;}
+<strong class="text-red">.space-around</strong> {justify-content: space-around;}
 
-<span class="muted">// align-items</span>
+<span class="muted">// align-items align-items和align-content有相同的功能，不过不同点是它是用来让每一个单行的容器居中而不是让整个容器居中。</span>
 <strong class="text-red">.stretch</strong>      {align-items: stretch;}
 <strong class="text-red">.align-start</strong>  {align-items: flex-start;}
 <strong class="text-red">.align-end</strong>    {align-items: flex-end;}
 <strong class="text-red">.align-middle</strong> {align-items: center;}
 
 <span class="muted">// 同时获得 <strong class="text-red">.justify-center</strong> 和 <strong class="text-red">.align-middle</strong> 样式</span>
-<strong class="text-red">.flex-center</strong> {
+<strong class="text-red">.flex-middle</strong> {
   justify-content: center;
   align-items: center;
+}
+
+<span class="muted">// align-content 属性只适用于多行的flex容器，并且当侧轴上有多余空间使flex容器内的flex线对齐。 </span>
+<strong class="text-red">.content-start</strong>         {align-content: flex-start;}
+<strong class="text-red">.content-end</strong>           {align-content: flex-end;}
+<strong class="text-red">.content-center</strong>        {align-content: center;}
+<strong class="text-red">.content-space-between</strong> {align-content: space-between;}
+<strong class="text-red">.content-space-around</strong>  {align-content: space-around;}
+<strong class="text-red">.content-stretch</strong>       {align-content: stretch;}
+
+<span class="muted">.center-content 使得内部元素在垂直方向和水平方向居中。</span>
+<strong class="text-red">.center-content</strong> {
+  <span class="muted">同时拥有 <span class="text-red">.flex</span>, <span class="text-red">.justify-center</span>, <span class="text-red">.align-middle</span></span>
 }
 
 <span class="muted">// 使用弹性盒布局，且内部元素自动调整大小并填充水平空间，通常与导航 <strong class="text-red">.nav</strong> 一起使用</span>
@@ -127,6 +141,7 @@
 <span class="muted">// flex</span>
 <strong class="text-red">.flex-auto</strong>  {flex: auto;}</code>
 <strong class="text-red">.flex-none</strong>  {flex: none;}</code>
+<strong class="text-red">.flex-1</strong>     {flex: 1;}</code>
 
 <span class="muted">// align-self</span>
 <strong class="text-red">.selft-stretch</strong>      {align-self: stretch;}</code>
