@@ -187,6 +187,19 @@
       "licenseFile": "https://jquery.org/license/",
       "source": "jQuery"
     },
+    "jquery.touch": {
+      "name": "jQuery Touch Events",
+      "pver": "1.1.0",
+      "ver": "1.0.1",
+      "src": {
+        "js": ["assets/jquery.touch/jquery.touch.min.js"]
+      },
+      "desc": "Adds touch gesture events to jQuery.",
+      "website": "https://github.com/ajlkn/jquery.touch",
+      "license": "MIT",
+      "licenseFile": "https://github.com/ajlkn/jquery.touch#license",
+      "source": "ajlkn"
+    },
     "prettyprint": {
       "name": "Google Javascript code prettifier",
       "src": ["assets/prettify/prettify.js"],
