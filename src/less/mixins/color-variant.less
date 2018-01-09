@@ -70,13 +70,19 @@
   background-color: @color!important;
   border-color: @color!important;
 
-  &.hover:hover,
-  tr&:hover {background-color: darken(@color, 5%)!important;}
+  &.hover-solid:hover,
+  tr&:hover {
+    background-color: darken(@color, 5%)!important;
+  }
 
   &.outline {
-    // background-color: transparent!important;
+    background-color: transparent!important;
     border-color: @color!important;
     color: @color!important;
+    &.hover-solid:hover {
+      color: @color;
+      background-color: @darkColor!important;
+    }
   }
 
   &.text-tint,

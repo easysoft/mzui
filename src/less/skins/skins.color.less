@@ -1,4 +1,11 @@
+.outline {
+  background-color: transparent!important;
+  border: @border-width solid @border-color;
+}
+
 .primary   {.color-variant(@color-primary);}
+.secondary {.color-variant(@color-secondary);}
+.accent    {.color-variant(@color-accent);}
 .green,
 .success   {.color-variant(@color-success);}
 .blue,
@@ -16,6 +23,8 @@
 .inverse   {.color-variant(@color-black);}
 
 .primary-pale   {.color-pale-variant(@color-pale, @color-primary);}
+.secondary-pale {.color-pale-variant(@color-secondary-pale, @color-secondary);}
+.accent-pale    {.color-pale-variant(@color-accent-pale, @color-accent);}
 .green-pale,
 .success-pale   {.color-pale-variant(@color-success-pale, @color-success);}
 .blue-pale,
@@ -31,7 +40,10 @@
 .gray           {.color-pale-variant(@color-gray-pale, @color-fore);}
 .white          {.color-pale-variant(@color-white, @color-fore);}
 
+.highlight {background-color: @color-highlight!important;}
+
 .text-primary   {color: @color-primary;}
+.text-secondary {color: @color-secondary;}
 .text-green,
 .text-success   {color: @color-success;}
 .text-blue,
@@ -47,15 +59,22 @@
 .text-gray      {color: @color-gray;}
 .text-black     {color: @color-black;}
 .text-white     {color: @color-white;}
+.text-dark      {color: @color-dark;}
+.text-accent    {color: @color-accent;}
 
 .clean {background-color: transparent!important;}
 
-.outline {
-  background-color: transparent!important;
-  border: @border-width solid @border-color;
-}
+.muted       {opacity:@muted-opacity!important}
+.muted-light {opacity:@muted-light-opacity!important}
+.muted-dark  {opacity:@muted-dark-opacity!important}
 
-.muted {opacity:@muted-opacity!important}
+.long-shadow {overflow: hidden}
+
+.outline-cover {border: @border-width solid rgba(0,0,0,.1)!important;}
 
 .darken  {background-color: rgba(0,0,0,.1)!important}
+.darken-2  {background-color: rgba(0,0,0,.2)!important}
+.darken-3  {background-color: rgba(0,0,0,.3)!important}
 .lighten {background-color: rgba(255,255,255,.1)!important}
+.lighten-2 {background-color: rgba(255,255,255,.2)!important}
+.lighten-3 {background-color: rgba(255,255,255,.3)!important}

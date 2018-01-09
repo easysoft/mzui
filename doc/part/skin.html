@@ -53,6 +53,8 @@
   <div class="container">
     <div class="row tiles">
       <div class="cell"><div class="tile primary">.primary</div></div>
+      <div class="cell"><div class="tile secondary">.secondary</div></div>
+      <div class="cell"><div class="tile accent">.accent</div></div>
       <div class="cell"><div class="tile success">.success</div></div>
       <div class="cell"><div class="tile danger">.danger</div></div>
       <div class="cell"><div class="tile warning">.warning</div></div>
@@ -73,6 +75,8 @@
     </div>
     <div class="row tiles">
       <div class="cell cell-lg"><div class="tile primary-pale">.primary-pale</div></div>
+      <div class="cell cell-lg"><div class="tile secondary-pale">.secondary-pale</div></div>
+      <div class="cell cell-lg"><div class="tile accent-pale">.accent-pale</div></div>
       <div class="cell cell-lg"><div class="tile success-pale">.success-pale</div></div>
       <div class="cell cell-lg"><div class="tile danger-pale">.danger-pale</div></div>
       <div class="cell cell-lg"><div class="tile warning-pale">.warning-pale</div></div>
@@ -94,6 +98,9 @@
   <div class="box">
     <p>为元素应用 <code>.clean</code> 会充重置背景色为透明。</p>
   </div>
+  <div class="box">
+    <p>为元素应用 <strong class="code highlight">.highlight</strong> 来启用荧光笔高亮背景。</p>
+  </div>
 </div>
 
 <div class="section focus-item">
@@ -104,6 +111,8 @@
   <div class="container">
     <div class="row tiles">
       <div class="cell cell-lg"><div class="tile text-primary">.text-primary</div></div>
+      <div class="cell cell-lg"><div class="tile text-secondary">.text-secondary</div></div>
+      <div class="cell cell-lg"><div class="tile text-accent">.text-accent</div></div>
       <div class="cell cell-lg"><div class="tile text-success">.text-success</div></div>
       <div class="cell cell-lg"><div class="tile text-danger">.text-danger</div></div>
       <div class="cell cell-lg"><div class="tile text-warning">.text-warning</div></div>
@@ -129,6 +138,8 @@
   <div class="container">
     <div class="row tiles">
       <div class="cell cell-lg"><div class="tile primary-pale text-tint">.primary-pale.text-tint</div></div>
+      <div class="cell cell-lg"><div class="tile secondary-pale text-tint">.secondary-pale.text-tint</div></div>
+      <div class="cell cell-lg"><div class="tile accent-pale text-tint">.accent-pale.text-tint</div></div>
       <div class="cell cell-lg"><div class="tile green-pale text-tint">.green-pale.text-tint</div></div>
       <div class="cell cell-lg"><div class="tile red-pale text-tint">.red-pale.text-tint</div></div>
       <div class="cell cell-lg"><div class="tile yellow-pale text-tint">.yellow-pale.text-tint</div></div>
@@ -148,6 +159,8 @@
     <div class="container">
       <div class="row tiles">
         <div class="cell"><div class="tile long-shadow primary">.primary</div></div>
+        <div class="cell"><div class="tile long-shadow secondary">.secondary</div></div>
+        <div class="cell"><div class="tile long-shadow accent">.accent</div></div>
         <div class="cell"><div class="tile long-shadow success">.success</div></div>
         <div class="cell"><div class="tile long-shadow danger">.danger</div></div>
         <div class="cell"><div class="tile long-shadow warning">.warning</div></div>
@@ -166,6 +179,8 @@
       </div>
       <div class="row tiles">
         <div class="cell cell-lg"><div class="tile long-shadow primary-pale">.primary-pale</div></div>
+        <div class="cell cell-lg"><div class="tile long-shadow secondary-pale">.secondary-pale</div></div>
+        <div class="cell cell-lg"><div class="tile long-shadow accent-pale">.accent-pale</div></div>
         <div class="cell cell-lg"><div class="tile long-shadow success-pale">.success-pale</div></div>
         <div class="cell cell-lg"><div class="tile long-shadow danger-pale">.danger-pale</div></div>
         <div class="cell cell-lg"><div class="tile long-shadow warning-pale">.warning-pale</div></div>
@@ -194,10 +209,22 @@
   <div class="box article">
     <h5>触发状态：<code>.state</code></h5>
     <p>为元素启用状态外观，针对 <code>:hover</code>、<code>:focus</code>、<code>:active</code>会获得不同的样式。</p>
-    <p><code>a</code> 和 <code>.btn</code> 默认一启用状态外观。</p>
-    <a class='btn'><i class="icon-star"></i>&nbsp; 点击这里试试</a>
-    <a class='btn primary'><i class="icon-star"></i>&nbsp; 点击这里试试</a>
-    <div class="box state">.state</div>
+    <p><code>a</code> 和 <code>.btn</code> 默认启用状态外观。</p>
+    <div class="has-padding-sm">
+      <a class='btn'><i class="icon-star"></i>&nbsp; a:normal</a>
+      <a class='btn hover'><i class="icon-star"></i>&nbsp; a:hover</a>
+      <a class='btn focus'><i class="icon-star"></i>&nbsp; a:focus</a>
+    </div>
+    <div class="has-padding-sm">
+      <a class='btn primary'><i class="icon-star"></i>&nbsp; .btn:normal</a>
+      <a class='btn primary hover'><i class="icon-star"></i>&nbsp; .btn:hover</a>
+      <a class='btn primary focus'><i class="icon-star"></i>&nbsp; .btn:focus</a>
+    </div>
+    <div class="has-padding-sm">
+      <div class="box state">.state:normal</div>
+      <div class="box state hover">.state:hover</div>
+      <div class="box state focus">.state:focus</div>
+    </div>
     <hr class="space">
     <h5>禁用：<code>.disabled</code> &amp; <code>[disabled]</code></h5>
     <p>为元素应用禁用外观，元素（即便是文本框、按钮或链接）将不再响应鼠标事件，包括外观变化和 JavaScript 事件。</p>
@@ -207,7 +234,9 @@
     <h5>弱化：<code>.muted</code></h5>
     <p>降低元素的透明度。</p>
     <p>正常文本段落</p>
-    <p class="muted">弱化显示的文本段落</p>
+    <p class="muted"><span class="code">.muted</span>: 弱化显示的文本段落</p>
+    <p class="muted-light"><span class="code">.muted-light</span>: 轻微弱化显示的文本段落</p>
+    <p class="muted-dark"><span class="code">.muted-dark</span>: 强力弱化显示的文本段落</p>
   </div>
 </div>
 
@@ -243,6 +272,35 @@
       <div class="cell cell-lg"><div class="tile gray outline">.gray.outline</div></div>
       <div class="cell cell-lg"><div class="tile white outline">.white.outline</div></div>
     </div>
+  </div>
+  <div class="box">
+    <p>为 <code>.outline</code> 元素添加 `.hover-solid` 类，可以实现鼠标悬停或着触摸时填充背景的效果。</p>
+    <div class="container has-padding">
+        <div class="row tiles">
+          <div class="cell cell-lg"><div class="tile primary outline hover-solid">.primary.outline</div></div>
+          <div class="cell cell-lg"><div class="tile success outline hover-solid">.success.outline</div></div>
+          <div class="cell cell-lg"><div class="tile danger outline hover-solid">.danger.outline</div></div>
+          <div class="cell cell-lg"><div class="tile warning outline hover-solid">.warning.outline</div></div>
+          <div class="cell cell-lg"><div class="tile info outline hover-solid">.info.outline</div></div>
+          <div class="cell cell-lg"><div class="tile special outline hover-solid">.special.outline</div></div>
+          <div class="cell cell-lg"><div class="tile important outline hover-solid">.important.outline</div></div>
+          <div class="cell cell-lg"><div class="tile dark outline hover-solid">.dark.outline</div></div>
+          <div class="cell cell-lg"><div class="tile inverse outline hover-solid">.inverse.outline</div></div>
+        </div>
+      </div>
+      <div class="container inverse has-padding">
+        <div class="row tiles">
+          <div class="cell cell-lg"><div class="tile primary-pale outline hover-solid">.primary-pale.outline</div></div>
+          <div class="cell cell-lg"><div class="tile green-pale outline hover-solid">.green-pale.outline</div></div>
+          <div class="cell cell-lg"><div class="tile red-pale outline hover-solid">.red-pale.outline</div></div>
+          <div class="cell cell-lg"><div class="tile yellow-pale outline hover-solid">.yellow-pale.outline</div></div>
+          <div class="cell cell-lg"><div class="tile blue-pale outline hover-solid">.blue-pale.outline</div></div>
+          <div class="cell cell-lg"><div class="tile purple-pale outline hover-solid">.purple-pale.outline</div></div>
+          <div class="cell cell-lg"><div class="tile brown-pale outline hover-solid">.brown-pale.outline</div></div>
+          <div class="cell cell-lg"><div class="tile gray outline hover-solid">.gray.outline</div></div>
+          <div class="cell cell-lg"><div class="tile white outline hover-solid">.white.outline</div></div>
+        </div>
+      </div>
   </div>
 </div>
 
