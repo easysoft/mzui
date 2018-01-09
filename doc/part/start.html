@@ -12,7 +12,11 @@
     <pre class="prettyprint"><code>&lt;link href=&quot;css/mzui.min.css&quot; rel=&quot;stylesheet&quot;&gt;</code></pre>
     <h5>包含 MZUI JS 文件（可选）</h5>
     <p>如果没有用到 MZUI 中的 JavaScript 插件，则不需要包含 JS 文件。</p>
-    <pre class="prettyprint"><code>&lt;script src=&quot;js/mzui.min.js&quot;&gt;&lt;/script&gt;;</code></pre>
+    <pre class="prettyprint"><code>// MZUI 的 JavaScript 插件依赖 jQuery，请使用 jQuery 最新版本
+&lt;script src=&quot;js/lib/jquery/jquery-3.2.1.min.js&quot;&gt;&lt;/script&gt;;
+
+// 引入 MZUI 的 JS 文件
+&lt;script src=&quot;js/mzui.min.js&quot;&gt;&lt;/script&gt;;</code></pre>
   </div>
 </div>
 
@@ -27,14 +31,16 @@
     &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
     &lt;title&gt;MZUI&lt;/title&gt;
 
-    &lt;!-- MZUI CSS file --&gt;
+    &lt;!-- MZUI CSS 文件 --&gt;
     &lt;link href=&quot;css/mzui.min.css&quot; rel=&quot;stylesheet&quot;&gt;
   &lt;/head&gt;
   &lt;body&gt;
     &lt;h1&gt;Hello, world!&lt;/h1&gt;
 
-    &lt;!-- MZUI JS file --&gt;
-    &lt;script src=&quot;js/mzui.min.js&quot;&gt;&lt;/script&gt;
+    &lt;!-- MZUI 的 JavaScript 插件依赖 jQuery，请使用 jQuery 最新版本 --&gt;
+    &lt;script src=&quot;js/lib/jquery/jquery-3.2.1.min.js&quot;&gt;&lt;/script&gt;;
+    &lt;!-- 引入 MZUI 的 JS 文件 --&gt;
+    &lt;script src=&quot;js/mzui.min.js&quot;&gt;&lt;/script&gt;;
   &lt;/body&gt;
 &lt;/html&gt;</code></pre>
 </div>
