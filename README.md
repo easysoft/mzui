@@ -4,6 +4,8 @@
 
 示例和文档：http://zui.sexy/m/
 
+官方 ZUI QQ 群：384135104 项目和计划：http://zui.5upm.com/product-browse-1.html
+
 ## 特色
 
  * 现代化：基于 Flex 设计，支持移动端全部主流浏览器，支持 Android 微信内置浏览器；
