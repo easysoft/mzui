@@ -191,6 +191,9 @@ myNamedDisplay.show();</code></pre>
     <p>当目标显示后添加到目标上的 CSS class，默认为 <code>'in'</code>。</p>
     <p>该值会影响过渡动画及显示和隐藏效果，触发需要自定义过渡动画，否则不建议更改该值。</p>
 
+    <h5 class="code">showSingle</h5>
+    <p>默认为 <code>false</code>，如果设置为 <code>true</code>，则当目标元素显示时，移除目标元素所有已经显示的兄弟目标元素上的由 <code>showInClass</code> 指定的类，并添加 <code>'hidden'</code> 类隐藏，此机制可以确保仅有一个目标元素显示。</p>
+
     <h5 class="code">animate</h5>
     <p>显示和隐藏目标时是否启用过渡动画，允许使用以下值：</p>
     <ul>
