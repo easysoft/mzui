@@ -1,6 +1,6 @@
 /*!
- * MZUI: standard - v1.0.1 - 2018-01-10
- * Copyright (c) 2018 cnezsoft.com; Licensed MIT
+ * MZUI: standard - v1.0.1 - 2019-01-17
+ * Copyright (c) 2019 cnezsoft.com; Licensed MIT
  */
 
 /* ========================================================================

@@ -1,6 +1,6 @@
 /*!
- * MZUI: standard - v1.0.1 - 2018-01-10
- * Copyright (c) 2018 cnezsoft.com; Licensed MIT
+ * MZUI: standard - v1.0.1 - 2019-01-17
+ * Copyright (c) 2019 cnezsoft.com; Licensed MIT
  */
 
 /*! normalize.css v4.1.1 | MIT License | github.com/necolas/normalize.css */
@@ -2872,6 +2872,12 @@ a .icon.spin
 
     opacity: 1;
 }
+.nav > a > .icon + .text
+{
+    display: inline-block;
+
+    margin-left: .25rem;
+}
 .nav-secondary
 {
     box-shadow: inset 0 -.05rem 0 rgba(0, 0, 0, .1);
@@ -5166,14 +5172,20 @@ tr.white:hover
 {
     background-color: rgba(255, 255, 255, .3) !important;
 }
-.state,
 a,
+.state,
+.btn,
+.nav > .item,
+.list > .item,
 .btn
 {
     position: relative;
 }
-.state:after,
 a:after,
+.state:after,
+.btn:after,
+.nav > .item:after,
+.list > .item:after,
 .btn:after
 {
     position: absolute;
@@ -5193,22 +5205,34 @@ a:after,
     background-color: transparent;
     box-shadow: 0 0 0 .05rem rgba(0, 0, 0, .09);
 }
-.state.circle:after,
 a.circle:after,
+.state.circle:after,
+.btn.circle:after,
+.nav > .item.circle:after,
+.list > .item.circle:after,
 .btn.circle:after
 {
     border-radius: 50%;
 }
-.state.rounded:after,
 a.rounded:after,
+.state.rounded:after,
+.btn.rounded:after,
+.nav > .item.rounded:after,
+.list > .item.rounded:after,
 .btn.rounded:after
 {
     border-radius: .15rem;
 }
-.state:hover:after,
 a:hover:after,
-.state.hover:after,
+.state:hover:after,
+.btn:hover:after,
+.nav > .item:hover:after,
+.list > .item:hover:after,
 a.hover:after,
+.state.hover:after,
+.btn.hover:after,
+.nav > .item.hover:after,
+.list > .item.hover:after,
 .btn:hover:after,
 .btn.hover:after
 {
@@ -5218,19 +5242,31 @@ a.hover:after,
     background-color: rgba(0, 0, 0, .07);
     box-shadow: 0 0 0 .05rem rgba(0, 0, 0, .07);
 }
-.state.focus,
 a.focus,
-.state:focus,
+.state.focus,
+.btn.focus,
+.nav > .item.focus,
+.list > .item.focus,
 a:focus,
+.state:focus,
+.btn:focus,
+.nav > .item:focus,
+.list > .item:focus,
 .btn.focus,
 .btn:focus
 {
     outline: none;
 }
-.state.focus:after,
 a.focus:after,
-.state:focus:after,
+.state.focus:after,
+.btn.focus:after,
+.nav > .item.focus:after,
+.list > .item.focus:after,
 a:focus:after,
+.state:focus:after,
+.btn:focus:after,
+.nav > .item:focus:after,
+.list > .item:focus:after,
 .btn.focus:after,
 .btn:focus:after
 {
@@ -5240,14 +5276,26 @@ a:focus:after,
     background-color: rgba(0, 0, 0, .07);
     box-shadow: inset 0 0 0 .05rem rgba(33, 150, 243, .4), 0 0 0 .1rem rgba(33, 150, 243, .4);
 }
-.open > .state:after,
 .open > a:after,
-.state.open:after,
+.open > .state:after,
+.open > .btn:after,
+.open > .nav > .item:after,
+.open > .list > .item:after,
 a.open:after,
-.state.active:after,
+.state.open:after,
+.btn.open:after,
+.nav > .item.open:after,
+.list > .item.open:after,
 a.active:after,
-.state:active:after,
+.state.active:after,
+.btn.active:after,
+.nav > .item.active:after,
+.list > .item.active:after,
 a:active:after,
+.state:active:after,
+.btn:active:after,
+.nav > .item:active:after,
+.list > .item:active:after,
 .open > .btn:after,
 .btn.open:after,
 .btn.active:after,
@@ -5259,8 +5307,11 @@ a:active:after,
     background-color: rgba(0, 0, 0, .07);
     box-shadow: none;
 }
-.state:active:after,
 a:active:after,
+.state:active:after,
+.btn:active:after,
+.nav > .item:active:after,
+.list > .item:active:after,
 .btn:active:after
 {
     transform: scale(.95);
@@ -5269,7 +5320,7 @@ a:active:after,
     box-shadow: inset 0 0 0 .05rem rgba(33, 150, 243, .2), 0 0 0 .1rem rgba(33, 150, 243, .2);
 }
 .disabled,
-.disabled > a,
+.disabled > .item,
 [disabled]
 {
     cursor: not-allowed !important;
@@ -5281,7 +5332,7 @@ a:active:after,
     filter: grayscale(100%);
 }
 .disabled:after,
-.disabled > a:after,
+.disabled > .item:after,
 [disabled]:after
 {
     display: none !important;

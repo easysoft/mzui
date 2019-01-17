@@ -179,7 +179,7 @@
       "pver": "3.2.0",
       "ver": "1.0.1",
       "src": {
-        "resource": ["assets/jquery//jquery-3.2.1.min.js"]
+        "js": ["assets/jquery//jquery-3.2.1.min.js"]
       },
       "desc": "MZUI的JS组件都依赖于jQuery",
       "website": "http://jquery.com/",
@@ -397,6 +397,13 @@
       "filename": "mzui",
       "subdirectories": true,
       "bundles": ["jquery", "standard"]
+    },
+    "dist-jquery": {
+      "title": "dist",
+      "dest": "dist/",
+      "filename": "mzui.with-jquery",
+      "subdirectories": true,
+      "includes": ["jquery", "jquery.touch", "colorset", "variables", "mixins", "normalize", "scaffolding", "utilities", "typography", "layout", "animations", "icons", "avatar", "navs", "buttons", "labels", "heading", "list", "table", "forms", "article", "display", "display.plugs", "scrollListener", "color", "skin", "skin.js", "ajax.action", "ajax.form", "code"]
     },
     "custom": {
       "title": "Custom edition",
