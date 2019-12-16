@@ -30,7 +30,7 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
     $.bindFn = function(fnName, _Constructor, defaultOptions) {
         var old = $.fn[fnName];
         var NAME = _Constructor.NAME || ('mzui.' + fnName);
-        
+
         $.fn[fnName] = function(option, params) {
             return this.each(function() {
                 var $this = $(this);
@@ -116,7 +116,7 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
         return typeof x == 'number';
     };
 
-    $.TapName = 'ontouchstart' in document.documentElement ? 'touchstart' : 'click';
+    $.TapName = 'ontouchstart' in document.documentElement ? ($.fn.tap ? 'tap' : 'touchstart') : 'click';
 
     if(!$.uuid) $.uuid = 0;
 }(CoreLib));
