@@ -42,64 +42,67 @@
             e.preventDefault();
 
             var form = $form[0];
-            var _formData = {};
-            $.each($form.serializeArray(), function (idx, item) {
-                var _name = item.name,
-                    _val = item.value,
-                    _formVal = _formData[_name];
-                if (_val instanceof FileList) {
-                    var _fileVal = [];
-                    for (var i = _val.length - 1; i >= 0; --i) {
-                        _fileVal.push(_val[i]);
-                    }
-                    _val = _fileVal;
-                }
-                if ($.isArray(_val)) {
-                    if (_formVal === undefined) {
-                        _formVal = _val;
-                    } else if ($.isArray(_formVal)) {
-                        _formVal.push.apply(_formVal, _val);
-                    } else {
-                        _val.push(_formVal);
-                        _formVal = _val;
-                    }
-                } else if (_name.lastIndexOf(']') === _name.length - 1) {
-                    if (_formVal === undefined) {
-                        _formVal = [_val];
-                    } else {
-                        _formVal.push(_val);
-                    }
-                } else {
-                    _formVal = _val;
-                }
-                _formData[_name] = _formVal;
-            });
+            // var _formData = {};
+            // $.each($form.serializeArray(), function (idx, item) {
+            //     var _name = item.name,
+            //         _val = item.value,
+            //         _formVal = _formData[_name];
+            //     if (_val instanceof FileList) {
+            //         var _fileVal = [];
+            //         for (var i = _val.length - 1; i >= 0; --i) {
+            //             _fileVal.push(_val[i]);
+            //         }
+            //         _val = _fileVal;
+            //     }
+            //     if ($.isArray(_val)) {
+            //         if (_formVal === undefined) {
+            //             _formVal = _val;
+            //         } else if ($.isArray(_formVal)) {
+            //             _formVal.push.apply(_formVal, _val);
+            //         } else {
+            //             _val.push(_formVal);
+            //             _formVal = _val;
+            //         }
+            //     } else if (_name.lastIndexOf(']') === _name.length - 1) {
+            //         if (_formVal === undefined) {
+            //             _formVal = [_val];
+            //         } else {
+            //             _formVal.push(_val);
+            //         }
+            //     } else {
+            //         _formVal = _val;
+            //     }
+            //     _formData[_name] = _formVal;
+            // });
 
-            var userSubmitData = callEvent('onSubmit', _formData);
+            var formData = new FormData(form);
+
+
+            var userSubmitData = callEvent('onSubmit', formData);
             if (userSubmitData === false) return;
             if (userSubmitData !== undefined) {
-                _formData = userSubmitData;
+                formData = userSubmitData;
             }
 
             if (options.dataConverter) {
-                _formData = options.dataConverter(_formData);
+                formData = options.dataConverter(formData);
             }
 
-            var formData = new FormData();
-            for (var key in _formData) {
-                var _val = _formData[key];
-                if ($.isArray(_val)) {
-                    for (var i = _val.length - 1; i >= 0; --i) {
-                        formData.append(key, _val[i]);
-                    }
-                } else formData.append(key, _val);
-            }
+            // for (var key in _formData) {
+            //     var _val = _formData[key];
+            //     if ($.isArray(_val)) {
+            //         for (var i = _val.length - 1; i >= 0; --i) {
+            //             formData.append(key, _val[i]);
+            //         }
+            //     } else formData.append(key, _val);
+            // }
 
             var $submitBtn = $form.find('[type="submit"]').attr('disabled', 'disabled').addClass('disabled loading');
             $.ajax({
                 url: options.url || form.action,
                 type: options.type || form.method,
                 processData: false,
+                async: false,
                 contentType: false,
                 dataType: options.dataType || $form.data('type') || 'json',
                 data: formData,
@@ -113,13 +116,26 @@
                         if (typeof response === 'string') response = $.parseJSON(response);
                         if (callEvent('onSuccess', response) !== false) {
                             if (response.result === 'success') {
+                                var locate = options.locate || response.locate;
+                                var locateHandler;
+                                if(locate) {
+                                    if ((locate === 'parent' || locate === 'top') && window[locate]) {
+                                        locateHandler = window[locate].location.reload;
+                                    } else if (locate === 'self' || locate === 'reload') {
+                                        locateHandler = window.location.reload;
+                                    } else {
+                                        locateHandler = function() {
+                                            window.location.href = locate;
+                                        };
+                                    }
+                                }
                                 if (response.message) {
                                     $.messager.success(response.message);
-                                    if (response.locate) {
-                                        setTimeout(function () { location.href = response.locate; }, 1200);
+                                    if (locateHandler) {
+                                        setTimeout(locateHandler, 1200);
                                     }
                                 } else {
-                                    if (response.locate) location.href = response.locate;
+                                    if (locateHandler) locateHandler();
                                 }
                             } else {
                                 var message = response.message || response.reason || response.error;
