@@ -1,5 +1,5 @@
 /*!
- * MZUI: jquery - v1.0.1 - 2019-01-17
+ * MZUI: jquery - v1.0.1 - 2019-09-23
  * Copyright (c) 2019 cnezsoft.com; Licensed MIT
  */
 

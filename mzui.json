@@ -176,10 +176,10 @@
     },
     "jquery": {
       "name": "jQuery",
-      "pver": "3.2.0",
+      "pver": "3.3.1",
       "ver": "1.0.1",
       "src": {
-        "js": ["assets/jquery//jquery-3.2.1.min.js"]
+        "js": ["assets/jquery//jquery-3.3.1.min.js"]
       },
       "desc": "MZUI的JS组件都依赖于jQuery",
       "website": "http://jquery.com/",
@@ -192,7 +192,7 @@
       "pver": "1.1.0",
       "ver": "1.0.1",
       "src": {
-        "js": ["assets/jquery.touch/jquery.touch.min.js"]
+        "js": ["assets/jquery.touch/jquery.touch.js"]
       },
       "desc": "Adds touch gesture events to jQuery.",
       "website": "https://github.com/ajlkn/jquery.touch",
