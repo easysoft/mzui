@@ -51,8 +51,8 @@ $(function() {
             var $element = $(options.element);
             var elementName = $element.attr('href').replace('doc/part/', '').replace('examples/', '');
             var gaOptions = {
-                hitType: 'pageview', 
-                page: window.location.pathname + '#' + parentName + '/' + elementName, 
+                hitType: 'pageview',
+                page: window.location.pathname + '#' + parentName + '/' + elementName,
                 title: parentTitle + ' > ' + $element.text()
             };
             ga('send', gaOptions);
@@ -95,7 +95,7 @@ $(function() {
         }
     });
 
-    $(document).on($.TapName, '.btn-begin', function() {
+    $('body').on($.TapName, '.btn-begin', function() {
         $('#beginLink').trigger('click');
     });
 

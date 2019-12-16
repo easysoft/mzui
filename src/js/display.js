@@ -198,7 +198,7 @@
             element        = options.element,
             placement      = options.placement,
             $layer         = options.layer,
-            suggestAnimate = '', 
+            suggestAnimate = '',
             suggestArrow   = '',
             displayName    = options.name,
             arrow          = options.arrow,
@@ -261,7 +261,7 @@
                     $target.css({position: 'fixed'});
                     placement = placement.split('-');
                     var $win = $(window);
-                    var beside = placement[1] || 'auto', 
+                    var beside = placement[1] || 'auto',
                         float = placement[2] || 'center',
                         offset = $element.offset(),
                         bounding = $element[0].getBoundingClientRect(),
@@ -315,7 +315,7 @@
                     suggestAnimate = 'fade scale-from-' + suggestArrow;
                 } else {
                     placement = placement.split('-');
-                    var justify = placement[0], 
+                    var justify = placement[0],
                         align = placement[1],
                         layerCss = {};
                     if(justify == 'top' || justify == 'bottom' || justify == 'left' || justify == 'right') {
@@ -458,7 +458,7 @@
         // name: '',              // unique name
         triggerMethod: 'show', // trigger method: show, toggle, hide
 
-        // target: null,   // page, tooltip, 
+        // target: null,   // page, tooltip,
         // selector: null, // trigger event selector,
         // targetClass: null // CSS class be add to the target element
         // targetGroup: '',
@@ -479,7 +479,7 @@
         loadingClass: STR_LOADING, // CSS class to append to target and body element
 
         showInClass: 'in',     // CSS class to be add after show target
-        // showSingle: false,     // 
+        // showSingle: false,     //
         animate: true,         // boolean, CSS classes or number for duration
         duration: 300,         // animation duration
         // backdrop: false,    // show backdrop or not,
@@ -531,7 +531,7 @@
     $(function() {
         $('[data-' + STR_DISPLAY + ']').display();
 
-        $(document).on(TAP_EVENT_NAME, '[data-dismiss="' + STR_DISPLAY + '"]', function() {
+        $('body').on(TAP_EVENT_NAME, '[data-dismiss="' + STR_DISPLAY + '"]', function() {
             var $this = $(this), dataName = 'data-' + STR_DISPLAY + '-name';
             name = $this.attr(dataName);
             if(!name || name == 'null' || name == 'undefined') name = $this.closest('.' + STR_DISPLAY).attr(dataName);
