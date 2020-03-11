@@ -2,7 +2,7 @@
  * MZUI: ajaxform.js
  * https://github.com/easysoft/mzui
  * ========================================================================
- * Copyright (c) 2016 cnezsoft.com; Licensed MIT
+ * Copyright (c) 2016-2020 cnezsoft.com; Licensed MIT
  * ======================================================================== */
 
 
@@ -10,6 +10,39 @@
     'use strict';
 
     var NAME = 'mzui.ajaxform';
+
+    var convertFormDataToObject = function(formData) {
+        var object = {};
+        $.each(Array.from(formData.keys()), function(index, key) {
+            var value = formData.get(key);
+            if (!object.hasOwnProperty(key)) {
+                object[key] = value;
+                return;
+            }
+            if(!$.isArray(object[key])){
+                object[key] = [object[key]];
+            }
+            object[key].push(value);
+        });
+        return object;
+    };
+
+    var convertObjectToFormData = function(object) {
+        if (object instanceof FormData) {
+            return object;
+        }
+        var formData = new FormData();
+        $.each(object, function(key, value) {
+            if ($.isArray(value)) {
+                $.each(value, function(index, val) {
+                    formData.append(key, val);
+                });
+            } else {
+                formData.append(key, value);
+            }
+        });
+        return formData;
+    };
 
     var setAjaxForm = function ($form, options) {
         if (!$form.length || $form.data(NAME)) return;
@@ -42,43 +75,9 @@
             e.preventDefault();
 
             var form = $form[0];
-            // var _formData = {};
-            // $.each($form.serializeArray(), function (idx, item) {
-            //     var _name = item.name,
-            //         _val = item.value,
-            //         _formVal = _formData[_name];
-            //     if (_val instanceof FileList) {
-            //         var _fileVal = [];
-            //         for (var i = _val.length - 1; i >= 0; --i) {
-            //             _fileVal.push(_val[i]);
-            //         }
-            //         _val = _fileVal;
-            //     }
-            //     if ($.isArray(_val)) {
-            //         if (_formVal === undefined) {
-            //             _formVal = _val;
-            //         } else if ($.isArray(_formVal)) {
-            //             _formVal.push.apply(_formVal, _val);
-            //         } else {
-            //             _val.push(_formVal);
-            //             _formVal = _val;
-            //         }
-            //     } else if (_name.lastIndexOf(']') === _name.length - 1) {
-            //         if (_formVal === undefined) {
-            //             _formVal = [_val];
-            //         } else {
-            //             _formVal.push(_val);
-            //         }
-            //     } else {
-            //         _formVal = _val;
-            //     }
-            //     _formData[_name] = _formVal;
-            // });
 
-            var formData = new FormData(form);
-
-
-            var userSubmitData = callEvent('onSubmit', formData);
+            var formData = convertFormDataToObject(new FormData(form));
+            var userSubmitData = callEvent('onSubmit', [formData]);
             if (userSubmitData === false) return;
             if (userSubmitData !== undefined) {
                 formData = userSubmitData;
@@ -88,15 +87,6 @@
                 formData = options.dataConverter(formData);
             }
 
-            // for (var key in _formData) {
-            //     var _val = _formData[key];
-            //     if ($.isArray(_val)) {
-            //         for (var i = _val.length - 1; i >= 0; --i) {
-            //             formData.append(key, _val[i]);
-            //         }
-            //     } else formData.append(key, _val);
-            // }
-
             var $submitBtn = $form.find('[type="submit"]').attr('disabled', 'disabled').addClass('disabled loading');
             $.ajax({
                 url: options.url || form.action,
@@ -105,7 +95,7 @@
                 async: false,
                 contentType: false,
                 dataType: options.dataType || $form.data('type') || 'json',
-                data: formData,
+                data: convertObjectToFormData(formData),
                 success: function (response, status) {
                     var userResponse = callEvent('onResponse', [response, status]);
                     if (userResponse === false) return;
@@ -181,7 +171,7 @@
                 },
                 complete: function (xhr, status) {
                     $submitBtn.attr('disabled', null).removeClass('disabled loading');
-                    callEvent('onComplete', { xhr: xhr, status: status });
+                    callEvent('onComplete', {xhr: xhr, status: status});
                 }
             });
         }).on('change', function (e) {
@@ -193,6 +183,8 @@
     };
 
     $.ajaxForm = setAjaxForm;
+    $.convertObjectToFormData = convertObjectToFormData;
+    $.convertFormDataToObject = convertFormDataToObject;
 
     $.fn.ajaxform = function (options) {
         return $(this).each(function () {
