@@ -13,8 +13,9 @@
 
     var convertFormDataToObject = function(formData) {
         var object = {};
-        $.each(Array.from(formData.keys()), function(index, key) {
-            var value = formData.get(key);
+        $.each(Array.from(formData.entries()), function(index, pair) {
+            var key = pair[0];
+            var value = pair[1];
             if (!object.hasOwnProperty(key)) {
                 object[key] = value;
                 return;

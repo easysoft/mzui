@@ -7,7 +7,17 @@
     <div class="box outline">
       <form id="ajaxFormExample" action="doc/part/ajax-form-example.json">
         <div class="control">
-          <input type="text" class="input" placeholder="请输入用户名">
+          <input type="text" name="account" class="input" placeholder="请输入用户名">
+        </div>
+        <div class="control has-warning">
+          <label for="gifts">选择两个礼物</label>
+          <div class="select multiple">
+            <select name="gifts" id="gifts" multiple="">
+              <option value="apple">苹果</option>
+              <option value="orange">橘子</option>
+              <option value="banana">香蕉</option>
+            </select>
+          </div>
         </div>
         <button class="btn primary" type="submit">提交</button>
       </form>
@@ -22,13 +32,17 @@
   <pre class="prettyprint"><code>$('#ajaxFormExample').ajaxform({
     onResult: function(response) {
         <span class="muted">// 处理服务器返回的结果</span>
-    } 
+    }
 });</code></pre>
 </div>
 
 <script>
 $(function() {
-    $('#ajaxFormExample').ajaxform();
+    $('#ajaxFormExample').ajaxform({
+        onSubmit: function(data) {
+          console.log('ajaxform.onSubmit', data);
+        }
+    });
 });
 </script>
 
