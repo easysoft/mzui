@@ -262,15 +262,14 @@
                     placement = placement.split('-');
                     var $win = $(window);
                     var beside = placement[1] || 'auto',
-                        float = placement[2] || 'center',
-                        offset = $element.offset(),
+                        floatSide = placement[2] || 'center',
                         bounding = $element[0].getBoundingClientRect(),
                         width = $target.width(),
                         height = $target.height(),
                         wWidth = $win.width(),
                         wHeight = $win.height(),
-                        floatStart = float === 'start',
-                        floatEnd = float === 'end',
+                        floatStart = floatSide === 'start',
+                        floatEnd = floatSide === 'end',
                         top, left;
                     var eTop = bounding.top,
                         eLeft = bounding.left,
