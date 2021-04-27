@@ -1,6 +1,6 @@
 /*!
- * MZUI: doc - v1.0.1 - 2020-08-10
- * Copyright (c) 2020 cnezsoft.com; Licensed MIT
+ * MZUI: doc - v1.0.1 - 2021-04-27
+ * Copyright (c) 2021 cnezsoft.com; Licensed MIT
  */
 
 /* ========================================================================

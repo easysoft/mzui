@@ -1,6 +1,6 @@
 /*!
- * MZUI: jquery - v1.0.1 - 2019-09-23
- * Copyright (c) 2019 cnezsoft.com; Licensed MIT
+ * MZUI: jquery - v1.0.1 - 2021-04-27
+ * Copyright (c) 2021 cnezsoft.com; Licensed MIT
  */
 
 /*! jQuery v3.3.1 | (c) JS Foundation and other contributors | jquery.org/license */

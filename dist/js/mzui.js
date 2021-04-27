@@ -1,6 +1,6 @@
 /*!
- * MZUI: standard - v1.0.1 - 2019-01-17
- * Copyright (c) 2019 cnezsoft.com; Licensed MIT
+ * MZUI: standard - v1.0.1 - 2021-04-27
+ * Copyright (c) 2021 cnezsoft.com; Licensed MIT
  */
 
 /* ========================================================================
@@ -35,7 +35,7 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
     $.bindFn = function(fnName, _Constructor, defaultOptions) {
         var old = $.fn[fnName];
         var NAME = _Constructor.NAME || ('mzui.' + fnName);
-        
+
         $.fn[fnName] = function(option, params) {
             return this.each(function() {
                 var $this = $(this);
@@ -121,7 +121,7 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
         return typeof x == 'number';
     };
 
-    $.TapName = 'ontouchstart' in document.documentElement ? 'touchstart' : 'click';
+    $.TapName = 'ontouchstart' in document.documentElement ? ($.fn.tap ? 'tap' : 'touchstart') : 'click';
 
     if(!$.uuid) $.uuid = 0;
 }(CoreLib));
@@ -326,7 +326,7 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
             element        = options.element,
             placement      = options.placement,
             $layer         = options.layer,
-            suggestAnimate = '', 
+            suggestAnimate = '',
             suggestArrow   = '',
             displayName    = options.name,
             arrow          = options.arrow,
@@ -389,16 +389,15 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
                     $target.css({position: 'fixed'});
                     placement = placement.split('-');
                     var $win = $(window);
-                    var beside = placement[1] || 'auto', 
-                        float = placement[2] || 'center',
-                        offset = $element.offset(),
+                    var beside = placement[1] || 'auto',
+                        floatSide = placement[2] || 'center',
                         bounding = $element[0].getBoundingClientRect(),
                         width = $target.width(),
                         height = $target.height(),
                         wWidth = $win.width(),
                         wHeight = $win.height(),
-                        floatStart = float === 'start',
-                        floatEnd = float === 'end',
+                        floatStart = floatSide === 'start',
+                        floatEnd = floatSide === 'end',
                         top, left;
                     var eTop = bounding.top,
                         eLeft = bounding.left,
@@ -443,7 +442,7 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
                     suggestAnimate = 'fade scale-from-' + suggestArrow;
                 } else {
                     placement = placement.split('-');
-                    var justify = placement[0], 
+                    var justify = placement[0],
                         align = placement[1],
                         layerCss = {};
                     if(justify == 'top' || justify == 'bottom' || justify == 'left' || justify == 'right') {
@@ -586,7 +585,7 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
         // name: '',              // unique name
         triggerMethod: 'show', // trigger method: show, toggle, hide
 
-        // target: null,   // page, tooltip, 
+        // target: null,   // page, tooltip,
         // selector: null, // trigger event selector,
         // targetClass: null // CSS class be add to the target element
         // targetGroup: '',
@@ -607,7 +606,7 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
         loadingClass: STR_LOADING, // CSS class to append to target and body element
 
         showInClass: 'in',     // CSS class to be add after show target
-        // showSingle: false,     // 
+        // showSingle: false,     //
         animate: true,         // boolean, CSS classes or number for duration
         duration: 300,         // animation duration
         // backdrop: false,    // show backdrop or not,
@@ -659,7 +658,7 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
     $(function() {
         $('[data-' + STR_DISPLAY + ']').display();
 
-        $(document).on(TAP_EVENT_NAME, '[data-dismiss="' + STR_DISPLAY + '"]', function() {
+        $('body').on(TAP_EVENT_NAME, '[data-dismiss="' + STR_DISPLAY + '"]', function() {
             var $this = $(this), dataName = 'data-' + STR_DISPLAY + '-name';
             name = $this.attr(dataName);
             if(!name || name == 'null' || name == 'undefined') name = $this.closest('.' + STR_DISPLAY).attr(dataName);
@@ -1345,7 +1344,7 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
  * MZUI: ajaxform.js
  * https://github.com/easysoft/mzui
  * ========================================================================
- * Copyright (c) 2016 cnezsoft.com; Licensed MIT
+ * Copyright (c) 2016-2020 cnezsoft.com; Licensed MIT
  * ======================================================================== */
 
 
@@ -1353,6 +1352,40 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
     'use strict';
 
     var NAME = 'mzui.ajaxform';
+
+    var convertFormDataToObject = function(formData) {
+        var object = {};
+        $.each(Array.from(formData.entries()), function(index, pair) {
+            var key = pair[0];
+            var value = pair[1];
+            if (!object.hasOwnProperty(key)) {
+                object[key] = value;
+                return;
+            }
+            if(!$.isArray(object[key])){
+                object[key] = [object[key]];
+            }
+            object[key].push(value);
+        });
+        return object;
+    };
+
+    var convertObjectToFormData = function(object) {
+        if (object instanceof FormData) {
+            return object;
+        }
+        var formData = new FormData();
+        $.each(object, function(key, value) {
+            if ($.isArray(value)) {
+                $.each(value, function(index, val) {
+                    formData.append(key, val);
+                });
+            } else {
+                formData.append(key, value);
+            }
+        });
+        return formData;
+    };
 
     var setAjaxForm = function ($form, options) {
         if (!$form.length || $form.data(NAME)) return;
@@ -1385,57 +1418,16 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
             e.preventDefault();
 
             var form = $form[0];
-            var _formData = {};
-            $.each($form.serializeArray(), function (idx, item) {
-                var _name = item.name,
-                    _val = item.value,
-                    _formVal = _formData[_name];
-                if (_val instanceof FileList) {
-                    var _fileVal = [];
-                    for (var i = _val.length - 1; i >= 0; --i) {
-                        _fileVal.push(_val[i]);
-                    }
-                    _val = _fileVal;
-                }
-                if ($.isArray(_val)) {
-                    if (_formVal === undefined) {
-                        _formVal = _val;
-                    } else if ($.isArray(_formVal)) {
-                        _formVal.push.apply(_formVal, _val);
-                    } else {
-                        _val.push(_formVal);
-                        _formVal = _val;
-                    }
-                } else if (_name.lastIndexOf(']') === _name.length - 1) {
-                    if (_formVal === undefined) {
-                        _formVal = [_val];
-                    } else {
-                        _formVal.push(_val);
-                    }
-                } else {
-                    _formVal = _val;
-                }
-                _formData[_name] = _formVal;
-            });
 
-            var userSubmitData = callEvent('onSubmit', _formData);
+            var formData = convertFormDataToObject(new FormData(form));
+            var userSubmitData = callEvent('onSubmit', [formData]);
             if (userSubmitData === false) return;
             if (userSubmitData !== undefined) {
-                _formData = userSubmitData;
+                formData = userSubmitData;
             }
 
             if (options.dataConverter) {
-                _formData = options.dataConverter(_formData);
-            }
-
-            var formData = new FormData();
-            for (var key in _formData) {
-                var _val = _formData[key];
-                if ($.isArray(_val)) {
-                    for (var i = _val.length - 1; i >= 0; --i) {
-                        formData.append(key, _val[i]);
-                    }
-                } else formData.append(key, _val);
+                formData = options.dataConverter(formData);
             }
 
             var $submitBtn = $form.find('[type="submit"]').attr('disabled', 'disabled').addClass('disabled loading');
@@ -1443,9 +1435,10 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
                 url: options.url || form.action,
                 type: options.type || form.method,
                 processData: false,
+                async: false,
                 contentType: false,
                 dataType: options.dataType || $form.data('type') || 'json',
-                data: formData,
+                data: convertObjectToFormData(formData),
                 success: function (response, status) {
                     var userResponse = callEvent('onResponse', [response, status]);
                     if (userResponse === false) return;
@@ -1456,13 +1449,26 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
                         if (typeof response === 'string') response = $.parseJSON(response);
                         if (callEvent('onSuccess', response) !== false) {
                             if (response.result === 'success') {
+                                var locate = options.locate || response.locate;
+                                var locateHandler;
+                                if(locate) {
+                                    if ((locate === 'parent' || locate === 'top') && window[locate]) {
+                                        locateHandler = window[locate].location.reload;
+                                    } else if (locate === 'self' || locate === 'reload') {
+                                        locateHandler = window.location.reload;
+                                    } else {
+                                        locateHandler = function() {
+                                            window.location.href = locate;
+                                        };
+                                    }
+                                }
                                 if (response.message) {
                                     $.messager.success(response.message);
-                                    if (response.locate) {
-                                        setTimeout(function () { location.href = response.locate; }, 1200);
+                                    if (locateHandler) {
+                                        setTimeout(locateHandler, 1200);
                                     }
                                 } else {
-                                    if (response.locate) location.href = response.locate;
+                                    if (locateHandler) locateHandler();
                                 }
                             } else {
                                 var message = response.message || response.reason || response.error;
@@ -1508,7 +1514,7 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
                 },
                 complete: function (xhr, status) {
                     $submitBtn.attr('disabled', null).removeClass('disabled loading');
-                    callEvent('onComplete', { xhr: xhr, status: status });
+                    callEvent('onComplete', {xhr: xhr, status: status});
                 }
             });
         }).on('change', function (e) {
@@ -1520,6 +1526,8 @@ window.CoreLib = window['jQuery'] || window['Zepto'];
     };
 
     $.ajaxForm = setAjaxForm;
+    $.convertObjectToFormData = convertObjectToFormData;
+    $.convertFormDataToObject = convertFormDataToObject;
 
     $.fn.ajaxform = function (options) {
         return $(this).each(function () {
