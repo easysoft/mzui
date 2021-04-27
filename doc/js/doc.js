@@ -1,6 +1,6 @@
 /*!
- * MZUI: doc - v1.0.1 - 2019-01-17
- * Copyright (c) 2019 cnezsoft.com; Licensed MIT
+ * MZUI: doc - v1.0.1 - 2020-08-10
+ * Copyright (c) 2020 cnezsoft.com; Licensed MIT
  */
 
 /* ========================================================================
@@ -56,8 +56,8 @@ $(function() {
             var $element = $(options.element);
             var elementName = $element.attr('href').replace('doc/part/', '').replace('examples/', '');
             var gaOptions = {
-                hitType: 'pageview', 
-                page: window.location.pathname + '#' + parentName + '/' + elementName, 
+                hitType: 'pageview',
+                page: window.location.pathname + '#' + parentName + '/' + elementName,
                 title: parentTitle + ' > ' + $element.text()
             };
             ga('send', gaOptions);
@@ -100,7 +100,7 @@ $(function() {
         }
     });
 
-    $(document).on($.TapName, '.btn-begin', function() {
+    $('body').on($.TapName, '.btn-begin', function() {
         $('#beginLink').trigger('click');
     });
 
